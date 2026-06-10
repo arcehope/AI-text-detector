@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Text Detector</title>
+    
+    <!-- CSS Stylings -->
+    <link rel="stylesheet" href="style.css?v=1.2">
+    
+    <!-- External Parser & Icon Libraries via CDNs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- LaTeX rendering helper -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            },
+            svg: {
+                fontCache: 'global'
+            }
+        };
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" id="MathJax-script" async></script>
+</head>
+<body>
+
+    <div class="container">
+        <!-- --- HEADER SYSTEM --- -->
+        <header>
+            <div class="logo-section">
+                <h1>AI Text Detector</h1>
+            </div>
+        </header>
+
+        <!-- ========================================== -->
+        <!-- TEXT CLASSIFIER MODE SANDBOX               -->
+        <!-- ========================================== -->
+        <div id="text-sandbox" class="sandbox-container active">
+            <main class="dashboard-grid">
+                
+                <!-- LEFT COLUMN: INPUT CONTROLLER -->
+                <section class="input-section">
+                    <div class="section-title">
+                        <i data-lucide="file-text"></i>
+                        <h2>Document or Text</h2>
+                    </div>
+
+                    <!-- Drag & Drop Zone -->
+                    <div class="dropzone-container" id="dropzone">
+                        <i data-lucide="upload-cloud"></i>
+                        <p>Drag and drop a file here, or <span class="btn-link">browse files</span></p>
+                        <p style="font-size: 11px; margin-top: 5px; opacity: 0.6;">Supports .TXT, .PDF, or .DOCX files</p>
+                        <input type="file" id="file-input" style="display: none;" accept=".txt,.md,.pdf,.docx">
+                    </div>
+
+                    <!-- Textarea Editor -->
+                    <div class="editor-wrapper">
+                        <textarea id="editor-area" placeholder="Paste your text document here... (Minimum 10 words required for stylometric evaluation)"></textarea>
+                        <div class="editor-footer">
+                            <span id="char-word-count">Ready for input</span>
+                        </div>
+                    </div>
+
+                    <!-- Loaders & Controls -->
+                    <div class="progress-container" id="progress-container" style="display: none;">
+                        <div class="progress-header">
+                            <span id="progress-msg">Analyzing document...</span>
+                            <span id="progress-pct">0%</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-bar" id="progress-bar"></div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" id="analyze-btn">
+                            <i data-lucide="activity"></i> Run Analysis
+                        </button>
+                        <button class="btn btn-secondary" id="clear-btn">
+                            <i data-lucide="trash-2"></i> Clear
+                        </button>
+                    </div>
+
+                    <div class="sample-loader">
+                        <span>Try Samples:</span>
+                        <span class="link-trigger" id="sample-ai-btn">AI-Generated</span>
+                        <span>|</span>
+                        <span class="link-trigger" id="sample-human-btn">Human-Written</span>
+                    </div>
+                </section>
+
+                <!-- RIGHT COLUMN: RESULTS & CHARTS -->
+                <section class="output-section">
+                    
+                    <!-- Navigation Tabs -->
+                    <nav class="tab-header">
+                        <button class="tab-trigger active" data-tab="tab-dashboard">Dashboard Charts</button>
+                        <button class="tab-trigger" data-tab="tab-heatmap">Interactive Heatmap</button>
+                        <button class="tab-trigger" data-tab="tab-math">Mathematical Resolution</button>
+                    </nav>
+
+                    <!-- TAB 1: OVERALL DASHBOARD -->
+                    <div class="tab-content active" id="tab-dashboard">
+                        <!-- Empty State Placeholder -->
+                        <div class="empty-state" id="empty-results-state">
+                            <i data-lucide="bar-chart-3"></i>
+                            <h3>Awaiting Stylometric Analysis</h3>
+                            <p>Paste or upload a document and click "Run Analysis" to generate the SVG charts.</p>
+                        </div>
+
+                        <!-- Active Results Dashboard -->
+                        <div class="tab-content" id="active-results-panel" style="display: none;">
+                            
+                            <!-- Top Row: Gauge + Radar -->
+                            <div class="charts-row-top">
+                                <div class="chart-card">
+                                    <h4>Overall AI Probability</h4>
+                                    <div class="chart-canvas" id="gauge-chart-container"></div>
+                                </div>
+                                <div class="chart-card">
+                                    <h4>5-Axis Stylometric Radar</h4>
+                                    <div class="chart-canvas" id="radar-chart-container"></div>
+                                </div>
+                            </div>
+
+                            <!-- Middle Row: Scatter Plot -->
+                            <div class="chart-card" style="min-height: 320px;">
+                                <h4>KNN Heuristic Feature Space (K=5)</h4>
+                                <div class="chart-canvas" id="scatter-chart-container" style="height: 250px;"></div>
+                            </div>
+
+                            <!-- Bottom Row: Statistics -->
+                            <div class="stats-cards-row">
+                                <div class="stat-metric-card">
+                                    <span class="label">Total Words</span>
+                                    <span class="val" id="stat-word-count">0</span>
+                                </div>
+                                <div class="stat-metric-card">
+                                    <span class="label">Sentences</span>
+                                    <span class="val" id="stat-sentence-count">0</span>
+                                </div>
+                                <div class="stat-metric-card">
+                                    <span class="label">Burstiness</span>
+                                    <span class="val" id="stat-burstiness">0.00</span>
+                                </div>
+                                <div class="stat-metric-card">
+                                    <span class="label">TTR Ratio</span>
+                                    <span class="val" id="stat-ttr">0.000</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: INTERACTIVE HEATMAP -->
+                    <div class="tab-content" id="tab-heatmap">
+                        <div class="heatmap-description">
+                            Analyze sentence perplexity by clicking individual items. Legend: 
+                            <span class="lbl-ai">AI Heavy (&gt;70%)</span>
+                            <span class="lbl-mix">Mixed (40-70%)</span>
+                            <span class="lbl-hum">Human-like (&lt;40%)</span>
+                        </div>
+
+                        <!-- Highlight Render Block -->
+                        <div class="heatmap-editor-container" id="highlighted-text-panel">
+                            <p style="color: var(--text-dark); font-style: italic;">No analysis run yet. Highlight overlays will appear here.</p>
+                        </div>
+
+                        <!-- Interactive Inspector Sidepanel -->
+                        <div class="inspector-card" id="sentence-metrics-card" style="display: none;">
+                            <h5>Sentence Inspector</h5>
+                            <p class="inspector-sentence-body" id="sel-sentence-text">""</p>
+                            <div class="inspector-grid">
+                                <div class="inspector-item">
+                                    <span class="label">Word Length</span>
+                                    <span class="num" id="sel-word-count">0</span>
+                                </div>
+                                <div class="inspector-item">
+                                    <span class="label">AI Confidence</span>
+                                    <span class="num" id="sel-ai-score">0%</span>
+                                </div>
+                                <div class="inspector-item" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                                    <span class="label">Classification</span>
+                                    <span class="indicator" id="sel-classification">Human</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: MATHEMATICAL RESOLUTION -->
+                    <div class="tab-content" id="tab-math">
+                        <div class="formula-wrapper" id="formula-container">
+                            <p style="color: var(--text-dark); font-style: italic; text-align: center; padding: 40px 0;">
+                                Formula traces will compile automatically upon document analysis.
+                            </p>
+                        </div>
+                    </div>
+
+                </section>
+            </main>
+        </div>
+
+
+    </div>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+
+    <!-- Load Local Core Logic & Algorithms -->
+    <script src="js/algo/perplexity.js?v=1.2"></script>
+    <script src="js/algo/knn.js?v=1.2"></script>
+    <script src="js/algo/similarity.js?v=1.2"></script>
+    <script src="js/utils/fileParser.js?v=1.2"></script>
+    <script src="js/utils/chartRenderer.js?v=1.2"></script>
+    <script src="js/app.js?v=1.2"></script>
+
+</body>
+</html>

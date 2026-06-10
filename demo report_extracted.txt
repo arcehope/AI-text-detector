@@ -1,0 +1,820 @@
+Tribhuvan University 
+Faculty of Humanities and Social Science
+A Project Report On
+“Web Application Vulnerability Scanner”  
+In partial fulfillment of requirements in Bachelor in Computer Applications 
+ Submitted by: 
+Shashank Singh (6-2-410-140--2021) 
+ 
+June, 2026 A.D. 
+Under the Supervision of 
+Ms. Rolisha Sthapit 
+ 	
+
+Tribhuvan University 
+Faculty of Humanities and Social Science
+A Project Report On
+“Web Application Vulnerability Scanner”  
+In partial fulfillment of requirements in Bachelor in Computer Applications 
+ Submitted by: 
+Shashank Singh (6-2-410-140--2021) 
+ 
+June, 2026 A.D. 
+Under the Supervision of 
+Ms. Rolisha Sthapit 
+
+ 
+Tribhuvan University 
+Faculty of Humanities and Social Science 
+SUPERVISORS RECOMMENDATION 
+It is my pleasure to recommend that a project report on “Web Application Vulnerability Scanner” has been prepared under my supervision by Shashank Singh in partial fulfillment of the requirement of the degree of Bachelor of Computer Applications. His report is satisfactory and is an original work done by him to process for the future evaluation. 
+ 
+ 
+ 
+Ms. Rolisha Sthapit 
+SUPERVISOR 
+Lecturer, Department of IT 
+Prime College 
+ 	 
+ 
+ 
+Tribhuvan University 
+Faculty of Humanities and Social Science 
+LETTER OF APPROVAL 
+This is to certify that this project report prepared by Shashank Singh on “Web Application Vulnerability Scanner” in partial fulfillment of the requirements for the degree of Bachelor in Computer Application has been evaluated. In our opinion it is satisfactory in the scope and quality as a project for the required degree. 
+ 
+ 
+ 
+ 
+Ms. Rolisha Sthapit 
+Supervisor  
+Prime College 
+Khusibu, Nayabajar, Kathmandu 
+ 
+ 
+Ms. Rolisha Sthapit 
+Program Co-Ordinator/ Internal 
+Examiner 
+BCA Department 
+Prime College 
+Khusibu, Nayabajar, Kathmandu 
+ 
+ 
+ 
+Mr. 
+External Examiner 
+
+ACKNOWLEDGEMENT  
+This project on developing a Web Application Vulnerability Scanner, which detects various security vulnerabilities like SQL Injection, Cross Site Scripting (XSS), Open Redirect, and Security Header, could not have been achieved without the kind support of many individuals. I am highly thankful to Ms. Rolisha Sthapit, Project Supervisor and Coordinator, for her kind guidance, valuable suggestions, and encouragement during the course of developing this project. Her knowledge of the subject, as well as her encouragement, helped me learn the concepts of web security deeply. I would also like to express my gratitude towards all the individuals, such as my teachers, mentors, friends, and classmates, who provided valuable suggestions, ideas, etc., during the testing phase of the project, which helped improve the performance, functionality, etc., of the Web Application Vulnerability Scanner. I would like to express my sincere thanks to all the individuals, who helped the completion of the project, directly or indirectly.
+-Shashank Singh  
+ 	 
+
+ABSTRACT 
+The Web Application Vulnerability Scanner is a comprehensive security solution which performs automated detection of standard security flaws found in contemporary web software. Websites face growing cybersecurity threats because they store sensitive user credentials and financial data and personal information which attackers seek to exploit. SQL Injection and Cross Site Scripting (XSS) and Open Redirect vulnerabilities and security header problems together create security weaknesses which enable attackers to gain unauthorized system access and cause data breaches and financial and reputation losses. The project intends to identify system vulnerabilities through its execution of automated scanning procedures. The system operates by crawling a target website to gather all accessible pages together with their associated forms and input elements. The system conducts testing by sending specific test payloads through these input fields while patterns and response variations and status codes work to identify any existing vulnerabilities. The system detects SQL Injection through the process of sending specially designed database inputs which reveal error messages or unusual system responses. The system detects XSS vulnerabilities through testing which checks whether dangerous scripts are visible in the system responses. The scanner verifies security settings through checks of HTTP response headers which identify essential security protection elements. The scanner uses an OWASP-based risk assessment system which calculates the potential impact and ease of exploitation and verification strength of each identified security flaw to assign risk ratings that range from Low to Medium to High. The system uses React technology to create its interactive dashboard while the backend scanning engine operates through Python and Flask.
+Keywords: Web Security, Vulnerability Scanner, SQL Injection, Cross Site Scripting (XSS), Open Redirect, OWASP Risk Assessment, Ethical Hacking
+
+Table of Contents
+SUPERVISORS RECOMMENDATION	iii
+LETTER OF APPROVAL	iv
+ACKNOWLEDGEMENT	v
+ABSTRACT	vi
+LIST OF ABBREVIATIONS	x
+LIST OF FIGURES	xi
+LIST OF TABLES	xii
+CHAPTER 1 INTRODUCTION	1
+	1.1. Introduction	1
+	1.2. Problem Statement	2
+	1.3. Objectives	2
+	1.4. Development Methodology	2
+	1.5. Report Organization	4
+CHAPTER 2 BACKGROUND STUDY AND LITERATURE REVIEW	6
+	2.1. Background Study	6
+	2.2 Literature Review	7
+CHAPTER 3 SYSTEM ANALYSIS AND DESIGN	11
+	3.1. System Analysis	11
+	3.1.1 Requirement Analysis	11
+	3.1.2. Feasibility Analysis	15
+	3.1.3. Object Modeling using Class Diagram	18
+	3.1.4. Dynamic Modelling using State and Sequence Diagrams	19
+	3.1.5. Process Modelling Using Activity Diagrams	23
+	3.2. System Design	24
+	3.2.1. Component Diagram	24
+	3.2.2. Deployment Diagram	25
+	3.3. Algorithm Details	26
+	3.3.1. Web Application Vulnerability Scanning Algorithm (Core System)	26
+	3.3.2. Rule-Based Detection Algorithm	26
+	3.3.3. Payload Injection Algorithm	27
+	3.3.4. Signature-Based Detection Algorithm	27
+	3.3.5. Response Analysis Algorithm	28
+	3.3.6. Port Scanning Algorithm (Socket-Based)	28
+	3.3.7. Severity Scoring Algorithm	28
+	3.3.8. Technology Fingerprinting Algorithm	29
+	3.3.9. Directory Brute Force / Enumeration Algorithm	29
+	3.3.10. Cookie Security Validation Algorithm	30
+CHAPTER 4 IMPLEMENTATION AND TESTING	31
+	4.1. Implementation	31
+	4.1.1. Tools Used	31
+	4.1.2. Implementation Details of Modules	32
+	4.1.2.1. Registration Model:	32
+	4.1.2.2. Real-Time Vulnerability Scanning and Streaming Model	33
+	4.1.2.3. HTTP Security Header Analysis Model	34
+	4.1.2.4. SSL/TLS Certificate Validation Model	36
+	3.1.2.5. Port Scanning Model	36
+	4.1.2.6. Technology Detection Model	38
+	4.1.2.7. Directory and Sensitive File Enumeration Model	39
+	4.1.2.8. SQL Injection Detection Model	40
+	4.1.2.9. Cross-Site Scripting (XSS) Detection Model	41
+	4.1.2.10. CORS Misconfiguration Detection Model	42
+	4.1.2.11. Cookie Security Analysis Model	43
+	4.1.2.12. Information Disclosure Detection Model	44
+	4.1.2.13. Vulnerability Scanning Orchestration Model	45
+	4.2. Testing	46
+	4.2.1. Test Case for Unit Testing	46
+CHAPTER 5 CONCLUSION AND FUTURE MANAGEMENTS	51
+	5.1. Conclusion	51
+	5.2. Future Recommendation	52
+REFERENCES	53
+APPENDICES
+
+LIST OF ABBREVIATIONS
+API
+Application Programming Interface
+CORS
+Cross-Origin Resource Sharing
+CSRF
+Cross-Site Request Forgery
+FTP
+File Transfer Protocol
+HTTP
+HyperText Transfer Protocol
+HTTPS
+HyperText Transfer Protocol Secure
+JSON
+JavaScript Object Notation
+OWASP
+Open Worldwide Application Security Project
+SQL
+Structured Query Language
+SSH
+Secure Shell
+SSL
+Secure Sockets Layer
+TLS
+Transport Layer Security
+URL
+Uniform Resource Locator
+XSS
+Cross-Site Scripting
+ZAP
+Zed Attack Proxy
+
+LIST OF FIGURES
+Figure 1.1:
+Agile Methodology……………………………………………………...
+4
+Figure 3.1:
+Use Case Diagram for Web Application Vulnerability Scanner………...
+11
+Figure 3.2:
+Gantt Chart for Web Application Vulnerability Scanner……………......
+18
+Figure 3.3: 
+Class Diagram for Web Application Vulnerability Scanner………….....
+18
+Figure 3.4:
+State Diagram for Web Application Vulnerability Scanner…………......
+20
+Figure 3.5:
+Sequence Diagram for Web Application Vulnerability Scanner………...
+22
+Figure 3.6:
+Activity Diagram for Web Application Vulnerability Scanner……….....
+23
+Figure 3.7:
+Component Diagram for Web Application Vulnerability Scanner……...
+25
+Figure 3.8:
+Deployment Diagram for Web Application Vulnerability Scanner……..
+26
+Figure 4.1:
+Code Snippet of Registration Model……………………………………
+33
+Figure 4.2:
+Code Snippet of Real-Time Vulnerability Scanning…………….………
+34
+Figure 4.3:
+Code Snippet of HTTP Security Header Analysis Model……………....
+35
+Figure 4.4:
+Code Snippet of SSL/TLS Certificate Validation Model……………….
+36
+Figure 4.5:
+Code Snippet of Port Scanning Model………………………………….
+37
+Figure 4.6:
+Code Snippet of Technology Detection Model………………………....
+38
+Figure 4.7:
+Code Snippet of Directory and Sensitive File Enumeration Model…….
+39
+Figure 4.8:
+Code Snippet of SQL Injection Detection Model……………………....
+40
+Figure 4.9:
+Code Snippet of Cross-Site Scripting (XSS) Detection Model………....
+41
+Figure 4.10:
+Code Snippet of CORS Misconfiguration Detection Model…………....
+42
+Figure 4.11:
+Code Snippet of Cookie Security Analysis Model……………………...
+43
+Figure 4.12:
+Code Snippet of Information Disclosure Detection Model……………..
+44
+Figure 4.13:
+	Code Snippet of Vulnerability Scanning Orchestration Mode………….	
+45
+
+LIST OF TABLES
+Figure 3.1:
+Schedule Feasibility...……..………………………………...……………
+17
+Figure 4.1:
+Test Case for Unit Testing of Web Vulnerability Scanner APIs……...…..
+46
+Figure 4.2:
+Test Cases for Unit Testing of Vulnerability Detection Modules………...
+48
+
+CHAPTER 1
+INTRODUCTION
+1.1. Introduction 
+In the modern digital age, web applications have become a very important part of various industries, such as the banking industry, the e-commerce industry, the healthcare industry, the education industry, the government industry, etc. These web applications store very sensitive information, such as personal details, login credentials, transactions, etc. As the use of web applications is increasing, the probability of cyber-attacks on the security vulnerabilities of these web applications is also increasing. If there is a slight security vulnerability in a web application, it can result in severe consequences, such as data breach, unauthorized access, financial loss, etc.
+Common security issues that can occur in web applications include SQL Injection, Cross Site Scripting, Open Redirect, and security headers. The causes of such security issues in web applications include poor input validation, poor coding practices, and lack of security testing. Performing security testing on a web application can be a complex process, and human error can occur. Thus, automated security solutions are essential.
+To overcome this challenge, this project has come up with the creation of the Web Application Vulnerability Scanner, which is considered to be a full-stack security tool that is meant to scan web applications and identify the common web vulnerabilities present in the target website. This is achieved through the crawling of web pages and the identification of the forms and input fields present in the website, and finally, the analysis of the responses to identify abnormal behavior. This is achieved through the application of various techniques, such as pattern matching and the application of risk score mechanisms in conformity with the OWASP guidelines.
+The application is built using React as the front-end tool, Python as the back-end tool, and MongoDB as the database tool to store the results and the reports generated from the application. This tool is considered to be helpful in enhancing the security of web applications through the early detection of vulnerabilities, which is considered to be helpful in the development of more reliable web applications.
+
+1.2. Problem Statement
+The Web Application Vulnerability Scanner tries to solve the following problems:
+This includes web applications in industries such as banking, commerce, health care, and education.
+Common web application vulnerabilities include SQL Injection, Cross Site Scripting (XSS), Open Redirect, and security headers.
+These security issues can cause problems such as unauthorized access, data breaches, financial losses, and reputational damage.
+Manually conducting security tests is a slow, error-prone process that requires specific skill sets, hence inefficient.
+There is a need to develop a system that can automatically scan web applications, identify vulnerabilities, and provide guidance on the same.
+1.3. Objectives
+The main objectives of this project are as follows:
+To design a Web Application Vulnerability Scanner that can automatically detect common web application security vulnerabilities.
+To implement the techniques to detect SQL Injection, Cross Site Scripting (XSS), Open Redirects, and Security Header misconfigurations.
+To implement a severity-based risk assessment system based on the OWASP standard.
+To design a user-friendly interface to scan the website and view the vulnerability report.
+To store the scan results in a database.
+1.4. Development Methodology 
+The Agile model is a flexible software development approach that encourages continuous development, testing, and improvement. This model can be best applied to the development of the Web Application Vulnerability Scanner, given that the needs of the system may change over time. New vulnerabilities may require inclusion, and the Agile model will allow the development team to develop the system incrementally, thereby improving the system.
+Requirement Gathering and Backlog Creation starts with the identification and listing of all major requirements of the system to be developed. For the Web Application Vulnerability Scanner, the requirements gathered include features like web crawling, SQL Injection detection, XSS detection, Open Redirect testing, security header checking, risk scoring, and reporting.
+Sprint Planning project is divided into small development cycles, and each of these small development cycles is referred to as a sprint. In each sprint, the focus of the development process is to complete certain features of the system. For instance, one sprint may be dedicated to the development of the crawler module of the system, and another sprint may be dedicated to the implementation of SQL Injection detection.
+Incremental Development during each sprint, a functional version of a particular module is developed. For example, in the first sprint, the structure for the React frontend and Python backend may be set up. In the second sprint, the web crawler may be developed, followed by vulnerability detection modules such as SQL Injection or XSS in subsequent sprints. These features are then integrated to build the whole scanner.
+Continuous Testing is done continuously rather than at the end of the development phase. After each sprint, the developed module is tested to ensure it works properly and integrates well with other modules. For example, after implementing SQL Injection detection, it is tested using some vulnerable applications.
+Feedback and Improvement is reviewed after the completion of the sprint, and feedback is obtained. Improvements are made to the system for the next sprint. This process makes the system more accurate, user-friendly, and efficient.
+Final Integration and Deployment all the modules, such as crawling, vulnerability, risk scoring, and reporting, are completed, the system is integrated. Final tests are conducted to ensure the functionality, reliability, and correctness of the system. Finally, the Web Application Vulnerability Scanner is deployed, with the possibility of incorporating more security tests in the future.
+
+Figure 1.1: Agile Methodology [1]
+1.5. Report Organization
+The report on the Web Application Vulnerability Scanner is divided into five chapters, each covering a significant stage of the project’s development from concept to delivery and evaluation. This format is significant in offering a complete understanding of the project’s creation and testing with the aim of promoting web application security.
+Here’s a summary of each chapter:
+The first chapter deals with the introduction to the Web Application Vulnerability Scanner. Here, the reader is given a brief idea about the purpose, scope, and importance of the Web Application Vulnerability Scanner in today’s digital world. This chapter also deals with the rising security threats that web applications are facing and how these threats need to be identified using automated tools. Here, the reader is given a clear idea about the objectives behind this project and how the system helps in identifying major security threats such as SQL Injection, Cross Site Scripting (XSS), Open Redirects, etc.
+Chapter 2 of the thesis deals with the review of existing research work carried out in the field of web security and vulnerability assessment tools. It covers the existing security scanner tools and frameworks like OWASP ZAP and Burp Suite, and research studies carried out for the automated detection of security vulnerabilities. It also compares the different approaches, methodologies, and tools being used for security testing, including the contribution of the proposed scanner tool.
+Chapter 3 deals with the system analysis and design of the Web Application Vulnerability Scanner. In this chapter, the functional and non-functional requirements, feasibility, and system architecture of the Web Application Vulnerability Scanner are described. Here, the entire workflow of the Web Application Vulnerability Scanner, including the entry of the URL, crawling, injection, analysis, and report generation, is described. In addition, the system design diagram, such as the use case diagram, sequence diagram, and system architecture diagram, is also provided, which describes the interaction between the frontend, built using React, and the backend, built using Python frameworks such as Flask and FastAPI, for the Web Application Vulnerability Scanner. In addition, the database design for the Web Application Vulnerability Scanner is also provided.
+The fourth chapter deals with the implementation and testing phase of the system. In this chapter, the reader is introduced to the various technologies that are used in the development of the system, such as React for the user interface, Python for the vulnerability scanning, and a database like MongoDB for storing the scanning history. This chapter provides information about how different vulnerability detection modules are developed, such as SQL injection detection through payload testing, cross-site scripting detection through script injection, open redirect detection, and security header detection. This chapter also provides information about the test cases, screenshots of the dashboard, and performance analysis of the system to validate the accuracy and efficiency of the system. 
+The fifth chapter concludes the report and provides a summary of the findings and the effectiveness of the Web Application Vulnerability Scanner. This chapter provides information about the effectiveness of the system in detecting common web application vulnerabilities and how it helps the developers to secure the web application.
+
+CHAPTER 2
+BACKGROUND STUDY AND LITERATURE REVIEW 
+2.1. Background Study
+With the development of online services, web applications have become the backbone of industries such as finance, commerce, health, education, and governments. From online transactions to health records and online learning, web applications are used to handle a large amount of sensitive information. As the use of web applications is increasing, so is the risk of cyber-attacks. Hackers are always looking to find weaknesses in web application systems to exploit them and gain unauthorized access to the system.
+Over the years, certain common web vulnerabilities have been identified that are major security threats to web applications. These include attacks such as SQL Injection, in which hackers gain access to confidential data using their malicious queries. Cross Site Scripting allows hackers to run malicious scripts on a user’s machine, stealing their session information or redirecting their requests to malicious sites. Similarly, vulnerabilities in Open Redirects allow hackers to redirect users to malicious sites. Also, missing or incorrect security headers weaken the defensive shield of a web application. These have been identified in web security standards such as the OWASP guidelines in the well-known OWASP Top 10 list.
+Normally, web application security testing is done manually by experts using penetration testing. Even though this method is effective in testing web applications, it is also time-consuming and expensive. Additionally, the expertise level of the tester plays a crucial role in the process. Since web technologies are advancing rapidly, using this traditional method to test web applications is not feasible anymore. This has given birth to automated tools that perform vulnerability scanning on web applications. These tools include OWASP ZAP and Burp Suite. However, these tools may also be complex to understand for beginners or expensive for small-scale projects.
+The idea behind a Web Application Vulnerability Scanner is based on the idea of using web crawling to navigate through web pages, injecting payloads to test input boxes, using pattern matching to identify malicious activity, and analyzing server responses to compare results. By using these tools, web application vulnerabilities can be easily identified in a matter of seconds and in a structured format.
+However, with the evolution of full stack web development technologies like React for the frontend interfaces and Python-based frameworks like Flask and FastAPI, it is possible to develop custom security tools with interactive interfaces and real-time reporting capabilities. Thus, there is a possibility of creating user-friendly and lightweight vulnerability scanning tools with the help of these emerging technologies.
+Thus, the increased reliance on web applications and the sophistication of threats emphasize the need for automated security testing tools. A Web Application Vulnerability Scanner is a tool developed based on the principles of security research and automated testing with the aim of offering a structured approach for addressing web vulnerabilities.
+2.2 Literature Review
+Cloud security is one of the biggest concerns for many companies. The growth in the number and size of websites increases the need for better securing those websites. Manual testing and detection of web vulnerabilities can be very time consuming. Automated Web Vulnerability Scanners (WVS) help with the detection of vulnerabilities in web applications. Acunetix is one of the widely used vulnerability scanners. Acunetix is also easy to implement and to use. The scan results not only provide the details of the vulnerabilities, but also give information about fixing the vulnerabilities. AcuSensor and AcuMonitor (technologies used by Acunetix) help generate more accurate potential vulnerability results. One of the purposes of this paper is to orient current students of computer security with using vulnerability scanners. Secondly, this paper provides a literature review related to the topic of security vulnerability scanners. Finally, web vulnerabilities are addressed from the mobile device and browser perspectives. [2]
+In recent years, web security has been viewed in the context of securing the web application layer from attacks by unauthorized users. The vulnerabilities existing in the web application layer have been attributed either to using an inappropriate software development model to guide the development process, or the use of a software development model that does not consider security as a key factor. Therefore, this systematic literature review is conducted to investigate the various security vulnerabilities used to secure the web application layer, the security approaches or techniques used in the process, the stages in the software development in which the approaches or techniques are emphasized, and the tools and mechanisms used to detect vulnerabilities. The study extracted 519 publications from respectable scientific sources, i.e. the IEEE Computer Society, ACM Digital Library, Science Direct, Springer Link. After detailed review process, only 56 key primary studies were considered for this review based on defined inclusion and exclusion criteria. From the review, it appears that no one software is referred to as a standard or preferred software product for web application development. In our SLR, we have performed a deep analysis on web application security vulnerabilities detection methods which help us to identify the scope of SLR for comprehensively investigation in the future research. Further in this SLR considering OWASP Top 10 web application vulnerabilities discovered in 2012, we will attempt to categories the accessible vulnerabilities. OWASP is major source to construct and validate web security processes and standards. [3]
+ In recent years, web security has been viewed in the context of securing the web application layer from attacks by unauthorized users. The vulnerabilities existing in the web application layer have been attributed either to using an inappropriate software development model to guide the development process, or the use of a software development model that does not consider security as a key factor. Therefore, this systematic literature review is conducted to investigate the various security vulnerabilities used to secure the web application layer, the security approaches or techniques used in the process, the stages in the software development in which the approaches or techniques are emphasized, and the tools and mechanisms used to detect vulnerabilities. The study extracted 519 publications from respectable scientific sources, i.e. the IEEE Computer Society, ACM Digital Library, Science Direct, Springer Link. After detailed review process, only 56 key primary studies were considered for this review based on defined inclusion and exclusion criteria. From the review, it appears that no one software is referred to as a standard or preferred software product for web application development. In our SLR, we have performed a deep analysis on web application security vulnerabilities detection methods which help us to identify the scope of SLR for comprehensively investigation in the future research. Further in this SLR considering OWASP Top 10 web application vulnerabilities discovered in 2012, we will attempt to categories the accessible vulnerabilities. OWASP is major source to construct and validate web security processes and standards. [4]
+As the use of the Internet grows, the number and relevance of web applications have also grown, being an integral part of many sectors and businesses. However this growth has adverse effects in the form of increased security threats. Given the large number of current vulnerabilities and the wide variety of testing techniques and tools used to find vulnerabilities, it becomes complex for software developers and application testers to select the proper tools and techniques to test potential threats. This paper aims to collect and classify current security-oriented software testing tools, techniques, and security development models for web systems. According to the STRIDE threat model, our, classification considers software development activities, and associated security threats. To accomplish our goal, we conducted a systematic literature review (SLR), from 2017 to 2022. We identified 18 software testing techniques, 88 tools and four secure development processes, methodologies or models. We found a great variety of tools and techniques, from traditional penetration testing to state-of-the-art Artificial Intelligence supported tools, and we associate different threats found with their respectively testing techniques and STRIDE classification. We believe that our work serves as a foundation for software testers to select proper and modern techniques, tools, and security models, processes or methodologies related to security testing, in accordance with their threat analysis, potentially improving their security testing for web systems. [5]
+Web application security remains a critical challenge in mitigating vulnerabilities that expose sensitive data and systems to cyberattacks. This paper addresses recent trends in the vulnerability of web applications to cyber-attacks. It explores the implementation and evaluation of security mechanisms in web services guided by the OWASP Top 10 framework. The OWASP Analyzer – a test application prepared to simulate the Broken Access Control, SQL Injection, and Cross-Site Scripting attacks – was executed in three realistic scenarios: web applications without any protection mechanism, essential safeguards, and advanced measures. The experimental results demonstrate the effectiveness of layered security strategies and highlight the best practices, such as role-based access control, secure cryptographic methods, and comprehensive logging. This research underscores the necessity of integrating robust security measures throughout the development lifecycle to safeguard against evolving threats. [6]
+Number of security vulnerabilities in web application has grown with the tremendous growth of web application in last two decades. As the domain of Web Applications is maturing, large number of empirical studies has been reported in web applications to address the solution of vulnerable web application. However, before advancing towards finding new approaches of web applications security vulnerability detection, there is a need to analyze and synthesize existing evidence based studies in web applications area. To do this, we have planned to conduct a systematic mapping study to view and report the state-of-the-art of empirical work in existing research of web applications. In this paper, we aimed at providing a description of mapping study for synthesizing the reported empirical research in the area of web applications security vulnerabilities detection approaches. The proposed solutions are mapped against: (1) the software development stages for which the solution has been proposed and (2) the web application vulnerabilities mapping according to OWASP Top 10 security vulnerabilities. To do this, existing literature has been surveyed using a systematic mapping study by phrasing two research questions. In the mapping study, a total of 41 studies dating from 1994 to 2014 were evaluated and mapped against the aforementioned categories. [7]
+
+CHAPTER 3
+SYSTEM ANALYSIS AND DESIGN 
+3.1. System Analysis
+3.1.1 Requirement Analysis
+3.1.1.1 Functional Requirements
+
+Figure 3.1: Use Case Diagram for Web Application Vulnerability Scanner
+1. Login/Registration:
+A new user can register for an account or login into the Web Vulnerability Scanner System using their existing account. This will help in keeping user information secure and also give them access to scanning results among other services.
+2.  Manage Profile:
+Users have the ability to control and modify their personal information like usernames, emails, and passwords. It will make sure that users have correct and updated account information.
+3.  Add Target URL:
+The URL of the website that the user wishes to scan is provided by the user. Target website details are saved to prepare for scanning the website.
+4.  Start Vulnerability Scan:
+Vulnerability scans can be initiated for the selected target website by the user. The crawling procedure starts with analyzing web pages in the website to detect vulnerabilities.
+5.  Crawl Website:
+The system will start crawling the targeted web page through navigation from one linked page to another and gathering data necessary to analyze potential vulnerabilities.
+6.  Detect Vulnerabilities:
+This process includes scanning the target site for web security vulnerabilities, which include SQL injection, XSS, CSRF, poor authentication, directory traversal, open ports, and security header misconfiguration, among others. This increases the level of safety and risk assessment of the website.
+7.  Generate Scan Report:
+Once the scanning process is complete, a report detailing the vulnerabilities, their severities, the affected pages, and the solutions to them is created.
+
+8.  View Scan Progress:
+The application gives an account of the scanning process, such as the status of scanning, number of pages scanned, problems detected, and estimated time for completion.
+9.  View Scan Reports:
+The user can look into the previous scan reports to determine the detected vulnerabilities. This is useful in analyzing the website security and keeping record of the vulnerabilities.
+10.  View Vulnerability Details:
+The user can have details on the detected vulnerabilities by viewing their descriptions, severity, impact, locations affected, and how they can be mitigated.
+11.  Manage Users:
+Admins can control the use of registered users through various means such as accessing user details, managing user permissions, suspending users' accounts, or even deleting users when required. This will ensure system security and effective user management.
+12.  View All Scan Histories:
+Admins can track all vulnerability scans conducted within the system. Admins will be able to track scanning processes, user activities, and security monitoring processes.
+13.  Monitor System Activities:
+Admins can keep track of all system activities that include scans, system logs, user activities, and server status.
+3.1.1.2. Non-Functional Requirements
+1.  User Friendly:
+The tool must have an interactive and intuitive interface that allows the users to conduct vulnerability scans effortlessly without experiencing any complications.
+
+2.  Simple and Easy to Use:
+The software must be easy to use by all kinds of people including those who lack technical expertise and those with advanced technical skills.
+3.  Security:
+Since the software will contain highly sensitive data related to the security of websites, it must ensure that appropriate measures such as authentication and authorization are put in place.
+4.  Fast Scanning Performance:
+Vulnerability scanning must be done in an efficient way and within an acceptable period of time.
+5.  Accuracy:
+The process must have accurate results, with the least possible false positives and false negatives to enable effective security assessment of software.
+6.  Reliability:
+It must have stability and continuity throughout the vulnerability detection process and creation of reports.
+7.  Responsive Design:
+It must be easy to use and accessible from different devices like desktops, laptops, tablets, and mobile phones.
+8.  Scalability:
+It must have capacity for more than one user at once without compromising its functionality and speed.
+9.  Availability:
+It must always be ready and accessible for users who intend to carry out vulnerability assessments.
+10.  Maintainability:
+It should be arranged in an organized manner that makes future upgrades, additions, and maintenance of the vulnerabilities easy.
+3.1.2. Feasibility Analysis
+3.1.2.1.  Technical Feasibility
+Technical feasibility is proven through the use of modern web technologies and advanced techniques of vulnerability detection to find typical vulnerabilities on websites and web applications. The development is done using FlaskApi for backend processes and MongoDB database technology to store data like user data, scan history, vulnerabilities, and target websites' data. This will make it possible for the system to perform different scans and vulnerability detections efficiently. This is achieved through the use of automated crawling and vulnerability detection to detect common vulnerabilities on websites such as SQL injections, XSS, CSRF, poor authentication, missing security headers, directory traversal and open ports. Lightweight Ness of the scanning tool allows it to function well on standard computers and even cloud servers. The frontend will be developed using React or modern web technologies and APIs will be used to enable communication between the frontend and the backend. This will help the users of the application to initiate the scanning process, track their scan progress, and view the vulnerabilities. The application is designed to be modular, and new vulnerabilities can easily be added.
+3.1.2.2. Operational Feasibility
+The proposed Web Application Vulnerability Scanner is operationally feasible due to the creation of an easy-to-use platform that facilitates vulnerability assessment of websites. Registration, entering target URLs,, and receiving vulnerability reports does not require any knowledge in cybersecurity. Moreover, the platform has been developed in accordance with the requirements of modularity due to the implementation of the programming languages Python/FlaskApi. In other words, it implies that code is organized in different modules, which positively influences system maintenance, updates, and debugging procedures. The employment of popular technologies allows developers to receive necessary assistance and community support. Finally, the developed application is scalable since there is an opportunity to introduce a large number of users and carry out several vulnerability assessments at once. It is planned to extend the functionality of the system by adding more security modules and applying more advanced scanning algorithms in the future.
+3.1.2.3. Economic Feasibility
+The Web Application Vulnerability Scanner is considered economically viable since the software is designed through free open-source platforms like FlaskApi, MongoDB, React and other freely available security applications. These open-source platforms help in avoiding any license charges and considerably cutting down the total cost of building and maintaining the system. The system can be run effectively on relatively cheap hardware or cloud servers that are not expensive to purchase. Moreover, vulnerability scanning is an automated process, which saves time and money for conducting manual testing. Economically speaking, this project can be beneficial in terms of offering long-lasting results in terms of identifying and fixing security weaknesses in websites that would save companies from potential attacks and avoid monetary losses. In addition, the proposed solution helps in ensuring better website security, thus attracting more visitors and improving customer experience. It also opens up possibilities for further development into business-oriented security services.
+3.1.2.4. Schedule Feasibility
+Brainstorming: The initial brainstorming phase is scheduled from March 18 to March 26, lasting 8 days. During this period, project goals, key requirements, and conceptual ideas will be discussed. The allocated time is sufficient for collaborative discussions, making this phase feasible for establishing a solid foundation.
+Design: The design phase takes place from March 27 to April 18, spanning 22 days. This period is focused on creating detailed system architecture, UI/UX wireframes, and technical specifications. The duration is appropriate for thorough planning and ensures clarity before development begins.
+Development: Scheduled from April 19 to May 17, the development phase covers 28 days. This stage includes core system development, integration of features, and initial internal testing. Although relatively tight, the timeframe is feasible for a well-scoped project with a focused development team.
+Testing: Testing is planned from May 18 to May 20, lasting 2 days. This brief period will focus on functional testing, bug identification, and minor fixes. While compressed, it is feasible if preliminary testing is integrated during development (agile testing approach).
+Deployment: The deployment phase occurs between May 21 and May 26, lasting 5 days. This stage will involve pushing the system to production, monitoring live performance, and ensuring smooth rollout. The time allocation is practical and adequate for deployment-related activities.
+Documentation: The documentation phase runs from May 27 to June 10, spanning 14 days. This phase ensures comprehensive documentation of system usage, development processes, and user training materials. The duration is feasible for delivering high quality, maintainable documentation.
+Table 3.1: Schedule Feasibility
+Task
+Start Date
+End Date
+Days to Complete
+Brainstorm
+3/1/26
+3/10/26
+8
+Design
+3/11/26
+3/31/26
+15
+Development
+4/1/26
+4/30/26
+22
+Testing
+5/1/26
+5/4/26
+2
+Deployment
+5/5/26
+5/11/26
+5
+Documentation
+3/1/26
+5/11/26
+52
+
+Figure 3.2: Gantt Chart for Web Application Vulnerability Scanner
+3.1.3. Object Modeling using Class Diagram
+The application is an efficient Web Application Vulnerability Scanner that is used by people to identify vulnerabilities that are present on their websites. The design of the application consists of two entities, User and Scan, whereby a user may have several scan records.
+
+Figure 3.3: Class Diagram for Web Application Vulnerability Scanner
+Figure 3.3 explains that the User entity stores essential account information such as id, fullName, email, password, role, and createdAt. This class is responsible for authentication, authorization, and managing access levels for different types of users such as administrators and regular users. The Scan entity represents the core functionality of the system. It stores vulnerability scan details including url, timestamp, results, riskScore, and severitySummary. Each scan is linked to a specific user through userId, establishing a one-to-many relationship between User and Scan. The scan results capture detected vulnerabilities, while the risk score provides a summarized security rating of the scanned web application. All scanning operations are managed through the Scan module, which processes the target URL, runs security checks, and stores structured results for later review. This design keeps the system modular, scalable, and easy to extend with additional security rules or scanning engines in the future.
+3.1.4. Dynamic Modelling using State and Sequence Diagrams
+The workflow of the state diagram of the Web Application Vulnerability Scanner System starts when a target URL and scan parameters are entered by the user through the web application scanner interface. Firstly, the system goes through the validation state where it checks the validity and correctness of the URL and scan parameters submitted by the user, and if there is any error or false entry, the system will revert back to the input state for corrections to be made. The validation is followed by an initial state in which scanning modules and payload, along with other security rules, are loaded. Then comes the vulnerability scanning state where the application under test is crawled for vulnerabilities such as SQL Injection (SQLi), Cross-Site Scripting (XSS), Cross-Site Request Forgery (CSRF), file inclusion vulnerabilities, and misconfigurations. In the next state, vulnerabilities found during scanning are categorized based on their severity and filtered to remove the false positives. Lastly, the system will generate a structured vulnerability report in formats like PDF/JSON.
+
+Figure 3.4: State Diagram for Web Application Vulnerability Scanner
+In figure 3.4, the Web Application Vulnerability Scanner System goes through several states whereby the user-inputted target URL and scan settings are first validated before being analyzed using the scanner engine. After the input has been successfully checked, the system enters the next phase called vulnerability scanning where the security testing modules test the target web application for any vulnerabilities including SQL Injection (SQLi), Cross Site Scripting (XSS), CSRF, File Inclusion vulnerabilities, and security misconfiguration issues. This step involves generating individual results with their corresponding severities on all identified vulnerabilities in the target application. Next, the system goes into the analysis and filtering phase, where duplicate results and false positive detections are filtered out and categorized based on their risks levels. The system eventually ends up in the report generation and result presentation phases, where a detailed vulnerability assessment report is generated and shown to the end-user.
+The sequence diagram depicts the order of communication between the client interface, server, scanner engine, and database in the Web Application Vulnerability Scanner system. The sequence diagram shows the order of communication which takes place as a result of sending the scan request that contains the URL of the targeted web app and the scan type by the user. In response to receiving the request from the user, the server starts processing the scan request followed by starting the vulnerability scanning engine. The scanner engine first pulls security rules, payloads, and vulnerabilities from the database and starts performing scans on all endpoints found for the targeted web application. This includes conducting several types of security checks such as SQLi, XSS, and CSRF among others and relaying results to the server in the form of an intermediate report. Once the scanning process is complete, the scanner engine saves the results on the database and sends a vulnerability assessment report to the server. The server responds with the scan results to the client in JSON and PDF formats among others.
+
+Figure 3.5: Sequence Diagram for Web Application Vulnerability Scanner
+From Figure 3.5, the process starts by taking the user input for entering the target site URL and the type of scan through the Web Application Vulnerability Scanner. This information gets transmitted to the server for validation to check whether the site URL is valid and is suitable for conducting vulnerability assessments on the application. In cases where invalid or partial data input exists, the server will send validation failures back to the application so that the user can rectify the situation. However, once the input information is valid, the server will activate the scanner engine that fetches the required security rules and payloads from the database and scans the target application for vulnerabilities like SQL Injection (SQLi), XSS, CSRF, and security configuration flaws. Intermediate outputs from the scan are also managed within the system. Once the scanning activity is concluded, the server creates an organized vulnerability assessment report and sends the final outputs back to the application in forms like JSON or PDF.
+3.1.5. Process Modelling Using Activity Diagrams
+The activity diagram shows the flow of the Web Application Vulnerability Scanner System process. This process starts when the user inputs the URL address and the type of scan into the system. The system verifies the input and triggers the scan engine to check for any vulnerabilities such as SQL Injection (SQLi), XSS, and CSRF in the web application. Once the vulnerabilities are detected, they are classified based on severity and stored in the database. After that, a vulnerability report is created and the results are displayed to the user.
+
+Figure 3.6: Activity Diagram for Web Application Vulnerability Scanner
+Figure 3.6 illustrates the steps involved in the operation of the Web Application Vulnerability Scanner System, which commences with the user supplying the website URL together with scan configuration parameters via the scanner interface. The input entered by the user undergoes validation, and if there are errors in the input or it is not complete, a corresponding message will be sent back to the user to make necessary changes. After obtaining correct input, the scanning engine starts scanning the targeted web application for possible vulnerabilities including SQL injection (SQLi), XSS, CSRF, and any other misconfiguration. Once this is completed, the vulnerabilities are sorted into various categories according to severity and stored in the database. Lastly, a report detailing the findings is prepared and presented to the user.
+3.2. System Design
+3.2.1. Component Diagram
+The component diagram provides a representation of the Web Application Vulnerability Scanner Architecture. The first element of the Web Application Vulnerability Scanner is a user’s device equipped with a web application interface. With the help of this component, the user enters the target URLs and conducts vulnerability scan settings. Then, using the User Interface Component, the user performs scan request management, report viewing, authentication, and dashboard management tasks. Input data is passed through the processing of the Backend Application Component that interfaces with the Vulnerability Scanning Engine. This engine consists of different modules such as the crawler module, URL analyzer module, payload and signatures manager module, as well as modules for scanning various vulnerabilities such as SQL Injection (SQLi), Cross-Site Scripting (XSS), CSRF, and security misconfiguration issues. After identifying the vulnerabilities and conducting the necessary tests, the system stores all information into the Database Component that stores user data, scan configurations, logs, and reports. At the final stage, the Report Generation Component receives scan results from the database and generates vulnerability reports.
+
+Figure 3.7: Component Diagram for Web Application Vulnerability Scanner
+3.2.2. Deployment Diagram
+The deployment diagram of the Web Application Vulnerability Scanner System shows how the user interacts with the components that make up the system’s infrastructure while using the system. First, the user accesses the vulnerability scanner system via the web interface and inputs the targeted web site URL and the type of scan they want to perform. The data collected from the user is sent to the web server, which manages user requests and authenticates users. Then, the web server interacts with the application server, where the Vulnerability Scanning Engine components such as the crawler, vulnerability detector, payload manager, and results analyzer run. The engine performs the scanning process using HTTP/HTTPS requests to detect vulnerabilities in the targeted web application. These vulnerabilities include SQLi, XSS, CSRF, and misconfigured security settings. Data on vulnerabilities, scan logs, and scan reports are stored in the database and file storage systems. After completing the scan process, the scan report is generated by the system and sent to the front end interface, where it is displayed to the user in formats like JSON and PDF. The diagram highlights the interaction between the client interface, web server, scanning engine, database server, and storage components to perform automated web application security assessment and reporting.
+
+Figure 3.8: Deployment Diagram for Web Application Vulnerability Scanner
+3.3. Algorithm Details
+3.3.1. Web Application Vulnerability Scanning Algorithm (Core System)
+The Web Application Vulnerability Scanning Algorithm refers to a hybrid method of assessing the security status of web applications. This methodology works by initiating automated HTTP/HTTPS requests and analyzing responses from the server via various scanning modules. A vulnerability report will be created from these findings.
+This system uses a modular approach during which various security assessments are carried out either sequentially or concurrently. These security assessments cover aspects like HTTP header, SSL/TLS configuration, network port, application technology, input validation, access control, and data exposure.
+The outcome of the process produces vulnerabilities that are classified based on severity levels and a risk score of the target application. The severity categories include Critical, High, Medium, Low, and Informational.
+3.3.2. Rule-Based Detection Algorithm
+Rule-Based Detection Algorithm is the one used to detect vulnerabilities based on the use of security rules pre-defined for HTTP responses and applications. The checks done include:
+Absence of security headers
+Unsecure attributes of cookies
+Misconfiguration of CORS policy
+Exposure of server details
+Access of sensitive files
+The rules are considered independently and when any violations of these rules are detected, then that violation is categorized as a vulnerability based on the corresponding severity level. This algorithm helps achieve consistent vulnerability detection.
+3.3.3. Payload Injection Algorithm
+The Payload Injection Algorithm is what we use to see what happens when a real attack is made on a system. We do this by putting code into the parts of a program where users can put information. The system checks a things:
+SQL Injection using bad SQL code like' OR '1'='1
+Cross-Site Scripting, also known as XSS using JavaScript code like <script>alert('xss)</script>
+After we put in the bad code the system looks at what the server says to figure out:
+If there are any SQL error messages
+If any bad scripts are run
+If the server is acting weird
+The Payload Injection Algorithm helps us find problems that happen when a program does not check what users put in well. This is important because the Payload Injection Algorithm can help us make sure the Payload Injection Algorithm is working by using the Payload Injection Algorithm to test it.
+3.3.4. Signature-Based Detection Algorithm
+The Signature-Based Detection Algorithm detects vulnerabilities using a comparison between server responses and the known signatures of attacks. These include:
+SQL error codes (MySQL, Oracle, PostgreSQL error codes)
+Signatures of JavaScript execution
+Signatures of sensitive files
+Signatures of debugging/system errors
+When the signature is detected in the response body, it is flagged as a vulnerability.
+This approach works well for detecting problems that have been well documented before.
+3.3.5. Response Analysis Algorithm
+The Response Analysis Algorithm evaluates differences between normal responses and responses generated after payload injection. It analyzes:
+Reflected input values 
+Unexpected output changes 
+Error variations 
+Data leakage patterns 
+This helps detect vulnerabilities that may not match exact signatures but still behave abnormally under manipulated inputs.
+3.3.6. Port Scanning Algorithm (Socket-Based)
+Port Scanning Algorithm is used to check whether any ports on the targeted server are open through sockets-based connections. This is done for commonly utilized ports like:
+HTTP (port 80), HTTPS (port 443)
+SSH (port 22), FTP (port 21)
+Database ports (ports 3306, 5432)
+Remote ports (port 3389)
+These ports are checked by making TCP connections. The port is considered to be opened if the connection succeeds.
+Having open risky ports increases the attack surface area of the application.
+3.3.7. Severity Scoring Algorithm
+The Severity Scoring Algorithm computes the total risk rating of the targeted software by assessing the identified vulnerabilities. These vulnerabilities have their individual severity rating:
+Critical
+High
+Medium
+Low
+Informational
+A weightage for severity calculation is used to derive a total risk rating.
+Risk Rating = Critical x 40 + High x 20 + Medium x 10 + Low x 5
+Where:
+Critical: Number of critical vulnerabilities
+High: Number of high vulnerabilities
+Medium: Number of medium vulnerabilities
+Low: Number of low vulnerabilities
+3.3.8. Technology Fingerprinting Algorithm
+Algorithm for technology detection finds out technologies used on the target web application based on the analysis of HTTP headers and response body. It finds out the following:
+Web server (Apache, Nginx)
+Framework (React, Angular, Laravel, Django)
+CMS (WordPress, Drupal, Joomla)
+It uses signature-based detection for:
+Headers in server responses
+X-Powered-By headers
+HTML source code
+It also could find out about version exposure which implies outdated software used.
+3.3.9. Directory Brute Force / Enumeration Algorithm
+The Directory Enumeration algorithm tries to find out any sensitive file or directory by checking for paths defined in a pre-specified list. They can be, for example:
+/admin
+/.env
+/.git
+/backup
+/phpmyadmin
+A request is made for each path, and the status code obtained from it is analyzed:
+200 → The accessible resource
+403 → Access forbidden
+301/302 → The resource got redirected
+This helps identify exposed sensitive files or misconfigured access control.
+3.3.10. Cookie Security Validation Algorithm
+The Cookie Security Validation Algorithm tests the security properties of cookies configured by the application. These include:
+The Secure property (cookie should be HTTPS-only)
+The HttpOnly property (cookie can’t be accessed via JavaScript)
+SameSite property
+When one of these properties is not set, then the cookie is deemed to be insecure.
+This prevents session hijacking attacks and cross-site attacks.
+
+CHAPTER 4
+IMPLEMENTATION AND TESTING  
+4.1. Implementation
+4.1.1. Tools Used
+Flask: The flask is a small Python framework that is used to create the backend API for the Web Application Vulnerability Scanner. It offers a framework that can easily handle HTTP requests and responses. The flask is used in this project to enable scanning endpoints, which will in turn invoke various modules responsible for vulnerability detection and produce results in the form of a JSON object.
+Flask-CORS: Flask-CORS is a Flask Extension used for handling CORS in the backend system. It ensures that the frontend application communicates with the Flask API without security threats by accessing cross-origin resources in a controlled way. This is very important in web-based scanning systems where both the frontend and backend applications operate on different ports or domains. 
+PyMongo: PyMongo is the driver of MongoDB in Python programming language. This library facilitates lower-level database connection and database query processing. This library works along with MongoEngine in order to do data management like saving scan logs, fetching vulnerability reports, and handling other database collections. 
+PyJWT (JSON Web Token): PyJWT is used for implementing secure authentication using JSON Web Tokens. It generates and verifies tokens that are used to authenticate users and control access to protected API endpoints. This ensures secure communication between the frontend and backend systems. 
+React (Vite + TypeScript): React is the library that has been applied to implement the front end user interface of our application. React makes it possible to utilize component-based architecture, hence improving modularity, reuse, and efficiency. In the project, we have also applied the use of vite as the build tool and typescript as the language. 
+TanStack React Query: TanStack React Query is used for efficient server-state management. It handles caching, background data fetching, synchronization, and API state management for scan results and dashboard data. 
+Zustand: Zustand is a lightweight state management library used to manage global application state such as authentication status, scan progress, and user session data. 
+Vite: Vite is a quick build tool employed during frontend development. It offers immediate server start-up along with rapid hot module reloading, thus making the process more efficient.
+4.1.2. Implementation Details of Modules
+The following are the modules used for implementation of Web Application Vulnerability Scanner.
+4.1.2.1. Registration Model:
+The Registration Model of the Web Application Vulnerability Scanner System aims at the safe creation and management of user accounts in the application. On receiving a registration attempt, the system extracts the data regarding the user’s full name, email address, and password from the request body, then checks whether there is a similar account present in the database based on the user’s email. If the account exists, the system returns an error response notifying the user about the fact of their existence. In case of a new account, the entered password is hashed using a function to protect credentials from being revealed. A new user object is generated by the user’s full name, email, password hashed via encryption and role equal to “user”. The information is recorded into MongoDB using the operation of the MongoEngine Document. Upon account creation, the system sends a success response informing the user that the registration process was completed successfully.
+
+Figure 4.1: Code Snippet of Registration Model
+4.1.2.2. Real-Time Vulnerability Scanning and Streaming Model
+This model is responsible for validating the provided target URL, performing vulnerability scanning asynchronously, streaming scan progress to the front-end, and saving scan results in the database. Once scan request has been received by the system, the first step in the process is to validate and normalize the URL to make sure that it is correct and that it includes a valid host name along with the proper HTTP or HTTPS scheme. If the URL turns out to be invalid, the system will respond accordingly by providing an appropriate error message to the user. Following successful validation of the URL, the scan process will begin by performing the scan asynchronously in a background thread, which allows multiple scans to run at the same time. As each scan progresses, individual scan modules report progress updates to a message queue, which streams the scan progress back to the user through the SSE channel. Once the scanning process is complete, the system will authenticate the user by means of JWT and save the results of the scan, as well as calculate total number of vulnerabilities by their severities and compute an overall risk score according to the Critical, High, Medium, and Low severities.
+
+Figure 4.2: Code Snippet of Real-Time Vulnerability Scanning and Streaming Model
+4.1.2.3. HTTP Security Header Analysis Model
+The HTTP Security Header Analysis Model is intended for assessing the existence of necessary security HTTP headers in server responses of the target web application. In the beginning of the scanning procedure, the scanner sends an HTTP request to the target URL via the configured session object and receives the set of response headers from the target server. Then the module compares the obtained headers with the preconfigured list of necessary security headers, including, but not limited to, Strict-Transport-Security, Content-Security-Policy, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, and Permissions-Policy. In case if any necessary header is not present, the scanner creates a structured vulnerability report that includes, among other components, the name of the vulnerability, its severity, description, detailed information, and recommended solution. Correctly configured headers become subjects to be saved in the form of information findings. The model provides a possibility to monitor the status of the scanning procedure in real time due to using callback methods that inform the system when the scan is started and completed. In case if any networking or requests-related errors are occurred during the analysis, the system catches these exceptions and creates an information finding instead of stopping the scan.
+
+Figure 4.3: Code Snippet of HTTP Security Header Analysis Model
+4.1.2.4. SSL/TLS Certificate Validation Model
+The SSL/TLS Certificate Validation Model measures the level of security associated with the HTTPS connection by forming a secure connection between the socket and the target host server and acquiring its SSL certificate. It assesses important parameters such as the validity of the certificate, expiry of the certificate, information related to its issuance, and the TLS version used. Depending on the validity period of the certificate, it is classified into valid, approaching expiry, or expired, according to their corresponding severity values. Moreover, this model detects obsolete or insecure protocols such as SSLv2, SSLv3, TLS 1.0, and TLS 1.1. It can handle exceptions during the connection without halting the scanning process.
+
+Figure 4.4: Code Snippet of SSL/TLS Certificate Validation Model
+3.1.2.5. Port Scanning Model
+Port Scanning Model can be employed to discover open ports on the targeted server through making socket-based connections to frequently used ports like FTP (21), SSH (22), HTTP (80), HTTPS (443), and database ports. The scan process takes place simultaneously on several ports with the help of the thread pool technology. In case of establishing connection, the port will be marked as opened and assigned to the corresponding service in order to make the output easier to interpret. In addition, it can highlight ports like Telnet, SMB, MySQL, and RDP that may put the server at risk since they are likely to provide access to sensitive services. In case there are no open ports, the scan will provide informative feedback about this fact.
+
+Figure 4.5: Code Snippet of Port Scanning Model
+
+4.1.2.6. Technology Detection Model
+Technology Detection model detects the underlying technologies, frameworks, and web servers deployed on the target web application by studying the HTTP response headers as well as the response body. The model analyzes the HTTP response headers such as the Server header and the X-Powered-By header as well as the response body to find out if the target application is using any of the commonly used technologies such as WordPress, Laravel, Django, React, Angular, Vue.js, etc. Pattern matching technique is used by the model to find out certain keywords that indicate the presence of certain technologies in the HTML response. The model generates a report containing all the technologies detected. In addition to detecting technologies, this model detects server versions from headers; a medium level security issue.
+
+Figure 4.6: Code Snippet of Technology Detection Model
+4.1.2.7. Directory and Sensitive File Enumeration Model
+The Directory and Sensitive File Enumeration Model is used to detect directories and configuration files as well as sensitive resources that are available within the target web application. The system generates HTTP requests to a number of pre-defined sensitive directories like /admin, /.git, /.env, /backup, and /config. The response from each request is interpreted according to the HTTP status code and classified as either public, restricted, or secured. Any sensitive files that provide a response of 200 OK will be marked as critical because they are prone to exposing sensitive data. Any available directory that is not classified as sensitive is considered a medium or informational finding depending on its significance. This model also documents all restricted directories as indicated by the HTTP status of 403 Forbidden. In the absence of any sensitive directories, the system produces an informational result.
+
+Figure 4.7: Code Snippet of Directory and Sensitive File Enumeration Model
+4.1.2.8. SQL Injection Detection Model
+SQL Injection Detection Model is created for detection of possible vulnerabilities of SQL injection by sending malicious content through URL parameters and analyzing the way the web application processes them. Firstly, the system analyzes the URL of the target and, in case there is no query parameter, adds the test parameter to perform the analysis. Afterward, the SQL payloads are injected into each parameter and HTTP request is sent. Then, the results are processed through pattern-matching algorithm in order to detect any patterns related to SQL errors or abnormal functioning of databases. In case when the SQL error patterns are detected, such parameters are marked as vulnerable with critical severity. In case when the analysis does not reveal any vulnerabilities, informational response is returned stating that there are no SQL injections using the error-based method.
+
+Figure 4.8: Code Snippet of SQL Injection Detection Model
+4.1.2.9. Cross-Site Scripting (XSS) Detection Model
+Cross-Site Scripting Detection Model is utilized in order to assess reflected XSS vulnerabilities in the target application by examining the way user input values are handled on server side through the URL parameters. The system takes query parameters out of the URL and, in case there is no any, adds one in order to facilitate further analysis. A number of JavaScript-based payloads is inserted into the parameter and sent using the HTTP request to the server. In turn, the response is analyzed in terms of its content and checked for the presence of any unencoded payload. In case the response contains the injected code, the parameter is considered to be a source of XSS vulnerability and reported by the system as an issue of critical severity level. Otherwise, the system will return informational result and report absence of any XSS vulnerability.
+
+Figure 4.9: Code Snippet of Cross-Site Scripting (XSS) Detection Model
+
+4.1.2.10. CORS Misconfiguration Detection Model
+CORS Misconfiguration Detection Model assesses the behavior of the targeted web application when it comes to managing Cross-Origin Resource Sharing policy to see whether cross-origin requests are restricted in a secure way. The mechanism performs an HTTP request to the target web application using a specially crafted origin header and then analyzes the received response to examine Access-Control-Allow-Origin and Access-Control-Allow-Credentials response headers. Based on the analysis results, it decides if the target server accepts any kind of wildcards for the origins or simply reflects any arbitrary origin. The presence of the wildcard origin indicates that this configuration can be considered a medium or high security risk if credentials allow. However, the server reflecting arbitrary origins is considered a critical vulnerability due to risks associated with cross-origin access. Otherwise, it will be marked as safe. The absence of CORS headers leads to generating the informative detection result.
+
+Figure 4.10: Code Snippet of CORS Misconfiguration Detection Model
+4.1.2.11. Cookie Security Analysis Model
+In the process of cookie security assessment, the Cookie Security Analysis Model assesses the presence or absence of attributes associated with cookies that can be set by the target application during session management activities. To achieve this objective, the Cookie Security Analysis Model sends an HTTP request to the target URL, obtaining all cookies set by the target web application as the HTTP response. All cookies obtained by the system in response to the HTTP request made to the target URL are analyzed to determine whether they have attributes such as Secure, HttpOnly, and SameSite, which protect against attacks such as session hijacking, XSS, and CSRF. If any cookie does not have any of the attributes mentioned above, then the respective cookie is marked as insecure and a medium-level security vulnerability. When there are no cookies sent by the target application, an informational result is provided.
+
+Figure 4.11: Code Snippet of Cookie Security Analysis Model
+4.1.2.12. Information Disclosure Detection Model
+The purpose of the Information Disclosure Detection Model is to help in detecting unintentional disclosure of confidential information on the target website. The technique is used to analyze the contents of the HTTP response body and response header in order to detect leaking information such as emails, internal IP addresses, information regarding the server used, and comments included. Email extraction involves identifying various patterns of emails on the pages visited through pattern matching. Internal IP ranges can also be identified where they appear either on the body of the message or the response header. In addition, the model searches for server information like server, X-Powered-By and Via for version or software disclosure which might help attackers to fingerprint the website. Finally, comments are searched for any presence of passwords, token, API key, debug data or anything that might indicate leaking of important information. In the event that confidential data is detected, it is classified into low and medium levels of severity depending on the level of disclosure. An informational finding is issued when no issues are found.
+
+Figure 4.12: Code Snippet of Information Disclosure Detection Model
+4.1.2.13. Vulnerability Scanning Orchestration Model
+The Vulnerability Scanning Orchestration Model controls and runs all security scanning modules in a sequential manner on the target URL. This model maintains a list of modules, including header analysis, SSL/TLS checks, port scanning, SQL injection test, cross-site scripting test, CORS test, cookie security analysis, and information leakage check. One by one, each module is executed, and then the outputs are compiled to generate a single report containing all the outcomes. In addition, error handling techniques ensure that even if one module fails, the whole process is not interrupted. After running the modules, the total number of vulnerabilities at different levels is counted, and an overall risk score is calculated based on the weighted risk score value of each level.
+
+Figure 4.13: Code Snippet of Vulnerability Scanning Orchestration Model
+4.2. Testing
+4.2.1. Test Case for Unit Testing
+Table 4.1: Test Case for Unit Testing of Web Vulnerability Scanner APIs
+S.N
+Action
+Input
+Expected Outcomes
+Actual Outcomes
+Test Results
+1
+Launch Application
+http://127.0.0.1:5000/
+Application starts successfully
+Application starts successfully
+Pass
+2
+Register User with Empty Fields
+Empty fullName, email, password
+Validation error message
+User created with missing fields
+Fail
+3
+Register User
+Valid fullName, email, password
+User account created successfully
+User account created successfully
+Pass
+4
+
+Register Existing User
+
+Existing email address
+Error message “User already exists”
+Error message displayed
+Pass
+5
+
+Login Without Password
+
+Email only
+Proper validation error
+Internal server error generated
+Fail
+6
+Login User
+Valid email and password
+JWT token generated with user data
+JWT token generated successfully
+Pass
+7
+Login with Invalid Password
+Wrong password
+Invalid credentials error
+Invalid credentials error
+Fail
+8
+Start Scan Stream
+Valid URL and token
+Real-time scan starts and streams progress
+Scan progress streamed successfully
+Pass
+9
+Start Scan with Invalid URL
+Invalid URL format
+URL validation error
+URL validation error display
+Fail
+10
+Access Scan Report
+Valid scan ID and authenticated user
+Scan report returned successfully
+Scan report returned successfully
+Pass
+11
+Access Scan Without Token
+Unauthorized request
+401 Unauthorized response
+401 Unauthorized response
+Fail
+12
+List User Scans
+Authenticated user request
+List of previous scans returned
+Scan history displayed
+Pass
+13
+Save Scan Result
+Completed vulnerability scan
+Results stored in database
+Results stored successfully
+Pass
+14
+Scan Stream Server Failure
+Simulated backend exception
+Proper error response returned
+Stream interrupted unexpectedly
+Fail
+
+Table 4.2: Test Cases for Unit Testing of Vulnerability Detection Modules
+S.N
+Action
+Input
+Expected Outcomes
+Actual Outcomes
+Test Results
+1
+Check Security Headers
+Valid website URL
+Missing security headers detected
+Headers analyzed successfully
+Pass
+2
+Validate SSL Certificate
+HTTPS enabled website
+SSL certificate details retrieved
+SSL validated successfully
+Pass
+3
+Scan Open Ports
+Target website URL
+Open ports identified
+Open ports detected correctly
+Pass
+4
+Detect Technologies
+Website source code and headers
+Frameworks and technologies identified
+Technologies identified
+Pass
+5
+Enumerate Directories
+Website URL
+Sensitive directories detected
+Sensitive paths detected
+Pass
+6
+Perform SQL Injection Test
+URL with query parameters
+SQL injection patterns checked
+SQL tests completed
+Pass
+7
+Perform XSS Detection
+URL with input parameters
+Reflected XSS payload detection
+XSS vulnerabilities detected
+Pass
+8
+Check CORS Misconfiguration
+Website URL
+CORS headers analyzed
+CORS analysis completed
+Pass
+9
+Analyze Cookies
+Website cookies
+Missing security flags detected
+Cookie security issues detected
+Pass
+10
+Detect Information Disclosure
+Website response headers and source
+Sensitive information identified
+Information disclosure detected
+Pass
+11
+Run Full Scan
+Valid target URL
+All modules executed sequentially
+Complete scan completed
+Pass
+12
+Scan Invalid/Offline Website
+Non-responsive website URL
+Graceful error handling
+Connection timeout caused module failure
+Fail
+
+CHAPTER 5
+CONCLUSION AND FUTURE MANAGEMENTS 
+5.1. Conclusion
+In summary, the Web Application Vulnerability Scanning System project demonstrates an effective implementation of automated security analysis for modern web applications. The system is designed to identify common web vulnerabilities such as missing security headers, SSL/TLS weaknesses, open ports, SQL Injection, Cross-Site Scripting (XSS), insecure cookies, CORS misconfigurations, directory exposure, and information disclosure issues. By integrating multiple scanning modules into a single platform, the system provides comprehensive security assessments and helps users detect potential risks before they can be exploited by attackers.
+The project follows a modular and scalable architecture using Flask for backend development, MongoDB for data storage, and React with Vite for frontend implementation. Authentication and authorization are securely managed using JWT-based authentication, while bcrypt hashing ensures password security. The system also supports real-time scan progress streaming using Server-Sent Events (SSE), enhancing user experience by providing live vulnerability scanning updates.
+The implemented scanning modules successfully meet the functional requirements of identifying vulnerabilities, generating risk scores, maintaining scan histories, and producing structured scan reports. The system demonstrates technical feasibility through the use of lightweight and efficient technologies, while operational feasibility is achieved through an intuitive user interface and automated scanning workflow.
+As cybersecurity threats continue to evolve, this project provides a strong foundation for improving web application security awareness and vulnerability management. Overall, the Web Application Vulnerability Scanning System contributes significantly to secure software practices by enabling developers and organizations to proactively identify and mitigate security weaknesses in their applications.
+
+5.2. Future Recommendation
+The Web Application Vulnerability Scanning System has strong potential for future improvements and scalability. The following enhancements are recommended for future development:
+Integrate Advanced Vulnerability Detection: Add advanced security testing features such as CSRF detection, command injection testing, authentication bypass analysis, and API security scanning.
+AI-Based Risk Analysis: Implement machine learning techniques to predict vulnerability severity and prioritize risks based on attack patterns and historical scan data.
+Real-Time Threat Monitoring: Extend the system to support continuous monitoring and real-time alert notifications for newly discovered vulnerabilities.
+PDF and Dashboard Reporting: Add professional PDF report generation and interactive analytics dashboards for easier vulnerability analysis and reporting.
+Multi-Threaded and Distributed Scanning: Improve performance by implementing distributed scanning architecture for handling large-scale web applications efficiently.
+User Role and Team Management: Introduce role-based access control and collaborative team features for enterprise-level vulnerability management.
+Cloud Deployment and Containerization: Deploy the system using Docker and cloud platforms to improve scalability, portability, and production readiness.
+Integration with Security Tools: Integrate the scanner with tools such as Nmap, OWASP ZAP, or Burp Suite for deeper and more advanced security assessments.
+
+REFERENCES
+
+[1] 
+s. gray, "Medium," 29 July 2020. [Online]. Available: https://serenagray2451.medium.com/what-is-the-agile-methodology-in-software-development-c93023a7eb85.
+[2] 
+E. R. A. Erturk, "harvard," June 2017. [Online]. Available: https://ui.adsabs.harvard.edu/abs/2017arXiv170608017E/abstract.
+[3] 
+X. P. R. P. F. C. H. a. B. P. Ge, "Agile Development of Secure Web Applications," 11 July 2006. [Online]. Available: https://www.scirp.org/reference/referencespapers?referenceid=1565154.
+[4] 
+M. H. Z. G. A. A. H. J. Sajjad Rafique, "Secure Software," RTO/NATO Real-Time Intrusion Detection Symp, 15 September 2002. [Online]. Available: https://www.scirp.org/reference/referencespapers?referenceid=1565156.
+[5] 
+X. L. J. O. O.-H. J. C. P.-A. Antonio De Jesús Domínguez-García, "IEEE Xplore," Security Testing for Web Applications, 6 10 2023. [Online]. Available: https://ieeexplore.ieee.org/document/10568290/authors#authors.
+[6] 
+M. Nawrocki., "ACIG," Vulnerabilities of Web Applications, 2 3 2024. [Online]. Available: https://www.acigjournal.com/Vulnerabilities-of-Web-Applications-Good-Practices-and-New-Trends,199521,0,2.html#S1.
+[7] 
+S. Rafique, M. Humayun, B. Hamid, A. Abbas and K. I. Muhammad Akhtar, "IEEE Xplore," Web application security vulnerabilities detection approaches, 01 June 2015. [Online]. Available: https://ieeexplore.ieee.org/document/7176244. [Accessed 06 August 2015].
+
+APPENDICES
+
+Figure: Landing Page
+
+Figure: Login Page
+
+Figure: Dashboard Page
+
+Figure: Scan Report Page
+
+Figure: Scan Dialog
+
+Figure: Live Scan Dialog
