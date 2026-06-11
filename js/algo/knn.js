@@ -111,7 +111,7 @@ class KNNClassifier {
 
         // 4. Readability consistency (Coleman-Liau grade level)
         const gradeLevel = this.calculateColemanLiauIndex(text, wordCount, sentenceCount);
-        const featReadability = Math.min(1.0, Math.max(0.0, 1 - Math.abs(13 - gradeLevel) / 6));
+        const featReadability = Math.min(1.0, Math.max(0.0, 1 - Math.abs(13 - gradeLevel) / 12));
 
         // 5. Punctuation density (AI sentence structures are clean and standard)
         const punct = this.calculatePunctuationDensity(text, wordCount);
@@ -139,10 +139,12 @@ class KNNClassifier {
      * Calculate Euclidean distance between two vectors
      */
     calculateDistance(vecA, vecB) {
+        // Weighted Euclidean Distance: prioritize TTR and Burstiness over Readability and Punctuation
+        const weights = [2.5, 2.5, 1.0, 0.5, 0.5];
         let sum = 0;
         for (let i = 0; i < vecA.length; i++) {
             const diff = vecA[i] - vecB[i];
-            sum += diff * diff;
+            sum += weights[i] * diff * diff;
         }
         return Math.sqrt(sum);
     }

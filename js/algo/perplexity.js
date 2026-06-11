@@ -224,7 +224,7 @@ class PerplexityAnalyzer {
         // Predictability Factor scaled directly from syntax penalty to ensure responsiveness
         const predictabilityFactor = Math.min(100, Math.max(0, (penalty / 22) * 100));
 
-        const finalScore = (burstinessFactor * 0.30) + (ttrFactor * 0.20) + (predictabilityFactor * 0.50);
+        const finalScore = (burstinessFactor * 0.45) + (ttrFactor * 0.35) + (predictabilityFactor * 0.20);
 
         return {
             sentenceCount: sentences.length,
