@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const perplexityEngine = new window.PerplexityAnalyzer();
     const knnClassifier = new window.KNNClassifier();
     const similarityEngine = new window.CosineSimilarityAnalyzer();
+    const grammarEngine = new window.GrammarStyleAnalyzer();
     const chartEngine = new window.ChartRenderer();
     const fileParser = new window.FileParser();
 
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const statSentenceCount = document.getElementById('stat-sentence-count');
     const statBurstiness = document.getElementById('stat-burstiness');
     const statTtr = document.getElementById('stat-ttr');
+    const statGrammarScore = document.getElementById('stat-grammar-score');
 
     const highlightedTextPanel = document.getElementById('highlighted-text-panel');
     const sentenceMetricsCard = document.getElementById('sentence-metrics-card');
@@ -153,6 +155,9 @@ document.addEventListener('DOMContentLoaded', () => {
         emptyResultsState.style.display = 'flex';
         activeResultsPanel.style.display = 'none';
         sentenceMetricsCard.style.display = 'none';
+        if (statGrammarScore) {
+            statGrammarScore.textContent = '100%';
+        }
     });
 
     // Sample loading
@@ -181,23 +186,28 @@ document.addEventListener('DOMContentLoaded', () => {
             const featureExtraction = knnClassifier.extractFeatures(text, result1);
             const result2 = knnClassifier.classify(featureExtraction.vector);
             const result3 = similarityEngine.analyze(text);
+            const grammarResult = grammarEngine.analyze(text);
 
-            // Combined weighted engine
+            // Combined weighted ensemble
             const weightedScore = (result1.score * 0.35) + (result2.score * 0.40) + (result3.score * 0.25);
-            const finalPercentage = Math.min(100, Math.max(0, weightedScore));
+            // Apply grammar modifier: flawless grammar retains score, typos reduce/discount it
+            const finalPercentage = Math.min(100, Math.max(0, weightedScore * (grammarResult.perfectionScore / 100)));
 
             // Display
             statWordCount.textContent = result1.wordCount;
             statSentenceCount.textContent = result1.sentenceCount;
             statBurstiness.textContent = result1.burstiness;
             statTtr.textContent = result1.ttr.toFixed(3);
+            if (statGrammarScore) {
+                statGrammarScore.textContent = grammarResult.perfectionScore + '%';
+            }
 
             chartEngine.renderGauge('gauge-chart-container', finalPercentage);
             chartEngine.renderScatterPlot('scatter-chart-container', result2, featureExtraction.vector);
             chartEngine.renderRadarChart('radar-chart-container', result3.vector);
 
             renderHighlighting(result1.sentenceDetails);
-            renderMathFormulaBreakdown(result1, result2, featureExtraction, result3);
+            renderMathFormulaBreakdown(result1, result2, featureExtraction, result3, grammarResult, weightedScore, finalPercentage);
 
             emptyResultsState.style.display = 'none';
             activeResultsPanel.style.display = 'grid';
@@ -282,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderMathFormulaBreakdown(result1, result2, featureExtraction, result3) {
+    function renderMathFormulaBreakdown(result1, result2, featureExtraction, result3, grammarResult, weightedScore, finalPercentage) {
         const docVector = featureExtraction.vector;
         let html = `
             <div class="math-card">
@@ -432,6 +442,65 @@ document.addEventListener('DOMContentLoaded', () => {
                             <strong>Cosine Difference Verdict:</strong> Since the document is closer to the AI prototype vector 
                             (Similarity = ${result3.similarityToAI}) than the Human prototype vector (Similarity = ${result3.similarityToHuman}), 
                             the Cosine Similarity algorithm score resolves to: <strong>${result3.score}% AI-characteristic</strong>.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="math-card">
+                <div class="math-header">
+                    <span class="math-badge">ALGO 4</span>
+                    <h3>Heuristic Grammar & Typography Analyzer</h3>
+                </div>
+                <div class="math-body">
+                    <p class="math-desc">
+                        Typos and grammatical slips are a strong indicator of human authorship, as AI models output grammatically perfect text. We evaluate punctuation spacing, duplicate words, subject-verb agreement, lowercase pronouns, and common double negatives to compute a <strong>Grammar Perfection Score</strong>.
+                    </p>
+                    <div class="formula-block">
+                        <div class="formula-title">Normalized Penalty & Perfection Score Formula</div>
+                        <div class="latex-eq">\\text{Penalty}_{\\text{norm}} = \\frac{\\sum \\text{Matches} \\times \\text{Rule Weight}}{\\max(10, \\text{Words})} \\times 100</div>
+                        <div class="latex-eq">\\text{Score}_{\\text{grammar}} = \\max\\left(0, 100 - 15 \\times \\text{Penalty}_{\\text{norm}}\\right)</div>
+                        <div class="formula-values" style="margin-top: 15px;">
+                            <strong>Detected Grammar/Typo Issues:</strong>
+                            ${grammarResult.issues.length === 0 ? 
+                                '<div style="color: var(--neon-cyan); margin-top: 5px;">✓ No issues detected (100% perfect grammar - AI characteristic).</div>' : 
+                                `<ul style="margin: 8px 0 0 20px; color: var(--text-muted); font-size: 11px;">
+                                    ${grammarResult.issues.map(issue => `
+                                        <li><strong>${issue.name}:</strong> ${issue.count} occurrence${issue.count > 1 ? 's' : ''} (${issue.description}). Found: <code>${issue.occurrences.join(', ')}</code></li>
+                                    `).join('')}
+                                </ul>`
+                            }
+                            <div style="margin-top: 10px;">
+                                <strong>Grammar Perfection Score:</strong> <strong>${grammarResult.perfectionScore}%</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="math-card">
+                <div class="math-header">
+                    <span class="math-badge">FINAL ENSEMBLE</span>
+                    <h3>Ensemble Resolution & Grammar Calibration</h3>
+                </div>
+                <div class="math-body">
+                    <p class="math-desc">
+                        The overall AI detection probability is calculated as a weighted ensemble of the three core algorithms, then calibrated by the Grammar Perfection Factor.
+                    </p>
+                    <div class="formula-block">
+                        <div class="formula-title">Final Decision Formula</div>
+                        <div class="latex-eq">P_{\\text{final}} = \\left(0.35 \\cdot P_{\\text{perplexity}} + 0.40 \\cdot P_{\\text{KNN}} + 0.25 \\cdot P_{\\text{cosine}}\\right) \\times \\frac{\\text{Score}_{\\text{grammar}}}{100}</div>
+                        <div class="formula-values" style="margin-top: 15px;">
+                            <strong>1. Perplexity Algorithm (35% Weight):</strong> ${(result1.score).toFixed(1)}% (Weighted: ${(result1.score * 0.35).toFixed(1)}%)<br>
+                            <strong>2. KNN Classifier (40% Weight):</strong> ${(result2.score).toFixed(1)}% (Weighted: ${(result2.score * 0.40).toFixed(1)}%)<br>
+                            <strong>3. Cosine Similarity (25% Weight):</strong> ${(result3.score).toFixed(1)}% (Weighted: ${(result3.score * 0.25).toFixed(1)}%)<br>
+                            <div style="margin: 8px 0; border-top: 1px solid var(--border-color); padding-top: 8px;">
+                                <strong>Raw Ensemble Probability (Weighted Sum):</strong> ${weightedScore.toFixed(1)}%
+                            </div>
+                            <strong>Grammar Perfection Discount:</strong> ${grammarResult.perfectionScore}% (Factor: ${(grammarResult.perfectionScore / 100).toFixed(3)})<br>
+                            <div style="margin-top: 8px; font-size: 14px; color: #fff;">
+                                <strong>Final Calibrated AI Probability:</strong> <span style="color: var(--neon-pink); font-weight: 800;">${finalPercentage.toFixed(1)}%</span>
+                            </div>
                         </div>
                     </div>
                 </div>
