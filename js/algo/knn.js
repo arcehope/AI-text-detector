@@ -107,7 +107,7 @@ class KNNClassifier {
             }
         });
         const aiDensity = aiWordCount / Math.max(1, wordCount);
-        const featAiWordDensity = Math.min(1.0, aiDensity / 0.035);
+        const featAiWordDensity = Math.min(1.0, aiDensity / 0.07);
 
         // 4. Readability consistency (Coleman-Liau grade level)
         const gradeLevel = this.calculateColemanLiauIndex(text, wordCount, sentenceCount);
