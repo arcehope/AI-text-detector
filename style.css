@@ -1037,3 +1037,38 @@ footer .links a:hover {
     color: var(--neon-pink);
     text-shadow: var(--neon-pink-glow);
 }
+
+/* Typing Indicator & Dot Pulse */
+.typing-indicator {
+    color: var(--text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.dot-pulse {
+    position: relative;
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background-color: var(--neon-purple);
+    color: var(--neon-purple);
+    box-shadow: var(--neon-purple-glow);
+    animation: dotPulse 1.5s infinite linear;
+    display: inline-block;
+}
+
+@keyframes dotPulse {
+    0% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+}

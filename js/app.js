@@ -56,6 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    let typingTimer;
+    const doneTypingInterval = 1000; // 1 second debounce delay
+
     // Editor stats footer update helper
     function updateEditorStats(text) {
         const trimmed = text.trim();
@@ -69,8 +72,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     editorArea.addEventListener('input', () => {
-        updateEditorStats(editorArea.value);
+        const text = editorArea.value;
+        updateEditorStats(text);
+        
+        clearTimeout(typingTimer);
+        
+        const trimmed = text.trim();
+        const words = trimmed.split(/\s+/).filter(w => w.length > 0);
+        
+        if (words.length >= 10) {
+            document.getElementById('char-word-count').innerHTML = 
+                `<span class="typing-indicator"><span class="dot-pulse"></span> Auto-analyzing when you pause...</span> | ${words.length} words`;
+            
+            typingTimer = setTimeout(() => {
+                runSilentAnalysis(text);
+            }, doneTypingInterval);
+        } else {
+            const wordsLeft = 10 - words.length;
+            document.getElementById('char-word-count').textContent = `${words.length} words | Need ${wordsLeft} more word${wordsLeft > 1 ? 's' : ''} for analysis`;
+        }
     });
+
+    function runSilentAnalysis(text) {
+        executeAnalysisCore(text, true);
+    }
 
     // Text file drag and drop
     dropzone.addEventListener('click', () => fileInput.click());
@@ -145,45 +170,58 @@ document.addEventListener('DOMContentLoaded', () => {
         runAnalysis(text);
     });
 
-    // Text Engine Runner
-    function runAnalysis(text) {
-        showLoader(true, "Analyzing text stylometrics...");
+    // Core analysis logic
+    function executeAnalysisCore(text, isSilent) {
+        try {
+            const result1 = perplexityEngine.analyze(text);
+            if (result1.wordCount < 10) {
+                return false;
+            }
 
-        setTimeout(() => {
-            try {
-                const result1 = perplexityEngine.analyze(text);
-                if (result1.wordCount < 10) {
-                    throw new Error("Text is too short. Please provide at least 10 words for stylometric analysis.");
-                }
+            const featureExtraction = knnClassifier.extractFeatures(text, result1);
+            const result2 = knnClassifier.classify(featureExtraction.vector);
+            const result3 = similarityEngine.analyze(text);
 
-                const featureExtraction = knnClassifier.extractFeatures(text, result1);
-                const result2 = knnClassifier.classify(featureExtraction.vector);
-                const result3 = similarityEngine.analyze(text);
+            // Combined weighted engine
+            const weightedScore = (result1.score * 0.35) + (result2.score * 0.40) + (result3.score * 0.25);
+            const finalPercentage = Math.min(100, Math.max(0, weightedScore));
 
-                // Combined weighted engine
-                const weightedScore = (result1.score * 0.35) + (result2.score * 0.40) + (result3.score * 0.25);
-                const finalPercentage = Math.min(100, Math.max(0, weightedScore));
+            // Display
+            statWordCount.textContent = result1.wordCount;
+            statSentenceCount.textContent = result1.sentenceCount;
+            statBurstiness.textContent = result1.burstiness;
+            statTtr.textContent = result1.ttr.toFixed(3);
 
-                // Display
-                statWordCount.textContent = result1.wordCount;
-                statSentenceCount.textContent = result1.sentenceCount;
-                statBurstiness.textContent = result1.burstiness;
-                statTtr.textContent = result1.ttr.toFixed(3);
+            chartEngine.renderGauge('gauge-chart-container', finalPercentage);
+            chartEngine.renderScatterPlot('scatter-chart-container', result2, featureExtraction.vector);
+            chartEngine.renderRadarChart('radar-chart-container', result3.vector);
 
-                chartEngine.renderGauge('gauge-chart-container', finalPercentage);
-                chartEngine.renderScatterPlot('scatter-chart-container', result2, featureExtraction.vector);
-                chartEngine.renderRadarChart('radar-chart-container', result3.vector);
+            renderHighlighting(result1.sentenceDetails);
+            renderMathFormulaBreakdown(result1, result2, featureExtraction, result3);
 
-                renderHighlighting(result1.sentenceDetails);
-                renderMathFormulaBreakdown(result1, result2, featureExtraction, result3);
-
-                emptyResultsState.style.display = 'none';
-                activeResultsPanel.style.display = 'grid';
-                showLoader(false);
-            } catch (err) {
-                showLoader(false);
+            emptyResultsState.style.display = 'none';
+            activeResultsPanel.style.display = 'grid';
+            
+            if (isSilent) {
+                const charCount = text.length;
+                document.getElementById('char-word-count').innerHTML = 
+                    `<span style="color: var(--neon-cyan); font-weight: 500;">✓ Live Analysis Updated</span> | ${result1.wordCount} words | ${charCount} characters`;
+            }
+            return true;
+        } catch (err) {
+            if (!isSilent) {
                 alert(err.message);
             }
+            return false;
+        }
+    }
+
+    // Text Engine Runner (with progress loader UI)
+    function runAnalysis(text) {
+        showLoader(true, "Analyzing text stylometrics...");
+        setTimeout(() => {
+            executeAnalysisCore(text, false);
+            showLoader(false);
         }, 800);
     }
 
