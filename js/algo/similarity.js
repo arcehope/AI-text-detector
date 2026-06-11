@@ -95,8 +95,8 @@ class CosineSimilarityAnalyzer {
             if (this.complexTransitions.has(w)) transitionCount++;
         });
         const transitionRatio = transitionCount / wordCount;
-        // Normalize: mapping 0% to 0.0, and 5%+ to 1.0
-        const valTransitions = Math.min(1.0, transitionRatio / 0.05);
+        // Normalize: mapping 0% to 0.0, and 4%+ to 1.0
+        const valTransitions = Math.min(1.0, transitionRatio / 0.04);
 
         // 3. Intensifiers and AI Buzzwords Density
         let intensifierCount = 0;
@@ -104,8 +104,8 @@ class CosineSimilarityAnalyzer {
             if (this.intensifiers.has(w)) intensifierCount++;
         });
         const intensifierRatio = intensifierCount / wordCount;
-        // Normalize: mapping 0% to 0.0, and 6%+ to 1.0
-        const valIntensifiers = Math.min(1.0, intensifierRatio / 0.06);
+        // Normalize: mapping 0% to 0.0, and 4.5%+ to 1.0
+        const valIntensifiers = Math.min(1.0, intensifierRatio / 0.045);
 
         // 4. Passive Voice Index (approximated via regex match for auxiliary verbs + past participle)
         // Match structures like: "is defined", "was executed", "have been completed", "can be seen"

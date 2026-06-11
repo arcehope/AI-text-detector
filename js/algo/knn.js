@@ -107,7 +107,7 @@ class KNNClassifier {
             }
         });
         const aiDensity = aiWordCount / Math.max(1, wordCount);
-        const featAiWordDensity = Math.min(1.0, aiDensity / 0.07);
+        const featAiWordDensity = Math.min(1.0, aiDensity / 0.045);
 
         // 4. Readability consistency (Coleman-Liau grade level)
         const gradeLevel = this.calculateColemanLiauIndex(text, wordCount, sentenceCount);
@@ -115,7 +115,7 @@ class KNNClassifier {
 
         // 5. Punctuation density (AI sentence structures are clean and standard)
         const punct = this.calculatePunctuationDensity(text, wordCount);
-        const featPunctuation = Math.min(1.0, Math.max(0.0, 1 - Math.abs(11 - punct) / 6));
+        const featPunctuation = Math.min(1.0, Math.max(0.0, 1 - Math.abs(11 - punct) / 12));
 
         return {
             vector: [
