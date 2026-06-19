@@ -33,7 +33,10 @@ class PerplexityAnalyzer {
             'of the', 'in the', 'to the', 'on the', 'and the', 'it is', 'is a',
             'with the', 'for the', 'to be', 'at the', 'by the', 'from the',
             'as a', 'in a', 'that the', 'this is', 'there is', 'has been',
-            'will be', 'we can', 'in order', 'order to', 'one of', 'based on'
+            'will be', 'we can', 'in order', 'order to', 'one of', 'based on',
+            'such as', 'due to', 'but also', 'not only', 'leading to', 'resulting in',
+            'effects of', 'changes in', 'increase in', 'use of', 'protecting the',
+            'to come', 'as well', 'associated with', 'related to'
         ]);
     }
 
@@ -225,9 +228,9 @@ class PerplexityAnalyzer {
         const ttrFactor = Math.min(100, Math.max(0, 50 + ttrDiff * 250));
         
         // Predictability Factor scaled directly from syntax penalty to ensure responsiveness
-        const predictabilityFactor = Math.min(100, Math.max(0, (penalty / 22) * 100));
+        const predictabilityFactor = Math.min(100, Math.max(0, (penalty / 18) * 100));
 
-        const finalScore = (burstinessFactor * 0.45) + (ttrFactor * 0.35) + (predictabilityFactor * 0.20);
+        const finalScore = (burstinessFactor * 0.30) + (ttrFactor * 0.20) + (predictabilityFactor * 0.50);
 
         return {
             sentenceCount: sentences.length,

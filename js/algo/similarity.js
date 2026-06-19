@@ -28,7 +28,8 @@ class CosineSimilarityAnalyzer {
             'subsequently', 'further', 'in contrast', 'in addition', 'alternatively',
             'however', 'additionally', 'typically', 'generally', 'standardly',
             'specifically', 'notably', 'particularly', 'as a result', 'for instance',
-            'for example', 'indeed', 'besides', 'on the other hand'
+            'for example', 'indeed', 'besides', 'on the other hand', 'although',
+            'especially', 'also', 'instead', 'meanwhile', 'though', 'while'
         ]);
         
         this.intensifiers = new Set([
@@ -39,7 +40,10 @@ class CosineSimilarityAnalyzer {
             'major', 'critical', 'transformative', 'dynamic', 'optimal',
             'optimized', 'streamlined', 'enhance', 'leverage', 'synergy',
             'beacon', 'paramount', 'meticulously', 'revolutionize', 'underscores',
-            'paradigm', 'holistic', 'showcase'
+            'paradigm', 'holistic', 'showcase', 'increasingly', 'substantially',
+            'unprecedented', 'interconnected', 'sustainable', 'sustainability',
+            'mitigate', 'combating', 'resilience', 'resilient', 'urgency',
+            'imperative', 'indispensable'
         ]);
     }
 

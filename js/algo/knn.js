@@ -117,7 +117,7 @@ class KNNClassifier {
             }
         });
         const aiDensity = aiWordCount / Math.max(1, wordCount);
-        const featAiWordDensity = Math.min(1.0, aiDensity / 0.045);
+        const featAiWordDensity = Math.min(1.0, aiDensity / 0.030);
 
         // 4. Readability consistency (Coleman-Liau grade level)
         const gradeLevel = this.calculateColemanLiauIndex(text, wordCount, sentenceCount);
@@ -149,8 +149,8 @@ class KNNClassifier {
      * Calculate Euclidean distance between two vectors
      */
     calculateDistance(vecA, vecB) {
-        // Weighted Euclidean Distance: prioritize TTR and Burstiness over Readability and Punctuation
-        const weights = [2.5, 2.5, 1.0, 0.5, 0.5];
+        // Weighted Euclidean Distance: prioritize TTR, Burstiness, and AI Word Density
+        const weights = [2.5, 2.5, 1.5, 0.5, 0.5];
         let sum = 0;
         for (let i = 0; i < vecA.length; i++) {
             const diff = vecA[i] - vecB[i];
