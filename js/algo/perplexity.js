@@ -21,7 +21,10 @@ class PerplexityAnalyzer {
             'pivotal', 'invaluable', 'seamlessly', 'intricate', 'comprehensive',
             'consequently', 'therefore', 'thus', 'hence', 'subsequently',
             'additionally', 'individually', 'specifically', 'particularly', 'innovative',
-            'alignment', 'paradigm', 'holistic', 'showcase'
+            'alignment', 'paradigm', 'holistic', 'showcase', 'unprecedented',
+            'interconnected', 'sustainability', 'sustainable', 'mitigate',
+            'combating', 'resilience', 'resilient', 'urgency', 'imperative',
+            'indispensable'
         ]);
 
         // Standard English common word transition rates (simplified for client-side model)

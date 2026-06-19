@@ -38,6 +38,11 @@ class KNNClassifier {
             { vector: [0.79, 0.90, 0.89, 0.82, 0.84], label: 1, type: 'AI (Marketing Copy)' },
             { vector: [0.83, 0.86, 0.79, 0.78, 0.78], label: 1, type: 'AI (Short Essay)' },
             { vector: [0.88, 0.83, 0.83, 0.81, 0.80], label: 1, type: 'AI (Formal Letter)' },
+            { vector: [0.62, 0.58, 0.60, 0.85, 0.82], label: 1, type: 'AI (Formal Essay - Climate)' },
+            { vector: [0.55, 0.62, 0.68, 0.88, 0.80], label: 1, type: 'AI (Formal Essay - Science)' },
+            { vector: [0.58, 0.54, 0.64, 0.84, 0.78], label: 1, type: 'AI (Academic - Humanities)' },
+            { vector: [0.60, 0.60, 0.72, 0.86, 0.84], label: 1, type: 'AI (Polished Report - Policy)' },
+            { vector: [0.54, 0.56, 0.62, 0.80, 0.76], label: 1, type: 'AI (Structured Blog - Tech)' },
 
             // --- HUMAN CLASS (Label: 0) ---
             { vector: [0.35, 0.20, 0.15, 0.45, 0.30], label: 0, type: 'Human (Journalism)' },
@@ -54,7 +59,12 @@ class KNNClassifier {
             { vector: [0.52, 0.16, 0.09, 0.62, 0.42], label: 0, type: 'Human (Research Draft)' },
             { vector: [0.36, 0.30, 0.17, 0.39, 0.27], label: 0, type: 'Human (Email Draft)' },
             { vector: [0.41, 0.26, 0.12, 0.46, 0.34], label: 0, type: 'Human (Feature Column)' },
-            { vector: [0.30, 0.38, 0.07, 0.33, 0.24], label: 0, type: 'Human (Dialogue Story)' }
+            { vector: [0.30, 0.38, 0.07, 0.33, 0.24], label: 0, type: 'Human (Dialogue Story)' },
+            { vector: [0.55, 0.42, 0.12, 0.78, 0.68], label: 0, type: 'Human (Formal Essay)' },
+            { vector: [0.52, 0.38, 0.15, 0.74, 0.65], label: 0, type: 'Human (Academic - Science)' },
+            { vector: [0.48, 0.45, 0.10, 0.70, 0.60], label: 0, type: 'Human (Policy Draft)' },
+            { vector: [0.50, 0.40, 0.14, 0.72, 0.62], label: 0, type: 'Human (Philosophy Paper)' },
+            { vector: [0.58, 0.35, 0.08, 0.80, 0.70], label: 0, type: 'Human (Literary Analysis)' }
         ];
     }
 
