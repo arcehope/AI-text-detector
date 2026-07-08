@@ -9,25 +9,25 @@ output_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data')
 os.makedirs(output_dir, exist_ok=True)
 csv_output_path = os.path.join(output_dir, 'dataset_sample.csv')
 
-print("Streaming dataset 'andythetechnerd03/AI-human-text' from Hugging Face...")
-# We use streaming=True to load rows on-demand, which takes seconds and uses no disk space
-dataset = load_dataset("andythetechnerd03/AI-human-text", split="train", streaming=True)
+print("Streaming dataset 'silentone0725/ai-human-text-detection-v1' from Hugging Face...")
+# We use streaming=True to load rows on-demand
+dataset = load_dataset("silentone0725/ai-human-text-detection-v1", split="train", streaming=True)
 
 print("Extracting 50 Human essays and 50 AI-generated essays...")
 human_samples = []
 ai_samples = []
 
 for record in dataset:
-    label = int(record['generated'])
+    label_str = record['label'].lower().strip()
     text = record['text']
     
-    # Filter out empty or too short samples
-    if len(text.split()) < 30:
+    # Filter out short samples to select actual essays
+    if len(text.split()) < 250:
         continue
         
-    if label == 0 and len(human_samples) < 50:
+    if label_str == 'human' and len(human_samples) < 50:
         human_samples.append({'text': text, 'generated': 0})
-    elif label == 1 and len(ai_samples) < 50:
+    elif label_str == 'ai' and len(ai_samples) < 50:
         ai_samples.append({'text': text, 'generated': 1})
         
     if len(human_samples) >= 50 and len(ai_samples) >= 50:
@@ -40,7 +40,6 @@ df.to_csv(csv_output_path, index=False, encoding='utf-8')
 print(f"Successfully saved {len(df)} samples to local CSV at: {csv_output_path}")
 
 # --- STYLOMETRIC VECTOR EXTRACTION ---
-# Stylometric features matching our Javascript engine
 ai_favored_words = {
     'delve', 'testament', 'furthermore', 'moreover', 'tapestry',
     'ultimately', 'demystify', 'beacon', 'foster', 'synergy',
