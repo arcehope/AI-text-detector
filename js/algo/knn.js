@@ -39,6 +39,7 @@ class KNNClassifier {
             { vector: [0.83, 0.86, 0.79, 0.78, 0.78], label: 1, type: 'AI (Short Essay)' },
             { vector: [0.88, 0.83, 0.83, 0.81, 0.80], label: 1, type: 'AI (Formal Letter)' },
             { vector: [0.62, 0.58, 0.60, 0.85, 0.82], label: 1, type: 'AI (Formal Essay - Climate)' },
+            { vector: [0.681, 0.639, 1.0, 0.586, 0.627], label: 1, type: 'AI (Formal Essay - Climate Augmented)' },
             { vector: [0.55, 0.62, 0.68, 0.88, 0.80], label: 1, type: 'AI (Formal Essay - Science)' },
             { vector: [0.58, 0.54, 0.64, 0.84, 0.78], label: 1, type: 'AI (Academic - Humanities)' },
             { vector: [0.60, 0.60, 0.72, 0.86, 0.84], label: 1, type: 'AI (Polished Report - Policy)' },
