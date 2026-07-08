@@ -158,6 +158,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (statGrammarScore) {
             statGrammarScore.textContent = '100%';
         }
+        const verdictBanner = document.getElementById('verdict-banner');
+        const verdictIcon = document.getElementById('verdict-icon');
+        const verdictStatement = document.getElementById('verdict-statement');
+        if (verdictBanner && verdictStatement) {
+            verdictBanner.className = 'verdict-banner';
+            verdictStatement.textContent = 'Awaiting Analysis';
+            if (verdictIcon) {
+                verdictIcon.setAttribute('data-lucide', 'shield-alert');
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            }
+        }
     });
 
     // Sample loading
@@ -200,6 +213,41 @@ document.addEventListener('DOMContentLoaded', () => {
             statTtr.textContent = result1.ttr.toFixed(3);
             if (statGrammarScore) {
                 statGrammarScore.textContent = grammarResult.perfectionScore + '%';
+            }
+
+            // Update verdict banner
+            const verdictBanner = document.getElementById('verdict-banner');
+            const verdictIcon = document.getElementById('verdict-icon');
+            const verdictStatement = document.getElementById('verdict-statement');
+
+            if (verdictBanner && verdictStatement) {
+                verdictBanner.className = 'verdict-banner';
+                let statement = '';
+                let iconName = '';
+                let className = '';
+                
+                if (finalPercentage > 65) {
+                    statement = 'Most probably written by AI';
+                    iconName = 'shield-alert';
+                    className = 'verdict-ai';
+                } else if (finalPercentage > 40) {
+                    statement = 'Most probably written by a Mix of AI & Human';
+                    iconName = 'help-circle';
+                    className = 'verdict-mixed';
+                } else {
+                    statement = 'Most probably written by a Human';
+                    iconName = 'shield-check';
+                    className = 'verdict-human';
+                }
+                
+                verdictStatement.textContent = statement;
+                verdictBanner.classList.add(className);
+                if (verdictIcon) {
+                    verdictIcon.setAttribute('data-lucide', iconName);
+                    if (window.lucide) {
+                        window.lucide.createIcons();
+                    }
+                }
             }
 
             chartEngine.renderGauge('gauge-chart-container', finalPercentage);

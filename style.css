@@ -1072,3 +1072,81 @@ footer .links a:hover {
         opacity: 0.5;
     }
 }
+
+/* --- OVERALL VERDICT BANNER --- */
+.verdict-banner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 0, 127, 0.04);
+    border: 1px solid rgba(255, 0, 127, 0.12);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.verdict-banner.verdict-ai {
+    background: rgba(255, 0, 127, 0.06);
+    border-color: rgba(255, 0, 127, 0.22);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.05);
+}
+
+.verdict-banner.verdict-human {
+    background: rgba(0, 240, 255, 0.06);
+    border-color: rgba(0, 240, 255, 0.22);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.05);
+}
+
+.verdict-banner.verdict-mixed {
+    background: rgba(188, 52, 250, 0.06);
+    border-color: rgba(188, 52, 250, 0.22);
+    box-shadow: 0 0 15px rgba(188, 52, 250, 0.05);
+}
+
+.verdict-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.verdict-heading i {
+    width: 14px;
+    height: 14px;
+}
+
+.verdict-banner.verdict-ai .verdict-heading i { color: var(--neon-pink); filter: drop-shadow(var(--neon-pink-glow)); }
+.verdict-banner.verdict-human .verdict-heading i { color: var(--neon-cyan); filter: drop-shadow(var(--neon-cyan-glow)); }
+.verdict-banner.verdict-mixed .verdict-heading i { color: var(--neon-purple); filter: drop-shadow(var(--neon-purple-glow)); }
+
+#verdict-statement {
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.verdict-banner.verdict-ai #verdict-statement {
+    color: var(--neon-pink);
+    text-shadow: var(--neon-pink-glow);
+}
+
+.verdict-banner.verdict-human #verdict-statement {
+    color: var(--neon-cyan);
+    text-shadow: var(--neon-cyan-glow);
+}
+
+.verdict-banner.verdict-mixed #verdict-statement {
+    color: var(--neon-purple);
+    text-shadow: var(--neon-purple-glow);
+}
+
