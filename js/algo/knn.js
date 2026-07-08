@@ -65,7 +65,9 @@ class KNNClassifier {
             { vector: [0.52, 0.38, 0.15, 0.74, 0.65], label: 0, type: 'Human (Academic - Science)' },
             { vector: [0.48, 0.45, 0.10, 0.70, 0.60], label: 0, type: 'Human (Policy Draft)' },
             { vector: [0.50, 0.40, 0.14, 0.72, 0.62], label: 0, type: 'Human (Philosophy Paper)' },
-            { vector: [0.58, 0.35, 0.08, 0.80, 0.70], label: 0, type: 'Human (Literary Analysis)' }
+            { vector: [0.58, 0.35, 0.08, 0.80, 0.70], label: 0, type: 'Human (Literary Analysis)' },
+            { vector: [0.984, 1.0, 0.23, 0.808, 0.083], label: 1, type: 'AI (HuggingFace Centroid)' },
+            { vector: [0.991, 1.0, 0.033, 0.773, 0.083], label: 0, type: 'Human (HuggingFace Centroid)' }
         ];
     }
 
