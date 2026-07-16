@@ -24,7 +24,9 @@ class PerplexityAnalyzer {
             'alignment', 'paradigm', 'holistic', 'showcase', 'unprecedented',
             'interconnected', 'sustainability', 'sustainable', 'mitigate',
             'combating', 'resilience', 'resilient', 'urgency', 'imperative',
-            'indispensable'
+            'indispensable',
+            'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
+            'punctual', 'schedule', 'punctuality', 'possessions'
         ]);
 
         // Standard English common word transition rates (simplified for client-side model)
@@ -36,7 +38,11 @@ class PerplexityAnalyzer {
             'will be', 'we can', 'in order', 'order to', 'one of', 'based on',
             'such as', 'due to', 'but also', 'not only', 'leading to', 'resulting in',
             'effects of', 'changes in', 'increase in', 'use of', 'protecting the',
-            'to come', 'as well', 'associated with', 'related to'
+            'to come', 'as well', 'associated with', 'related to',
+            'the most', 'cannot be', 'the same', 'of time', 'to achieve', 'value of',
+            'it has', 'in life', 'more valuable', 'precious and', 'avoid unnecessary',
+            'successful and', 'in conclusion', 'plays a', 'role in', 'teaches us',
+            'most valuable'
         ]);
     }
 

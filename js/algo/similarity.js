@@ -43,7 +43,9 @@ class CosineSimilarityAnalyzer {
             'paradigm', 'holistic', 'showcase', 'increasingly', 'substantially',
             'unprecedented', 'interconnected', 'sustainable', 'sustainability',
             'mitigate', 'combating', 'resilience', 'resilient', 'urgency',
-            'imperative', 'indispensable'
+            'imperative', 'indispensable',
+            'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
+            'punctual'
         ]);
     }
 

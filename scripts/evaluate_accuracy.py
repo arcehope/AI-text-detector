@@ -73,7 +73,9 @@ ai_favored_words = {
     'interconnected', 'sustainability', 'sustainable', 'mitigate',
     'combating', 'resilience', 'resilient', 'urgency', 'imperative',
     'indispensable', 'increasingly', 'significant', 'greatly', 'collective', 
-    'various', 'solutions', 'challenges', 'effective'
+    'various', 'solutions', 'challenges', 'effective',
+    'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
+    'punctual', 'schedule', 'punctuality', 'possessions'
 }
 
 def parse_text(text):
