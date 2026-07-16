@@ -77,7 +77,8 @@ ai_favored_words = {
     'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
     'punctual', 'schedule', 'punctuality', 'possessions',
     'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism',
-    'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever'
+    'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever',
+    'possess', 'colleagues', 'long-term', 'temporary', 'dignity'
 }
 
 def parse_text(text):

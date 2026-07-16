@@ -46,7 +46,8 @@ class CosineSimilarityAnalyzer {
             'imperative', 'indispensable',
             'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
             'punctual', 'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism',
-            'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever'
+            'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever',
+            'possess', 'colleagues', 'long-term', 'temporary', 'dignity'
         ]);
     }
 
