@@ -27,7 +27,8 @@ class PerplexityAnalyzer {
             'indispensable',
             'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
             'punctual', 'schedule', 'punctuality', 'possessions',
-            'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism'
+            'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism',
+            'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever'
         ]);
 
         // Standard English common word transition rates (simplified for client-side model)
@@ -44,7 +45,8 @@ class PerplexityAnalyzer {
             'it has', 'in life', 'more valuable', 'precious and', 'avoid unnecessary',
             'successful and', 'in conclusion', 'plays a', 'role in', 'teaches us',
             'most valuable',
-            'instead of', 'system of', 'in nature', 'reminds us', 'in exchange', 'rather than', 'built on', 'not just', 'is not', 'understanding of'
+            'instead of', 'system of', 'in nature', 'reminds us', 'in exchange', 'rather than', 'built on', 'not just', 'is not', 'understanding of',
+            'relies on', 'turns out', 'driven by', 'how we', 'we view', 'forms of', 'perfectly mimic'
         ]);
     }
 

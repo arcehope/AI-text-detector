@@ -76,7 +76,8 @@ ai_favored_words = {
     'various', 'solutions', 'challenges', 'effective',
     'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
     'punctual', 'schedule', 'punctuality', 'possessions',
-    'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism'
+    'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism',
+    'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever'
 }
 
 def parse_text(text):

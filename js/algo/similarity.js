@@ -45,7 +45,8 @@ class CosineSimilarityAnalyzer {
             'mitigate', 'combating', 'resilience', 'resilient', 'urgency',
             'imperative', 'indispensable',
             'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
-            'punctual', 'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism'
+            'punctual', 'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism',
+            'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever'
         ]);
     }
 
