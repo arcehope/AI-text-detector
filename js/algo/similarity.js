@@ -45,7 +45,7 @@ class CosineSimilarityAnalyzer {
             'mitigate', 'combating', 'resilience', 'resilient', 'urgency',
             'imperative', 'indispensable',
             'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
-            'punctual'
+            'punctual', 'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism'
         ]);
     }
 

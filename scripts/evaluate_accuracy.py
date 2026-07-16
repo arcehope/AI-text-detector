@@ -75,7 +75,8 @@ ai_favored_words = {
     'indispensable', 'increasingly', 'significant', 'greatly', 'collective', 
     'various', 'solutions', 'challenges', 'effective',
     'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
-    'punctual', 'schedule', 'punctuality', 'possessions'
+    'punctual', 'schedule', 'punctuality', 'possessions',
+    'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism'
 }
 
 def parse_text(text):

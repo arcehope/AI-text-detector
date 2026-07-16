@@ -26,7 +26,8 @@ class PerplexityAnalyzer {
             'combating', 'resilience', 'resilient', 'urgency', 'imperative',
             'indispensable',
             'valuable', 'precious', 'unnecessary', 'meaningful', 'discipline', 
-            'punctual', 'schedule', 'punctuality', 'possessions'
+            'punctual', 'schedule', 'punctuality', 'possessions',
+            'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism'
         ]);
 
         // Standard English common word transition rates (simplified for client-side model)
@@ -42,7 +43,8 @@ class PerplexityAnalyzer {
             'the most', 'cannot be', 'the same', 'of time', 'to achieve', 'value of',
             'it has', 'in life', 'more valuable', 'precious and', 'avoid unnecessary',
             'successful and', 'in conclusion', 'plays a', 'role in', 'teaches us',
-            'most valuable'
+            'most valuable',
+            'instead of', 'system of', 'in nature', 'reminds us', 'in exchange', 'rather than', 'built on', 'not just', 'is not', 'understanding of'
         ]);
     }
 
