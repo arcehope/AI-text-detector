@@ -356,7 +356,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="formula-block">
                         <div class="formula-title">Sentence Length Variance (Burstiness)</div>
                         <div class="math-value-box">
-                            <div class="math-value cyan">${result1.burstiness}</div>
+                            <div class="math-value cyan">${result1.burstiness} <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);">vs Expected (Human: 8.0 - 15.0 | AI: 1.0 - 5.0)</span></div>
                             <div class="math-formula">\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^{N} (L_i - \\mu)^2}</div>
                         </div>
                         <div class="formula-values">
@@ -367,8 +367,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="formula-block">
                         <div class="formula-title">Length-Adjusted Lexical Diversity (TTR)</div>
                         <div class="math-value-box">
-                            <div class="math-value cyan">${result1.ttr} <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">vs Expected: ${(0.86 - result1.wordCount * 0.0003).toFixed(3)}</span></div>
-                            <div class="math-formula">TTR = \\frac{\\text{Unique Words}}{\\text{Total Words}} \\quad \\text{and} \\quad \\text{Expected TTR} = 0.86 - (W \\times 0.0003)</div>
+                            <div class="math-value cyan">${result1.ttr} <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);">vs Expected (Human: ${(0.86 - result1.wordCount * 0.0003).toFixed(3)} | AI: ${(0.78 - result1.wordCount * 0.0003).toFixed(3)})</span></div>
+                            <div class="math-formula">TTR = \\frac{\\text{Unique Words}}{\\text{Total Words}} \\quad \\text{Expected Human} = 0.86 - (W \\times 0.0003) \\quad \\text{Expected AI} = 0.78 - (W \\times 0.0003)</div>
                         </div>
                         <div class="formula-values">
                             <strong>Your values:</strong> Unique Words = ${Math.round(result1.ttr * result1.wordCount)}, Total Words ($W$) = ${result1.wordCount}.
