@@ -354,21 +354,24 @@ document.addEventListener('DOMContentLoaded', () => {
                         We measure <strong>Burstiness</strong> (Standard Deviation of sentence lengths) and <strong>Vocabulary Diversity</strong> (Type-Token Ratio).
                     </p>
                     <div class="formula-block">
-                        <div class="formula-title">Sentence Length Variance (Burstiness) Formula</div>
-                        <div class="latex-eq">\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^{N} (L_i - \\mu)^2}</div>
+                        <div class="formula-title">Sentence Length Variance (Burstiness)</div>
+                        <div class="math-value-box">
+                            <div class="math-value cyan">${result1.burstiness}</div>
+                            <div class="math-formula">\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^{N} (L_i - \\mu)^2}</div>
+                        </div>
                         <div class="formula-values">
                             <strong>Your values:</strong> Sentences ($N$) = ${result1.sentenceCount}, 
-                            Average Length ($\\mu$) = ${(result1.wordCount / Math.max(1, result1.sentenceCount)).toFixed(1)} words, 
-                            Standard Deviation ($\\sigma$) = ${result1.burstiness}
+                            Average Length ($\\mu$) = ${(result1.wordCount / Math.max(1, result1.sentenceCount)).toFixed(1)} words.
                         </div>
                     </div>
                     <div class="formula-block">
-                        <div class="formula-title">Length-Adjusted Lexical Diversity (Type-Token Ratio - TTR) Formula</div>
-                        <div class="latex-eq">TTR = \\frac{\\text{Unique Words}}{\\text{Total Words}} \\quad \\text{and} \\quad \\text{Expected TTR} = 0.86 - (W \\times 0.0003)</div>
+                        <div class="formula-title">Length-Adjusted Lexical Diversity (TTR)</div>
+                        <div class="math-value-box">
+                            <div class="math-value cyan">${result1.ttr} <span style="font-size: 14px; font-weight: normal; color: var(--text-muted);">vs Expected: ${(0.86 - result1.wordCount * 0.0003).toFixed(3)}</span></div>
+                            <div class="math-formula">TTR = \\frac{\\text{Unique Words}}{\\text{Total Words}} \\quad \\text{and} \\quad \\text{Expected TTR} = 0.86 - (W \\times 0.0003)</div>
+                        </div>
                         <div class="formula-values">
-                            <strong>Your values:</strong> TTR = ${result1.ttr} 
-                            (${Math.round(result1.ttr * result1.wordCount)} unique words out of ${result1.wordCount} words). 
-                            Expected Human TTR for this document length is ${(0.86 - result1.wordCount * 0.0003).toFixed(3)}.
+                            <strong>Your values:</strong> Unique Words = ${Math.round(result1.ttr * result1.wordCount)}, Total Words ($W$) = ${result1.wordCount}.
                         </div>
                     </div>
                 </div>
@@ -430,9 +433,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         </table>
                     </div>
                     <div class="formula-block">
-                        <div class="formula-title">Euclidean Distance Equation</div>
-                        <div class="latex-eq">d(\\mathbf{p}, \\mathbf{q}) = \\sqrt{\\sum_{i=1}^{5} (p_i - q_i)^2}</div>
-                        <div class="formula-title">5 Nearest Neighbors in Feature Space:</div>
+                        <div class="formula-title">KNN Classifier AI Probability</div>
+                        <div class="math-value-box">
+                            <div class="math-value pink">${result2.score}% AI-characteristic</div>
+                            <div class="math-formula">d(\\mathbf{p}, \\mathbf{q}) = \\sqrt{\\sum_{i=1}^{5} (p_i - q_i)^2}</div>
+                        </div>
+                        <div class="formula-title" style="margin-top: 15px;">5 Nearest Neighbors in Feature Space:</div>
                         <table class="math-table">
                             <thead>
                                 <tr>
@@ -472,8 +478,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         passive voice frequency, intensifiers) and compute the vector angles against standard profiles.
                     </p>
                     <div class="formula-block">
-                        <div class="formula-title">Cosine Similarity Equation</div>
-                        <div class="latex-eq">\\cos(\\theta) = \\frac{\\mathbf{A} \\cdot \\mathbf{B}}{\\|\\mathbf{A}\\| \\|\\mathbf{B}\\|} = \\frac{\\sum_{i=1}^{5} A_i B_i}{\\sqrt{\\sum_{i=1}^{5} A_i^2} \\sqrt{\\sum_{i=1}^{5} B_i^2}}</div>
+                        <div class="formula-title">Cosine Vector Space Similarity</div>
+                        <div class="math-value-box">
+                            <div class="math-value pink">${result3.score}% AI-characteristic</div>
+                            <div class="math-formula">\\cos(\\theta) = \\frac{\\mathbf{A} \\cdot \\mathbf{B}}{\\|\\mathbf{A}\\| \\|\\mathbf{B}\\|} = \\frac{\\sum_{i=1}^{5} A_i B_i}{\\sqrt{\\sum_{i=1}^{5} A_i^2} \\sqrt{\\sum_{i=1}^{5} B_i^2}}</div>
+                        </div>
                         <div class="comparison-grid">
                             <div class="comp-box">
                                 <div class="comp-title cyan">Similarity to Human Prototype</div>
@@ -505,9 +514,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         Typos and grammatical slips are a strong indicator of human authorship, as AI models output grammatically perfect text. We evaluate punctuation spacing, duplicate words, subject-verb agreement, lowercase pronouns, and common double negatives to compute a <strong>Grammar Perfection Score</strong>.
                     </p>
                     <div class="formula-block">
-                        <div class="formula-title">Normalized Penalty & Perfection Score Formula</div>
-                        <div class="latex-eq">\\text{Penalty}_{\\text{norm}} = \\frac{\\sum \\text{Matches} \\times \\text{Rule Weight}}{\\max(10, \\text{Words})} \\times 100</div>
-                        <div class="latex-eq">\\text{Score}_{\\text{grammar}} = \\max\\left(0, 100 - 15 \\times \\text{Penalty}_{\\text{norm}}\\right)</div>
+                        <div class="formula-title">Grammar Perfection Score</div>
+                        <div class="math-value-box">
+                            <div class="math-value cyan">${grammarResult.perfectionScore}% Perfect</div>
+                            <div class="math-formula">\\text{Score}_{\\text{grammar}} = \\max\\left(0, 100 - 15 \\times \\text{Penalty}_{\\text{norm}}\\right) \\quad \\text{where} \\quad \\text{Penalty}_{\\text{norm}} = \\frac{\\sum \\text{Matches} \\times \\text{Rule Weight}}{\\max(10, \\text{Words})} \\times 100</div>
+                        </div>
                         <div class="formula-values" style="margin-top: 15px;">
                             <strong>Detected Grammar/Typo Issues:</strong>
                             ${grammarResult.issues.length === 0 ? 
@@ -518,9 +529,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                     `).join('')}
                                 </ul>`
                             }
-                            <div style="margin-top: 10px;">
-                                <strong>Grammar Perfection Score:</strong> <strong>${grammarResult.perfectionScore}%</strong>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -536,8 +544,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         The overall AI detection probability is calculated as a weighted ensemble of the three core algorithms, then calibrated by the Grammar Perfection Factor.
                     </p>
                     <div class="formula-block">
-                        <div class="formula-title">Final Decision Formula</div>
-                        <div class="latex-eq">P_{\\text{final}} = \\left(0.35 \\cdot P_{\\text{perplexity}} + 0.40 \\cdot P_{\\text{KNN}} + 0.25 \\cdot P_{\\text{cosine}}\\right) \\times \\frac{\\text{Score}_{\\text{grammar}}}{100}</div>
+                        <div class="formula-title">Calibrated AI Probability</div>
+                        <div class="math-value-box">
+                            <div class="math-value pink" style="font-size: 28px;">${finalPercentage.toFixed(1)}%</div>
+                            <div class="math-formula">P_{\\text{final}} = \\left(0.35 \\cdot P_{\\text{perplexity}} + 0.40 \\cdot P_{\\text{KNN}} + 0.25 \\cdot P_{\\text{cosine}}\\right) \\times \\frac{\\text{Score}_{\\text{grammar}}}{100}</div>
+                        </div>
                         <div class="formula-values" style="margin-top: 15px;">
                             <strong>1. Perplexity Algorithm (35% Weight):</strong> ${(result1.score).toFixed(1)}% (Weighted: ${(result1.score * 0.35).toFixed(1)}%)<br>
                             <strong>2. KNN Classifier (40% Weight):</strong> ${(result2.score).toFixed(1)}% (Weighted: ${(result2.score * 0.40).toFixed(1)}%)<br>
@@ -545,10 +556,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <div style="margin: 8px 0; border-top: 1px solid var(--border-color); padding-top: 8px;">
                                 <strong>Raw Ensemble Probability (Weighted Sum):</strong> ${weightedScore.toFixed(1)}%
                             </div>
-                            <strong>Grammar Perfection Discount:</strong> ${grammarResult.perfectionScore}% (Factor: ${(grammarResult.perfectionScore / 100).toFixed(3)})<br>
-                            <div style="margin-top: 8px; font-size: 14px; color: #fff;">
-                                <strong>Final Calibrated AI Probability:</strong> <span style="color: var(--neon-pink); font-weight: 800;">${finalPercentage.toFixed(1)}%</span>
-                            </div>
+                            <strong>Grammar Perfection Discount:</strong> ${grammarResult.perfectionScore}% (Factor: ${(grammarResult.perfectionScore / 100).toFixed(3)})
                         </div>
                     </div>
                 </div>
