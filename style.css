@@ -2,24 +2,24 @@
 
 /* --- CUSTOM VARIABLES --- */
 :root {
-    --bg-dark: #f4f5f7;
+    --bg-dark: #fbfaf7;
     --bg-card: #ffffff;
-    --bg-card-hover: #f1f3f5;
-    --border-color: #000000;
+    --bg-card-hover: #f6f4f0;
+    --border-color: #e7e5e4;
     
-    --neon-cyan: #000000;
-    --neon-purple: #000000;
-    --neon-pink: #000000;
-    --text-main: #000000;
-    --text-muted: #334155;
-    --text-dark: #000000;
+    --neon-cyan: #576b5c;
+    --neon-purple: #b47842;
+    --neon-pink: #ac4f3d;
+    --text-main: #1c1917;
+    --text-muted: #78716c;
+    --text-dark: #44403c;
     
     --neon-cyan-glow: none;
     --neon-purple-glow: none;
     --neon-pink-glow: none;
     
     --glass-shadow: none;
-    --transition-speed: 0.15s;
+    --transition-speed: 0.2s;
 }
 
 /* --- RESET & BASIC STYLING --- */
@@ -808,30 +808,30 @@ textarea#editor-area:focus {
 }
 
 .math-value-box {
-    background: #000000;
-    border: 1px solid #ffffff;
+    background: #faf9f6;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 15px;
     margin: 12px 0;
     text-align: center;
-    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.05);
+    box-shadow: none;
 }
 
 .math-value {
     font-size: 24px;
     font-weight: 800;
-    color: #ffffff !important;
+    color: var(--text-main) !important;
     margin-bottom: 8px;
     text-shadow: none !important;
 }
 
 .math-value.pink {
-    color: #ffffff !important;
+    color: var(--neon-pink) !important;
     text-shadow: none !important;
 }
 
 .math-value.cyan {
-    color: #ffffff !important;
+    color: var(--neon-cyan) !important;
     text-shadow: none !important;
 }
 
@@ -840,7 +840,7 @@ textarea#editor-area:focus {
     color: var(--text-muted);
     font-family: 'JetBrains Mono', monospace;
     letter-spacing: 0.5px;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-top: 1px solid var(--border-color);
     padding-top: 8px;
     margin-top: 4px;
 }
@@ -884,19 +884,19 @@ textarea#editor-area:focus {
 
 /* Table rows styling for KNN Neighbors */
 .math-table tr.neigh-ai td {
-    background: rgba(255, 0, 127, 0.04);
+    background: rgba(172, 79, 61, 0.05);
 }
 .math-table tr.neigh-ai strong {
     color: var(--neon-pink);
-    text-shadow: var(--neon-pink-glow);
+    text-shadow: none;
 }
 
 .math-table tr.neigh-human td {
-    background: rgba(0, 240, 255, 0.04);
+    background: rgba(87, 107, 92, 0.05);
 }
 .math-table tr.neigh-human strong {
     color: var(--neon-cyan);
-    text-shadow: var(--neon-cyan-glow);
+    text-shadow: none;
 }
 
 /* Cosine similarity comparison grid */
