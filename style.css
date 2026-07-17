@@ -2,9 +2,9 @@
 
 /* --- CUSTOM VARIABLES --- */
 :root {
-    --bg-dark: #ffffff;
+    --bg-dark: #f4f5f7;
     --bg-card: #ffffff;
-    --bg-card-hover: #f8fafc;
+    --bg-card-hover: #f1f3f5;
     --border-color: #000000;
     
     --neon-cyan: #000000;
