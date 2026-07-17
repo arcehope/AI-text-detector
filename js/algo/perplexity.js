@@ -29,7 +29,8 @@ class PerplexityAnalyzer {
             'punctual', 'schedule', 'punctuality', 'possessions',
             'traditional', 'subterranean', 'cooperative', 'partnership', 'collaboration', 'isolation', 'mutual', 'superorganism',
             'remarkable', 'incredible', 'evolutionary', 'relationship', 'phenomenon', 'phenomena', 'effectively', 'literally', 'microscopic', 'clever',
-            'possess', 'colleagues', 'long-term', 'temporary', 'dignity'
+            'possess', 'colleagues', 'long-term', 'temporary', 'dignity',
+            'aspects', 'responsible', 'opportunities', 'empowers', 'tolerance', 'harmonious'
         ]);
 
         // Standard English common word transition rates (simplified for client-side model)
@@ -48,7 +49,8 @@ class PerplexityAnalyzer {
             'most valuable',
             'instead of', 'system of', 'in nature', 'reminds us', 'in exchange', 'rather than', 'built on', 'not just', 'is not', 'understanding of',
             'relies on', 'turns out', 'driven by', 'how we', 'we view', 'forms of', 'perfectly mimic',
-            'most important', 'helps build', 'leads to', 'better than', 'in all'
+            'most important', 'helps build', 'leads to', 'better than', 'in all',
+            'significant role', 'essential for', 'aspects of', 'members of'
         ]);
     }
 
