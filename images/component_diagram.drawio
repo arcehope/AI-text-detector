@@ -1,0 +1,51 @@
+<mxfile host="Electron" modified="2026-07-20" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="component" name="Component Diagram">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        
+        <!-- Components -->
+        <mxCell id="html5" value="HTML5 View Panel&lt;br&gt;(index.html / CSS)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="60" y="200" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="controller" value="app.js controller&lt;br&gt;(Core Coordinator)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="280" y="200" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="parser" value="fileParser.js module&lt;br&gt;(PDF / DOCX Extractor)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="80" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="engines" value="stylometricEngines&lt;br&gt;(6 Core NLP/ML Classifier Engines)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="200" width="220" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="renderer" value="chartRenderer.js&lt;br&gt;(SVG &amp; MathJax Renderer)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="500" y="320" width="180" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cdns" value="MathJax &amp; PDF.js CDNs&lt;br&gt;(External Libraries)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f5f5f5;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="780" y="190" width="140" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="Bidirectional&lt;br&gt;Bindings" style="endArrow=classic;startArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="html5" target="controller">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" value="Instantiates &amp; Extract" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;entryX=0;entryY=0.5;edgeStyle=orthogonalEdgeStyle;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="controller" target="parser">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Invokes Scan" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="controller" target="engines">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="Passes Metrics" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;entryX=0;entryY=0.5;edgeStyle=orthogonalEdgeStyle;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="controller" target="renderer">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" value="Loads Workers" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0.5;entryY=0;edgeStyle=orthogonalEdgeStyle;strokeColor=#78716c;strokeWidth=1.2;dashed=1;fontColor=#78716c;fontSize=10;" edge="1" parent="1" source="parser" target="cdns">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="Loads Libs" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0.5;entryY=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#78716c;strokeWidth=1.2;dashed=1;fontColor=#78716c;fontSize=10;" edge="1" parent="1" source="renderer" target="cdns">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

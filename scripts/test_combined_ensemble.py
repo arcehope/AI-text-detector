@@ -3,7 +3,7 @@ import re
 import math
 import os
 
-csv_path = r'c:\Users\Hello dell guys\OneDrive\Desktop\AI-text-detector\data\dataset_sample.csv'
+csv_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'dataset_sample.csv')
 if not os.path.exists(csv_path):
     print("Error: dataset_sample.csv not found.")
     exit(1)
