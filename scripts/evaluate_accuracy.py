@@ -55,8 +55,8 @@ knn_training_set_new = knn_training_set_old + [
     # Climate Change Augmented formal AI profile
     { "vector": [0.681, 0.639, 1.0, 0.586, 0.627], "label": 1 },
     # Hugging Face dataset centroids
-    { "vector": [1.0, 0.119, 0.06, 0.769, 0.757], "label": 1 },
-    { "vector": [0.992, 0.154, 0.048, 0.571, 0.473], "label": 0 }
+    { "vector": [0.919, 0.588, 0.157, 0.783, 0.786], "label": 1 },
+    { "vector": [0.558, 0.617, 0.123, 0.601, 0.479], "label": 0 }
 ]
 
 # --- Helper functions for extraction ---
@@ -111,21 +111,21 @@ def extract_5d_vector(text):
 
     # TTR
     ttr = len(set(words)) / word_count
-    expected_ttr = 0.86 - (word_count * 0.0003)
+    expected_ttr = 8.0 / math.sqrt(word_count) + 0.08
     ttr_diff = expected_ttr - ttr
-    feat_lexical = min(1.0, max(0.0, 0.5 + ttr_diff * 2.5))
+    feat_lexical = min(1.0, max(0.0, 0.5 + ttr_diff * 5.0))
 
     # Burstiness
     sentence_lengths = [len([w for w in re.sub(r'[^\w\s-]', '', s).split() if w]) for s in sentences]
     mean_len = sum(sentence_lengths) / len(sentence_lengths) if sentence_lengths else 0
     variance = sum((l - mean_len) ** 2 for l in sentence_lengths) / len(sentence_lengths) if sentence_lengths else 0
     burstiness = math.sqrt(variance)
-    feat_burstiness = min(1.0, max(0.0, 1.0 - (burstiness / 12.0)))
+    feat_burstiness = min(1.0, max(0.0, 1.0 - (burstiness / 30.0)))
 
     # AI Word Density
     ai_keyword_count = sum(1 for w in words if w in ai_favored_words)
     ai_density = ai_keyword_count / word_count
-    feat_ai_density = min(1.0, ai_density / 0.030)
+    feat_ai_density = min(1.0, ai_density / 0.012)
 
     # Readability
     grade_level = calculate_cli(text, word_count, sentence_count)

@@ -66,8 +66,8 @@ class KNNClassifier {
             { vector: [0.48, 0.45, 0.10, 0.70, 0.60], label: 0, type: 'Human (Policy Draft)' },
             { vector: [0.50, 0.40, 0.14, 0.72, 0.62], label: 0, type: 'Human (Philosophy Paper)' },
             { vector: [0.58, 0.35, 0.08, 0.80, 0.70], label: 0, type: 'Human (Literary Analysis)' },
-            { vector: [1.0, 0.119, 0.06, 0.769, 0.757], label: 1, type: 'AI (HuggingFace Centroid)' },
-            { vector: [0.992, 0.154, 0.048, 0.571, 0.473], label: 0, type: 'Human (HuggingFace Centroid)' }
+            { vector: [0.919, 0.588, 0.157, 0.783, 0.786], label: 1, type: 'AI (HuggingFace Centroid)' },
+            { vector: [0.558, 0.617, 0.123, 0.601, 0.479], label: 0, type: 'Human (HuggingFace Centroid)' }
         ];
     }
 
@@ -102,12 +102,12 @@ class KNNClassifier {
         const { wordCount, sentenceCount, ttr, burstiness } = analysis1Result;
 
         // 1. Lexical Diversity feature (Lower diversity relative to text length = AI pattern)
-        const expectedTtr = 0.86 - (wordCount * 0.0003);
+        const expectedTtr = 8.0 / Math.sqrt(Math.max(1, wordCount)) + 0.08;
         const ttrDiff = expectedTtr - ttr;
-        const featLexicalDiversity = Math.min(1.0, Math.max(0.0, 0.5 + ttrDiff * 2.5));
+        const featLexicalDiversity = Math.min(1.0, Math.max(0.0, 0.5 + ttrDiff * 5.0));
 
         // 2. Burstiness feature (Lower variance in sentence length = AI pattern)
-        const featBurstiness = Math.min(1.0, Math.max(0.0, 1.0 - (burstiness / 12)));
+        const featBurstiness = Math.min(1.0, Math.max(0.0, 1.0 - (burstiness / 30.0)));
 
         // 3. AI word density (AI-favored words count)
         const words = text.toLowerCase().split(/\s+/);
@@ -120,7 +120,7 @@ class KNNClassifier {
             }
         });
         const aiDensity = aiWordCount / Math.max(1, wordCount);
-        const featAiWordDensity = Math.min(1.0, aiDensity / 0.030);
+        const featAiWordDensity = Math.min(1.0, aiDensity / 0.012);
 
         // 4. Readability consistency (Coleman-Liau grade level)
         const gradeLevel = this.calculateColemanLiauIndex(text, wordCount, sentenceCount);

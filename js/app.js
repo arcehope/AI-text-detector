@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const knnClassifier = new window.KNNClassifier();
     const similarityEngine = new window.CosineSimilarityAnalyzer();
     const grammarEngine = new window.GrammarStyleAnalyzer();
+    const trigramEngine = new window.TrigramAnalyzer();
+    const posEngine = new window.PosClassifier();
+    const lrClassifier = new window.LogisticRegressionClassifier();
     const chartEngine = new window.ChartRenderer();
     const fileParser = new window.FileParser();
 
@@ -200,11 +203,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const result2 = knnClassifier.classify(featureExtraction.vector);
             const result3 = similarityEngine.analyze(text);
             const grammarResult = grammarEngine.analyze(text);
+            
+            const lrScore = lrClassifier.predict(featureExtraction.vector) * 100;
+            const trigramResult = trigramEngine.analyze(text);
+            const posResult = posEngine.analyze(text);
+            const knnScore = result2.score;
 
             // Combined weighted ensemble
-            const weightedScore = (result1.score * 0.35) + (result2.score * 0.40) + (result3.score * 0.25);
-            // Apply grammar modifier: flawless grammar retains score, typos reduce/discount it
-            const finalPercentage = Math.min(100, Math.max(0, weightedScore * (grammarResult.perfectionScore / 100)));
+            // 25% Logistic Regression, 20% KNN, 25% Trigrams, 15% POS Ratios, 10% Cosine Similarity, 5% Perplexity
+            const weightedScore = (lrScore * 0.25) + (knnScore * 0.20) + (trigramResult.score * 0.25) + (posResult.score * 0.15) + (result3.score * 0.10) + (result1.score * 0.05);
+            // Apply grammar calibration:
+            // 1. Perfect grammar (100% score) gives a +15% boost to the final AI probability
+            // 2. Typos (imperfect grammar) discount/reduce the AI probability
+            const grammarFactor = grammarResult.perfectionScore / 100;
+            const perfectBoost = (grammarResult.perfectionScore === 100) ? 15.0 : 0.0;
+            const finalPercentage = Math.min(100, Math.max(0, (weightedScore * grammarFactor) + perfectBoost));
 
             // Display
             statWordCount.textContent = result1.wordCount;
@@ -226,11 +239,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 let iconName = '';
                 let className = '';
                 
-                if (finalPercentage > 65) {
+                if (finalPercentage > 60) {
                     statement = 'Most probably written by AI';
                     iconName = 'shield-alert';
                     className = 'verdict-ai';
-                } else if (finalPercentage > 40) {
+                } else if (finalPercentage > 35) {
                     statement = 'Most probably written by a Mix of AI & Human';
                     iconName = 'help-circle';
                     className = 'verdict-mixed';
@@ -251,11 +264,61 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             chartEngine.renderGauge('gauge-chart-container', finalPercentage);
+            
+            // Populate ensemble breakdown metrics dynamically
+            const breakdownContainer = document.getElementById('ensemble-breakdown-container');
+            if (breakdownContainer) {
+                breakdownContainer.innerHTML = `
+                    <div class="ensemble-item">
+                        <span class="ensemble-name">Logistic Regression (25% wt)</span>
+                        <div class="ensemble-bar-container">
+                            <div class="ensemble-bar pink" style="width: ${lrScore.toFixed(0)}%"></div>
+                        </div>
+                        <span class="ensemble-val">${lrScore.toFixed(0)}%</span>
+                    </div>
+                    <div class="ensemble-item">
+                        <span class="ensemble-name">KNN Classifier (20% wt)</span>
+                        <div class="ensemble-bar-container">
+                            <div class="ensemble-bar purple" style="width: ${knnScore.toFixed(0)}%"></div>
+                        </div>
+                        <span class="ensemble-val">${knnScore.toFixed(0)}%</span>
+                    </div>
+                    <div class="ensemble-item">
+                        <span class="ensemble-name">Character Trigram Sim (25% wt)</span>
+                        <div class="ensemble-bar-container">
+                            <div class="ensemble-bar cyan" style="width: ${trigramResult.score.toFixed(0)}%"></div>
+                        </div>
+                        <span class="ensemble-val">${trigramResult.score.toFixed(0)}%</span>
+                    </div>
+                    <div class="ensemble-item">
+                        <span class="ensemble-name">POS Syntax Ratios (15% wt)</span>
+                        <div class="ensemble-bar-container">
+                            <div class="ensemble-bar pink" style="width: ${posResult.score.toFixed(0)}%"></div>
+                        </div>
+                        <span class="ensemble-val">${posResult.score.toFixed(0)}%</span>
+                    </div>
+                    <div class="ensemble-item">
+                        <span class="ensemble-name">Cosine Style Sim (10% wt)</span>
+                        <div class="ensemble-bar-container">
+                            <div class="ensemble-bar purple" style="width: ${result3.score.toFixed(0)}%"></div>
+                        </div>
+                        <span class="ensemble-val">${result3.score.toFixed(0)}%</span>
+                    </div>
+                    <div class="ensemble-item">
+                        <span class="ensemble-name">Statistical Perplexity (5% wt)</span>
+                        <div class="ensemble-bar-container">
+                            <div class="ensemble-bar cyan" style="width: ${result1.score.toFixed(0)}%"></div>
+                        </div>
+                        <span class="ensemble-val">${result1.score.toFixed(0)}%</span>
+                    </div>
+                `;
+            }
+
             chartEngine.renderScatterPlot('scatter-chart-container', result2, featureExtraction.vector);
             chartEngine.renderRadarChart('radar-chart-container', result3.vector);
 
             renderHighlighting(result1.sentenceDetails);
-            renderMathFormulaBreakdown(result1, result2, featureExtraction, result3, grammarResult, weightedScore, finalPercentage);
+            renderMathFormulaBreakdown(result1, result2, featureExtraction, result3, grammarResult, lrScore, trigramResult, posResult, weightedScore, finalPercentage);
 
             emptyResultsState.style.display = 'none';
             activeResultsPanel.style.display = 'grid';
@@ -340,7 +403,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function renderMathFormulaBreakdown(result1, result2, featureExtraction, result3, grammarResult, weightedScore, finalPercentage) {
+    function renderMathFormulaBreakdown(result1, result2, featureExtraction, result3, grammarResult, lrScore, trigramResult, posResult, weightedScore, finalPercentage) {
         const docVector = featureExtraction.vector;
         let html = `
             <div class="math-card">
@@ -541,22 +604,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="math-body">
                     <p class="math-desc">
-                        The overall AI detection probability is calculated as a weighted ensemble of the three core algorithms, then calibrated by the Grammar Perfection Factor.
+                        The overall AI detection probability is calculated as a weighted ensemble of the five specialized algorithms (Logistic Regression, Character Trigrams, POS Syntax, Cosine Similarity, and Perplexity), then calibrated by the Grammar Perfection Factor.
                     </p>
                     <div class="formula-block">
                         <div class="formula-title">Calibrated AI Probability</div>
                         <div class="math-value-box">
                             <div class="math-value pink" style="font-size: 28px;">${finalPercentage.toFixed(1)}%</div>
-                            <div class="math-formula">P_{\\text{final}} = \\left(0.35 \\cdot P_{\\text{perplexity}} + 0.40 \\cdot P_{\\text{KNN}} + 0.25 \\cdot P_{\\text{cosine}}\\right) \\times \\frac{\\text{Score}_{\\text{grammar}}}{100}</div>
+                            <div class="math-formula">P_{\\text{final}} = \\min\\left(100, \\left(P_{\\text{ensemble}} \\times \\frac{\\text{Score}_{\\text{grammar}}}{100}\\right) + \\text{Boost}_{\\text{perfect}}\\right)</div>
                         </div>
                         <div class="formula-values" style="margin-top: 15px;">
-                            <strong>1. Perplexity Algorithm (35% Weight):</strong> ${(result1.score).toFixed(1)}% (Weighted: ${(result1.score * 0.35).toFixed(1)}%)<br>
-                            <strong>2. KNN Classifier (40% Weight):</strong> ${(result2.score).toFixed(1)}% (Weighted: ${(result2.score * 0.40).toFixed(1)}%)<br>
-                            <strong>3. Cosine Similarity (25% Weight):</strong> ${(result3.score).toFixed(1)}% (Weighted: ${(result3.score * 0.25).toFixed(1)}%)<br>
+                            <strong>1. Logistic Regression (25% Weight):</strong> ${lrScore.toFixed(1)}% (Weighted: ${(lrScore * 0.25).toFixed(1)}%)<br>
+                            <strong>2. KNN Classifier (20% Weight):</strong> ${result2.score.toFixed(1)}% (Weighted: ${(result2.score * 0.20).toFixed(1)}%)<br>
+                            <strong>3. Character Trigrams (25% Weight):</strong> ${trigramResult.score.toFixed(1)}% (Weighted: ${(trigramResult.score * 0.25).toFixed(1)}%)<br>
+                            <strong>4. POS Syntax Ratios (15% Weight):</strong> ${posResult.score.toFixed(1)}% (Weighted: ${(posResult.score * 0.15).toFixed(1)}%)<br>
+                            <strong>5. Cosine Similarity (10% Weight):</strong> ${result3.score.toFixed(1)}% (Weighted: ${(result3.score * 0.10).toFixed(1)}%)<br>
+                            <strong>6. Perplexity Engine (5% Weight):</strong> ${result1.score.toFixed(1)}% (Weighted: ${(result1.score * 0.05).toFixed(1)}%)<br>
                             <div style="margin: 8px 0; border-top: 1px solid var(--border-color); padding-top: 8px;">
                                 <strong>Raw Ensemble Probability (Weighted Sum):</strong> ${weightedScore.toFixed(1)}%
                             </div>
-                            <strong>Grammar Perfection Discount:</strong> ${grammarResult.perfectionScore}% (Factor: ${(grammarResult.perfectionScore / 100).toFixed(3)})
+                            <strong>Grammar Perfection Discount:</strong> ${grammarResult.perfectionScore}% (Factor: ${(grammarResult.perfectionScore / 100).toFixed(3)})<br>
+                            <strong>Perfect Grammar Boost (100% Score):</strong> ${grammarResult.perfectionScore === 100 ? '+15%' : '+0%'}
                         </div>
                     </div>
                 </div>

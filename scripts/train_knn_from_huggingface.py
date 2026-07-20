@@ -13,7 +13,7 @@ print("Streaming dataset 'silentone0725/ai-human-text-detection-v1' from Hugging
 # We use streaming=True to load rows on-demand
 dataset = load_dataset("silentone0725/ai-human-text-detection-v1", split="train", streaming=True)
 
-print("Extracting 50 Human essays and 50 AI-generated essays...")
+print("Extracting 500 Human essays and 500 AI-generated essays...")
 human_samples = []
 ai_samples = []
 
@@ -25,12 +25,12 @@ for record in dataset:
     if len(text.split()) < 250:
         continue
         
-    if label_str == 'human' and len(human_samples) < 50:
+    if label_str == 'human' and len(human_samples) < 500:
         human_samples.append({'text': text, 'generated': 0})
-    elif label_str == 'ai' and len(ai_samples) < 50:
+    elif label_str == 'ai' and len(ai_samples) < 500:
         ai_samples.append({'text': text, 'generated': 1})
         
-    if len(human_samples) >= 50 and len(ai_samples) >= 50:
+    if len(human_samples) >= 500 and len(ai_samples) >= 500:
         break
 
 # Combine and save as local CSV file
