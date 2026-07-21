@@ -1,105 +1,116 @@
 <mxfile host="Electron" modified="2026-07-21" agent="Antigravity" version="21.0.0" type="device">
-  <diagram id="diag" name="Component Diagram">
-    <mxGraphModel dx="1200" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="780" math="0" shadow="0">
+  <diagram id="component_reference" name="Component Diagram">
+    <mxGraphModel dx="1400" dy="1000" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="720" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-<mxCell id="co_ui" value="HTML5 Dashboard
-&lt;&lt;UI&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="80" y="200" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_ctrl" value="app.js Controller
-&lt;&lt;controller&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="320" y="200" width="180" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_parser" value="FileParser
-&lt;&lt;parser&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="320" y="330" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_pdfjs" value="PDF.js
-&lt;&lt;library&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="540" y="300" width="120" height="40" as="geometry" />
-</mxCell>
-<mxCell id="co_mammoth" value="Mammoth.js
-&lt;&lt;library&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="540" y="360" width="120" height="40" as="geometry" />
-</mxCell>
-<mxCell id="co_nlp" value="PerplexityAnalyzer
-&lt;&lt;engine&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="320" y="460" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_knn" value="KNNClassifier
-&lt;&lt;engine&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="540" y="460" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_cos" value="CosineSimilarityAnalyzer
-&lt;&lt;engine&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="320" y="560" width="200" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_lr" value="LogisticRegression
-&lt;&lt;engine&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="560" y="560" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_tri" value="TrigramAnalyzer
-&lt;&lt;engine&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="320" y="660" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_pos" value="PosClassifier
-&lt;&lt;engine&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="520" y="660" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_grammar" value="GrammarStyleAnalyzer
-&lt;&lt;engine&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="710" y="460" width="180" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_chart" value="ChartRenderer
-&lt;&lt;renderer&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="80" y="380" width="160" height="60" as="geometry" />
-</mxCell>
-<mxCell id="co_mathjax" value="MathJax
-&lt;&lt;library&gt;&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
-  <mxGeometry x="80" y="500" width="120" height="40" as="geometry" />
-</mxCell>
-<mxCell id="coe0" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ui" target="co_ctrl">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe1" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_parser">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe2" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_parser" target="co_pdfjs">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe3" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_parser" target="co_mammoth">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe4" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_nlp">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe5" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_knn">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe6" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_cos">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe7" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_lr">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe8" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_tri">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe9" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_pos">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe10" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_grammar">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe11" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_chart">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
-<mxCell id="coe12" value="" style="endArrow=open;endFill=0;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="co_ctrl" target="co_mathjax">
-  <mxGeometry relative="1" as="geometry" />
-</mxCell>
+        
+        <!-- User Actor -->
+        <mxCell id="c_user" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1">
+          <mxGeometry x="30" y="140" width="40" height="80" as="geometry" />
+        </mxCell>
+        
+        <!-- Web Browser Component -->
+        <mxCell id="c_browser" value="Web Browser (Client)" style="html=1;dropTarget=0;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="120" y="140" width="150" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_browser_dec" value="" style="shape=component;align=left;spacingLeft=6;verticalAlign=top;spacingTop=5;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_browser">
+          <mxGeometry x="130" y="5" width="15" height="15" as="geometry" />
+        </mxCell>
+        
+        <!-- Web Application (Frontend) Component -->
+        <mxCell id="c_frontend" value="Web Application (Frontend)" style="html=1;dropTarget=0;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=8" vertex="1" parent="1">
+          <mxGeometry x="330" y="80" width="280" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="c_fe_dec" value="" style="shape=component;align=left;spacingLeft=6;verticalAlign=top;spacingTop=5;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_frontend">
+          <mxGeometry x="260" y="5" width="15" height="15" as="geometry" />
+        </mxCell>
+        <!-- Frontend sub-components -->
+        <mxCell id="fe_s1" value="File Upload / Drop Handler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_frontend">
+          <mxGeometry x="20" y="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_s2" value="Text Area Input Handler" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_frontend">
+          <mxGeometry x="20" y="80" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_s3" value="Dashboard Layout View" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_frontend">
+          <mxGeometry x="20" y="120" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="fe_s4" value="LaTeX Math Panel view" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_frontend">
+          <mxGeometry x="20" y="160" width="240" height="30" as="geometry" />
+        </mxCell>
 
+        <!-- File Parser Module -->
+        <mxCell id="c_parser" value="File Parser Module" style="html=1;dropTarget=0;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=8" vertex="1" parent="1">
+          <mxGeometry x="330" y="360" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="c_p_dec" value="" style="shape=component;align=left;spacingLeft=6;verticalAlign=top;spacingTop=5;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_parser">
+          <mxGeometry x="260" y="5" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="p_s1" value="PDF.js Parser API Wrapper" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_parser">
+          <mxGeometry x="20" y="40" width="240" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="p_s2" value="Mammoth.js Parser Wrapper" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_parser">
+          <mxGeometry x="20" y="82" width="240" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- AI Text Detector Engine Component -->
+        <mxCell id="c_engines" value="AI Text Detector Scanning Engine" style="html=1;dropTarget=0;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=8" vertex="1" parent="1">
+          <mxGeometry x="680" y="80" width="370" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="c_eng_dec" value="" style="shape=component;align=left;spacingLeft=6;verticalAlign=top;spacingTop=5;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_engines">
+          <mxGeometry x="350" y="5" width="15" height="15" as="geometry" />
+        </mxCell>
+        <!-- Engines sub-components -->
+        <mxCell id="eng_s1" value="Statistical NLP (Perplexity &amp; Burstiness)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="c_engines">
+          <mxGeometry x="20" y="40" width="330" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_s2" value="KNN Classifier Module (5D Feature Space)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="c_engines">
+          <mxGeometry x="20" y="84" width="330" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_s3" value="Cosine Similarity Module (Vector Space)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="c_engines">
+          <mxGeometry x="20" y="128" width="330" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_s4" value="Logistic Regression Module (Stylometrics)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="c_engines">
+          <mxGeometry x="20" y="172" width="330" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_s5" value="Character Trigram Cosine Similarity" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="c_engines">
+          <mxGeometry x="20" y="216" width="330" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_s6" value="POS Syntax Ratio Analyzer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="c_engines">
+          <mxGeometry x="20" y="260" width="330" height="32" as="geometry" />
+        </mxCell>
+        <mxCell id="eng_s7" value="Heuristic Grammar &amp; Typography Analyzer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;" vertex="1" parent="c_engines">
+          <mxGeometry x="20" y="304" width="330" height="32" as="geometry" />
+        </mxCell>
+
+        <!-- Chart & Visual Renderer Module Component -->
+        <mxCell id="c_renderer" value="Chart &amp; Visual Renderer Module" style="html=1;dropTarget=0;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;align=center;verticalAlign=top;spacingTop=8" vertex="1" parent="1">
+          <mxGeometry x="680" y="500" width="370" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="c_r_dec" value="" style="shape=component;align=left;spacingLeft=6;verticalAlign=top;spacingTop=5;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_renderer">
+          <mxGeometry x="350" y="5" width="15" height="15" as="geometry" />
+        </mxCell>
+        <mxCell id="r_s1" value="SVG Gauge Verdict Chart" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_renderer">
+          <mxGeometry x="20" y="38" width="330" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="r_s2" value="KNN 2D Feature Scatter Plot" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_renderer">
+          <mxGeometry x="20" y="70" width="330" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="r_s3" value="5-Axis Stylometric Radar Chart" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_renderer">
+          <mxGeometry x="20" y="102" width="330" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="r_s4" value="Sentence Perplexity Heatmap Highlighter" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="c_renderer">
+          <mxGeometry x="20" y="134" width="330" height="24" as="geometry" />
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="conn1" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_user" target="c_browser" />
+        <mxCell id="conn2" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_browser" target="c_frontend" />
+        <mxCell id="conn3" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_frontend" target="c_parser" />
+        <mxCell id="conn4" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_frontend" target="c_engines" />
+        <mxCell id="conn5" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_parser" target="c_engines" />
+        <mxCell id="conn6" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engines" target="c_renderer" />
+        <mxCell id="conn7" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;exitX=0;exitY=0.5;entryX=0.6;entryY=1;" edge="1" parent="1" source="c_renderer" target="c_frontend" />
       </root>
     </mxGraphModel>
   </diagram>
