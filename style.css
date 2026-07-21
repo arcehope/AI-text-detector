@@ -584,31 +584,32 @@ textarea#editor-area:focus {
 }
 
 .heatmap-description .lbl-ai {
-    background: rgba(0, 0, 0, 0.15);
-    color: #000000;
-    border: 1px solid #000000;
+    background: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+    border: 1px solid #ef4444;
 }
 
 .heatmap-description .lbl-mix {
-    background: rgba(0, 0, 0, 0.08);
-    color: #333333;
-    border: 1px solid #333333;
+    background: rgba(245, 158, 11, 0.15);
+    color: #d97706;
+    border: 1px solid #f59e0b;
 }
 
 .heatmap-description .lbl-hum {
-    background: none;
-    color: #666666;
-    border: 1px solid #666666;
+    background: rgba(16, 185, 129, 0.15);
+    color: #059669;
+    border: 1px solid #10b981;
 }
 
 .heatmap-editor-container {
-    background: #ffffff; border: 1px solid var(--border-color);
+    background: #ffffff;
     border: 1px solid var(--border-color);
     border-radius: 12px;
     padding: 20px;
-    max-height: 300px;
+    max-height: 320px;
     overflow-y: auto;
-    font-size: 14.5px;
+    font-size: 15px;
+    line-height: 1.8;
 }
 
 /* Highlights styling */
@@ -617,43 +618,49 @@ textarea#editor-area:focus {
     transition: all 0.25s ease;
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    padding: 2px 0;
+    padding: 3px 5px;
+    margin: 2px 2px;
+    border-radius: 4px;
+    display: inline;
 }
 
 .highlighted-sentence.ai-heavy {
-    background: rgba(0, 0, 0, 0.15);
-    border-bottom-color: #000000;
+    background: rgba(239, 68, 68, 0.18);
+    color: #991b1b;
+    border-bottom-color: #dc2626;
 }
 .highlighted-sentence.ai-heavy:hover {
-    background: rgba(0, 0, 0, 0.25);
-    border-bottom-color: #000000;
+    background: rgba(239, 68, 68, 0.32);
+    border-bottom-color: #b91c1c;
 }
 
 .highlighted-sentence.ai-medium {
-    background: rgba(0, 0, 0, 0.08);
+    background: rgba(245, 158, 11, 0.18);
+    color: #92400e;
     border-bottom-style: dashed;
-    border-bottom-color: #333333;
+    border-bottom-color: #d97706;
 }
 .highlighted-sentence.ai-medium:hover {
-    background: rgba(0, 0, 0, 0.15);
-    border-bottom-color: #000000;
+    background: rgba(245, 158, 11, 0.32);
+    border-bottom-color: #b45309;
 }
 
 .highlighted-sentence.ai-light {
-    background: none;
-    border-bottom-style: dotted;
-    border-bottom-color: #666666;
+    background: rgba(16, 185, 129, 0.15);
+    color: #065f46;
+    border-bottom-style: solid;
+    border-bottom-color: #059669;
 }
 .highlighted-sentence.ai-light:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border-bottom-color: #000000;
+    background: rgba(16, 185, 129, 0.28);
+    border-bottom-color: #047857;
 }
 
 .highlighted-sentence.selected {
-    outline: 1.5px solid #000000;
+    outline: 2.5px solid #2563eb;
     outline-offset: 1px;
-    border-radius: 2px;
-    background: rgba(0, 0, 0, 0.08) !important;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.35);
 }
 
 /* Interactive Sentence Inspector Card */
@@ -725,6 +732,9 @@ textarea#editor-area:focus {
 .indicator.pink { background: rgba(255, 0, 127, 0.2); color: var(--neon-pink); }
 .indicator.purple { background: rgba(188, 52, 250, 0.2); color: var(--neon-purple); }
 .indicator.cyan { background: rgba(0, 240, 255, 0.2); color: var(--neon-cyan); }
+.indicator.red { background: rgba(239, 68, 68, 0.18); color: #dc2626; border: 1px solid #ef4444; }
+.indicator.orange { background: rgba(245, 158, 11, 0.18); color: #d97706; border: 1px solid #f59e0b; }
+.indicator.green { background: rgba(16, 185, 129, 0.18); color: #059669; border: 1px solid #10b981; }
 
 
 /* --- TAB 3: MATHEMATICAL RESOLUTION TRACK --- */

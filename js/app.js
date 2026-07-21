@@ -396,7 +396,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 const indicator = document.getElementById('sel-classification');
                 indicator.textContent = detail.aiScore > 70 ? 'AI Generated' : (detail.aiScore > 40 ? 'Mixed Signature' : 'Human Written');
-                indicator.className = 'indicator ' + (detail.aiScore > 70 ? 'pink' : (detail.aiScore > 40 ? 'purple' : 'cyan'));
+                indicator.className = 'indicator ' + (detail.aiScore > 70 ? 'red' : (detail.aiScore > 40 ? 'orange' : 'green'));
             });
 
             highlightedTextPanel.appendChild(span);
