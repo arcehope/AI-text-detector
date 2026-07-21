@@ -420,21 +420,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="formula-title">Sentence Length Variance (Burstiness)</div>
                         <div class="math-value-box">
                             <div class="math-value cyan">${result1.burstiness} <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);">vs Expected (Human: 8.0 - 15.0 | AI: 1.0 - 5.0)</span></div>
-                            <div class="math-formula">\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^{N} (L_i - \\mu)^2}</div>
+                            <div class="math-formula">\\[\\sigma = \\sqrt{\\frac{1}{N} \\sum_{i=1}^{N} (L_i - \\mu)^2}\\]</div>
                         </div>
                         <div class="formula-values">
-                            <strong>Your values:</strong> Sentences ($N$) = ${result1.sentenceCount}, 
-                            Average Length ($\\mu$) = ${(result1.wordCount / Math.max(1, result1.sentenceCount)).toFixed(1)} words.
+                            <strong>Your values:</strong> Sentences \\((N)\\) = ${result1.sentenceCount}, 
+                            Average Length \\((\\mu)\\) = ${(result1.wordCount / Math.max(1, result1.sentenceCount)).toFixed(1)} words.
                         </div>
                     </div>
                     <div class="formula-block">
                         <div class="formula-title">Length-Adjusted Lexical Diversity (TTR)</div>
                         <div class="math-value-box">
                             <div class="math-value cyan">${result1.ttr} <span style="font-size: 13px; font-weight: normal; color: var(--text-muted);">vs Expected (Human: ${(0.86 - result1.wordCount * 0.0003).toFixed(3)} | AI: ${(0.78 - result1.wordCount * 0.0003).toFixed(3)})</span></div>
-                            <div class="math-formula">TTR = \\frac{\\text{Unique Words}}{\\text{Total Words}} \\quad \\text{Expected Human} = 0.86 - (W \\times 0.0003) \\quad \\text{Expected AI} = 0.78 - (W \\times 0.0003)</div>
+                            <div class="math-formula">\\[\\text{TTR} = \\frac{\\text{Unique Words}}{\\text{Total Words}}\\]\\[\\text{Expected}_{\\text{Human}} = 0.86 - (W \\times 0.0003) \\qquad \\text{Expected}_{\\text{AI}} = 0.78 - (W \\times 0.0003)\\]</div>
                         </div>
                         <div class="formula-values">
-                            <strong>Your values:</strong> Unique Words = ${Math.round(result1.ttr * result1.wordCount)}, Total Words ($W$) = ${result1.wordCount}.
+                            <strong>Your values:</strong> Unique Words = ${Math.round(result1.ttr * result1.wordCount)}, Total Words (\\(W\\)) = ${result1.wordCount}.
                         </div>
                     </div>
                 </div>
@@ -499,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="formula-title">KNN Classifier AI Probability</div>
                         <div class="math-value-box">
                             <div class="math-value pink">${result2.score}% AI-characteristic</div>
-                            <div class="math-formula">d(\\mathbf{p}, \\mathbf{q}) = \\sqrt{\\sum_{i=1}^{5} (p_i - q_i)^2}</div>
+                            <div class="math-formula">\\[d(\\mathbf{p}, \\mathbf{q}) = \\sqrt{\\sum_{i=1}^{5} (p_i - q_i)^2}\\]</div>
                         </div>
                         <div class="formula-title" style="margin-top: 15px;">5 Nearest Neighbors in Feature Space:</div>
                         <table class="math-table">
@@ -508,7 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <th>Rank</th>
                                     <th>Neighbor Reference Type</th>
                                     <th>Class Classify</th>
-                                    <th>Euclidean Distance ($d$)</th>
+                                    <th>Euclidean Distance (\\(d\\))</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="formula-title">Cosine Vector Space Similarity</div>
                         <div class="math-value-box">
                             <div class="math-value pink">${result3.score}% AI-characteristic</div>
-                            <div class="math-formula">\\cos(\\theta) = \\frac{\\mathbf{A} \\cdot \\mathbf{B}}{\\|\\mathbf{A}\\| \\|\\mathbf{B}\\|} = \\frac{\\sum_{i=1}^{5} A_i B_i}{\\sqrt{\\sum_{i=1}^{5} A_i^2} \\sqrt{\\sum_{i=1}^{5} B_i^2}}</div>
+                            <div class="math-formula">\\[\\cos(\\theta) = \\frac{\\mathbf{A} \\cdot \\mathbf{B}}{\\|\\mathbf{A}\\| \\|\\mathbf{B}\\|} = \\frac{\\displaystyle\\sum_{i=1}^{5} A_i B_i}{\\displaystyle\\sqrt{\\sum_{i=1}^{5} A_i^2}\\;\\sqrt{\\sum_{i=1}^{5} B_i^2}}\\]</div>
                         </div>
                         <div class="comparison-grid">
                             <div class="comp-box">
@@ -580,7 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="formula-title">Grammar Perfection Score</div>
                         <div class="math-value-box">
                             <div class="math-value cyan">${grammarResult.perfectionScore}% Perfect</div>
-                            <div class="math-formula">\\text{Score}_{\\text{grammar}} = \\max\\left(0, 100 - 15 \\times \\text{Penalty}_{\\text{norm}}\\right) \\quad \\text{where} \\quad \\text{Penalty}_{\\text{norm}} = \\frac{\\sum \\text{Matches} \\times \\text{Rule Weight}}{\\max(10, \\text{Words})} \\times 100</div>
+                            <div class="math-formula">\\[\\text{Score}_{\\text{grammar}} = \\max\\left(0,\\; 100 - 15 \\times \\text{Penalty}_{\\text{norm}}\\right)\\]\\[\\text{Penalty}_{\\text{norm}} = \\frac{\\displaystyle\\sum \\text{Matches}_i \\times w_i}{\\max(10,\\;\\text{Word Count})} \\times 100\\]</div>
                         </div>
                         <div class="formula-values" style="margin-top: 15px;">
                             <strong>Detected Grammar/Typo Issues:</strong>
@@ -610,7 +610,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="formula-title">Calibrated AI Probability</div>
                         <div class="math-value-box">
                             <div class="math-value pink" style="font-size: 28px;">${finalPercentage.toFixed(1)}%</div>
-                            <div class="math-formula">P_{\\text{final}} = \\min\\left(100, \\left(P_{\\text{ensemble}} \\times \\frac{\\text{Score}_{\\text{grammar}}}{100}\\right) + \\text{Boost}_{\\text{perfect}}\\right)</div>
+                            <div class="math-formula">\\[P_{\\text{final}} = \\min\\!\\left(100,\\; P_{\\text{ensemble}} \\times \\frac{\\text{Score}_{\\text{grammar}}}{100} + \\text{Boost}_{\\text{perfect}}\\right)\\]</div>
                         </div>
                         <div class="formula-values" style="margin-top: 15px;">
                             <strong>1. Logistic Regression (25% Weight):</strong> ${lrScore.toFixed(1)}% (Weighted: ${(lrScore * 0.25).toFixed(1)}%)<br>
@@ -631,7 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         formulaContainer.innerHTML = html;
         if (window.MathJax) {
-            window.MathJax.typesetPromise();
+            window.MathJax.typesetPromise([formulaContainer]).catch(err => console.warn('MathJax error:', err));
         }
     }
 });
