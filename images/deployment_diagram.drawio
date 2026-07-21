@@ -1,69 +1,58 @@
 <mxfile host="Electron" modified="2026-07-21" agent="Antigravity" version="21.0.0" type="device">
-  <diagram id="deployment_3d" name="Deployment Diagram">
-    <mxGraphModel dx="1400" dy="1000" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="680" math="0" shadow="0">
+  <diagram id="deployment_reference" name="Deployment Diagram">
+    <mxGraphModel dx="1400" dy="1000" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1000" pageHeight="520" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         
-        <!-- Node 1: User Workstation -->
-        <mxCell id="n_workstation" value="&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;User Workstation (Client Machine)&lt;/b&gt;" style="verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;html=1;shape=cube;size=20;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=2;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="30" y="60" width="690" height="560" as="geometry" />
+        <!-- Node 1: User -->
+        <mxCell id="n_user" value="User&lt;br&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Web Browser Interaction" style="html=1;shape=cube;size=15;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="180" height="140" as="geometry" />
         </mxCell>
         
-        <!-- Node 2: Web Browser Sandbox (Nested) -->
-        <mxCell id="n_browser" value="&amp;lt;&amp;lt;executionEnvironment&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Web Browser Sandbox&lt;/b&gt;" style="verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;html=1;shape=cube;size=20;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=2;fontStyle=1" vertex="1" parent="n_workstation">
-          <mxGeometry x="20" y="80" width="630" height="440" as="geometry" />
+        <!-- Node 2: Web Browser -->
+        <mxCell id="n_browser" value="Web Browser&lt;br&gt;&amp;lt;&amp;lt;executionEnvironment&amp;gt;&amp;gt;&lt;br&gt;Client-Side Sandbox&lt;br&gt;Runs JS Engines" style="html=1;shape=cube;size=15;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="80" width="200" height="140" as="geometry" />
         </mxCell>
         
-        <!-- Artifacts inside Browser Sandbox -->
-        <mxCell id="art_html" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;index.html Dashboard&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="20" y="90" width="180" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="art_css" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;style.css Layout theme&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="20" y="150" width="180" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="art_js" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;app.js Controller&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="20" y="210" width="180" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="art_engines" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Scanning Engines (6x)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="20" y="270" width="180" height="46" as="geometry" />
+        <!-- Node 3: LocalStorage -->
+        <mxCell id="n_localstorage" value="LocalStorage&lt;br&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Session Cache&lt;br&gt;Saves Run Settings" style="html=1;shape=cube;size=15;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="360" y="320" width="200" height="140" as="geometry" />
         </mxCell>
         
-        <mxCell id="art_ds" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Training Dataset&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="220" y="90" width="180" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="art_api" value="&amp;lt;&amp;lt;API&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;FileReader API (native)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="220" y="150" width="180" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="art_dom" value="&amp;lt;&amp;lt;API&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;DOM / SVG Renderer&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="220" y="210" width="180" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="art_cache" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;LocalStorage Cache&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_browser">
-          <mxGeometry x="220" y="270" width="180" height="46" as="geometry" />
+        <!-- Node 4: Static Web Server -->
+        <mxCell id="n_server" value="Static Web Server&lt;br&gt;&amp;amp; CDN Servers&lt;br&gt;&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;Serves HTML/CSS/JS&lt;br&gt;Serves PDF/Mammoth/MathJax" style="html=1;shape=cube;size=15;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="250" height="170" as="geometry" />
         </mxCell>
         
-        <!-- Privacy Note -->
-        <mxCell id="art_note" value="No remote server required.&lt;br&gt;Data remains in memory.&lt;br&gt;Zero database storage.&lt;br&gt;Fully offline execution." style="shape=note;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=9;" vertex="1" parent="n_browser">
-          <mxGeometry x="420" y="90" width="180" height="226" as="geometry" />
-        </mxCell>
-
-        <!-- Node 3: CDN Server -->
-        <mxCell id="n_cdn" value="&amp;lt;&amp;lt;device&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;CDN Servers&lt;/b&gt;" style="verticalAlign=top;align=left;spacingLeft=15;spacingTop=10;html=1;shape=cube;size=20;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=2;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="780" y="140" width="280" height="440" as="geometry" />
-        </mxCell>
-        <mxCell id="cdn_lib1" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;PDF.js Library&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_cdn">
-          <mxGeometry x="30" y="90" width="220" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="cdn_lib2" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Mammoth.js Library&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_cdn">
-          <mxGeometry x="30" y="150" width="220" height="46" as="geometry" />
-        </mxCell>
-        <mxCell id="cdn_lib3" value="&amp;lt;&amp;lt;artifact&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;MathJax Math Library&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontSize=10;fontStyle=1" vertex="1" parent="n_cdn">
-          <mxGeometry x="30" y="210" width="220" height="46" as="geometry" />
-        </mxCell>
-
-        <!-- Connection -->
-        <mxCell id="conn_load" value="HTTP / HTTPS&lt;br&gt;Load Libraries" style="endArrow=open;endFill=0;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="n_browser" target="n_cdn">
+        <!-- Connections -->
+        <!-- User -> Browser -->
+        <mxCell id="conn_user_browser" value="User Interaction" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1" source="n_user" target="n_browser">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Browser -> Server (Request) -->
+        <mxCell id="conn_browser_server" value="HTTP GET&lt;br&gt;(Request Code &amp;amp; Libs)" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;exitX=1;exitY=0.33;entryX=0;entryY=0.25;" edge="1" parent="1" source="n_browser" target="n_server">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Server -> Browser (Response) -->
+        <mxCell id="conn_server_browser" value="Returns HTML/JS/CSS" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=top;exitX=0;exitY=0.75;entryX=1;entryY=0.66;" edge="1" parent="1" source="n_server" target="n_browser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        
+        <!-- Browser -> LocalStorage (Cache) -->
+        <mxCell id="conn_browser_cache" value="Cache Results" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=right;verticalAlign=middle;exitX=0.33;exitY=1;entryX=0.33;entryY=0;" edge="1" parent="1" source="n_browser" target="n_localstorage">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-10" y="0" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- LocalStorage -> Browser (Retrieve) -->
+        <mxCell id="conn_cache_browser" value="Retrieve Data" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=left;verticalAlign=middle;exitX=0.66;exitY=0;entryX=0.66;entryY=1;" edge="1" parent="1" source="n_localstorage" target="n_browser">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="10" y="0" as="offset" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
