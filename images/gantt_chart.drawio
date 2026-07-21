@@ -1,0 +1,134 @@
+<mxfile host="Electron" modified="2026-07-21" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="diag" name="Gantt Chart">
+    <mxGraphModel dx="1200" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="860" pageHeight="380" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+<mxCell id="ga_title" value="Project Schedule — Gantt Chart" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="10" width="820" height="40" as="geometry" />
+</mxCell>
+<mxCell id="ga_h_task" value="Phase" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="60" width="200" height="30" as="geometry" />
+</mxCell>
+<mxCell id="ga_h_start" value="Start" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="60" width="80" height="30" as="geometry" />
+</mxCell>
+<mxCell id="ga_h_end" value="End" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="60" width="80" height="30" as="geometry" />
+</mxCell>
+<mxCell id="ga_h_dur" value="Days" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="60" width="50" height="30" as="geometry" />
+</mxCell>
+<mxCell id="ga_h_bar" value="Timeline (Mar 20 – Jun 10 2026)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="430" y="60" width="410" height="30" as="geometry" />
+</mxCell>
+<mxCell id="ga_p0" value="Brainstorming" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="95" width="200" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_s0" value="Mar 20" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="95" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_e0" value="Mar 27" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="95" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_d0" value="7" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="95" width="50" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_b0" value="" style="rounded=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1" >
+  <mxGeometry x="430" y="101" width="34" height="24" as="geometry" />
+</mxCell>
+<mxCell id="ga_p1" value="Requirements" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="131" width="200" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_s1" value="Mar 28" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="131" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_e1" value="Apr 06" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="131" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_d1" value="9" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="131" width="50" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_b1" value="" style="rounded=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1" >
+  <mxGeometry x="464" y="137" width="44" height="24" as="geometry" />
+</mxCell>
+<mxCell id="ga_p2" value="System Design" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="167" width="200" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_s2" value="Apr 07" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="167" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_e2" value="Apr 18" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="167" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_d2" value="12" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="167" width="50" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_b2" value="" style="rounded=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1" >
+  <mxGeometry x="509" y="173" width="59" height="24" as="geometry" />
+</mxCell>
+<mxCell id="ga_p3" value="Development" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="203" width="200" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_s3" value="Apr 19" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="203" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_e3" value="May 17" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="203" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_d3" value="28" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="203" width="50" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_b3" value="" style="rounded=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1" >
+  <mxGeometry x="568" y="209" width="138" height="24" as="geometry" />
+</mxCell>
+<mxCell id="ga_p4" value="Testing" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="239" width="200" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_s4" value="May 18" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="239" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_e4" value="May 20" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="239" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_d4" value="3" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="239" width="50" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_b4" value="" style="rounded=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1" >
+  <mxGeometry x="706" y="245" width="14" height="24" as="geometry" />
+</mxCell>
+<mxCell id="ga_p5" value="Deployment" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="275" width="200" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_s5" value="May 21" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="275" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_e5" value="May 26" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="275" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_d5" value="6" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="275" width="50" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_b5" value="" style="rounded=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1" >
+  <mxGeometry x="721" y="281" width="29" height="24" as="geometry" />
+</mxCell>
+<mxCell id="ga_p6" value="Documentation" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="20" y="311" width="200" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_s6" value="May 27" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="220" y="311" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_e6" value="Jun 10" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="300" y="311" width="80" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_d6" value="15" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="1" >
+  <mxGeometry x="380" y="311" width="50" height="36" as="geometry" />
+</mxCell>
+<mxCell id="ga_b6" value="" style="rounded=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1" >
+  <mxGeometry x="750" y="317" width="74" height="24" as="geometry" />
+</mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

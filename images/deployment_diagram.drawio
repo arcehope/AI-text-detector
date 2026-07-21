@@ -1,47 +1,56 @@
-<mxfile host="Electron" modified="2026-07-20" agent="Antigravity" version="21.0.0" type="device">
-  <diagram id="deployment" name="Deployment Diagram">
-    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="Electron" modified="2026-07-21" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="diag" name="Deployment Diagram">
+    <mxGraphModel dx="1200" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="680" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        
-        <!-- Deployment Nodes -->
-        <mxCell id="d_pc" value="User Client Machine" style="swimlane;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="60" y="40" width="460" height="340" as="geometry" />
-        </mxCell>
-        <mxCell id="d_browser" value="Web Browser Environment&lt;br&gt;(Chrome / Firefox / Edge / Safari)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="d_pc">
-          <mxGeometry x="40" y="60" width="380" height="240" as="geometry" />
-        </mxCell>
-        
-        <!-- In-browser modules -->
-        <mxCell id="dm1" value="HTML5 UI / CSS Styles" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.2;" vertex="1" parent="d_browser">
-          <mxGeometry x="40" y="50" width="130" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="dm2" value="FileReader API" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.2;" vertex="1" parent="d_browser">
-          <mxGeometry x="210" y="50" width="130" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="dm3" value="JS Execution Engine&lt;br&gt;(6 Algos + Grammar)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.2;fontStyle=1" vertex="1" parent="d_browser">
-          <mxGeometry x="40" y="140" width="150" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="dm4" value="Reference Centroids&lt;br&gt;In-Memory Array" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.2;" vertex="1" parent="d_browser">
-          <mxGeometry x="230" y="130" width="100" height="80" as="geometry" />
-        </mxCell>
-
-        <!-- External CDN Server -->
-        <mxCell id="d_cdn" value="External Web CDNs&lt;br&gt;(Cloudflare / jsDelivr)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;fontStyle=1" vertex="1" parent="1">
-          <mxGeometry x="600" y="110" width="180" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="d_mathjax" value="MathJax.js v3" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.2;" vertex="1" parent="d_cdn">
-          <mxGeometry x="25" y="50" width="130" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="d_pdfjs" value="PDF.js / Mammoth.js" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.2;" vertex="1" parent="d_cdn">
-          <mxGeometry x="25" y="110" width="130" height="40" as="geometry" />
-        </mxCell>
-
-        <!-- Communication connection -->
-        <mxCell id="de1" value="HTTPS Connection (on page load only)" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;strokeColor=#78716c;strokeWidth=1.2;dashed=1;fontColor=#78716c;fontSize=9;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1" source="d_browser" target="d_cdn">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
+<mxCell id="de_dev" value="Developer Machine / User Browser" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="40" y="40" width="800" height="580" as="geometry" />
+</mxCell>
+<mxCell id="de_browser" value="Browser Sandbox (Client-Side Only)" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="de_dev" >
+  <mxGeometry x="60" y="80" width="760" height="380" as="geometry" />
+</mxCell>
+<mxCell id="de_html" value="index.html Dashboard" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="80" y="80" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_css" value="style.css Theme" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="80" y="150" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_app" value="app.js Controller" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="80" y="220" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_engines" value="Analysis Engines (6x)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="80" y="290" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_local_ds" value="Training Dataset
+(in-memory)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="290" y="80" width="180" height="60" as="geometry" />
+</mxCell>
+<mxCell id="de_pdfjs" value="PDF.js (CDN)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="290" y="170" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_mamm" value="Mammoth.js (CDN)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="290" y="230" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_mj" value="MathJax (CDN)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="290" y="290" width="180" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_fileapi" value="FileReader API
+(native)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="500" y="80" width="160" height="50" as="geometry" />
+</mxCell>
+<mxCell id="de_dom" value="DOM / SVG Renderer" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_browser" >
+  <mxGeometry x="500" y="160" width="160" height="40" as="geometry" />
+</mxCell>
+<mxCell id="de_cdn" value="CDN Servers
+(read-only, load-once)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;" vertex="1" parent="de_dev" >
+  <mxGeometry x="40" y="500" width="180" height="80" as="geometry" />
+</mxCell>
+<mxCell id="de_none" value="No Backend Server
+No Database
+No Data Transmitted" style="shape=note;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontSize=10;" vertex="1" parent="de_dev" >
+  <mxGeometry x="580" y="440" width="200" height="80" as="geometry" />
+</mxCell>
 
       </root>
     </mxGraphModel>

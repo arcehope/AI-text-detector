@@ -1,52 +1,55 @@
-<mxfile host="Electron" modified="2026-07-20" agent="Antigravity" version="21.0.0" type="device">
-  <diagram id="sequence" name="Sequence Diagram">
-    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+<mxfile host="Electron" modified="2026-07-21" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="diag" name="Sequence Diagram">
+    <mxGraphModel dx="1200" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="680" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        
-        <!-- Lifelines -->
-        <mxCell id="s_user" value="User" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;" vertex="1" parent="1">
-          <mxGeometry x="60" y="40" width="100" height="480" as="geometry" />
-        </mxCell>
-        <mxCell id="s_ui" value="HTML5 UI" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;" vertex="1" parent="1">
-          <mxGeometry x="220" y="40" width="100" height="480" as="geometry" />
-        </mxCell>
-        <mxCell id="s_controller" value="app.js" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;" vertex="1" parent="1">
-          <mxGeometry x="380" y="40" width="100" height="480" as="geometry" />
-        </mxCell>
-        <mxCell id="s_parser" value="FileParser" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;" vertex="1" parent="1">
-          <mxGeometry x="540" y="40" width="100" height="480" as="geometry" />
-        </mxCell>
-        <mxCell id="s_engines" value="Engines (x7)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};fillColor=#faf9f6;strokeColor=#e7e5e4;fontColor=#1c1917;strokeWidth=1.5;" vertex="1" parent="1">
-          <mxGeometry x="700" y="40" width="100" height="480" as="geometry" />
-        </mxCell>
-
-        <!-- Messages -->
-        <mxCell id="sm1" value="Upload document / paste text" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.15;entryX=0.5;entryY=0.15;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_user" target="s_ui">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="sm2" value="runAnalysis(text)" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.22;entryX=0.5;entryY=0.22;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_ui" target="s_controller">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="sm3" value="extractText(file)" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.30;entryX=0.5;entryY=0.30;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_controller" target="s_parser">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="sm4" value="Return text string" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.38;entryX=0.5;entryY=0.38;strokeColor=#1c1917;strokeWidth=1.5;dashed=1;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_parser" target="s_controller">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="sm5" value="Execute 7 modules concurrently" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.48;entryX=0.5;entryY=0.48;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_controller" target="s_engines">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="sm6" value="Return scores and metrics" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.60;entryX=0.5;entryY=0.60;strokeColor=#1c1917;strokeWidth=1.5;dashed=1;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_engines" target="s_controller">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="sm7" value="Calculate calibrated weighted ensemble" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.72;entryX=0.5;entryY=0.72;edgeStyle=orthogonalEdgeStyle;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_controller" target="s_controller">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="sm8" value="Update dashboard charts, heatmap, resolution values" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0.85;entryX=0.5;entryY=0.85;strokeColor=#1c1917;strokeWidth=1.5;fontColor=#1c1917;fontSize=10;" edge="1" parent="1" source="s_controller" target="s_ui">
-          <mxGeometry width="50" height="50" relative="1" as="geometry" />
-        </mxCell>
+<mxCell id="sq_user" value="User" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="80" y="20" width="140" height="36" as="geometry" />
+</mxCell>
+<mxCell id="sq_user_line" value="" style="endArrow=none;html=1;dashed=1;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1" >
+  <mxGeometry x="150" y="56" width="2" height="580" as="geometry" />
+</mxCell>
+<mxCell id="sq_ui" value="Dashboard (UI)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="240" y="20" width="140" height="36" as="geometry" />
+</mxCell>
+<mxCell id="sq_ui_line" value="" style="endArrow=none;html=1;dashed=1;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1" >
+  <mxGeometry x="310" y="56" width="2" height="580" as="geometry" />
+</mxCell>
+<mxCell id="sq_ctrl" value="app.js Controller" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="420" y="20" width="140" height="36" as="geometry" />
+</mxCell>
+<mxCell id="sq_ctrl_line" value="" style="endArrow=none;html=1;dashed=1;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1" >
+  <mxGeometry x="490" y="56" width="2" height="580" as="geometry" />
+</mxCell>
+<mxCell id="sq_parser" value="FileParser" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="600" y="20" width="140" height="36" as="geometry" />
+</mxCell>
+<mxCell id="sq_parser_line" value="" style="endArrow=none;html=1;dashed=1;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1" >
+  <mxGeometry x="670" y="56" width="2" height="580" as="geometry" />
+</mxCell>
+<mxCell id="sq_engines" value="Analysis Engines" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="760" y="20" width="140" height="36" as="geometry" />
+</mxCell>
+<mxCell id="sq_engines_line" value="" style="endArrow=none;html=1;dashed=1;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1" >
+  <mxGeometry x="830" y="56" width="2" height="580" as="geometry" />
+</mxCell>
+<mxCell id="sq_chart" value="ChartRenderer" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e0e0e0;strokeColor=#000000;fontColor=#000000;strokeWidth=1.5;fontStyle=1;" vertex="1" parent="1" >
+  <mxGeometry x="920" y="20" width="140" height="36" as="geometry" />
+</mxCell>
+<mxCell id="sq_chart_line" value="" style="endArrow=none;html=1;dashed=1;strokeColor=#000000;strokeWidth=1;" vertex="1" parent="1" >
+  <mxGeometry x="990" y="56" width="2" height="580" as="geometry" />
+</mxCell>
+<mxCell id="m1" value="Paste text / Drop file" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="150" y="96" width="160" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m2" value="onInput(text)" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="310" y="136" width="180" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m3" value="parse(file)" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="490" y="176" width="180" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m4" value="return plainText" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="670" y="216" width="180" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m5" value="analyze(text) — 6 engines" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="490" y="256" width="340" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m6" value="return scores[]" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="830" y="316" width="340" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m7" value="computeEnsemble()" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="490" y="356" width="0" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m8" value="render(scores)" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="490" y="396" width="500" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m9" value="update DOM charts" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="990" y="436" width="680" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
+<mxCell id="m10" value="Display dashboard" style="endArrow=block;endFill=1;html=1;strokeColor=#000000;strokeWidth=1.5;align=center;verticalAlign=bottom;" edge="1" parent="1"><mxGeometry x="310" y="476" width="160" height="1" relative="0" as="geometry"><Array as="points"/></mxGeometry></mxCell>
 
       </root>
     </mxGraphModel>
