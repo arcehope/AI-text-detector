@@ -191,40 +191,38 @@ class PerplexityAnalyzer {
         // Analyze sentences individually for the heatmap overlay
         const sentenceDetails = sentences.map((s, idx) => {
             const sWords = this.getWords(s);
-            const sTtr = this.calculateTTR(sWords);
+            if (sWords.length === 0) {
+                return { index: idx, text: s, wordCount: 0, aiScore: 10, localAiScore: 10 };
+            }
             
-            // Sentence-level predictability
+            // Sentence-level predictability & vocabulary
             let sAiKeywords = 0;
             sWords.forEach(w => {
                 if (this.aiFavoredWords.has(w)) sAiKeywords++;
             });
 
-            // Predictability metric based on transitions and AI vocabulary
-            let localEntropyPenalty = 0;
+            let bigramMatches = 0;
             if (sWords.length > 3) {
-                let matchCount = 0;
                 for (let i = 0; i < sWords.length - 1; i++) {
                     if (this.commonBigrams.has(`${sWords[i]} ${sWords[i+1]}`)) {
-                        matchCount++;
+                        bigramMatches++;
                     }
                 }
-                localEntropyPenalty = (matchCount / (sWords.length - 1)) * 40;
             }
-            localEntropyPenalty += (sAiKeywords / Math.max(1, sWords.length)) * 120;
-            
-            // Sentence score: Higher = more likely AI (0 to 100)
-            // AI sentences tend to be medium length, high syntax uniformity, low burstiness (uniform lengths)
-            const lengthDiffFromAverage = Math.abs(sWords.length - 15); // 15 words is typical AI average
-            const lengthPenalty = Math.max(0, 20 - lengthDiffFromAverage); // Penalty if it matches the average length too closely
-            
-            let sentenceAiScore = 50 - (sWords.length * 0.5) + localEntropyPenalty + lengthPenalty;
-            sentenceAiScore = Math.min(100, Math.max(0, sentenceAiScore));
+
+            const bigramRatio = sWords.length > 3 ? (bigramMatches / (sWords.length - 1)) : 0;
+            const aiKeyRatio = sAiKeywords / sWords.length;
+
+            // Compute local AI affinity score (0% = purely human, 100% = heavily AI)
+            let localAiScore = (bigramRatio * 60) + (aiKeyRatio * 250);
+            localAiScore = Math.min(100, Math.max(0, localAiScore));
 
             return {
                 index: idx,
                 text: s,
                 wordCount: sWords.length,
-                aiScore: sentenceAiScore
+                aiScore: localAiScore,
+                localAiScore: localAiScore
             };
         });
 

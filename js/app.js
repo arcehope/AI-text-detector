@@ -317,7 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
             chartEngine.renderScatterPlot('scatter-chart-container', result2, featureExtraction.vector);
             chartEngine.renderRadarChart('radar-chart-container', result3.vector);
 
-            renderHighlighting(result1.sentenceDetails);
+            renderHighlighting(result1.sentenceDetails, finalPercentage);
             renderMathFormulaBreakdown(result1, result2, featureExtraction, result3, grammarResult, lrScore, trigramResult, posResult, weightedScore, finalPercentage);
 
             emptyResultsState.style.display = 'none';
@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function renderHighlighting(sentenceDetails) {
+    function renderHighlighting(sentenceDetails, docAiScore = 50) {
         highlightedTextPanel.innerHTML = '';
         sentenceMetricsCard.style.display = 'none';
 
@@ -378,9 +378,14 @@ document.addEventListener('DOMContentLoaded', () => {
             span.textContent = detail.text + ' ';
             span.className = 'highlighted-sentence';
             
-            if (detail.aiScore > 70) {
+            // Anchor sentence score with overall document AI probability
+            const rawLocal = (detail.localAiScore !== undefined) ? detail.localAiScore : detail.aiScore;
+            let score = (docAiScore * 0.70) + (rawLocal * 0.30);
+            score = Math.min(100, Math.max(0, score));
+            
+            if (score > 70) {
                 span.classList.add('ai-heavy');
-            } else if (detail.aiScore > 40) {
+            } else if (score > 40) {
                 span.classList.add('ai-medium');
             } else {
                 span.classList.add('ai-light');
@@ -392,11 +397,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 sentenceMetricsCard.style.display = 'block';
                 document.getElementById('sel-sentence-text').textContent = `"${detail.text}"`;
                 document.getElementById('sel-word-count').textContent = detail.wordCount;
-                document.getElementById('sel-ai-score').textContent = `${detail.aiScore.toFixed(0)}%`;
+                document.getElementById('sel-ai-score').textContent = `${score.toFixed(0)}%`;
                 
                 const indicator = document.getElementById('sel-classification');
-                indicator.textContent = detail.aiScore > 70 ? 'AI Generated' : (detail.aiScore > 40 ? 'Mixed Signature' : 'Human Written');
-                indicator.className = 'indicator ' + (detail.aiScore > 70 ? 'red' : (detail.aiScore > 40 ? 'orange' : 'green'));
+                indicator.textContent = score > 70 ? 'AI Generated' : (score > 40 ? 'Mixed Signature' : 'Human Written');
+                indicator.className = 'indicator ' + (score > 70 ? 'red' : (score > 40 ? 'orange' : 'green'));
             });
 
             highlightedTextPanel.appendChild(span);
