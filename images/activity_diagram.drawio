@@ -1,0 +1,162 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Activity Diagram - AI Text Detector">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="1400">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Initial Node -->
+        <mxCell id="start" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="385" y="40" width="30" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 1: Initialize -->
+        <mxCell id="act_init" value="1. Initialize 9 NLP Engines &amp; Utils&#10;(Perplexity, KNN, LR, POS, Grammar, etc.)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="275" y="100" width="250" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 2: Await Input -->
+        <mxCell id="act_input" value="2. Await User Input&#10;(Type Text / Drag &amp; Drop / Sample Click)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="275" y="180" width="250" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Decision 1: Input Type -->
+        <mxCell id="dec_input" value="Input Type?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="260" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 3: File Parser -->
+        <mxCell id="act_file" value="FileParser.extractText(file)&#10;(Extract TXT / DOCX Content)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="120" y="265" width="180" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 4: Check Word Count -->
+        <mxCell id="act_check" value="Run Perplexity.analyze()&#10;&amp; Count Words" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="360" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Decision 2: Word Count >= 10? -->
+        <mxCell id="dec_wc" value="Words &gt;= 10?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="440" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Warning Activity -->
+        <mxCell id="act_warn" value="Display Insufficient Text Warning&#10;(&quot;Need 10+ words&quot;)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcdcd;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="110" y="445" width="190" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 5: Extract Vector -->
+        <mxCell id="act_vec" value="Extract Feature Vector&#10;(KNNClassifier.extractFeatures)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="530" width="200" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Fork Bar -->
+        <mxCell id="fork1" value="" style="line;strokeWidth=6;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="100" y="610" width="600" height="10" as="geometry" />
+        </mxCell>
+
+        <!-- Parallel Classifiers -->
+        <mxCell id="c_lr" value="Logistic Regression&#10;(25% Weight)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="100" y="650" width="130" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_knn" value="KNN Classifier&#10;(20% Weight)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="250" y="650" width="130" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_tri" value="Trigram Frequency&#10;(25% Weight)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="400" y="650" width="130" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_pos" value="POS Ratios&#10;(15% Weight)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="550" y="650" width="130" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Join Bar -->
+        <mxCell id="join1" value="" style="line;strokeWidth=6;html=1;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="100" y="730" width="600" height="10" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 6: Calculate Score -->
+        <mxCell id="act_calc" value="Compute Weighted Score &amp; Apply&#10;Grammar Calibration (+15% Perfect Boost)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="770" width="280" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Decision 3: Verdict Threshold -->
+        <mxCell id="dec_verdict" value="Score Range?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="850" width="120" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="v_ai" value="Set Verdict: AI Generated&#10;(finalPercentage &gt; 60%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="100" y="940" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="v_mix" value="Set Verdict: Mixed Content&#10;(35% &lt; Score &lt;= 60%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="315" y="940" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <mxCell id="v_human" value="Set Verdict: Human Written&#10;(finalPercentage &lt;= 35%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="530" y="940" width="170" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Activity 7: Render Dashboard -->
+        <mxCell id="act_render" value="Render SVG Gauges, Sentence Highlights,&#10;&amp; Stat Cards" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="265" y="1020" width="270" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Final Node -->
+        <mxCell id="end" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="385" y="1100" width="30" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="end_inner" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="390" y="1105" width="20" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="end_center" value="" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;fillColor=#000000;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="395" y="1110" width="10" height="10" as="geometry" />
+        </mxCell>
+
+        <!-- Connectors -->
+        <mxCell id="c1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="start" target="act_init"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="act_init" target="act_input"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="act_input" target="dec_input"><mxGeometry relative="1" as="geometry" /></mxCell>
+        
+        <mxCell id="c_file" value="File Drop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_input" target="act_file"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_text" value="Direct Text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_input" target="act_check"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_file_done" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_file" target="act_check"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="210" y="385" /></Array></mxGeometry></mxCell>
+
+        <mxCell id="c4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="act_check" target="dec_wc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_no" value="No (&lt; 10)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_wc" target="act_warn"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_warn_back" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="act_warn" target="act_input"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="70" y="470" /><mxPoint x="70" y="205" /></Array></mxGeometry></mxCell>
+
+        <mxCell id="c_yes" value="Yes (&gt;= 10)" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_wc" target="act_vec"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c_fork" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="act_vec" target="fork1"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <!-- Fork connections -->
+        <mxCell id="cf1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="fork1" target="c_lr"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="165" y="615" /></Array></mxGeometry></mxCell>
+        <mxCell id="cf2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="fork1" target="c_knn"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="315" y="615" /></Array></mxGeometry></mxCell>
+        <mxCell id="cf3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="fork1" target="c_tri"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="465" y="615" /></Array></mxGeometry></mxCell>
+        <mxCell id="cf4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="fork1" target="c_pos"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="615" y="615" /></Array></mxGeometry></mxCell>
+
+        <!-- Join connections -->
+        <mxCell id="cj1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="c_lr" target="join1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="165" y="735" /></Array></mxGeometry></mxCell>
+        <mxCell id="cj2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="c_knn" target="join1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="315" y="735" /></Array></mxGeometry></mxCell>
+        <mxCell id="cj3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="c_tri" target="join1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="465" y="735" /></Array></mxGeometry></mxCell>
+        <mxCell id="cj4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="c_pos" target="join1"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="615" y="735" /></Array></mxGeometry></mxCell>
+
+        <mxCell id="c_join" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="join1" target="act_calc"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="c5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="act_calc" target="dec_verdict"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="cv1" value="&gt; 60%" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_verdict" target="v_ai"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cv2" value="35% - 60%" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_verdict" target="v_mix"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cv3" value="&lt;= 35%" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="dec_verdict" target="v_human"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="cr1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="v_ai" target="act_render"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cr2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="v_mix" target="act_render"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="cr3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="v_human" target="act_render"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="c_end" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" edge="1" parent="1" source="act_render" target="end"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
