@@ -58,7 +58,7 @@ class ChartRenderer {
         }
 
         container.innerHTML = `
-            <svg width="100%" height="100%" viewBox="0 0 ${size} ${size}" class="gauge-svg">
+            <svg width="100%" height="100%" viewBox="0 0 ${size} ${size}" class="gauge-svg" translate="no" lang="en-US">
                 ${this.svgGlowFilter}
                 <!-- Background track -->
                 <circle cx="${center}" cy="${center}" r="${radius}"
@@ -87,7 +87,7 @@ class ChartRenderer {
                 <text x="${center}" y="${center + 25}" text-anchor="middle" fill="var(--text-main)" font-family="'Outfit', sans-serif" font-size="44" font-weight="800">${score.toFixed(0)}%</text>
                 
                 <!-- Status pill text -->
-                <text x="${center}" y="${center + 58}" text-anchor="middle" fill="${glowColor}" font-family="'Outfit', sans-serif" font-size="10" font-weight="700" letter-spacing="1.5" >${statusText}</text>
+                <text x="${center}" y="${center + 58}" text-anchor="middle" fill="${glowColor}" font-family="'Outfit', sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">${statusText}</text>
             </svg>
         `;
     }

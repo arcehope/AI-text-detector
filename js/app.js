@@ -5,6 +5,15 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Helper to force English ASCII digits 0-9 and prevent browser/system locale translation to Nepali
+    function formatEngNum(num, decimals = 0) {
+        if (num === null || num === undefined || isNaN(num)) return '0';
+        let str = (typeof num === 'number') ? num.toFixed(decimals) : String(num);
+        const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+        nepaliDigits.forEach((d, i) => { str = str.replaceAll(d, String(i)); });
+        return str;
+    }
+
     // ==========================================
     // 1. INITIALIZE ENGINES & UTILITIES
     // ==========================================
@@ -269,47 +278,47 @@ document.addEventListener('DOMContentLoaded', () => {
             const breakdownContainer = document.getElementById('ensemble-breakdown-container');
             if (breakdownContainer) {
                 breakdownContainer.innerHTML = `
-                    <div class="ensemble-item">
+                    <div class="ensemble-item" translate="no" lang="en-US">
                         <span class="ensemble-name">Logistic Regression (25% wt)</span>
                         <div class="ensemble-bar-container">
-                            <div class="ensemble-bar pink" style="width: ${lrScore.toFixed(0)}%"></div>
+                            <div class="ensemble-bar pink" style="width: ${formatEngNum(lrScore, 0)}%"></div>
                         </div>
-                        <span class="ensemble-val">${lrScore.toFixed(0)}%</span>
+                        <span class="ensemble-val" translate="no" lang="en-US">${formatEngNum(lrScore, 0)}%</span>
                     </div>
-                    <div class="ensemble-item">
+                    <div class="ensemble-item" translate="no" lang="en-US">
                         <span class="ensemble-name">KNN Classifier (20% wt)</span>
                         <div class="ensemble-bar-container">
-                            <div class="ensemble-bar purple" style="width: ${knnScore.toFixed(0)}%"></div>
+                            <div class="ensemble-bar purple" style="width: ${formatEngNum(knnScore, 0)}%"></div>
                         </div>
-                        <span class="ensemble-val">${knnScore.toFixed(0)}%</span>
+                        <span class="ensemble-val" translate="no" lang="en-US">${formatEngNum(knnScore, 0)}%</span>
                     </div>
-                    <div class="ensemble-item">
+                    <div class="ensemble-item" translate="no" lang="en-US">
                         <span class="ensemble-name">Character Trigram Sim (25% wt)</span>
                         <div class="ensemble-bar-container">
-                            <div class="ensemble-bar cyan" style="width: ${trigramResult.score.toFixed(0)}%"></div>
+                            <div class="ensemble-bar cyan" style="width: ${formatEngNum(trigramResult.score, 0)}%"></div>
                         </div>
-                        <span class="ensemble-val">${trigramResult.score.toFixed(0)}%</span>
+                        <span class="ensemble-val" translate="no" lang="en-US">${formatEngNum(trigramResult.score, 0)}%</span>
                     </div>
-                    <div class="ensemble-item">
+                    <div class="ensemble-item" translate="no" lang="en-US">
                         <span class="ensemble-name">POS Syntax Ratios (15% wt)</span>
                         <div class="ensemble-bar-container">
-                            <div class="ensemble-bar pink" style="width: ${posResult.score.toFixed(0)}%"></div>
+                            <div class="ensemble-bar pink" style="width: ${formatEngNum(posResult.score, 0)}%"></div>
                         </div>
-                        <span class="ensemble-val">${posResult.score.toFixed(0)}%</span>
+                        <span class="ensemble-val" translate="no" lang="en-US">${formatEngNum(posResult.score, 0)}%</span>
                     </div>
-                    <div class="ensemble-item">
+                    <div class="ensemble-item" translate="no" lang="en-US">
                         <span class="ensemble-name">Cosine Style Sim (10% wt)</span>
                         <div class="ensemble-bar-container">
-                            <div class="ensemble-bar purple" style="width: ${result3.score.toFixed(0)}%"></div>
+                            <div class="ensemble-bar purple" style="width: ${formatEngNum(result3.score, 0)}%"></div>
                         </div>
-                        <span class="ensemble-val">${result3.score.toFixed(0)}%</span>
+                        <span class="ensemble-val" translate="no" lang="en-US">${formatEngNum(result3.score, 0)}%</span>
                     </div>
-                    <div class="ensemble-item">
+                    <div class="ensemble-item" translate="no" lang="en-US">
                         <span class="ensemble-name">Statistical Perplexity (5% wt)</span>
                         <div class="ensemble-bar-container">
-                            <div class="ensemble-bar cyan" style="width: ${result1.score.toFixed(0)}%"></div>
+                            <div class="ensemble-bar cyan" style="width: ${formatEngNum(result1.score, 0)}%"></div>
                         </div>
-                        <span class="ensemble-val">${result1.score.toFixed(0)}%</span>
+                        <span class="ensemble-val" translate="no" lang="en-US">${formatEngNum(result1.score, 0)}%</span>
                     </div>
                 `;
             }
