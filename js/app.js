@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Helper to force English ASCII digits 0-9 and prevent browser/system locale translation to Nepali
     function formatEngNum(num, decimals = 0) {
         if (num === null || num === undefined || isNaN(num)) return '0';
-        let str = (typeof num === 'number') ? num.toFixed(decimals) : String(num);
+        let val = (typeof num === 'number') ? num : parseFloat(num);
+        if (isNaN(val)) return '0';
+        let str = val.toFixed(decimals);
         const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
         nepaliDigits.forEach((d, i) => { str = str.replaceAll(d, String(i)); });
         return str;
@@ -229,12 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const finalPercentage = Math.min(100, Math.max(0, (weightedScore * grammarFactor) + perfectBoost));
 
             // Display
-            statWordCount.textContent = result1.wordCount;
-            statSentenceCount.textContent = result1.sentenceCount;
-            statBurstiness.textContent = result1.burstiness;
-            statTtr.textContent = result1.ttr.toFixed(3);
+            statWordCount.textContent = formatEngNum(result1.wordCount, 0);
+            statSentenceCount.textContent = formatEngNum(result1.sentenceCount, 0);
+            statBurstiness.textContent = formatEngNum(result1.burstiness, 2);
+            statTtr.textContent = formatEngNum(result1.ttr, 3);
             if (statGrammarScore) {
-                statGrammarScore.textContent = grammarResult.perfectionScore + '%';
+                statGrammarScore.textContent = formatEngNum(grammarResult.perfectionScore, 0) + '%';
             }
 
             // Update verdict banner
@@ -406,7 +408,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 sentenceMetricsCard.style.display = 'block';
                 document.getElementById('sel-sentence-text').textContent = `"${detail.text}"`;
                 document.getElementById('sel-word-count').textContent = detail.wordCount;
-                document.getElementById('sel-ai-score').textContent = `${score.toFixed(0)}%`;
+                document.getElementById('sel-ai-score').textContent = `${formatEngNum(score, 0)}%`;
                 
                 const indicator = document.getElementById('sel-classification');
                 indicator.textContent = score > 70 ? 'AI Generated' : (score > 40 ? 'Mixed Signature' : 'Human Written');
@@ -623,20 +625,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="formula-block">
                         <div class="formula-title">Calibrated AI Probability</div>
                         <div class="math-value-box">
-                            <div class="math-value pink" style="font-size: 28px;">${finalPercentage.toFixed(1)}%</div>
+                            <div class="math-value pink notranslate" translate="no" lang="en-US" style="font-size: 28px;">${formatEngNum(finalPercentage, 1)}%</div>
                             <div class="math-formula">\\[P_{\\text{final}} = \\min\\!\\left(100,\\; P_{\\text{ensemble}} \\times \\frac{\\text{Score}_{\\text{grammar}}}{100} + \\text{Boost}_{\\text{perfect}}\\right)\\]</div>
                         </div>
-                        <div class="formula-values" style="margin-top: 15px;">
-                            <strong>1. Logistic Regression (25% Weight):</strong> ${lrScore.toFixed(1)}% (Weighted: ${(lrScore * 0.25).toFixed(1)}%)<br>
-                            <strong>2. KNN Classifier (20% Weight):</strong> ${result2.score.toFixed(1)}% (Weighted: ${(result2.score * 0.20).toFixed(1)}%)<br>
-                            <strong>3. Character Trigrams (25% Weight):</strong> ${trigramResult.score.toFixed(1)}% (Weighted: ${(trigramResult.score * 0.25).toFixed(1)}%)<br>
-                            <strong>4. POS Syntax Ratios (15% Weight):</strong> ${posResult.score.toFixed(1)}% (Weighted: ${(posResult.score * 0.15).toFixed(1)}%)<br>
-                            <strong>5. Cosine Similarity (10% Weight):</strong> ${result3.score.toFixed(1)}% (Weighted: ${(result3.score * 0.10).toFixed(1)}%)<br>
-                            <strong>6. Perplexity Engine (5% Weight):</strong> ${result1.score.toFixed(1)}% (Weighted: ${(result1.score * 0.05).toFixed(1)}%)<br>
+                        <div class="formula-values notranslate" translate="no" lang="en-US" style="margin-top: 15px;">
+                            <strong>1. Logistic Regression (25% Weight):</strong> ${formatEngNum(lrScore, 1)}% (Weighted: ${formatEngNum(lrScore * 0.25, 1)}%)<br>
+                            <strong>2. KNN Classifier (20% Weight):</strong> ${formatEngNum(result2.score, 1)}% (Weighted: ${formatEngNum(result2.score * 0.20, 1)}%)<br>
+                            <strong>3. Character Trigrams (25% Weight):</strong> ${formatEngNum(trigramResult.score, 1)}% (Weighted: ${formatEngNum(trigramResult.score * 0.25, 1)}%)<br>
+                            <strong>4. POS Syntax Ratios (15% Weight):</strong> ${formatEngNum(posResult.score, 1)}% (Weighted: ${formatEngNum(posResult.score * 0.15, 1)}%)<br>
+                            <strong>5. Cosine Similarity (10% Weight):</strong> ${formatEngNum(result3.score, 1)}% (Weighted: ${formatEngNum(result3.score * 0.10, 1)}%)<br>
+                            <strong>6. Perplexity Engine (5% Weight):</strong> ${formatEngNum(result1.score, 1)}% (Weighted: ${formatEngNum(result1.score * 0.05, 1)}%)<br>
                             <div style="margin: 8px 0; border-top: 1px solid var(--border-color); padding-top: 8px;">
-                                <strong>Raw Ensemble Probability (Weighted Sum):</strong> ${weightedScore.toFixed(1)}%
+                                <strong>Raw Ensemble Probability (Weighted Sum):</strong> ${formatEngNum(weightedScore, 1)}%
                             </div>
-                            <strong>Grammar Perfection Discount:</strong> ${grammarResult.perfectionScore}% (Factor: ${(grammarResult.perfectionScore / 100).toFixed(3)})<br>
+                            <strong>Grammar Perfection Discount:</strong> ${formatEngNum(grammarResult.perfectionScore, 0)}% (Factor: ${formatEngNum(grammarResult.perfectionScore / 100, 3)})<br>
                             <strong>Perfect Grammar Boost (100% Score):</strong> ${grammarResult.perfectionScore === 100 ? '+15%' : '+0%'}
                         </div>
                     </div>

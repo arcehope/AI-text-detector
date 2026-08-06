@@ -7,6 +7,16 @@
  * 3. 5-Axis Stylometric Radar Chart (Input Vector vs AI/Human prototypes)
  */
 
+function formatEng(num, decimals = 0) {
+    if (num === null || num === undefined || isNaN(num)) return '0';
+    let val = (typeof num === 'number') ? num : parseFloat(num);
+    if (isNaN(val)) return '0';
+    let str = val.toFixed(decimals);
+    const nepaliDigits = ['०', '१', '२', '३', '४', '५', '६', '७', '८', '९'];
+    nepaliDigits.forEach((d, i) => { str = str.replaceAll(d, String(i)); });
+    return str;
+}
+
 class ChartRenderer {
     constructor() {
         this.svgGlowFilter = `
@@ -84,7 +94,7 @@ class ChartRenderer {
 
                 <!-- Text info in center -->
                 <text x="${center}" y="${center - 15}" text-anchor="middle" fill="var(--text-muted)" font-family="'Outfit', sans-serif" font-size="12" font-weight="600" letter-spacing="1">AI DETECTED</text>
-                <text x="${center}" y="${center + 25}" text-anchor="middle" fill="var(--text-main)" font-family="'Outfit', sans-serif" font-size="44" font-weight="800">${score.toFixed(0)}%</text>
+                <text x="${center}" y="${center + 25}" text-anchor="middle" class="notranslate" translate="no" lang="en-US" fill="var(--text-main)" font-family="'Outfit', sans-serif" font-size="44" font-weight="800">${formatEng(score, 0)}%</text>
                 
                 <!-- Status pill text -->
                 <text x="${center}" y="${center + 58}" text-anchor="middle" fill="${glowColor}" font-family="'Outfit', sans-serif" font-size="10" font-weight="700" letter-spacing="1.5">${statusText}</text>
