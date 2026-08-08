@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const editorArea = document.getElementById('editor-area');
     const analyzeBtn = document.getElementById('analyze-btn');
     const clearBtn = document.getElementById('clear-btn');
-    
+
     const progressContainer = document.getElementById('progress-container');
     const progressBar = document.getElementById('progress-bar');
     const emptyResultsState = document.getElementById('empty-results-state');
@@ -64,6 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
     tabTriggers.forEach(trigger => {
         trigger.addEventListener('click', () => {
             const targetTab = trigger.getAttribute('data-tab');
+            if (targetTab === 'tab-history') {
+                const currentUser = window.SentinelDB ? window.SentinelDB.getCurrentUser() : null;
+                if (!currentUser) {
+                    if (window.showAuthModal) {
+                        window.showAuthModal("Guests do not have access to history. Please log in or register an account to view saved records.", "login-form");
+                    }
+                    return;
+                }
+            }
             tabTriggers.forEach(t => t.classList.remove('active'));
             tabContents.forEach(c => c.classList.remove('active'));
             trigger.classList.add('active');
@@ -90,16 +99,16 @@ document.addEventListener('DOMContentLoaded', () => {
     editorArea.addEventListener('input', () => {
         const text = editorArea.value;
         updateEditorStats(text);
-        
+
         clearTimeout(typingTimer);
-        
+
         const trimmed = text.trim();
         const words = trimmed.split(/\s+/).filter(w => w.length > 0);
-        
+
         if (words.length >= 10) {
-            document.getElementById('char-word-count').innerHTML = 
+            document.getElementById('char-word-count').innerHTML =
                 `<span class="typing-indicator"><span class="dot-pulse"></span> Auto-analyzing when you pause...</span> | ${words.length} words`;
-            
+
             typingTimer = setTimeout(() => {
                 runSilentAnalysis(text);
             }, doneTypingInterval);
@@ -115,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Text file drag and drop
     dropzone.addEventListener('click', () => fileInput.click());
-    
+
     dropzone.addEventListener('dragover', (e) => {
         e.preventDefault();
         dropzone.classList.add('dragover');
@@ -196,7 +205,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sampleHumanBtn.addEventListener('click', () => {
-        const text = `I was drinking coffee early this morning, staring out at the rain hitting my window. We don't get weather like this often in June, and it felt sort of peaceful, honestly. It got me thinking about my old college days—how we would pack up our cheap laptops and hike to the campus diner when the library got too stuffy. I remember writing a whole essay on historical politics on a napkin because my laptop's battery died in minutes. It wasn't the best work, sure, but it had character. The diner didn't have Wi-Fi, either. We just sat there, shared a greasy basket of fries, and talked for hours. Nowadays, everything is so streamlined and connected, which is fine, but I sometimes miss the messy unpredictability of those late-night diner runs.`;
+        const text = `“This is most likely a customs classification issue. We believe that the majority of these imports are silver granules that have been classified under the Harmonised System (HS) code for silver powder,” Adarsh Diwe, a Mumbai-based consultant at Metals Focus who tracks South Asian bullion markets, told the Post over the phone.
+`;
         editorArea.value = text;
         updateEditorStats(text);
         runAnalysis(text);
@@ -214,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const result2 = knnClassifier.classify(featureExtraction.vector);
             const result3 = similarityEngine.analyze(text);
             const grammarResult = grammarEngine.analyze(text);
-            
+
             const lrScore = lrClassifier.predict(featureExtraction.vector) * 100;
             const trigramResult = trigramEngine.analyze(text);
             const posResult = posEngine.analyze(text);
@@ -239,6 +249,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 statGrammarScore.textContent = formatEngNum(grammarResult.perfectionScore, 0) + '%';
             }
 
+            // Determine verdict statement, icon, and class
+            let statement = '';
+            let iconName = '';
+            let className = '';
+
+            if (finalPercentage > 60) {
+                statement = 'Most probably written by AI';
+                iconName = 'shield-alert';
+                className = 'verdict-ai';
+            } else if (finalPercentage > 35) {
+                statement = 'Most probably written by a Mix of AI & Human';
+                iconName = 'help-circle';
+                className = 'verdict-mixed';
+            } else {
+                statement = 'Most probably written by a Human';
+                iconName = 'shield-check';
+                className = 'verdict-human';
+            }
+
             // Update verdict banner
             const verdictBanner = document.getElementById('verdict-banner');
             const verdictIcon = document.getElementById('verdict-icon');
@@ -246,24 +275,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (verdictBanner && verdictStatement) {
                 verdictBanner.className = 'verdict-banner';
-                let statement = '';
-                let iconName = '';
-                let className = '';
-                
-                if (finalPercentage > 60) {
-                    statement = 'Most probably written by AI';
-                    iconName = 'shield-alert';
-                    className = 'verdict-ai';
-                } else if (finalPercentage > 35) {
-                    statement = 'Most probably written by a Mix of AI & Human';
-                    iconName = 'help-circle';
-                    className = 'verdict-mixed';
-                } else {
-                    statement = 'Most probably written by a Human';
-                    iconName = 'shield-check';
-                    className = 'verdict-human';
-                }
-                
                 verdictStatement.textContent = statement;
                 verdictBanner.classList.add(className);
                 if (verdictIcon) {
@@ -275,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             chartEngine.renderGauge('gauge-chart-container', finalPercentage);
-            
+
             // Populate ensemble breakdown metrics dynamically
             const breakdownContainer = document.getElementById('ensemble-breakdown-container');
             if (breakdownContainer) {
@@ -333,11 +344,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
             emptyResultsState.style.display = 'none';
             activeResultsPanel.style.display = 'grid';
-            
+
             if (isSilent) {
                 const charCount = text.length;
-                document.getElementById('char-word-count').innerHTML = 
+                document.getElementById('char-word-count').innerHTML =
                     `<span style="color: var(--neon-cyan); font-weight: 500;">✓ Live Analysis Updated</span> | ${result1.wordCount} words | ${charCount} characters`;
+            } else if (window.SentinelDB) {
+                // Automatically save non-silent analysis to Database
+                window.SentinelDB.saveAnalysis({
+                    title: text.slice(0, 60).trim() + (text.length > 60 ? '...' : ''),
+                    text: text,
+                    aiScore: finalPercentage,
+                    verdict: statement,
+                    verdictClass: className,
+                    wordCount: result1.wordCount,
+                    sentenceCount: result1.sentenceCount,
+                    burstiness: result1.burstiness,
+                    ttr: result1.ttr,
+                    grammarScore: grammarResult.perfectionScore,
+                    lrScore: lrScore,
+                    knnScore: knnScore,
+                    trigramScore: trigramResult.score,
+                    posScore: posResult.score,
+                    similarityScore: result3.score,
+                    perplexityScore: result1.score
+                }).then(() => {
+                    if (window.refreshHistoryList) window.refreshHistoryList();
+                }).catch(err => console.warn("Failed to save analysis to DB:", err));
             }
             return true;
         } catch (err) {
@@ -350,12 +383,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Text Engine Runner (with progress loader UI)
     function runAnalysis(text) {
+        if (window.SentinelDB) {
+            const quota = window.SentinelDB.checkAnalysisAllowed();
+            if (!quota.allowed) {
+                if (window.showAuthModal) {
+                    window.showAuthModal(quota.message, 'register-form');
+                } else {
+                    alert(quota.message);
+                }
+                return false;
+            }
+        }
+
         showLoader(true, "Analyzing text stylometrics...");
         setTimeout(() => {
-            executeAnalysisCore(text, false);
+            const result = executeAnalysisCore(text, false);
             showLoader(false);
+            if (result !== false && window.SentinelDB) {
+                window.SentinelDB.recordAnalysisUsage();
+                updateQuotaUI();
+            }
         }, 800);
     }
+
+    function updateQuotaUI() {
+        const quotaBadge = document.getElementById('quota-status-badge');
+        if (!quotaBadge || !window.SentinelDB) return;
+        
+        const status = window.SentinelDB.checkAnalysisAllowed();
+        if (status.userType === 'guest') {
+            quotaBadge.style.display = 'inline-flex';
+            if (status.allowed) {
+                quotaBadge.textContent = "1 Free Daily Analysis (Guest)";
+                quotaBadge.className = "quota-badge quota-available";
+            } else {
+                quotaBadge.textContent = "Daily Limit Reached (0 Left)";
+                quotaBadge.className = "quota-badge quota-exhausted";
+            }
+        } else {
+            quotaBadge.style.display = 'none';
+        }
+    }
+    window.updateQuotaUI = updateQuotaUI;
 
     function showLoader(show, message = "") {
         if (show) {
@@ -388,12 +457,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const span = document.createElement('span');
             span.textContent = detail.text + ' ';
             span.className = 'highlighted-sentence';
-            
+
             // Anchor sentence score with overall document AI probability
             const rawLocal = (detail.localAiScore !== undefined) ? detail.localAiScore : detail.aiScore;
             let score = (docAiScore * 0.70) + (rawLocal * 0.30);
             score = Math.min(100, Math.max(0, score));
-            
+
             if (score > 70) {
                 span.classList.add('ai-heavy');
             } else if (score > 40) {
@@ -409,7 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('sel-sentence-text').textContent = `"${detail.text}"`;
                 document.getElementById('sel-word-count').textContent = detail.wordCount;
                 document.getElementById('sel-ai-score').textContent = `${formatEngNum(score, 0)}%`;
-                
+
                 const indicator = document.getElementById('sel-classification');
                 indicator.textContent = score > 70 ? 'AI Generated' : (score > 40 ? 'Mixed Signature' : 'Human Written');
                 indicator.className = 'indicator ' + (score > 70 ? 'red' : (score > 40 ? 'orange' : 'green'));
@@ -600,14 +669,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <div class="formula-values" style="margin-top: 15px;">
                             <strong>Detected Grammar/Typo Issues:</strong>
-                            ${grammarResult.issues.length === 0 ? 
-                                '<div style="color: var(--neon-cyan); margin-top: 5px;">✓ No issues detected (100% perfect grammar - AI characteristic).</div>' : 
-                                `<ul style="margin: 8px 0 0 20px; color: var(--text-muted); font-size: 11px;">
+                            ${grammarResult.issues.length === 0 ?
+                '<div style="color: var(--neon-cyan); margin-top: 5px;">✓ No issues detected (100% perfect grammar - AI characteristic).</div>' :
+                `<ul style="margin: 8px 0 0 20px; color: var(--text-muted); font-size: 11px;">
                                     ${grammarResult.issues.map(issue => `
                                         <li><strong>${issue.name}:</strong> ${issue.count} occurrence${issue.count > 1 ? 's' : ''} (${issue.description}). Found: <code>${issue.occurrences.join(', ')}</code></li>
                                     `).join('')}
                                 </ul>`
-                            }
+            }
                         </div>
                     </div>
                 </div>
@@ -650,4 +719,290 @@ document.addEventListener('DOMContentLoaded', () => {
             window.MathJax.typesetPromise([formulaContainer]).catch(err => console.warn('MathJax error:', err));
         }
     }
+
+    // ==========================================
+    // 3. ANALYSIS HISTORY DATABASE MANAGEMENT & DRAWER
+    // ==========================================
+    const historyListContainer = document.getElementById('history-list-container');
+    const historySearchInput = document.getElementById('history-search-input');
+    const historyVerdictFilter = document.getElementById('history-verdict-filter');
+    const histTotalCount = document.getElementById('hist-total-count');
+    const histAvgScore = document.getElementById('hist-avg-score');
+    const exportHistoryBtn = document.getElementById('export-history-btn');
+    const clearHistoryBtn = document.getElementById('clear-history-btn');
+
+    // Drawer Elements
+    const historyDrawer = document.getElementById('history-drawer');
+    const historyDrawerOverlay = document.getElementById('history-drawer-overlay');
+    const openHistoryDrawerBtn = document.getElementById('open-history-drawer-btn');
+    const openGuestHistoryBtn = document.getElementById('open-guest-history-btn');
+    const closeHistoryDrawerBtn = document.getElementById('close-history-drawer');
+    const drawerHistoryListContainer = document.getElementById('drawer-history-list-container');
+    const drawerSearchInput = document.getElementById('drawer-search-input');
+    const drawerVerdictFilter = document.getElementById('drawer-verdict-filter');
+    const drawerHistCount = document.getElementById('drawer-hist-count');
+    const drawerHistAvg = document.getElementById('drawer-hist-avg');
+    const drawerExportBtn = document.getElementById('drawer-export-btn');
+    const drawerClearBtn = document.getElementById('drawer-clear-btn');
+
+    let historyRecords = [];
+
+    function openDrawer() {
+        const currentUser = window.SentinelDB ? window.SentinelDB.getCurrentUser() : null;
+        if (!currentUser) {
+            if (window.showAuthModal) {
+                window.showAuthModal("Guests do not have access to history. Please log in or register an account to view saved records.", "login-form");
+            }
+            return;
+        }
+        if (historyDrawer && historyDrawerOverlay) {
+            historyDrawer.classList.add('active');
+            historyDrawerOverlay.classList.add('active');
+            refreshHistoryList();
+        }
+    }
+
+    function closeDrawer() {
+        if (historyDrawer && historyDrawerOverlay) {
+            historyDrawer.classList.remove('active');
+            historyDrawerOverlay.classList.remove('active');
+        }
+    }
+
+    if (openHistoryDrawerBtn) openHistoryDrawerBtn.addEventListener('click', openDrawer);
+    if (openGuestHistoryBtn) openGuestHistoryBtn.addEventListener('click', openDrawer);
+    if (closeHistoryDrawerBtn) closeHistoryDrawerBtn.addEventListener('click', closeDrawer);
+    if (historyDrawerOverlay) historyDrawerOverlay.addEventListener('click', closeDrawer);
+
+    async function refreshHistoryList() {
+        if (!window.SentinelDB) return;
+        try {
+            historyRecords = await window.SentinelDB.getHistory();
+            renderHistoryList();
+        } catch (err) {
+            console.error("Error fetching history:", err);
+        }
+    }
+
+    function renderHistoryList() {
+        const currentUser = window.SentinelDB ? window.SentinelDB.getCurrentUser() : null;
+        if (!currentUser) {
+            if (historyListContainer) {
+                historyListContainer.innerHTML = `
+                    <div class="empty-history-state">
+                        <i data-lucide="lock"></i>
+                        <h4>History Access Restricted</h4>
+                        <p>Guests do not have access to history. Please log in or register an account to view saved records.</p>
+                        <button class="btn btn-primary btn-sm" style="margin-top: 12px;" onclick="if(window.showAuthModal) window.showAuthModal('Log in or create an account to access history', 'login-form')">Log In / Sign Up</button>
+                    </div>
+                `;
+            }
+            if (drawerHistoryListContainer) {
+                drawerHistoryListContainer.innerHTML = `
+                    <div class="empty-history-state">
+                        <i data-lucide="lock"></i>
+                        <h4>History Locked</h4>
+                        <p>Guests do not have access to history. Please log in to view records.</p>
+                    </div>
+                `;
+            }
+            if (histTotalCount) histTotalCount.textContent = '0';
+            if (histAvgScore) histAvgScore.textContent = '0%';
+            if (drawerHistCount) drawerHistCount.textContent = '0';
+            if (drawerHistAvg) drawerHistAvg.textContent = '0%';
+            if (window.lucide) window.lucide.createIcons();
+            return;
+        }
+
+        // Tab Filtering
+        const searchQuery = historySearchInput ? historySearchInput.value.toLowerCase().trim() : '';
+        const verdictFilter = historyVerdictFilter ? historyVerdictFilter.value : 'all';
+
+        let filteredTab = historyRecords.filter(rec => {
+            const titleStr = String(rec.title || '').toLowerCase();
+            const textStr = String(rec.text || '').toLowerCase();
+            const verdictStr = String(rec.verdict || '').toLowerCase();
+            const userStr = String(rec.username || '').toLowerCase();
+
+            const matchesSearch = !searchQuery || 
+                titleStr.includes(searchQuery) || 
+                textStr.includes(searchQuery) ||
+                verdictStr.includes(searchQuery) ||
+                userStr.includes(searchQuery);
+
+            const matchesVerdict = (verdictFilter === 'all') || (rec.verdictClass === verdictFilter);
+            return matchesSearch && matchesVerdict;
+        });
+
+        // Drawer Filtering
+        const drawerSearchQuery = drawerSearchInput ? drawerSearchInput.value.toLowerCase().trim() : '';
+        const drawerVerdict = drawerVerdictFilter ? drawerVerdictFilter.value : 'all';
+
+        let filteredDrawer = historyRecords.filter(rec => {
+            const titleStr = String(rec.title || '').toLowerCase();
+            const textStr = String(rec.text || '').toLowerCase();
+            const verdictStr = String(rec.verdict || '').toLowerCase();
+            const userStr = String(rec.username || '').toLowerCase();
+
+            const matchesSearch = !drawerSearchQuery || 
+                titleStr.includes(drawerSearchQuery) || 
+                textStr.includes(drawerSearchQuery) ||
+                verdictStr.includes(drawerSearchQuery) ||
+                userStr.includes(drawerSearchQuery);
+
+            const matchesVerdict = (drawerVerdict === 'all') || (rec.verdictClass === drawerVerdict);
+            return matchesSearch && matchesVerdict;
+        });
+
+        // Summary stats - Tab
+        if (histTotalCount) histTotalCount.textContent = formatEngNum(filteredTab.length, 0);
+        if (histAvgScore) {
+            const avg = filteredTab.length > 0 ? (filteredTab.reduce((sum, r) => sum + (parseFloat(r.aiScore) || 0), 0) / filteredTab.length) : 0;
+            histAvgScore.textContent = formatEngNum(avg, 1) + '%';
+        }
+
+        // Summary stats - Drawer
+        if (drawerHistCount) drawerHistCount.textContent = formatEngNum(filteredDrawer.length, 0);
+        if (drawerHistAvg) {
+            const avg = filteredDrawer.length > 0 ? (filteredDrawer.reduce((sum, r) => sum + (parseFloat(r.aiScore) || 0), 0) / filteredDrawer.length) : 0;
+            drawerHistAvg.textContent = formatEngNum(avg, 1) + '%';
+        }
+
+        // Render Tab List
+        if (historyListContainer) {
+            if (filteredTab.length === 0) {
+                historyListContainer.innerHTML = `
+                    <div class="empty-history-state">
+                        <i data-lucide="database"></i>
+                        <h4>No Analysis Records Found</h4>
+                        <p>${searchQuery || verdictFilter !== 'all' ? 'No records match your search filter.' : 'Run an analysis above to automatically save records to the database.'}</p>
+                    </div>
+                `;
+            } else {
+                historyListContainer.innerHTML = filteredTab.map(rec => generateCardHTML(rec)).join('');
+            }
+        }
+
+        // Render Drawer List
+        if (drawerHistoryListContainer) {
+            if (filteredDrawer.length === 0) {
+                drawerHistoryListContainer.innerHTML = `
+                    <div class="empty-history-state">
+                        <i data-lucide="database"></i>
+                        <h4>No Analysis Records</h4>
+                        <p>${drawerSearchQuery || drawerVerdict !== 'all' ? 'No records match filter.' : 'Run an analysis to save records.'}</p>
+                    </div>
+                `;
+            } else {
+                drawerHistoryListContainer.innerHTML = filteredDrawer.map(rec => generateCardHTML(rec)).join('');
+            }
+        }
+
+        if (window.lucide) window.lucide.createIcons();
+
+        // Attach event listeners for reload and delete buttons
+        document.querySelectorAll('.reload-history-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const recId = e.currentTarget.getAttribute('data-id');
+                const rec = historyRecords.find(r => r.id === recId);
+                if (rec) {
+                    closeDrawer();
+                    editorArea.value = rec.text;
+                    updateEditorStats(rec.text);
+                    const dashTabBtn = document.querySelector('.tab-trigger[data-tab="tab-dashboard"]');
+                    if (dashTabBtn) dashTabBtn.click();
+                    runAnalysis(rec.text);
+                }
+            });
+        });
+
+        document.querySelectorAll('.delete-history-btn').forEach(btn => {
+            btn.addEventListener('click', async (e) => {
+                const recId = e.currentTarget.getAttribute('data-id');
+                if (confirm("Are you sure you want to delete this analysis record from the database?")) {
+                    await window.SentinelDB.deleteHistoryItem(recId);
+                    refreshHistoryList();
+                }
+            });
+        });
+    }
+
+    function generateCardHTML(rec) {
+        const dateStr = new Date(rec.timestamp).toLocaleString();
+        const badgeClass = rec.verdictClass || (rec.aiScore > 60 ? 'verdict-ai' : (rec.aiScore > 35 ? 'verdict-mixed' : 'verdict-human'));
+        return `
+            <div class="history-card" data-id="${rec.id}">
+                <div class="history-card-header">
+                    <div>
+                        <div class="history-card-title">${escapeHtml(rec.title || rec.text.slice(0, 60))}</div>
+                        <div class="history-card-date">${dateStr} • User: ${escapeHtml(rec.username || 'guest')}</div>
+                    </div>
+                    <span class="history-badge ${badgeClass}">
+                        ${formatEngNum(rec.aiScore, 1)}% AI
+                    </span>
+                </div>
+                <div class="history-meta-grid">
+                    <div class="history-meta-item">
+                        <span class="lbl">Words</span>
+                        <span class="val">${formatEngNum(rec.wordCount, 0)}</span>
+                    </div>
+                    <div class="history-meta-item">
+                        <span class="lbl">Burstiness</span>
+                        <span class="val">${formatEngNum(rec.burstiness, 2)}</span>
+                    </div>
+                    <div class="history-meta-item">
+                        <span class="lbl">TTR</span>
+                        <span class="val">${formatEngNum(rec.ttr, 3)}</span>
+                    </div>
+                    <div class="history-meta-item">
+                        <span class="lbl">Grammar</span>
+                        <span class="val">${formatEngNum(rec.grammarScore, 0)}%</span>
+                    </div>
+                </div>
+                <div class="history-card-footer">
+                    <div class="history-card-date" style="font-style: italic;">Verdict: ${escapeHtml(rec.verdict || '')}</div>
+                    <div class="history-actions">
+                        <button class="btn btn-secondary btn-sm reload-history-btn" data-id="${rec.id}" title="View / Reload Analysis">
+                            <i data-lucide="external-link"></i>
+                        </button>
+                        <button class="btn btn-danger btn-sm delete-history-btn" data-id="${rec.id}" title="Delete Record">
+                            <i data-lucide="trash-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    if (historySearchInput) {
+        ['input', 'keyup', 'change'].forEach(evt => historySearchInput.addEventListener(evt, renderHistoryList));
+    }
+    if (historyVerdictFilter) historyVerdictFilter.addEventListener('change', renderHistoryList);
+
+    if (drawerSearchInput) {
+        ['input', 'keyup', 'change'].forEach(evt => drawerSearchInput.addEventListener(evt, renderHistoryList));
+    }
+    if (drawerVerdictFilter) drawerVerdictFilter.addEventListener('change', renderHistoryList);
+
+    async function triggerClear() {
+        if (confirm("Clear all your saved analysis history from the database?")) {
+            await window.SentinelDB.clearAllHistory();
+            refreshHistoryList();
+        }
+    }
+
+    if (clearHistoryBtn) clearHistoryBtn.addEventListener('click', triggerClear);
+    if (drawerClearBtn) drawerClearBtn.addEventListener('click', triggerClear);
+
+    window.refreshHistoryList = refreshHistoryList;
+    // Initial fetch on app load
+    setTimeout(() => {
+        refreshHistoryList();
+        updateQuotaUI();
+    }, 500);
 });
