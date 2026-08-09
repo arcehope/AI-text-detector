@@ -948,6 +948,149 @@ textarea#editor-area:focus {
     font-family: 'JetBrains Mono', monospace;
 }
 
+/* --- IEEE Algorithm Pseudocode Blocks --- */
+.ieee-details {
+    margin-top: 16px;
+}
+
+.ieee-details summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+.ieee-details summary::-webkit-details-marker {
+    display: none;
+}
+
+.ieee-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px 14px;
+    background: rgba(0, 240, 255, 0.04);
+    border: 1px dashed rgba(0, 240, 255, 0.15);
+    border-radius: 6px;
+    color: var(--neon-cyan);
+    font-size: 10.5px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.ieee-toggle-btn:hover {
+    background: rgba(0, 240, 255, 0.08);
+    border-color: rgba(0, 240, 255, 0.25);
+}
+
+.ieee-chevron {
+    transition: transform 0.3s ease;
+    font-size: 11px;
+}
+
+.ieee-details[open] .ieee-chevron {
+    transform: rotate(180deg);
+}
+
+.ieee-algorithm {
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(0, 240, 255, 0.12);
+    border-radius: 8px;
+    margin-top: 10px;
+    overflow: hidden;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+.ieee-algo-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(0, 240, 255, 0.06);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.10);
+}
+
+.ieee-algo-number {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--neon-cyan);
+    letter-spacing: 0.8px;
+    white-space: nowrap;
+}
+
+.ieee-algo-title {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.ieee-algo-body {
+    padding: 12px 14px;
+}
+
+.ieee-io {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.9;
+}
+
+.ieee-io em {
+    color: var(--neon-cyan);
+    font-style: normal;
+}
+
+.ieee-kw {
+    color: var(--neon-pink);
+    font-weight: 700;
+    font-size: 10.5px;
+}
+
+.ieee-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.ieee-step {
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    padding: 1px 0;
+}
+
+.ieee-ln {
+    color: rgba(255, 255, 255, 0.20);
+    font-size: 10px;
+    display: inline-block;
+    width: 22px;
+    text-align: right;
+    margin-right: 8px;
+    user-select: none;
+}
+
+.ieee-step em {
+    color: var(--neon-cyan);
+    font-style: normal;
+}
+
+.ieee-comment {
+    color: rgba(255, 255, 255, 0.20);
+    font-style: italic;
+}
+
+.ieee-step.ieee-indent-1 {
+    padding-left: 24px;
+}
+
+.ieee-step.ieee-indent-2 {
+    padding-left: 48px;
+}
+
 /* --- FOOTER PROJECT INFO --- */
 footer {
     margin-top: 50px;

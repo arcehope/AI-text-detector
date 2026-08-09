@@ -1,4 +1,5 @@
+__pycache__/
+*.pyc
 ~$*.docx
 ~$*.pptx
-.DS_Store
-Thumbs.db
+sentinel.db
