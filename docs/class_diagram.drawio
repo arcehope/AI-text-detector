@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-08-13T20:45:00.000Z" agent="5.0" version="20.0.0" type="device">
+  <diagram id="sentinel-class-diagram" name="Sentinel Class Diagram">
+    <mxGraphModel dx="1422" dy="980" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1360" pageHeight="980" background="#ffffff" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Block -->
+        <mxCell id="titleCell" value="&lt;font size=&quot;5&quot; color=&quot;#000000&quot;&gt;&lt;b&gt;SENTINEL AI TEXT DETECTOR&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;UML Class Diagram - Static Architecture, Generalization &amp; Dependencies&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="550" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- FileParser Class -->
+        <mxCell id="fileParser" value="&lt;b&gt;FileParser&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«Utility»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; extractText(file: File): Promise&amp;lt;string&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- Controller Class -->
+        <mxCell id="app" value="&lt;b&gt;Controller&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«Main Orchestrator»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Attributes:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; typingTimer: Timer&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; doneTypingInterval: int&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; executeAnalysisCore(text, isSilent): bool&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; handleFileUpload(file: File): void&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; updateEditorStats(text: string): void&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; runAnalysis(text: string): void" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="500" y="80" width="360" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- ChartRenderer Class -->
+        <mxCell id="chartEngine" value="&lt;b&gt;ChartRenderer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«Utility»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; renderGauge(containerId, pct): void&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; renderHistoryChart(ctx, data): void" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="110" width="280" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- PerplexityAnalyzer Class -->
+        <mxCell id="perplexityEngine" value="&lt;b&gt;PerplexityAnalyzer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«ML Engine»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; analyze(text: string): PerplexityResult" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- KNNClassifier Class -->
+        <mxCell id="knnClassifier" value="&lt;b&gt;KNNClassifier&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«ML Engine»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; extractFeatures(text, metrics)&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; classify(vector): KNNResult" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="365" y="360" width="275" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- LogisticRegressionClassifier Class -->
+        <mxCell id="lrClassifier" value="&lt;b&gt;LogisticRegressionClassifier&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«ML Engine»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; predict(vector): number" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="680" y="360" width="275" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- CosineSimilarityAnalyzer Class -->
+        <mxCell id="similarityEngine" value="&lt;b&gt;CosineSimilarityAnalyzer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«ML Engine»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; analyze(text: string): SimResult" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="995" y="360" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- GrammarStyleAnalyzer Class -->
+        <mxCell id="grammarEngine" value="&lt;b&gt;GrammarStyleAnalyzer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«ML Engine»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; analyze(text: string): GrammarResult" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="180" y="520" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- TrigramAnalyzer Class -->
+        <mxCell id="trigramEngine" value="&lt;b&gt;TrigramAnalyzer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«ML Engine»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; analyze(text: string): TrigramResult" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="510" y="520" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- PosClassifier Class -->
+        <mxCell id="posEngine" value="&lt;b&gt;PosClassifier&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«ML Engine»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; analyze(text: string): PosResult" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="840" y="520" width="260" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- SentinelDB Class -->
+        <mxCell id="db" value="&lt;b&gt;SentinelDB&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«Persistence Layer»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Attributes:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; initialized: boolean&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; backendAvailable: boolean&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; init(): Promise&amp;lt;boolean&amp;gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; getCurrentUser(): Object&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; saveRecord(record): Promise&amp;lt;string&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="180" y="740" width="300" height="160" as="geometry" />
+        </mxCell>
+
+        <!-- SentinelServer Class -->
+        <mxCell id="backend" value="&lt;b&gt;SentinelServer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«Backend Server»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Attributes:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; DB_FILE: str&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; PORT: int&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; run(port: int): void&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; init_db(): void" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="540" y="740" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- BaseHTTPRequestHandler Class -->
+        <mxCell id="baseHandler" value="&lt;b&gt;BaseHTTPRequestHandler&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#666666&quot;&gt;«Python Std Library»&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;strokeDasharray=2 2;fontColor=#666666;align=center;verticalAlign=middle;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="940" y="710" width="240" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- RequestHandler Class -->
+        <mxCell id="handler" value="&lt;b&gt;RequestHandler&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#555555&quot;&gt;«HTTP Endpoint Delegate»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; do_GET(): void&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; do_POST(): void&lt;br&gt;&lt;font color=&quot;#888888&quot;&gt;+&lt;/font&gt; do_DELETE(): void" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#333333;strokeWidth=1.5;fontColor=#000000;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="930" y="810" width="260" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== RELATIONSHIPS ==================== -->
+
+        <!-- Generalization: RequestHandler -> BaseHTTPRequestHandler -->
+        <mxCell id="edgeGen" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=8;strokeColor=#333333;strokeWidth=1.5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="handler" target="baseHandler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dependencies from Controller -->
+        <mxCell id="depFileParser" value="«use»" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0;exitY=0.4;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;fontColor=#0055d4;fontSize=10;" edge="1" parent="1" source="app" target="fileParser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depChart" value="«use»" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;fontColor=#0055d4;fontSize=10;" edge="1" parent="1" source="app" target="chartEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depDb" value="«use»" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DB -> Server -->
+        <mxCell id="depDbServer" value="«API Call»" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#0055d4;fontSize=10;" edge="1" parent="1" source="db" target="backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Server -> Handler -->
+        <mxCell id="depServerHandler" value="«delegates»" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#0055d4;fontSize=10;" edge="1" parent="1" source="backend" target="handler">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Dependencies from Controller to Engines -->
+        <mxCell id="depPerp" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="perplexityEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depKnn" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="knnClassifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depLr" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="lrClassifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depSim" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="similarityEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depGrammar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="grammarEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depTrigram" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="trigramEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="depPos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="app" target="posEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Perplexity to KNN -->
+        <mxCell id="depPerpKnn" value="«inputs»" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;dashed=1;endArrow=open;endSize=10;strokeColor=#0055d4;strokeWidth=1.5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontColor=#0055d4;fontSize=10;" edge="1" parent="1" source="perplexityEngine" target="knnClassifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

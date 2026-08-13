@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 980" width="100%" height="100%">
+  <defs>
+    <!-- Classic open blue arrowhead marker for dependencies -->
+    <marker id="arrow-classic" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#0055d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    
+    <!-- Generalization (Inheritance) triangle marker -->
+    <marker id="arrow-inheritance" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 Z" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    </marker>
+  </defs>
+
+  <!-- Plain White Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Diagram Title -->
+  <g transform="translate(60, 45)">
+    <text font-family="sans-serif" font-size="22px" font-weight="bold" fill="#000000">SENTINEL AI TEXT DETECTOR</text>
+    <text y="22" font-family="sans-serif" font-size="12px" fill="#555555">UML Class Diagram - Static Architecture, Generalization, and Dependencies</text>
+  </g>
+
+  <!-- ==================== CLASSES (UML BOXES) ==================== -->
+
+  <!-- 1. FileParser Class -->
+  <g transform="translate(60, 110)">
+    <rect x="0" y="0" width="280" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="280" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="140" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">FileParser</text>
+    <line x1="0" y1="35" x2="280" y2="35" stroke="#333333" stroke-width="1.5" />
+    <!-- Empty attribute compartment separator -->
+    <line x1="0" y1="52" x2="280" y2="52" stroke="#333333" stroke-width="1" />
+    <!-- Methods -->
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">extractText(file: File): Promise&lt;string&gt;</text>
+  </g>
+
+  <!-- 2. Controller Class (Main Orchestrator) -->
+  <g transform="translate(500, 80)">
+    <rect x="0" y="0" width="360" height="190" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="360" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="180" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">Controller (DOM Listener)</text>
+    <line x1="0" y1="35" x2="360" y2="35" stroke="#333333" stroke-width="1.5" />
+    <!-- Attributes -->
+    <text x="12" y="52" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="52" font-family="sans-serif" font-size="11px" fill="#333333">typingTimer: Timer</text>
+    <text x="12" y="68" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="68" font-family="sans-serif" font-size="11px" fill="#333333">doneTypingInterval: int</text>
+    <!-- Divider -->
+    <line x1="0" y1="80" x2="360" y2="80" stroke="#333333" stroke-width="1.5" />
+    <!-- Methods -->
+    <text x="12" y="100" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="100" font-family="sans-serif" font-size="11px" fill="#000000">executeAnalysisCore(text, isSilent): bool</text>
+    <text x="12" y="118" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="118" font-family="sans-serif" font-size="11px" fill="#000000">handleFileUpload(file: File): void</text>
+    <text x="12" y="136" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="136" font-family="sans-serif" font-size="11px" fill="#000000">updateEditorStats(text: string): void</text>
+    <text x="12" y="154" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="154" font-family="sans-serif" font-size="11px" fill="#000000">runAnalysis(text: string): void</text>
+  </g>
+
+  <!-- 3. ChartRenderer Class -->
+  <g transform="translate(1020, 110)">
+    <rect x="0" y="0" width="280" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="280" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="140" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">ChartRenderer</text>
+    <line x1="0" y1="35" x2="280" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="280" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">renderGauge(containerId, pct): void</text>
+    <text x="12" y="90" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="90" font-family="sans-serif" font-size="11px" fill="#000000">renderHistoryChart(ctx, data): void</text>
+  </g>
+
+  <!-- ==================== ENSEMBLE ENGINES ==================== -->
+
+  <!-- 4. PerplexityAnalyzer Class -->
+  <g transform="translate(60, 360)">
+    <rect x="0" y="0" width="260" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="260" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="130" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">PerplexityAnalyzer</text>
+    <line x1="0" y1="35" x2="260" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="260" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">analyze(text: string): PerplexityResult</text>
+  </g>
+
+  <!-- 5. KNNClassifier Class -->
+  <g transform="translate(365, 360)">
+    <rect x="0" y="0" width="275" height="120" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="275" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="137" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">KNNClassifier</text>
+    <line x1="0" y1="35" x2="275" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="275" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">extractFeatures(text, metrics)</text>
+    <text x="12" y="90" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="90" font-family="sans-serif" font-size="11px" fill="#000000">classify(vector): KNNResult</text>
+  </g>
+
+  <!-- 6. LogisticRegressionClassifier Class -->
+  <g transform="translate(680, 360)">
+    <rect x="0" y="0" width="275" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="275" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="137" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">LogisticRegressionClassifier</text>
+    <line x1="0" y1="35" x2="275" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="275" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">predict(vector): number</text>
+  </g>
+
+  <!-- 7. CosineSimilarityAnalyzer Class -->
+  <g transform="translate(995, 360)">
+    <rect x="0" y="0" width="260" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="260" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="130" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">CosineSimilarityAnalyzer</text>
+    <line x1="0" y1="35" x2="260" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="260" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">analyze(text: string): SimResult</text>
+  </g>
+
+  <!-- 8. GrammarStyleAnalyzer Class -->
+  <g transform="translate(180, 520)">
+    <rect x="0" y="0" width="260" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="260" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="130" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">GrammarStyleAnalyzer</text>
+    <line x1="0" y1="35" x2="260" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="260" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">analyze(text: string): GrammarResult</text>
+  </g>
+
+  <!-- 9. TrigramAnalyzer Class -->
+  <g transform="translate(510, 520)">
+    <rect x="0" y="0" width="260" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="260" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="130" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">TrigramAnalyzer</text>
+    <line x1="0" y1="35" x2="260" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="260" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">analyze(text: string): TrigramResult</text>
+  </g>
+
+  <!-- 10. PosClassifier Class -->
+  <g transform="translate(840, 520)">
+    <rect x="0" y="0" width="260" height="110" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="260" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="130" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">PosClassifier</text>
+    <line x1="0" y1="35" x2="260" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="260" y2="52" stroke="#333333" stroke-width="1" />
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">analyze(text: string): PosResult</text>
+  </g>
+
+  <!-- ==================== PERSISTENCE STORES ==================== -->
+
+  <!-- 11. SentinelDB Class -->
+  <g transform="translate(180, 740)">
+    <rect x="0" y="0" width="300" height="160" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="300" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="150" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">SentinelDB</text>
+    <line x1="0" y1="35" x2="300" y2="35" stroke="#333333" stroke-width="1.5" />
+    <!-- Attributes -->
+    <text x="12" y="52" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="52" font-family="sans-serif" font-size="11px" fill="#333333">initialized: boolean</text>
+    <text x="12" y="68" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="68" font-family="sans-serif" font-size="11px" fill="#333333">backendAvailable: boolean</text>
+    <!-- Divider -->
+    <line x1="0" y1="78" x2="300" y2="78" stroke="#333333" stroke-width="1.5" />
+    <!-- Methods -->
+    <text x="12" y="96" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="96" font-family="sans-serif" font-size="11px" fill="#000000">init(): Promise&lt;boolean&gt;</text>
+    <text x="12" y="112" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="112" font-family="sans-serif" font-size="11px" fill="#000000">getCurrentUser(): Object</text>
+    <text x="12" y="128" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="128" font-family="sans-serif" font-size="11px" fill="#000000">saveRecord(record): Promise&lt;string&gt;</text>
+  </g>
+
+  <!-- 12. SentinelServer Class -->
+  <g transform="translate(540, 740)">
+    <rect x="0" y="0" width="280" height="130" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="280" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="140" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">SentinelServer (server.py)</text>
+    <line x1="0" y1="35" x2="280" y2="35" stroke="#333333" stroke-width="1.5" />
+    <!-- Attributes -->
+    <text x="12" y="52" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="52" font-family="sans-serif" font-size="11px" fill="#333333">DB_FILE: str</text>
+    <text x="12" y="68" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="68" font-family="sans-serif" font-size="11px" fill="#333333">PORT: int</text>
+    <!-- Divider -->
+    <line x1="0" y1="78" x2="280" y2="78" stroke="#333333" stroke-width="1.5" />
+    <!-- Methods -->
+    <text x="12" y="96" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="96" font-family="sans-serif" font-size="11px" fill="#000000">run(port: int): void</text>
+    <text x="12" y="112" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="112" font-family="sans-serif" font-size="11px" fill="#000000">init_db(): void</text>
+  </g>
+
+  <!-- 13. BaseHTTPRequestHandler (Std Library Class) -->
+  <g transform="translate(940, 710)">
+    <rect x="0" y="0" width="240" height="70" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="240" height="35" fill="#f9f9f9" stroke="#333333" stroke-dasharray="2 2" stroke-width="1.5" />
+    <text x="120" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#666666">BaseHTTPRequestHandler</text>
+    <line x1="0" y1="35" x2="240" y2="35" stroke="#333333" stroke-width="1.5" />
+    <text x="12" y="52" font-family="sans-serif" font-size="10px" font-style="italic" fill="#888888">// Standard Python HTTP class</text>
+  </g>
+
+  <!-- 14. RequestHandler Class -->
+  <g transform="translate(930, 810)">
+    <rect x="0" y="0" width="260" height="120" fill="#ffffff" stroke="#333333" stroke-width="1.5" />
+    <rect x="0" y="0" width="260" height="35" fill="#f3f3f3" stroke="#333333" stroke-width="1.5" />
+    <text x="130" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">RequestHandler</text>
+    <line x1="0" y1="35" x2="260" y2="35" stroke="#333333" stroke-width="1.5" />
+    <line x1="0" y1="52" x2="260" y2="52" stroke="#333333" stroke-width="1" />
+    <!-- Methods -->
+    <text x="12" y="72" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="72" font-family="sans-serif" font-size="11px" fill="#000000">do_GET(): void</text>
+    <text x="12" y="88" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="88" font-family="sans-serif" font-size="11px" fill="#000000">do_POST(): void</text>
+    <text x="12" y="104" font-family="sans-serif" font-size="11px" font-weight="bold" fill="#888888">+</text>
+    <text x="25" y="104" font-family="sans-serif" font-size="11px" fill="#000000">do_DELETE(): void</text>
+  </g>
+
+  <!-- ==================== RELATIONSHIPS ==================== -->
+
+  <!-- Inheritance: RequestHandler -> BaseHTTPRequestHandler -->
+  <path d="M 1060 810 L 1060 790" fill="none" stroke="#333333" stroke-width="1.5" marker-end="url(#arrow-inheritance)" />
+  <text font-family="sans-serif" font-size="10px" fill="#777777" x="1070" y="802">inherits</text>
+
+  <!-- Dependency: Controller -> FileParser -->
+  <path d="M 500 160 L 352 160" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <!-- Dependency: Controller -> ChartRenderer -->
+  <path d="M 860 160 L 1008 160" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+
+  <!-- Dependency: Controller -> SentinelDB -->
+  <path d="M 520 270 C 520 310, 240 600, 240 728" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+
+  <!-- Dependency: SentinelDB -> SentinelServer (REST API Client-Server) -->
+  <path d="M 480 810 L 528 810" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <text font-family="sans-serif" font-size="10px" fill="#777777" x="488" y="802">HTTP</text>
+
+  <!-- Dependency: SentinelServer -> RequestHandler (Registers) -->
+  <path d="M 820 810 L 918 810" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <text font-family="sans-serif" font-size="10px" fill="#777777" x="840" y="802">delegates to</text>
+
+  <!-- Dependencies: Controller -> ML Ensemble Engines (Dashed dependency lines) -->
+  <path d="M 680 270 C 680 300, 190 290, 190 348" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <path d="M 680 270 C 680 300, 502 300, 502 348" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <path d="M 680 270 C 680 300, 817 300, 817 348" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <path d="M 680 270 C 680 300, 1125 290, 1125 348" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+
+  <path d="M 680 270 C 680 330, 310 490, 310 508" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <path d="M 680 270 C 680 330, 640 490, 640 508" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+  <path d="M 680 270 C 680 330, 970 490, 970 508" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+
+  <!-- Dependency: PerplexityAnalyzer -> KNNClassifier (Feeds vectors) -->
+  <path d="M 320 415 L 353 415" fill="none" stroke="#555555" stroke-dasharray="4 2" stroke-width="1.5" marker-end="url(#arrow-classic)" />
+</svg>
