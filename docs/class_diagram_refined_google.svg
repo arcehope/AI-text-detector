@@ -1,13 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1360 1050" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 620" width="100%" height="100%">
   <defs>
-    <!-- Hollow diamond marker for aggregation (placed at the start of paths) -->
+    <!-- Simple hollow diamond marker for aggregation (placed at the start of paths) -->
     <marker id="diamond-start" viewBox="0 0 20 10" refX="0" refY="5" markerWidth="14" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 5 L 10 0 L 20 5 L 10 10 Z" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
-    </marker>
-    
-    <!-- Hollow triangle marker for generalization/inheritance and realization (placed at the end of paths) -->
-    <marker id="triangle-end" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#ffffff" stroke="#000000" stroke-width="1.2" />
+      <path d="M 0 5 L 10 0 L 20 5 L 10 10 Z" fill="#ffffff" stroke="#000000" stroke-width="1" />
     </marker>
   </defs>
 
@@ -16,240 +11,107 @@
 
   <!-- ==================== CLASSES (UML BOXES) ==================== -->
 
-  <!-- 1. FileParser Class -->
-  <g transform="translate(60, 110)">
-    <rect x="0" y="0" width="260" height="85" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="130" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">FileParser</text>
-    <line x1="0" y1="30" x2="260" y2="30" stroke="#000000" stroke-width="1" />
-    <!-- Empty Attributes Compartment -->
-    <line x1="0" y1="50" x2="260" y2="50" stroke="#000000" stroke-width="1" />
+  <!-- 1. Account Class (2 compartments: name/attrs) -->
+  <g transform="translate(20, 20)">
+    <rect x="0" y="0" width="160" height="120" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="80" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13px" fill="#000000">Account</text>
+    <line x1="0" y1="30" x2="160" y2="30" stroke="#000000" stroke-width="1" />
+    <text x="10" y="48" font-family="sans-serif" font-size="12px" fill="#000000">+ username</text>
+    <text x="10" y="68" font-family="sans-serif" font-size="12px" fill="#000000">+ password</text>
+    <text x="10" y="88" font-family="sans-serif" font-size="12px" fill="#000000">+ role</text>
+  </g>
+
+  <!-- 2. Controller Class (1 compartment: name only, like Organizer) -->
+  <g transform="translate(380, 20)">
+    <rect x="0" y="0" width="180" height="60" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="90" y="35" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14px" fill="#000000">Controller</text>
+  </g>
+
+  <!-- 3. Ensemble Class (2 compartments: name/attrs, like Staff) -->
+  <g transform="translate(40, 230)">
+    <rect x="0" y="0" width="160" height="70" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="80" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13px" fill="#000000">Ensemble</text>
+    <line x1="0" y1="30" x2="160" y2="30" stroke="#000000" stroke-width="1" />
+    <text x="10" y="50" font-family="sans-serif" font-size="12px" fill="#000000">+ weights</text>
+  </g>
+
+  <!-- 4. SentinelServer Class (3 compartments: name/empty/methods, like Statistics) -->
+  <g transform="translate(370, 230)">
+    <rect x="0" y="0" width="200" height="130" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="100" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13px" fill="#000000">SentinelServer</text>
+    <line x1="0" y1="30" x2="200" y2="30" stroke="#000000" stroke-width="1" />
+    <!-- Empty Attributes compartment -->
+    <line x1="0" y1="50" x2="200" y2="50" stroke="#000000" stroke-width="1" />
     <!-- Methods -->
-    <text x="10" y="68" font-family="sans-serif" font-size="11px" fill="#000000">+ extractText()</text>
+    <text x="10" y="70" font-family="sans-serif" font-size="12px" fill="#000000">+ run()</text>
+    <text x="10" y="90" font-family="sans-serif" font-size="12px" fill="#000000">+ init_db()</text>
+    <text x="10" y="110" font-family="sans-serif" font-size="12px" fill="#000000">+ handleRequest()</text>
   </g>
 
-  <!-- 2. Controller Class -->
-  <g transform="translate(480, 70)">
-    <rect x="0" y="0" width="380" height="195" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="190" y="22" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">Controller</text>
-    <line x1="0" y1="32" x2="380" y2="32" stroke="#000000" stroke-width="1" />
-    <!-- Attributes -->
-    <text x="10" y="50" font-family="sans-serif" font-size="11px" fill="#000000">+ typingTimer</text>
-    <text x="10" y="68" font-family="sans-serif" font-size="11px" fill="#000000">+ doneTypingInterval</text>
-    <line x1="0" y1="80" x2="380" y2="80" stroke="#000000" stroke-width="1" />
-    <!-- Methods -->
-    <text x="10" y="100" font-family="sans-serif" font-size="11px" fill="#000000">+ executeAnalysisCore()</text>
-    <text x="10" y="118" font-family="sans-serif" font-size="11px" fill="#000000">+ handleFileUpload()</text>
-    <text x="10" y="136" font-family="sans-serif" font-size="11px" fill="#000000">+ updateEditorStats()</text>
-    <text x="10" y="154" font-family="sans-serif" font-size="11px" fill="#000000">+ runAnalysis()</text>
+  <!-- 5. FileParser Class (2 compartments: name/attrs, like BreakPlan) -->
+  <g transform="translate(730, 230)">
+    <rect x="0" y="0" width="160" height="70" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="80" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13px" fill="#000000">FileParser</text>
+    <line x1="0" y1="30" x2="160" y2="30" stroke="#000000" stroke-width="1" />
+    <text x="10" y="50" font-family="sans-serif" font-size="12px" fill="#000000">+ docxParser</text>
   </g>
 
-  <!-- 3. ChartRenderer Class -->
-  <g transform="translate(1020, 110)">
-    <rect x="0" y="0" width="260" height="100" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="130" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">ChartRenderer</text>
-    <line x1="0" y1="30" x2="260" y2="30" stroke="#000000" stroke-width="1" />
-    <!-- Empty Attributes Compartment -->
-    <line x1="0" y1="50" x2="260" y2="50" stroke="#000000" stroke-width="1" />
-    <!-- Methods -->
-    <text x="10" y="68" font-family="sans-serif" font-size="11px" fill="#000000">+ renderGauge()</text>
-    <text x="10" y="86" font-family="sans-serif" font-size="11px" fill="#000000">+ renderHistoryChart()</text>
-  </g>
-
-  <!-- 4. AnalysisEngine Interface -->
-  <g transform="translate(540, 310)">
-    <rect x="0" y="0" width="260" height="85" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="130" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">AnalysisEngine</text>
-    <line x1="0" y1="30" x2="260" y2="30" stroke="#000000" stroke-width="1" />
-    <!-- Empty Attributes Compartment -->
-    <line x1="0" y1="50" x2="260" y2="50" stroke="#000000" stroke-width="1" />
-    <!-- Methods -->
-    <text x="10" y="68" font-family="sans-serif" font-size="11px" fill="#000000">+ analyze()</text>
-  </g>
-
-  <!-- ==================== ENSEMBLE ENGINES ==================== -->
-
-  <!-- 5. PerplexityAnalyzer -->
-  <g transform="translate(60, 460)">
-    <rect x="0" y="0" width="240" height="100" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="120" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">PerplexityAnalyzer</text>
-    <line x1="0" y1="30" x2="240" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ nGramModel</text>
-    <line x1="0" y1="60" x2="240" y2="60" stroke="#000000" stroke-width="1" />
-    <text x="10" y="78" font-family="sans-serif" font-size="11px" fill="#000000">+ analyze()</text>
-  </g>
-
-  <!-- 6. KNNClassifier -->
-  <g transform="translate(340, 460)">
-    <rect x="0" y="0" width="260" height="120" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="130" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">KNNClassifier</text>
-    <line x1="0" y1="30" x2="260" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ trainingVectors</text>
-    <text x="10" y="64" font-family="sans-serif" font-size="11px" fill="#000000">+ kNeighbors</text>
-    <line x1="0" y1="74" x2="260" y2="74" stroke="#000000" stroke-width="1" />
-    <text x="10" y="92" font-family="sans-serif" font-size="11px" fill="#000000">+ extractFeatures()</text>
-    <text x="10" y="108" font-family="sans-serif" font-size="11px" fill="#000000">+ classify()</text>
-  </g>
-
-  <!-- 7. LogisticRegressionClassifier -->
-  <g transform="translate(640, 460)">
-    <rect x="0" y="0" width="260" height="110" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="130" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">LogisticRegressionClassifier</text>
-    <line x1="0" y1="30" x2="260" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ weights</text>
-    <text x="10" y="64" font-family="sans-serif" font-size="11px" fill="#000000">+ bias</text>
-    <line x1="0" y1="74" x2="260" y2="74" stroke="#000000" stroke-width="1" />
-    <text x="10" y="92" font-family="sans-serif" font-size="11px" fill="#000000">+ predict()</text>
-  </g>
-
-  <!-- 8. CosineSimilarityAnalyzer -->
-  <g transform="translate(940, 460)">
-    <rect x="0" y="0" width="240" height="100" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="120" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">CosineSimilarityAnalyzer</text>
-    <line x1="0" y1="30" x2="240" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ referenceCorpus</text>
-    <line x1="0" y1="60" x2="240" y2="60" stroke="#000000" stroke-width="1" />
-    <text x="10" y="78" font-family="sans-serif" font-size="11px" fill="#000000">+ analyze()</text>
-  </g>
-
-  <!-- 9. GrammarStyleAnalyzer -->
-  <g transform="translate(180, 640)">
-    <rect x="0" y="0" width="240" height="100" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="120" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">GrammarStyleAnalyzer</text>
-    <line x1="0" y1="30" x2="240" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ typoRules</text>
-    <line x1="0" y1="60" x2="240" y2="60" stroke="#000000" stroke-width="1" />
-    <text x="10" y="78" font-family="sans-serif" font-size="11px" fill="#000000">+ analyze()</text>
-  </g>
-
-  <!-- 10. TrigramAnalyzer -->
-  <g transform="translate(480, 640)">
-    <rect x="0" y="0" width="240" height="100" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="120" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">TrigramAnalyzer</text>
-    <line x1="0" y1="30" x2="240" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ typicalTrigrams</text>
-    <line x1="0" y1="60" x2="240" y2="60" stroke="#000000" stroke-width="1" />
-    <text x="10" y="78" font-family="sans-serif" font-size="11px" fill="#000000">+ analyze()</text>
-  </g>
-
-  <!-- 11. PosClassifier -->
-  <g transform="translate(780, 640)">
-    <rect x="0" y="0" width="240" height="100" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="120" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">PosClassifier</text>
-    <line x1="0" y1="30" x2="240" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ posTagPatterns</text>
-    <line x1="0" y1="60" x2="240" y2="60" stroke="#000000" stroke-width="1" />
-    <text x="10" y="78" font-family="sans-serif" font-size="11px" fill="#000000">+ analyze()</text>
-  </g>
-
-  <!-- ==================== PERSISTENCE & BACKEND ==================== -->
-
-  <!-- 12. SentinelDB -->
-  <g transform="translate(180, 820)">
-    <rect x="0" y="0" width="280" height="140" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="140" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">SentinelDB</text>
-    <line x1="0" y1="30" x2="280" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ initialized</text>
-    <text x="10" y="64" font-family="sans-serif" font-size="11px" fill="#000000">+ backendAvailable</text>
-    <line x1="0" y1="74" x2="280" y2="74" stroke="#000000" stroke-width="1" />
-    <text x="10" y="92" font-family="sans-serif" font-size="11px" fill="#000000">+ init()</text>
-    <text x="10" y="108" font-family="sans-serif" font-size="11px" fill="#000000">+ getCurrentUser()</text>
-    <text x="10" y="124" font-family="sans-serif" font-size="11px" fill="#000000">+ saveRecord()</text>
-  </g>
-
-  <!-- 13. SentinelServer -->
-  <g transform="translate(540, 820)">
-    <rect x="0" y="0" width="280" height="120" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="140" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">SentinelServer</text>
-    <line x1="0" y1="30" x2="280" y2="30" stroke="#000000" stroke-width="1" />
-    <text x="10" y="48" font-family="sans-serif" font-size="11px" fill="#000000">+ DB_FILE</text>
-    <text x="10" y="64" font-family="sans-serif" font-size="11px" fill="#000000">+ PORT</text>
-    <line x1="0" y1="74" x2="280" y2="74" stroke="#000000" stroke-width="1" />
-    <text x="10" y="92" font-family="sans-serif" font-size="11px" fill="#000000">+ run()</text>
-    <text x="10" y="108" font-family="sans-serif" font-size="11px" fill="#000000">+ init_db()</text>
-  </g>
-
-  <!-- 14. BaseHTTPRequestHandler -->
-  <g transform="translate(950, 750)">
-    <rect x="0" y="0" width="220" height="70" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="110" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">BaseHTTPRequestHandler</text>
+  <!-- 6. SentinelDB Class (3 compartments: name/attrs/methods, like Teacher) -->
+  <g transform="translate(20, 440)">
+    <rect x="0" y="0" width="220" height="140" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="110" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13px" fill="#000000">SentinelDB</text>
     <line x1="0" y1="30" x2="220" y2="30" stroke="#000000" stroke-width="1" />
-    <!-- Empty compartments -->
+    <!-- Attributes -->
+    <text x="10" y="48" font-family="sans-serif" font-size="12px" fill="#000000">+ initialized</text>
+    <text x="10" y="68" font-family="sans-serif" font-size="12px" fill="#000000">+ backendAvailable</text>
+    <line x1="0" y1="78" x2="220" y2="78" stroke="#000000" stroke-width="1" />
+    <!-- Methods -->
+    <text x="10" y="98" font-family="sans-serif" font-size="12px" fill="#000000">+ init()</text>
+    <text x="10" y="118" font-family="sans-serif" font-size="12px" fill="#000000">+ saveRecord()</text>
   </g>
 
-  <!-- 15. RequestHandler -->
-  <g transform="translate(940, 865)">
-    <rect x="0" y="0" width="240" height="110" fill="#ffffff" stroke="#000000" stroke-width="1" />
-    <text x="120" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="12px" fill="#000000">RequestHandler</text>
-    <line x1="0" y1="30" x2="240" y2="30" stroke="#000000" stroke-width="1" />
-    <line x1="0" y1="45" x2="240" y2="45" stroke="#000000" stroke-width="1" />
-    <text x="10" y="62" font-family="sans-serif" font-size="11px" fill="#000000">+ do_GET()</text>
-    <text x="10" y="78" font-family="sans-serif" font-size="11px" fill="#000000">+ do_POST()</text>
-    <text x="10" y="94" font-family="sans-serif" font-size="11px" fill="#000000">+ do_DELETE()</text>
+  <!-- 7. ChartRenderer Class (3 compartments: name/empty/methods, like Break) -->
+  <g transform="translate(710, 440)">
+    <rect x="0" y="0" width="180" height="90" fill="#ffffff" stroke="#000000" stroke-width="1" />
+    <text x="90" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="13px" fill="#000000">ChartRenderer</text>
+    <line x1="0" y1="30" x2="180" y2="30" stroke="#000000" stroke-width="1" />
+    <!-- Empty Attributes compartment -->
+    <line x1="0" y1="50" x2="180" y2="50" stroke="#000000" stroke-width="1" />
+    <!-- Methods -->
+    <text x="10" y="70" font-family="sans-serif" font-size="12px" fill="#000000">+ renderGauge()</text>
   </g>
 
+  <!-- ==================== RELATIONSHIP LINES (CONNECTIONS) ==================== -->
 
-  <!-- ==================== RELATIONSHIPS & CONNECTORS ==================== -->
+  <!-- Controller to Ensemble (Organizer to Staff) -->
+  <path d="M 430 80 L 140 230" fill="none" stroke="#000000" stroke-width="1" />
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="400" y="105">1</text>
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="145" y="215">1</text>
 
-  <!-- Aggregation: Controller -> FileParser -->
-  <path d="M 480 152 L 320 152" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#diamond-start)" />
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="460" y="145">1</text>
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="330" y="145">1</text>
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" text-anchor="middle" x="390" y="135">parses</text>
+  <!-- Controller to FileParser (Organizer to BreakPlan) -->
+  <path d="M 520 80 L 800 230" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-start)" />
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="535" y="105">1</text>
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="770" y="215">0..*</text>
+  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" x="660" y="145">parses</text>
 
-  <!-- Aggregation: Controller -> ChartRenderer -->
-  <path d="M 860 152 L 1020 152" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#diamond-start)" />
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="880" y="145">1</text>
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="1000" y="145">1</text>
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" text-anchor="middle" x="940" y="135">renders</text>
+  <!-- Ensemble to SentinelServer (Staff to Statistics) -->
+  <path d="M 200 265 L 370 265" fill="none" stroke="#000000" stroke-width="1" />
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="220" y="255">1</text>
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="350" y="255">1</text>
 
-  <!-- Aggregation: Controller -> SentinelDB -->
-  <path d="M 500 265 C 500 320, 240 680, 240 820" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#diamond-start)" />
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="485" y="285">1</text>
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="250" y="805">1</text>
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" x="310" y="475">persists</text>
+  <!-- Ensemble to SentinelDB (Staff to Teacher) -->
+  <path d="M 120 300 L 120 440" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-start)" />
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="130" y="325">1</text>
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="130" y="425">0..*</text>
 
-  <!-- Aggregation: Controller -> AnalysisEngine -->
-  <path d="M 670 265 L 670 310" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#diamond-start)" />
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="655" y="285">1</text>
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="655" y="302">1..*</text>
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" x="680" y="295">evaluates</text>
+  <!-- FileParser to ChartRenderer (BreakPlan to Break) -->
+  <path d="M 800 300 L 800 440" fill="none" stroke="#000000" stroke-width="1" marker-start="url(#diamond-start)" />
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="810" y="325">1</text>
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="810" y="425">0..*</text>
 
-  <!-- Realizations: Engines implementing AnalysisEngine (dashed paths terminating in hollow triangle) -->
-  <!-- perplexityEngine -->
-  <path d="M 180 460 L 180 430 C 180 430, 560 430, 560 401" fill="none" stroke="#000000" stroke-dasharray="4 3" stroke-width="1.2" marker-end="url(#triangle-end)" />
-  <!-- knnClassifier -->
-  <path d="M 470 460 L 470 430 C 470 430, 595 430, 595 401" fill="none" stroke="#000000" stroke-dasharray="4 3" stroke-width="1.2" marker-end="url(#triangle-end)" />
-  <!-- lrClassifier -->
-  <path d="M 770 460 L 770 430 C 770 430, 745 430, 745 401" fill="none" stroke="#000000" stroke-dasharray="4 3" stroke-width="1.2" marker-end="url(#triangle-end)" />
-  <!-- similarityEngine -->
-  <path d="M 1060 460 L 1060 430 C 1060 430, 780 430, 780 401" fill="none" stroke="#000000" stroke-dasharray="4 3" stroke-width="1.2" marker-end="url(#triangle-end)" />
-
-  <!-- grammarEngine -->
-  <path d="M 300 640 L 300 610 C 300 610, 620 610, 620 401" fill="none" stroke="#000000" stroke-dasharray="4 3" stroke-width="1.2" marker-end="url(#triangle-end)" />
-  <!-- trigramEngine -->
-  <path d="M 600 640 L 600 610 C 600 610, 670 610, 670 401" fill="none" stroke="#000000" stroke-dasharray="4 3" stroke-width="1.2" marker-end="url(#triangle-end)" />
-  <!-- posEngine -->
-  <path d="M 900 640 L 900 610 C 900 610, 720 610, 720 401" fill="none" stroke="#000000" stroke-dasharray="4 3" stroke-width="1.2" marker-end="url(#triangle-end)" />
-
-  <!-- Association: SentinelDB & SentinelServer -->
-  <path d="M 460 880 L 540 880" fill="none" stroke="#000000" stroke-width="1.2" />
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="470" y="873">1</text>
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="525" y="873">1</text>
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" text-anchor="middle" x="500" y="865">syncs</text>
-
-  <!-- Aggregation: SentinelServer -> RequestHandler -->
-  <path d="M 820 880 L 940 880" fill="none" stroke="#000000" stroke-width="1.2" marker-start="url(#diamond-start)" />
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="840" y="873">1</text>
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="925" y="873">1</text>
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" text-anchor="middle" x="880" y="865">delegates</text>
-
-  <!-- Generalization: RequestHandler -> BaseHTTPRequestHandler -->
-  <path d="M 1060 865 L 1060 827" fill="none" stroke="#000000" stroke-width="1.2" marker-end="url(#triangle-end)" />
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" x="1070" y="848">inherits</text>
-
-  <!-- Association/Dependency: PerplexityAnalyzer -> KNNClassifier (feeds vector inputs) -->
-  <path d="M 300 510 L 340 510" fill="none" stroke="#000000" stroke-width="1.2" />
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="305" y="503">1</text>
-  <text font-family="sans-serif" font-size="11px" fill="#000000" x="330" y="503">1</text>
-  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" text-anchor="middle" x="320" y="493">inputs</text>
+  <!-- SentinelDB to ChartRenderer (Teacher to Break) -->
+  <path d="M 240 510 L 710 510" fill="none" stroke="#000000" stroke-width="1" />
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="260" y="500">0..1</text>
+  <text font-family="sans-serif" font-size="11px" fill="#000000" x="670" y="500">0..*</text>
+  <text font-family="sans-serif" font-size="11px" font-style="italic" fill="#000000" text-anchor="middle" x="480" y="495">renders</text>
 </svg>
