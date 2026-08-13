@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mxfile host="Electron" modified="2026-08-13T20:25:00.000Z" agent="5.0" version="20.0.0" type="device">
+  <diagram id="sentinel-object-diagram" name="Sentinel Object Diagram">
+    <mxGraphModel dx="1422" dy="980" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1360" pageHeight="980" background="#0b0f19" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Block -->
+        <mxCell id="titleCell" value="&lt;font size=&quot;5&quot; color=&quot;#ffffff&quot;&gt;&lt;b&gt;SENTINEL AI TEXT DETECTOR&lt;/b&gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#94a3b8&quot;&gt;UML Object Diagram - Runtime Instances, Collaborations &amp; API Sync Flow&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="60" y="30" width="550" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- fileParser : FileParser -->
+        <mxCell id="fileParser" value="&lt;b&gt;fileParser : FileParser&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#10b981&quot;&gt;«UTILITY»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ extractText(file: File): Promise&amp;lt;string&amp;gt;&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Parses pdf, docx, txt files into raw text&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="110" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- app : Controller -->
+        <mxCell id="app" value="&lt;b&gt;app : Controller&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#3b82f6&quot;&gt;«CORE CONTROLLER»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Properties:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#93c5fd&quot;&gt;• typingTimer = null&lt;br&gt;• doneTypingInterval = 1000&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ executeAnalysisCore(text, isSilent)&lt;br&gt;+ handleFileUpload(file)&lt;br&gt;+ updateEditorStats(text)&lt;br&gt;+ runAnalysis(text)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#3b82f6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="500" y="80" width="360" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- chartEngine : ChartRenderer -->
+        <mxCell id="chartEngine" value="&lt;b&gt;chartEngine : ChartRenderer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#10b981&quot;&gt;«UTILITY»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ renderGauge(containerId, pct)&lt;br&gt;+ renderHistoryChart(ctx, data)&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Renders dynamic SVG dashboard charts&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#10b981;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="110" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- perplexityEngine : PerplexityAnalyzer -->
+        <mxCell id="perplexityEngine" value="&lt;b&gt;perplexityEngine : PerplexityAnalyzer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8b5cf6&quot;&gt;«ENGINE»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ analyze(text): PerplexityResult&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Computes Perplexity, Burstiness, TTR,&lt;br&gt;// Word/Sentence counts (Weight: 5%)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="275" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- knnClassifier : KNNClassifier -->
+        <mxCell id="knnClassifier" value="&lt;b&gt;knnClassifier : KNNClassifier&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8b5cf6&quot;&gt;«ENGINE»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ extractFeatures(text, metrics)&lt;br&gt;+ classify(vector): KNNResult&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Classifies using vector distance&lt;br&gt;// against reference database (Weight: 20%)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="375" y="360" width="285" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- lrClassifier : LogisticRegressionClassifier -->
+        <mxCell id="lrClassifier" value="&lt;b&gt;lrClassifier : LogisticRegression&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8b5cf6&quot;&gt;«ENGINE»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ predict(vector): number&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Combines feature vectors via trained&lt;br&gt;// weight coefficients (Weight: 25%)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="700" y="360" width="285" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- similarityEngine : CosineSimilarityAnalyzer -->
+        <mxCell id="similarityEngine" value="&lt;b&gt;similarityEngine : CosineSimilarity&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8b5cf6&quot;&gt;«ENGINE»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ analyze(text): SimResult&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Measures semantic overlap with known&lt;br&gt;// human/AI structures (Weight: 10%)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="1025" y="360" width="275" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- grammarEngine : GrammarStyleAnalyzer -->
+        <mxCell id="grammarEngine" value="&lt;b&gt;grammarEngine : GrammarStyle&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8b5cf6&quot;&gt;«ENGINE»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ analyze(text): GrammarResult&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Calibrates the final ensemble score:&lt;br&gt;// perfect grammar boosts, typos discount&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="210" y="540" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- trigramEngine : TrigramAnalyzer -->
+        <mxCell id="trigramEngine" value="&lt;b&gt;trigramEngine : TrigramAnalyzer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8b5cf6&quot;&gt;«ENGINE»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ analyze(text): TrigramResult&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Analyzes frequency distribution of 3-char&lt;br&gt;// sequences against models (Weight: 25%)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="540" y="540" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- posEngine : PosClassifier -->
+        <mxCell id="posEngine" value="&lt;b&gt;posEngine : PosClassifier&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#8b5cf6&quot;&gt;«ENGINE»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ analyze(text): PosResult&lt;/font&gt;&lt;br&gt;&lt;font color=&quot;#64748b&quot;&gt;// Part-of-speech tagging syntactic patterns&lt;br&gt;// (Weight: 15%)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="870" y="540" width="280" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- db : SentinelDB -->
+        <mxCell id="db" value="&lt;b&gt;db : SentinelDB&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#f59e0b&quot;&gt;«DATABASE MGR»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Properties:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• initialized = true&lt;br&gt;• backendAvailable = true&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Methods:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;+ init(): Promise&amp;lt;boolean&amp;gt;&lt;br&gt;+ getCurrentUser(): Object&lt;br&gt;+ saveRecord(rec): Promise&amp;lt;string&amp;gt;&lt;br&gt;+ deleteRecord(id): Promise&amp;lt;boolean&amp;gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="190" y="740" width="380" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- backend : SentinelServer -->
+        <mxCell id="backend" value="&lt;b&gt;backend : SentinelServer&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#f59e0b&quot;&gt;«SQLITE + HTTP SERVER»&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Properties:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#cbd5e1&quot;&gt;• DB_FILE = &quot;sentinel.db&quot;&lt;br&gt;• PORT = 5000&lt;/font&gt;&lt;hr&gt;&lt;b&gt;Endpoints:&lt;/b&gt;&lt;br&gt;&lt;font color=&quot;#34d399&quot;&gt;• POST /api/auth/register /login&lt;br&gt;• POST /api/history/save&lt;br&gt;• GET /api/history&lt;br&gt;• DELETE /api/history/delete&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#161925;strokeColor=#f59e0b;strokeWidth=2;fontColor=#ffffff;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fontSize=11;fontFamily=Helvetica;" vertex="1" parent="1">
+          <mxGeometry x="790" y="740" width="380" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONNECTIONS ==================== -->
+
+        <!-- App -> FileParser -->
+        <mxCell id="edgeAppToFileParser" value="1. parses files" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.4;exitDx=0;exitDy=0;entryX=1;entryY=0.4;entryDx=0;entryDy=0;strokeColor=#10b981;strokeWidth=2;fontColor=#94a3b8;labelBackgroundColor=#0b0f19;fontSize=11;" edge="1" parent="1" source="app" target="fileParser">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> ChartEngine -->
+        <mxCell id="edgeAppToChart" value="3. renders gauge" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.4;exitDx=0;exitDy=0;entryX=0;entryY=0.4;entryDx=0;entryDy=0;strokeColor=#10b981;strokeWidth=2;fontColor=#94a3b8;labelBackgroundColor=#0b0f19;fontSize=11;" edge="1" parent="1" source="app" target="chartEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> db -->
+        <mxCell id="edgeAppToDb" value="Saves history &amp; auth" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#f59e0b;strokeWidth=2;fontColor=#94a3b8;labelBackgroundColor=#0b0f19;fontSize=11;" edge="1" parent="1" source="app" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- db -> backend (HTTP API Sync Request) -->
+        <mxCell id="edgeDbToBackend" value="sync over REST API (JSON)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.3;entryDx=0;entryDy=0;strokeColor=#f59e0b;strokeWidth=2;fontColor=#94a3b8;labelBackgroundColor=#0b0f19;fontSize=11;" edge="1" parent="1" source="db" target="backend">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- backend -> db (Response) -->
+        <mxCell id="edgeBackendToDb" value="auth &amp; history response" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.7;exitDx=0;exitDy=0;entryX=1;entryY=0.7;entryDx=0;entryDy=0;strokeColor=#f59e0b;strokeWidth=2;fontColor=#94a3b8;labelBackgroundColor=#0b0f19;fontSize=11;" edge="1" parent="1" source="backend" target="db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- perplexityEngine -> knnClassifier -->
+        <mxCell id="edgePerplexityToKnn" value="metrics" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;fontColor=#c084fc;labelBackgroundColor=#0b0f19;fontSize=11;" edge="1" parent="1" source="perplexityEngine" target="knnClassifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> perplexityEngine -->
+        <mxCell id="edgeAppToPerplexity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.3;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;" edge="1" parent="1" source="app" target="perplexityEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> knnClassifier -->
+        <mxCell id="edgeAppToKnn" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.4;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;" edge="1" parent="1" source="app" target="knnClassifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> lrClassifier -->
+        <mxCell id="edgeAppToLr" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.6;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;" edge="1" parent="1" source="app" target="lrClassifier">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> similarityEngine -->
+        <mxCell id="edgeAppToSimilarity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.7;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;" edge="1" parent="1" source="app" target="similarityEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> grammarEngine -->
+        <mxCell id="edgeAppToGrammar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;" edge="1" parent="1" source="app" target="grammarEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> trigramEngine -->
+        <mxCell id="edgeAppToTrigram" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;" edge="1" parent="1" source="app" target="trigramEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- App -> posEngine -->
+        <mxCell id="edgeAppToPos" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;strokeColor=#8b5cf6;strokeWidth=2;dashed=1;" edge="1" parent="1" source="app" target="posEngine">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Labels/Group text for analysis orchestration -->
+        <mxCell id="lblAnalysisOrch" value="2. execute analysis" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=#4c1d95;fillColor=#1e1b4b;fontColor=#c084fc;fontSize=11;rounded=1;spacing=2;" vertex="1" parent="1">
+          <mxGeometry x="620" y="295" width="120" height="20" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
