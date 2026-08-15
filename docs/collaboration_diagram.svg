@@ -1,0 +1,172 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1320 920" width="100%" height="100%" style="background-color: #ffffff; font-family: Helvetica, Arial, sans-serif;">
+  <defs>
+    <style type="text/css">
+      .uml-box { fill: #ffffff; stroke: #000000; stroke-width: 1.5; }
+      .uml-title { font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 13px; fill: #000000; text-anchor: middle; text-decoration: underline; }
+      .uml-text { font-family: Helvetica, Arial, sans-serif; font-size: 11.5px; fill: #000000; }
+      .uml-line { stroke: #000000; stroke-width: 1.5; fill: none; }
+      .uml-msg { font-family: Helvetica, Arial, sans-serif; font-size: 11px; fill: #000000; font-weight: bold; }
+      .uml-badge { fill: #f8fafc; stroke: #000000; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1320" height="920" fill="#ffffff" />
+  <rect x="15" y="15" width="1290" height="890" fill="none" stroke="#d1d5db" stroke-width="1" stroke-dasharray="4,4" />
+
+  <!-- Diagram Title Header Banner -->
+  <g transform="translate(40, 25)">
+    <rect width="1240" height="38" rx="3" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="620" y="24" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">AI Text Detector — Refined UML Object &amp; Collaboration Diagram</text>
+  </g>
+
+  <!-- ==================== COLLABORATION LINKS & MESSAGES ==================== -->
+
+  <!-- Link 1: docParser -> sentencePerplexity -->
+  <path d="M 570 240 V 275 H 230 V 320" class="uml-line" />
+  <!-- Message 1 -->
+  <g transform="translate(350, 260)">
+    <rect x="-10" y="-12" width="180" height="22" rx="3" class="uml-badge" />
+    <text x="0" y="3" class="uml-msg">1: calculatePerplexity(text) &#10142;</text>
+  </g>
+
+  <!-- Link 2: docParser -> vectorSimilarity -->
+  <path d="M 750 240 V 275 H 1080 V 320" class="uml-line" />
+  <!-- Message 2 -->
+  <g transform="translate(900, 260)">
+    <rect x="-10" y="-12" width="190" height="22" rx="3" class="uml-badge" />
+    <text x="0" y="3" class="uml-msg">2: computeCosineDistance(tokens) &#10142;</text>
+  </g>
+
+  <!-- Link 3: sentencePerplexity -> classifier -->
+  <path d="M 390 445 H 470" class="uml-line" />
+  <!-- Message 3 -->
+  <g transform="translate(395, 425)">
+    <rect x="0" y="-12" width="70" height="22" rx="3" class="uml-badge" />
+    <text x="5" y="3" class="uml-msg">3: sendFeatures() &#10142;</text>
+  </g>
+
+  <!-- Link 4: vectorSimilarity -> classifier -->
+  <path d="M 910 445 H 830" class="uml-line" />
+  <!-- Message 4 -->
+  <g transform="translate(835, 425)">
+    <rect x="0" y="-12" width="70" height="22" rx="3" class="uml-badge" />
+    <text x="5" y="3" class="uml-msg">&#11013; 4: sendVectors()</text>
+  </g>
+
+  <!-- Link 5: classifier -> visualizer -->
+  <path d="M 650 570 V 640" class="uml-line" />
+  <!-- Message 5 -->
+  <g transform="translate(660, 600)">
+    <rect x="-5" y="-12" width="180" height="22" rx="3" class="uml-badge" />
+    <text x="0" y="3" class="uml-msg">5: renderGaugeChart(91.5% AI) &#129095;</text>
+  </g>
+
+
+  <!-- ==================== OBJECT INSTANCE CARDS (SNAPSHOT STATES) ==================== -->
+
+  <!-- OBJECT 1: docParser : Parses -->
+  <g transform="translate(470, 70)">
+    <rect width="360" height="170" class="uml-box" />
+    <text x="180" y="22" class="uml-title">docParser : Parses</text>
+    <line x1="0" y1="32" x2="360" y2="32" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Surface Snapshot Attributes -->
+    <text x="12" y="48" class="uml-text">document = "sample_essay.docx"</text>
+    <text x="12" y="65" class="uml-text">status = "Text Extracted Successfully"</text>
+    <text x="12" y="82" class="uml-text">wordCount = 450 words</text>
+    <text x="12" y="99" class="uml-text">format = "Plain Text Buffer"</text>
+    <line x1="0" y1="110" x2="360" y2="110" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Active Methods -->
+    <text x="12" y="126" class="uml-text">+ extractText(file): string</text>
+    <text x="12" y="143" class="uml-text">+ readAsDocx(file): string</text>
+    <text x="12" y="160" class="uml-text">+ getWordCount(): int</text>
+  </g>
+
+  <!-- OBJECT 2: sentencePerplexity : Sentence Perplexity -->
+  <g transform="translate(70, 320)">
+    <rect width="320" height="250" class="uml-box" />
+    <text x="160" y="22" class="uml-title">sentencePerplexity : Sentence Perplexity</text>
+    <line x1="0" y1="32" x2="320" y2="32" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Snapshot State -->
+    <text x="12" y="48" class="uml-text">perplexityLevel = "High (Uniform Pattern)"</text>
+    <text x="12" y="65" class="uml-text">burstinessValue = "Low Sentence Variation"</text>
+    <text x="12" y="82" class="uml-text">avgSentenceLength = 20.4 words</text>
+    <text x="12" y="99" class="uml-text">aiLikelihood = "88% AI-like rhythm"</text>
+    <line x1="0" y1="110" x2="320" y2="110" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Collaboration Methods -->
+    <text x="12" y="126" class="uml-text">+ calculatePerplexity(text): float</text>
+    <text x="12" y="143" class="uml-text">+ calculateBurstiness(sentences): float</text>
+    <text x="12" y="160" class="uml-text">+ computeTTR(tokens): float</text>
+    <text x="12" y="177" class="uml-text">+ getAiWordDensity(text): float</text>
+    <text x="12" y="194" class="uml-text">+ getSentenceLengthVariance(): float</text>
+    <text x="12" y="211" class="uml-text">+ getPerplexityVerdict(): string</text>
+  </g>
+
+  <!-- OBJECT 4: classifier : Instance Based Classification -->
+  <g transform="translate(470, 320)">
+    <rect width="360" height="250" class="uml-box" />
+    <text x="180" y="22" class="uml-title">classifier : Instance Based Classification</text>
+    <line x1="0" y1="32" x2="360" y2="32" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Snapshot State -->
+    <text x="12" y="48" class="uml-text">algorithm = "K-Nearest Neighbors (K=5)"</text>
+    <text x="12" y="65" class="uml-text">neighborVotes = "4 AI Matches, 1 Human"</text>
+    <text x="12" y="82" class="uml-text">predictedClass = "AI Generated Text"</text>
+    <text x="12" y="99" class="uml-text">confidenceScore = 91.5%</text>
+    <line x1="0" y1="110" x2="360" y2="110" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Collaboration Methods -->
+    <text x="12" y="126" class="uml-text">+ classify(featureVector): object</text>
+    <text x="12" y="143" class="uml-text">+ computeEuclideanDistance(v1, v2): float</text>
+    <text x="12" y="160" class="uml-text">+ getNearestNeighbors(vector, k): list</text>
+    <text x="12" y="177" class="uml-text">+ getVerdictSummary(): object</text>
+    <text x="12" y="194" class="uml-text">+ updateTrainingSet(sample): void</text>
+  </g>
+
+  <!-- OBJECT 3: vectorSimilarity : Vector Similarities -->
+  <g transform="translate(910, 320)">
+    <rect width="340" height="250" class="uml-box" />
+    <text x="170" y="22" class="uml-title">vectorSimilarity : Vector Similarities</text>
+    <line x1="0" y1="32" x2="340" y2="32" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Snapshot State -->
+    <text x="12" y="48" class="uml-text">aiModelMatch = "85% Similarity"</text>
+    <text x="12" y="65" class="uml-text">humanModelMatch = "25% Similarity"</text>
+    <text x="12" y="82" class="uml-text">vectorCluster = "AI Language Patterns"</text>
+    <text x="12" y="99" class="uml-text">cosineDistance = 0.152</text>
+    <line x1="0" y1="110" x2="340" y2="110" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Collaboration Methods -->
+    <text x="12" y="126" class="uml-text">+ computeCosineSimilarity(v1, v2): float</text>
+    <text x="12" y="143" class="uml-text">+ extractNgramFrequency(text): list</text>
+    <text x="12" y="160" class="uml-text">+ comparePrototypes(vector): object</text>
+    <text x="12" y="177" class="uml-text">+ getFeatureVector(): list</text>
+    <text x="12" y="194" class="uml-text">+ normalizeVector(vector): list</text>
+    <text x="12" y="211" class="uml-text">+ getSimilarityIndex(): float</text>
+  </g>
+
+  <!-- OBJECT 5: visualizer : Render SVG visualization -->
+  <g transform="translate(470, 640)">
+    <rect width="360" height="230" class="uml-box" />
+    <text x="180" y="22" class="uml-title">visualizer : Render SVG visualization</text>
+    <line x1="0" y1="32" x2="360" y2="32" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Snapshot State -->
+    <text x="12" y="48" class="uml-text">chartType = "Radial Speedometer Gauge"</text>
+    <text x="12" y="65" class="uml-text">verdictBanner = "AI-GENERATED (91.5%)"</text>
+    <text x="12" y="82" class="uml-text">colorIndicator = "Red / Warning Accent"</text>
+    <text x="12" y="99" class="uml-text">renderMode = "Vector Graphic Display"</text>
+    <line x1="0" y1="110" x2="360" y2="110" stroke="#000000" stroke-width="1.5" />
+
+    <!-- Collaboration Methods -->
+    <text x="12" y="126" class="uml-text">+ renderGaugeChart(score): Element</text>
+    <text x="12" y="143" class="uml-text">+ renderScatterPlot(neighbors): Element</text>
+    <text x="12" y="160" class="uml-text">+ renderRadarChart(features): Element</text>
+    <text x="12" y="177" class="uml-text">+ animateGaugePointer(angle): void</text>
+    <text x="12" y="194" class="uml-text">+ updateVerdictDisplay(text): void</text>
+  </g>
+</svg>
