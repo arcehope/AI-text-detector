@@ -8,7 +8,6 @@
 
 class TrigramAnalyzer {
     constructor() {
-        // Top 20 character trigrams distinguishing Human vs AI (scaled to 10000x for precision)
         this.humanProfile = {
             ' , ': 73.67, ' . ': 68.01, 's, ': 2.34, ' th': 183.58, ' in': 47.24, 
             'to ': 53.23, ' * ': 15.20, ' " ': 15.05, ' to': 56.08, 'ly ': 30.50, 

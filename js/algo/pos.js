@@ -1,9 +1,4 @@
-/**
- * Algorithm 7: Part-of-Speech (POS) Ratio Cosine Similarity
- * 
- * Computes frequency ratios of determiners, prepositions, pronouns, conjunctions, 
- * and auxiliary verbs, matching the input document against Human and AI centroids.
- */
+
 
 class PosClassifier {
     constructor() {
