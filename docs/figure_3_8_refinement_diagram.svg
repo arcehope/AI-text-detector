@@ -1,438 +1,430 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1160" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1750" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
 
   <!-- Outer Diagram Canvas Border -->
-  <rect x="15" y="15" width="1570" height="1130" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" />
+  <rect x="20" y="20" width="2360" height="1710" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
 
   <!-- Diagram Title Header -->
-  <text x="800" y="45" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="17" fill="#1e293b" text-anchor="middle">Refined Class Diagram - AI Text Detector</text>
+  <text x="1200" y="60" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="24" fill="#1e293b" text-anchor="middle">Refined Class Diagram - AI Text Detector</text>
 
   <!-- ==================== DEFINITIONS / STYLES ==================== -->
   <defs>
     <style type="text/css">
-      .cls-box { fill: #ffffff; stroke-width: 1.5; }
-      .cls-title { font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; text-anchor: middle; fill: #0f172a; }
-      .cls-text { font-family: Consolas, Monaco, monospace; font-size: 11px; fill: #1e293b; }
-      .cls-enum-title { font-family: Helvetica, Arial, sans-serif; font-size: 11px; font-style: italic; text-anchor: middle; fill: #475569; }
-      .cls-enum-text { font-family: Helvetica, Arial, sans-serif; font-size: 10.5px; fill: #334155; }
-      .rel-line { stroke: #334155; stroke-width: 1.5; fill: none; }
-      .rel-dashed { stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
-      .card-text { font-family: Helvetica, Arial, sans-serif; font-size: 11px; font-weight: bold; fill: #334155; }
+      .cls-box { fill: #ffffff; stroke-width: 2; }
+      .cls-title { font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; fill: #0f172a; }
+      .cls-text { font-family: Consolas, Monaco, monospace; font-size: 18px; fill: #1e293b; }
+      .cls-enum-title { font-family: Helvetica, Arial, sans-serif; font-size: 17px; font-style: italic; text-anchor: middle; fill: #475569; }
+      .cls-enum-text { font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 600; fill: #334155; }
+      .rel-line { stroke: #334155; stroke-width: 2; fill: none; }
+      .rel-dashed { stroke: #64748b; stroke-width: 2; stroke-dasharray: 6,5; fill: none; }
+      .card-text { font-family: Helvetica, Arial, sans-serif; font-size: 19px; font-weight: bold; fill: #1e293b; }
     </style>
 
     <!-- Diamond Marker for Composition -->
-    <marker id="diamond" viewBox="0 0 10 10" refX="0" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M 0 5 L 5 0 L 10 5 L 5 10 z" fill="#334155" stroke="#334155" />
+    <marker id="diamond" viewBox="0 0 12 12" refX="0" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 6 L 6 0 L 12 6 L 6 12 z" fill="#334155" stroke="#334155" />
     </marker>
     <!-- Arrow Marker for Inheritance -->
-    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="none" stroke="#64748b" stroke-width="1.5" />
+    <marker id="arrow" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="10" markerHeight="10" orient="auto">
+      <path d="M 0 0 L 12 6 L 0 12 z" fill="none" stroke="#64748b" stroke-width="2" />
     </marker>
   </defs>
 
   <!-- ==================== TOP ROW CORE CLASSES ==================== -->
 
   <!-- CLASS 1: User (Blue) -->
-  <g transform="translate(40, 75)">
-    <rect width="210" height="265" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="210" height="28" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="105" y="19" class="cls-title">User</text>
-    <line x1="0" y1="28" x2="210" y2="28" stroke="#1d68d8" stroke-width="1.5" />
+  <g transform="translate(60, 100)">
+    <rect width="330" height="410" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="330" height="42" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="165" y="28" class="cls-title">User</text>
+    <line x1="0" y1="42" x2="330" y2="42" stroke="#1d68d8" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: String {PK}</text>
-    <text x="10" y="58" class="cls-text">- fullName: String</text>
-    <text x="10" y="72" class="cls-text">- email: String {unique}</text>
-    <text x="10" y="86" class="cls-text">- passwordHash: String</text>
-    <text x="10" y="100" class="cls-text">- role: Role</text>
-    <text x="10" y="114" class="cls-text">- createdAt: DateTime</text>
-    <text x="10" y="128" class="cls-text">- updatedAt: DateTime</text>
-    <text x="10" y="142" class="cls-text">- isActive: Boolean</text>
-    <line x1="0" y1="148" x2="210" y2="148" stroke="#cbd5e1" stroke-width="1" />
+    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
+    <text x="16" y="94" class="cls-text">- fullName: String</text>
+    <text x="16" y="120" class="cls-text">- email: String {unique}</text>
+    <text x="16" y="146" class="cls-text">- passwordHash: String</text>
+    <text x="16" y="172" class="cls-text">- role: Role</text>
+    <text x="16" y="198" class="cls-text">- createdAt: DateTime</text>
+    <text x="16" y="224" class="cls-text">- updatedAt: DateTime</text>
+    <text x="16" y="250" class="cls-text">- isActive: Boolean</text>
+    <line x1="0" y1="260" x2="330" y2="260" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <text x="10" y="162" class="cls-text">+ register(name, email): User</text>
-    <text x="10" y="176" class="cls-text">+ login(email, pwd): User</text>
-    <text x="10" y="190" class="cls-text">+ logout(): void</text>
-    <text x="10" y="204" class="cls-text">+ updateProfile(data): void</text>
-    <text x="10" y="218" class="cls-text">+ changePassword(): void</text>
-    <text x="10" y="232" class="cls-text">+ deactivate(): void</text>
+    <text x="16" y="284" class="cls-text">+ register(name, email)</text>
+    <text x="16" y="310" class="cls-text">+ login(email, pwd)</text>
+    <text x="16" y="336" class="cls-text">+ logout(): void</text>
+    <text x="16" y="362" class="cls-text">+ updateProfile(data)</text>
+    <text x="16" y="388" class="cls-text">+ changePassword()</text>
   </g>
 
   <!-- CLASS 2: DetectionTask (Red) -->
-  <g transform="translate(420, 75)">
-    <rect width="240" height="285" rx="4" class="cls-box" stroke="#a82d2d" fill="#ffffff" />
-    <rect width="240" height="28" rx="4" fill="#f8d7d7" stroke="#a82d2d" stroke-width="1.5" />
-    <text x="120" y="19" class="cls-title">DetectionTask</text>
-    <line x1="0" y1="28" x2="240" y2="28" stroke="#a82d2d" stroke-width="1.5" />
+  <g transform="translate(620, 100)">
+    <rect width="380" height="450" rx="6" class="cls-box" stroke="#a82d2d" fill="#ffffff" />
+    <rect width="380" height="42" rx="6" fill="#f8d7d7" stroke="#a82d2d" stroke-width="2" />
+    <text x="190" y="28" class="cls-title">DetectionTask</text>
+    <line x1="0" y1="42" x2="380" y2="42" stroke="#a82d2d" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: String {PK}</text>
-    <text x="10" y="58" class="cls-text">- userId: String {FK}</text>
-    <text x="10" y="72" class="cls-text">- targetText: String</text>
-    <text x="10" y="86" class="cls-text">- taskType: TaskType</text>
-    <text x="10" y="100" class="cls-text">- status: TaskStatus</text>
-    <text x="10" y="114" class="cls-text">- startedAt: DateTime</text>
-    <text x="10" y="128" class="cls-text">- completedAt: DateTime</text>
-    <text x="10" y="142" class="cls-text">- duration: Long</text>
-    <text x="10" y="156" class="cls-text">- aiScore: Double</text>
-    <text x="10" y="170" class="cls-text">- verdictSummary: Summary</text>
-    <line x1="0" y1="176" x2="240" y2="176" stroke="#cbd5e1" stroke-width="1" />
+    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
+    <text x="16" y="94" class="cls-text">- userId: String {FK}</text>
+    <text x="16" y="120" class="cls-text">- targetText: String</text>
+    <text x="16" y="146" class="cls-text">- taskType: TaskType</text>
+    <text x="16" y="172" class="cls-text">- status: TaskStatus</text>
+    <text x="16" y="198" class="cls-text">- startedAt: DateTime</text>
+    <text x="16" y="224" class="cls-text">- completedAt: DateTime</text>
+    <text x="16" y="250" class="cls-text">- duration: Long</text>
+    <text x="16" y="276" class="cls-text">- aiScore: Double</text>
+    <text x="16" y="302" class="cls-text">- verdictSummary: Summary</text>
+    <line x1="0" y1="312" x2="380" y2="312" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <text x="10" y="190" class="cls-text">+ start(): void</text>
-    <text x="10" y="204" class="cls-text">+ stop(): void</text>
-    <text x="10" y="218" class="cls-text">+ addResult(res): void</text>
-    <text x="10" y="232" class="cls-text">+ calculateAiScore(): void</text>
-    <text x="10" y="246" class="cls-text">+ getSummary(): Summary</text>
-    <text x="10" y="260" class="cls-text">+ generateReport(): Report</text>
+    <text x="16" y="336" class="cls-text">+ start(): void</text>
+    <text x="16" y="362" class="cls-text">+ stop(): void</text>
+    <text x="16" y="388" class="cls-text">+ calculateAiScore()</text>
+    <text x="16" y="414" class="cls-text">+ generateReport(): Report</text>
   </g>
 
   <!-- CLASS 3: StylometricFeature (Yellow/Gold) -->
-  <g transform="translate(850, 75)">
-    <rect width="230" height="250" rx="4" class="cls-box" stroke="#b45309" fill="#ffffff" />
-    <rect width="230" height="28" rx="4" fill="#fef3c7" stroke="#b45309" stroke-width="1.5" />
-    <text x="115" y="19" class="cls-title">StylometricFeature</text>
-    <line x1="0" y1="28" x2="230" y2="28" stroke="#b45309" stroke-width="1.5" />
+  <g transform="translate(1260, 100)">
+    <rect width="380" height="400" rx="6" class="cls-box" stroke="#b45309" fill="#ffffff" />
+    <rect width="380" height="42" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="2" />
+    <text x="190" y="28" class="cls-title">StylometricFeature</text>
+    <line x1="0" y1="42" x2="380" y2="42" stroke="#b45309" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: String {PK}</text>
-    <text x="10" y="58" class="cls-text">- taskId: String {FK}</text>
-    <text x="10" y="72" class="cls-text">- featureType: FeatureType</text>
-    <text x="10" y="86" class="cls-text">- title: String</text>
-    <text x="10" y="100" class="cls-text">- description: String</text>
-    <text x="10" y="114" class="cls-text">- evidence: String</text>
-    <text x="10" y="128" class="cls-text">- severity: VerdictLevel</text>
-    <text x="10" y="142" class="cls-text">- recommendation: String</text>
-    <text x="10" y="156" class="cls-text">- discoveredAt: DateTime</text>
-    <line x1="0" y1="162" x2="230" y2="162" stroke="#cbd5e1" stroke-width="1" />
+    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
+    <text x="16" y="94" class="cls-text">- taskId: String {FK}</text>
+    <text x="16" y="120" class="cls-text">- featureType: FeatureType</text>
+    <text x="16" y="146" class="cls-text">- title: String</text>
+    <text x="16" y="172" class="cls-text">- description: String</text>
+    <text x="16" y="198" class="cls-text">- evidence: String</text>
+    <text x="16" y="224" class="cls-text">- severity: VerdictLevel</text>
+    <text x="16" y="250" class="cls-text">- recommendation: String</text>
+    <text x="16" y="276" class="cls-text">- discoveredAt: DateTime</text>
+    <line x1="0" y1="286" x2="380" y2="286" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <text x="10" y="178" class="cls-text">+ setEvidence(e: String): void</text>
-    <text x="10" y="192" class="cls-text">+ setSeverity(s: Level): void</text>
+    <text x="16" y="312" class="cls-text">+ setEvidence(e: String)</text>
+    <text x="16" y="338" class="cls-text">+ setSeverity(s: Level)</text>
   </g>
 
   <!-- CLASS 4: VerdictLevel (Purple) -->
-  <g transform="translate(1330, 75)">
-    <rect width="220" height="150" rx="4" class="cls-box" stroke="#6d28d9" fill="#ffffff" />
-    <rect width="220" height="28" rx="4" fill="#ede9fe" stroke="#6d28d9" stroke-width="1.5" />
-    <text x="110" y="19" class="cls-title">VerdictLevel</text>
-    <line x1="0" y1="28" x2="220" y2="28" stroke="#6d28d9" stroke-width="1.5" />
+  <g transform="translate(1960, 100)">
+    <rect width="380" height="220" rx="6" class="cls-box" stroke="#6d28d9" fill="#ffffff" />
+    <rect width="380" height="42" rx="6" fill="#ede9fe" stroke="#6d28d9" stroke-width="2" />
+    <text x="190" y="28" class="cls-title">VerdictLevel</text>
+    <line x1="0" y1="42" x2="380" y2="42" stroke="#6d28d9" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: int {PK}</text>
-    <text x="10" y="58" class="cls-text">- name: String</text>
-    <text x="10" y="72" class="cls-text">- weight: int</text>
-    <text x="10" y="86" class="cls-text">- description: String</text>
-    <line x1="0" y1="94" x2="220" y2="94" stroke="#cbd5e1" stroke-width="1" />
+    <text x="16" y="68" class="cls-text">- id: int {PK}</text>
+    <text x="16" y="94" class="cls-text">- name: String</text>
+    <text x="16" y="120" class="cls-text">- weight: int</text>
+    <text x="16" y="146" class="cls-text">- description: String</text>
+    <line x1="0" y1="156" x2="380" y2="156" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <text x="10" y="110" class="cls-text">+ getWeight(): int</text>
+    <text x="16" y="184" class="cls-text">+ getWeight(): int</text>
   </g>
 
   <!-- ENUM 4B: VerdictLevel Enum values -->
-  <g transform="translate(1330, 240)">
-    <rect width="220" height="120" rx="4" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
-    <text x="110" y="16" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
-    <text x="10" y="34" class="cls-enum-text">CRITICAL_AI (60)</text>
-    <text x="10" y="50" class="cls-enum-text">HIGH_AI (40)</text>
-    <text x="10" y="66" class="cls-enum-text">MEDIUM_MIXED (20)</text>
-    <text x="10" y="82" class="cls-enum-text">LOW_HUMAN (5)</text>
-    <text x="10" y="98" class="cls-enum-text">INFORMATIONAL (0)</text>
+  <g transform="translate(1960, 350)">
+    <rect width="380" height="180" rx="6" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
+    <text x="190" y="26" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
+    <text x="16" y="54" class="cls-enum-text">CRITICAL_AI (60)</text>
+    <text x="16" y="80" class="cls-enum-text">HIGH_AI (40)</text>
+    <text x="16" y="106" class="cls-enum-text">MEDIUM_MIXED (20)</text>
+    <text x="16" y="132" class="cls-enum-text">LOW_HUMAN (5)</text>
+    <text x="16" y="158" class="cls-enum-text">INFORMATIONAL (0)</text>
   </g>
 
 
   <!-- ==================== MIDDLE ROW CLASSES & ENGINES ==================== -->
 
   <!-- CLASS 5: Report (Green) -->
-  <g transform="translate(40, 430)">
-    <rect width="180" height="160" rx="4" class="cls-box" stroke="#047857" fill="#ffffff" />
-    <rect width="180" height="28" rx="4" fill="#d1fae5" stroke="#047857" stroke-width="1.5" />
-    <text x="90" y="19" class="cls-title">Report</text>
-    <line x1="0" y1="28" x2="180" y2="28" stroke="#047857" stroke-width="1.5" />
+  <g transform="translate(60, 620)">
+    <rect width="280" height="250" rx="6" class="cls-box" stroke="#047857" fill="#ffffff" />
+    <rect width="280" height="42" rx="6" fill="#d1fae5" stroke="#047857" stroke-width="2" />
+    <text x="140" y="28" class="cls-title">Report</text>
+    <line x1="0" y1="42" x2="280" y2="42" stroke="#047857" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: String {PK}</text>
-    <text x="10" y="58" class="cls-text">- taskId: String {FK}</text>
-    <text x="10" y="72" class="cls-text">- generatedAt: DateTime</text>
-    <text x="10" y="86" class="cls-text">- format: ReportFormat</text>
-    <text x="10" y="100" class="cls-text">- totalAiScore: Double</text>
-    <line x1="0" y1="106" x2="180" y2="106" stroke="#cbd5e1" stroke-width="1" />
+    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
+    <text x="16" y="94" class="cls-text">- taskId: String {FK}</text>
+    <text x="16" y="120" class="cls-text">- generatedAt: DateTime</text>
+    <text x="16" y="146" class="cls-text">- format: ReportFormat</text>
+    <text x="16" y="172" class="cls-text">- totalAiScore: Double</text>
+    <line x1="0" y1="182" x2="280" y2="182" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <text x="10" y="122" class="cls-text">+ generate(): void</text>
-    <text x="10" y="136" class="cls-text">+ download(): File</text>
-    <text x="10" y="150" class="cls-text">+ delete(): void</text>
+    <text x="16" y="206" class="cls-text">+ generate(): void</text>
+    <text x="16" y="232" class="cls-text">+ download(): File</text>
   </g>
 
   <!-- CLASS 6: AlgorithmScore (Green) -->
-  <g transform="translate(250, 430)">
-    <rect width="190" height="160" rx="4" class="cls-box" stroke="#047857" fill="#ffffff" />
-    <rect width="190" height="28" rx="4" fill="#d1fae5" stroke="#047857" stroke-width="1.5" />
-    <text x="95" y="19" class="cls-title">AlgorithmScore</text>
-    <line x1="0" y1="28" x2="190" y2="28" stroke="#047857" stroke-width="1.5" />
+  <g transform="translate(380, 620)">
+    <rect width="320" height="250" rx="6" class="cls-box" stroke="#047857" fill="#ffffff" />
+    <rect width="320" height="42" rx="6" fill="#d1fae5" stroke="#047857" stroke-width="2" />
+    <text x="160" y="28" class="cls-title">AlgorithmScore</text>
+    <line x1="0" y1="42" x2="320" y2="42" stroke="#047857" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: String {PK}</text>
-    <text x="10" y="58" class="cls-text">- reportId: String {FK}</text>
-    <text x="10" y="72" class="cls-text">- featureType: Type</text>
-    <text x="10" y="86" class="cls-text">- title: String</text>
-    <text x="10" y="100" class="cls-text">- summary: String</text>
-    <text x="10" y="114" class="cls-text">- riskScore: Double</text>
+    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
+    <text x="16" y="94" class="cls-text">- reportId: String {FK}</text>
+    <text x="16" y="120" class="cls-text">- featureType: Type</text>
+    <text x="16" y="146" class="cls-text">- title: String</text>
+    <text x="16" y="172" class="cls-text">- summary: String</text>
+    <text x="16" y="198" class="cls-text">- riskScore: Double</text>
   </g>
 
   <!-- CLASS 7: DetectorEngine (Center Blue) -->
-  <g transform="translate(520, 420)">
-    <rect width="440" height="240" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="440" height="28" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="220" y="19" class="cls-title">DetectorEngine</text>
-    <line x1="0" y1="28" x2="440" y2="28" stroke="#1d68d8" stroke-width="1.5" />
+  <g transform="translate(760, 610)">
+    <rect width="680" height="360" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="680" height="42" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="340" y="28" class="cls-title">DetectorEngine</text>
+    <line x1="0" y1="42" x2="680" y2="42" stroke="#1d68d8" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: String {PK}</text>
-    <text x="10" y="58" class="cls-text">- name: String</text>
-    <text x="10" y="72" class="cls-text">- version: String</text>
-    <text x="10" y="86" class="cls-text">- minWordCount: int</text>
-    <text x="10" y="100" class="cls-text">- timeout: int</text>
-    <line x1="0" y1="106" x2="440" y2="106" stroke="#cbd5e1" stroke-width="1" />
+    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
+    <text x="16" y="94" class="cls-text">- name: String</text>
+    <text x="16" y="120" class="cls-text">- version: String</text>
+    <text x="16" y="146" class="cls-text">- minWordCount: int</text>
+    <text x="16" y="172" class="cls-text">- timeout: int</text>
+    <line x1="0" y1="182" x2="680" y2="182" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <text x="10" y="122" class="cls-text">+ checkPerplexity(text: String): List&lt;Feature&gt;</text>
-    <text x="10" y="136" class="cls-text">+ checkBurstiness(sentences: List): List&lt;Feature&gt;</text>
-    <text x="10" y="150" class="cls-text">+ checkCosineSimilarity(vector: List): List&lt;Feature&gt;</text>
-    <text x="10" y="164" class="cls-text">+ checkKNNClassify(features: List): List&lt;Feature&gt;</text>
-    <text x="10" y="178" class="cls-text">+ checkTrigramDensity(text: String): List&lt;Feature&gt;</text>
-    <text x="10" y="192" class="cls-text">+ checkPOSSyntax(text: String): List&lt;Feature&gt;</text>
-    <text x="10" y="206" class="cls-text">+ checkGrammarStyle(text: String): List&lt;Feature&gt;</text>
-    <text x="10" y="220" class="cls-text">+ runAllDetectors(task: DetectionTask): void</text>
+    <text x="16" y="206" class="cls-text">+ checkPerplexity(text: String): List&lt;Feature&gt;</text>
+    <text x="16" y="232" class="cls-text">+ checkBurstiness(sentences: List): List&lt;Feature&gt;</text>
+    <text x="16" y="258" class="cls-text">+ checkCosineSimilarity(vector: List): List&lt;Feature&gt;</text>
+    <text x="16" y="284" class="cls-text">+ checkKNNClassify(features: List): List&lt;Feature&gt;</text>
+    <text x="16" y="310" class="cls-text">+ checkTrigramDensity(text: String): List&lt;Feature&gt;</text>
+    <text x="16" y="336" class="cls-text">+ runAllDetectors(task: DetectionTask): void</text>
   </g>
 
   <!-- CLASS 8: FeaturePayload (Teal) -->
-  <g transform="translate(1070, 430)">
-    <rect width="210" height="170" rx="4" class="cls-box" stroke="#0e7490" fill="#ffffff" />
-    <rect width="210" height="28" rx="4" fill="#cffaff" stroke="#0e7490" stroke-width="1.5" />
-    <text x="105" y="19" class="cls-title">FeaturePayload</text>
-    <line x1="0" y1="28" x2="210" y2="28" stroke="#0e7490" stroke-width="1.5" />
+  <g transform="translate(1580, 620)">
+    <rect width="320" height="260" rx="6" class="cls-box" stroke="#0e7490" fill="#ffffff" />
+    <rect width="320" height="42" rx="6" fill="#cffaff" stroke="#0e7490" stroke-width="2" />
+    <text x="160" y="28" class="cls-title">FeaturePayload</text>
+    <line x1="0" y1="42" x2="320" y2="42" stroke="#0e7490" stroke-width="2" />
 
-    <text x="10" y="44" class="cls-text">- id: String {PK}</text>
-    <text x="10" y="58" class="cls-text">- type: PayloadType</text>
-    <text x="10" y="72" class="cls-text">- value: String</text>
-    <text x="10" y="86" class="cls-text">- description: String</text>
-    <text x="10" y="100" class="cls-text">- isActive: Boolean</text>
-    <line x1="0" y1="106" x2="210" y2="106" stroke="#cbd5e1" stroke-width="1" />
+    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
+    <text x="16" y="94" class="cls-text">- type: PayloadType</text>
+    <text x="16" y="120" class="cls-text">- value: String</text>
+    <text x="16" y="146" class="cls-text">- description: String</text>
+    <text x="16" y="172" class="cls-text">- isActive: Boolean</text>
+    <line x1="0" y1="182" x2="320" y2="182" stroke="#cbd5e1" stroke-width="1.5" />
 
-    <text x="10" y="122" class="cls-text">+ getValue(): String</text>
-    <text x="10" y="136" class="cls-text">+ getCategory(): String</text>
+    <text x="16" y="206" class="cls-text">+ getValue(): String</text>
+    <text x="16" y="232" class="cls-text">+ getCategory(): String</text>
   </g>
 
   <!-- ENUMS 8B: FeatureType & PayloadType -->
-  <g transform="translate(1330, 410)">
-    <rect width="220" height="130" rx="4" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
-    <text x="110" y="16" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
-    <text x="110" y="30" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">FeatureType</text>
-    <text x="10" y="46" class="cls-enum-text">PERPLEXITY</text>
-    <text x="10" y="60" class="cls-enum-text">BURSTINESS</text>
-    <text x="10" y="74" class="cls-enum-text">TTR_DENSITY</text>
-    <text x="10" y="88" class="cls-enum-text">COSINE_SIMILARITY</text>
-    <text x="10" y="102" class="cls-enum-text">KNN_STYLOMETRICS</text>
-    <text x="10" y="116" class="cls-enum-text">POS_SYNTAX</text>
+  <g transform="translate(1960, 600)">
+    <rect width="380" height="200" rx="6" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
+    <text x="190" y="24" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
+    <text x="190" y="46" font-family="Helvetica" font-size="19" font-weight="bold" text-anchor="middle" fill="#0f172a">FeatureType</text>
+    <text x="16" y="74" class="cls-enum-text">PERPLEXITY</text>
+    <text x="16" y="98" class="cls-enum-text">BURSTINESS</text>
+    <text x="16" y="122" class="cls-enum-text">TTR_DENSITY</text>
+    <text x="16" y="146" class="cls-enum-text">COSINE_SIMILARITY</text>
+    <text x="16" y="170" class="cls-enum-text">KNN_STYLOMETRICS</text>
   </g>
 
-  <g transform="translate(1330, 555)">
-    <rect width="220" height="115" rx="4" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
-    <text x="110" y="16" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
-    <text x="110" y="30" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">PayloadType</text>
-    <text x="10" y="46" class="cls-enum-text">WORD_FREQ</text>
-    <text x="10" y="60" class="cls-enum-text">SENTENCE_VAR</text>
-    <text x="10" y="74" class="cls-enum-text">NGRAM_DIST</text>
-    <text x="10" y="88" class="cls-enum-text">VOCAB_RICH</text>
+  <g transform="translate(1960, 820)">
+    <rect width="380" height="170" rx="6" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
+    <text x="190" y="24" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
+    <text x="190" y="46" font-family="Helvetica" font-size="19" font-weight="bold" text-anchor="middle" fill="#0f172a">PayloadType</text>
+    <text x="16" y="74" class="cls-enum-text">WORD_FREQ</text>
+    <text x="16" y="98" class="cls-enum-text">SENTENCE_VAR</text>
+    <text x="16" y="122" class="cls-enum-text">NGRAM_DIST</text>
+    <text x="16" y="146" class="cls-enum-text">VOCAB_RICH</text>
   </g>
 
 
   <!-- ==================== CONNECTIONS TOP & MIDDLE ==================== -->
   
   <!-- User (1) -- (*) DetectionTask -->
-  <line x1="250" y1="180" x2="420" y2="180" class="rel-line" />
-  <text x="260" y="172" class="card-text">1</text>
-  <text x="400" y="172" class="card-text">1..*</text>
+  <line x1="390" y1="260" x2="620" y2="260" class="rel-line" />
+  <text x="410" y="250" class="card-text">1</text>
+  <text x="590" y="250" class="card-text">1..*</text>
 
   <!-- DetectionTask (1) <>-- (1..*) StylometricFeature -->
-  <line x1="660" y1="180" x2="850" y2="180" class="rel-line" marker-start="url(#diamond)" />
-  <text x="675" y="172" class="card-text">1</text>
-  <text x="830" y="172" class="card-text">1..*</text>
+  <line x1="1000" y1="260" x2="1260" y2="260" class="rel-line" marker-start="url(#diamond)" />
+  <text x="1020" y="250" class="card-text">1</text>
+  <text x="1230" y="250" class="card-text">1..*</text>
 
   <!-- StylometricFeature (*) -- (1) VerdictLevel -->
-  <line x1="1080" y1="150" x2="1330" y2="150" class="rel-line" />
-  <text x="1090" y="142" class="card-text">*</text>
-  <text x="1310" y="142" class="card-text">1</text>
+  <line x1="1640" y1="210" x2="1960" y2="210" class="rel-line" />
+  <text x="1660" y="200" class="card-text">*</text>
+  <text x="1930" y="200" class="card-text">1</text>
 
   <!-- User (1) -- (*) Report -->
-  <line x1="140" y1="340" x2="140" y2="430" class="rel-line" />
-  <text x="148" y="355" class="card-text">1</text>
-  <text x="148" y="420" class="card-text">1..*</text>
+  <line x1="200" y1="510" x2="200" y2="620" class="rel-line" />
+  <text x="210" y="530" class="card-text">1</text>
+  <text x="210" y="600" class="card-text">1..*</text>
 
   <!-- Report (1) <>-- (*) AlgorithmScore -->
-  <line x1="220" y1="510" x2="250" y2="510" class="rel-line" marker-start="url(#diamond)" />
+  <line x1="340" y1="745" x2="380" y2="745" class="rel-line" marker-start="url(#diamond)" />
 
   <!-- DetectorEngine uses DetectionTask -->
-  <line x1="660" y1="360" x2="660" y2="420" class="rel-line" />
-  <text x="670" y="390" class="card-text">uses</text>
+  <line x1="980" y1="550" x2="980" y2="610" class="rel-line" />
+  <text x="995" y="585" class="card-text">uses</text>
 
 
-  <!-- ==================== BOTTOM ENUMS ROW ==================== -->
+  <!-- ==================== BOTTOM ENUMS ROW A ==================== -->
 
-  <!-- Enum Target -->
-  <g transform="translate(40, 710)">
-    <rect width="130" height="110" rx="4" fill="#fffbebe6" stroke="#b45309" stroke-width="1.5" />
-    <text x="65" y="16" class="cls-title">Target</text>
-    <line x1="0" y1="24" x2="130" y2="24" stroke="#cbd5e1" />
-    <text x="8" y="38" class="cls-text">- id: String</text>
-    <text x="8" y="52" class="cls-text">- textUrl: String</text>
-    <text x="8" y="66" class="cls-text">- name: String</text>
-    <text x="8" y="80" class="cls-text">- desc: String</text>
-    <text x="8" y="94" class="cls-text">- createdAt: Date</text>
+  <!-- Target -->
+  <g transform="translate(60, 1050)">
+    <rect width="210" height="170" rx="6" fill="#fffbebe6" stroke="#b45309" stroke-width="2" />
+    <text x="105" y="28" class="cls-title">Target</text>
+    <line x1="0" y1="38" x2="210" y2="38" stroke="#cbd5e1" />
+    <text x="12" y="64" class="cls-text">- id: String</text>
+    <text x="12" y="90" class="cls-text">- textUrl: String</text>
+    <text x="12" y="116" class="cls-text">- name: String</text>
+    <text x="12" y="142" class="cls-text">- desc: String</text>
   </g>
 
-  <!-- Enum TaskType -->
-  <g transform="translate(190, 710)">
-    <rect width="110" height="100" rx="4" fill="#fefce8" stroke="#b45309" stroke-width="1.5" />
-    <text x="55" y="16" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="55" y="30" class="cls-title">TaskType</text>
-    <line x1="0" y1="36" x2="110" y2="36" stroke="#cbd5e1" />
-    <text x="8" y="52" class="cls-enum-text">QUICK</text>
-    <text x="8" y="66" class="cls-enum-text">FULL</text>
-    <text x="8" y="80" class="cls-enum-text">CUSTOM</text>
+  <!-- TaskType -->
+  <g transform="translate(310, 1050)">
+    <rect width="170" height="170" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
+    <text x="85" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
+    <text x="85" y="48" class="cls-title">TaskType</text>
+    <line x1="0" y1="58" x2="170" y2="58" stroke="#cbd5e1" />
+    <text x="12" y="86" class="cls-enum-text">QUICK</text>
+    <text x="12" y="112" class="cls-enum-text">FULL</text>
+    <text x="12" y="138" class="cls-enum-text">CUSTOM</text>
   </g>
 
-  <!-- Enum TaskStatus -->
-  <g transform="translate(320, 710)">
-    <rect width="120" height="115" rx="4" fill="#fefce8" stroke="#b45309" stroke-width="1.5" />
-    <text x="60" y="16" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="60" y="30" class="cls-title">TaskStatus</text>
-    <line x1="0" y1="36" x2="120" y2="36" stroke="#cbd5e1" />
-    <text x="8" y="50" class="cls-enum-text">PENDING</text>
-    <text x="8" y="64" class="cls-enum-text">RUNNING</text>
-    <text x="8" y="78" class="cls-enum-text">COMPLETED</text>
-    <text x="8" y="92" class="cls-enum-text">FAILED</text>
+  <!-- TaskStatus -->
+  <g transform="translate(520, 1050)">
+    <rect width="190" height="180" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
+    <text x="95" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
+    <text x="95" y="48" class="cls-title">TaskStatus</text>
+    <line x1="0" y1="58" x2="190" y2="58" stroke="#cbd5e1" />
+    <text x="12" y="84" class="cls-enum-text">PENDING</text>
+    <text x="12" y="108" class="cls-enum-text">RUNNING</text>
+    <text x="12" y="132" class="cls-enum-text">COMPLETED</text>
+    <text x="12" y="156" class="cls-enum-text">FAILED</text>
   </g>
 
-  <!-- Enum VerdictSummary -->
-  <g transform="translate(460, 710)">
-    <rect width="150" height="115" rx="4" fill="#fefce8" stroke="#b45309" stroke-width="1.5" />
-    <text x="75" y="16" class="cls-title">VerdictSummary</text>
-    <line x1="0" y1="24" x2="150" y2="24" stroke="#cbd5e1" />
-    <text x="8" y="38" class="cls-text">- low: int</text>
-    <text x="8" y="52" class="cls-text">- medium: int</text>
-    <text x="8" y="66" class="cls-text">- high: int</text>
-    <text x="8" y="80" class="cls-text">- critical: int</text>
-    <text x="8" y="94" class="cls-text">+ calculateTotal(): int</text>
+  <!-- VerdictSummary -->
+  <g transform="translate(750, 1050)">
+    <rect width="270" height="180" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
+    <text x="135" y="28" class="cls-title">VerdictSummary</text>
+    <line x1="0" y1="38" x2="270" y2="38" stroke="#cbd5e1" />
+    <text x="12" y="64" class="cls-text">- low: int</text>
+    <text x="12" y="90" class="cls-text">- medium: int</text>
+    <text x="12" y="116" class="cls-text">- high: int</text>
+    <text x="12" y="142" class="cls-text">- critical: int</text>
+    <text x="12" y="166" class="cls-text">+ calculateTotal(): int</text>
   </g>
 
-  <!-- Enum ReportFormat -->
-  <g transform="translate(630, 710)">
-    <rect width="110" height="100" rx="4" fill="#fefce8" stroke="#b45309" stroke-width="1.5" />
-    <text x="55" y="16" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="55" y="30" class="cls-title">ReportFormat</text>
-    <line x1="0" y1="36" x2="110" y2="36" stroke="#cbd5e1" />
-    <text x="8" y="52" class="cls-enum-text">HTML</text>
-    <text x="8" y="66" class="cls-enum-text">PDF</text>
-    <text x="8" y="80" class="cls-enum-text">JSON</text>
+  <!-- ReportFormat -->
+  <g transform="translate(1060, 1050)">
+    <rect width="170" height="170" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
+    <text x="85" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
+    <text x="85" y="48" class="cls-title">ReportFormat</text>
+    <line x1="0" y1="58" x2="170" y2="58" stroke="#cbd5e1" />
+    <text x="12" y="86" class="cls-enum-text">HTML</text>
+    <text x="12" y="112" class="cls-enum-text">PDF</text>
+    <text x="12" y="138" class="cls-enum-text">JSON</text>
   </g>
 
-  <!-- Enum Role -->
-  <g transform="translate(760, 710)">
-    <rect width="100" height="100" rx="4" fill="#fefce8" stroke="#b45309" stroke-width="1.5" />
-    <text x="50" y="16" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="50" y="30" class="cls-title">Role</text>
-    <line x1="0" y1="36" x2="100" y2="36" stroke="#cbd5e1" />
-    <text x="8" y="52" class="cls-enum-text">ADMIN</text>
-    <text x="8" y="66" class="cls-enum-text">USER</text>
-    <text x="8" y="80" class="cls-enum-text">GUEST</text>
+  <!-- Role -->
+  <g transform="translate(1270, 1050)">
+    <rect width="150" height="170" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
+    <text x="75" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
+    <text x="75" y="48" class="cls-title">Role</text>
+    <line x1="0" y1="58" x2="150" y2="58" stroke="#cbd5e1" />
+    <text x="12" y="86" class="cls-enum-text">ADMIN</text>
+    <text x="12" y="112" class="cls-enum-text">USER</text>
+    <text x="12" y="138" class="cls-enum-text">GUEST</text>
   </g>
 
-  <!-- Class Alert -->
-  <g transform="translate(880, 710)">
-    <rect width="150" height="115" rx="4" fill="#fffbebe6" stroke="#b45309" stroke-width="1.5" />
-    <text x="75" y="16" class="cls-title">Alert</text>
-    <line x1="0" y1="24" x2="150" y2="24" stroke="#cbd5e1" />
-    <text x="8" y="38" class="cls-text">- id: String {PK}</text>
-    <text x="8" y="52" class="cls-text">- userId: String {FK}</text>
-    <text x="8" y="66" class="cls-text">- taskId: String {FK}</text>
-    <text x="8" y="80" class="cls-text">- message: String</text>
-    <text x="8" y="94" class="cls-text">+ markAsRead(): void</text>
+  <!-- Alert -->
+  <g transform="translate(1460, 1050)">
+    <rect width="240" height="180" rx="6" fill="#fffbebe6" stroke="#b45309" stroke-width="2" />
+    <text x="120" y="28" class="cls-title">Alert</text>
+    <line x1="0" y1="38" x2="240" y2="38" stroke="#cbd5e1" />
+    <text x="12" y="64" class="cls-text">- id: String {PK}</text>
+    <text x="12" y="90" class="cls-text">- userId: String {FK}</text>
+    <text x="12" y="116" class="cls-text">- taskId: String {FK}</text>
+    <text x="12" y="142" class="cls-text">- message: String</text>
+    <text x="12" y="166" class="cls-text">+ markAsRead(): void</text>
   </g>
 
 
-  <!-- ==================== 7 PARALLEL CHECKER SUB-COMPONENTS ==================== -->
+  <!-- ==================== 7 PARALLEL CHECKER SUB-COMPONENTS (FONT SIZE 19) ==================== -->
   
   <!-- Horizontal Bus Line Connecting DetectorEngine to 7 Checkers -->
-  <line x1="740" y1="660" x2="740" y2="880" class="rel-dashed" />
-  <line x1="120" y1="880" x2="1480" y2="880" class="rel-dashed" />
+  <line x1="1100" y1="970" x2="1100" y2="1300" class="rel-dashed" />
+  <line x1="210" y1="1300" x2="2190" y2="1300" class="rel-dashed" />
 
   <!-- Checker 1: PerplexityChecker -->
-  <g transform="translate(40, 920)">
-    <rect width="190" height="60" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="190" height="22" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="95" y="15" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">PerplexityChecker</text>
-    <line x1="0" y1="22" x2="190" y2="22" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="8" y="38" class="cls-text">+ check(text: String):</text>
-    <text x="8" y="50" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="135" y1="0" x2="135" y2="-40" class="rel-dashed" marker-end="url(#arrow)" />
+  <g transform="translate(60, 1350)">
+    <rect width="300" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="300" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="150" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">PerplexityChecker</text>
+    <line x1="0" y1="34" x2="300" y2="34" stroke="#1d68d8" stroke-width="2" />
+    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
+    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
+    <line x1="210" y1="0" x2="210" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
   </g>
 
   <!-- Checker 2: BurstinessChecker -->
-  <g transform="translate(260, 920)">
-    <rect width="190" height="60" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="190" height="22" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="95" y="15" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">BurstinessChecker</text>
-    <line x1="0" y1="22" x2="190" y2="22" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="8" y="38" class="cls-text">+ check(text: String):</text>
-    <text x="8" y="50" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="355" y1="0" x2="355" y2="-40" class="rel-dashed" marker-end="url(#arrow)" />
+  <g transform="translate(390, 1350)">
+    <rect width="300" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="300" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="150" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">BurstinessChecker</text>
+    <line x1="0" y1="34" x2="300" y2="34" stroke="#1d68d8" stroke-width="2" />
+    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
+    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
+    <line x1="540" y1="0" x2="540" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
   </g>
 
   <!-- Checker 3: KNNClassifierChecker -->
-  <g transform="translate(480, 920)">
-    <rect width="190" height="60" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="190" height="22" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="95" y="15" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">KNNClassifierChecker</text>
-    <line x1="0" y1="22" x2="190" y2="22" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="8" y="38" class="cls-text">+ check(vector: List):</text>
-    <text x="8" y="50" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="575" y1="0" x2="575" y2="-40" class="rel-dashed" marker-end="url(#arrow)" />
+  <g transform="translate(720, 1350)">
+    <rect width="310" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="310" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="155" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">KNNClassifierChecker</text>
+    <line x1="0" y1="34" x2="310" y2="34" stroke="#1d68d8" stroke-width="2" />
+    <text x="12" y="60" class="cls-text">+ check(vector: List):</text>
+    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
+    <line x1="875" y1="0" x2="875" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
   </g>
 
   <!-- Checker 4: LogisticRegressionChecker -->
-  <g transform="translate(700, 920)">
-    <rect width="200" height="60" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="200" height="22" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="100" y="15" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">LogisticRegressionChecker</text>
-    <line x1="0" y1="22" x2="200" y2="22" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="8" y="38" class="cls-text">+ check(vector: List):</text>
-    <text x="8" y="50" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="800" y1="0" x2="800" y2="-40" class="rel-dashed" marker-end="url(#arrow)" />
+  <g transform="translate(1060, 1350)">
+    <rect width="330" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="330" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="165" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">LogisticRegressionChecker</text>
+    <line x1="0" y1="34" x2="330" y2="34" stroke="#1d68d8" stroke-width="2" />
+    <text x="12" y="60" class="cls-text">+ check(vector: List):</text>
+    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
+    <line x1="1225" y1="0" x2="1225" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
   </g>
 
   <!-- Checker 5: TrigramChecker -->
-  <g transform="translate(930, 920)">
-    <rect width="180" height="60" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="180" height="22" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="90" y="15" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">TrigramChecker</text>
-    <line x1="0" y1="22" x2="180" y2="22" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="8" y="38" class="cls-text">+ check(text: String):</text>
-    <text x="8" y="50" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="1020" y1="0" x2="1020" y2="-40" class="rel-dashed" marker-end="url(#arrow)" />
+  <g transform="translate(1420, 1350)">
+    <rect width="280" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="280" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="140" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">TrigramChecker</text>
+    <line x1="0" y1="34" x2="280" y2="34" stroke="#1d68d8" stroke-width="2" />
+    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
+    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
+    <line x1="1560" y1="0" x2="1560" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
   </g>
 
   <!-- Checker 6: POSSyntaxChecker -->
-  <g transform="translate(1140, 920)">
-    <rect width="180" height="60" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="180" height="22" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="90" y="15" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">POSSyntaxChecker</text>
-    <line x1="0" y1="22" x2="180" y2="22" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="8" y="38" class="cls-text">+ check(text: String):</text>
-    <text x="8" y="50" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="1230" y1="0" x2="1230" y2="-40" class="rel-dashed" marker-end="url(#arrow)" />
+  <g transform="translate(1730, 1350)">
+    <rect width="280" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="280" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="140" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">POSSyntaxChecker</text>
+    <line x1="0" y1="34" x2="280" y2="34" stroke="#1d68d8" stroke-width="2" />
+    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
+    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
+    <line x1="1870" y1="0" x2="1870" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
   </g>
 
   <!-- Checker 7: GrammarStyleChecker -->
-  <g transform="translate(1350, 920)">
-    <rect width="200" height="60" rx="4" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="200" height="22" rx="4" fill="#dbe6f7" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="100" y="15" font-family="Helvetica" font-size="11" font-weight="bold" text-anchor="middle" fill="#0f172a">GrammarStyleChecker</text>
-    <line x1="0" y1="22" x2="200" y2="22" stroke="#1d68d8" stroke-width="1.5" />
-    <text x="8" y="38" class="cls-text">+ check(text: String):</text>
-    <text x="8" y="50" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="1450" y1="0" x2="1450" y2="-40" class="rel-dashed" marker-end="url(#arrow)" />
+  <g transform="translate(2040, 1350)">
+    <rect width="300" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
+    <rect width="300" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
+    <text x="150" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">GrammarStyleChecker</text>
+    <line x1="0" y1="34" x2="300" y2="34" stroke="#1d68d8" stroke-width="2" />
+    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
+    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
+    <line x1="2190" y1="0" x2="2190" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
   </g>
 
   <!-- ==================== CAPTION ==================== -->
-  <text x="800" y="1125" font-family="Times New Roman, Georgia, serif" font-weight="bold" font-size="17" fill="#000000" text-anchor="middle">Figure 3.8: Refinement Diagram for AI Text Detector</text>
+  <text x="1200" y="1690" font-family="Times New Roman, Georgia, serif" font-weight="bold" font-size="24" fill="#000000" text-anchor="middle">Figure 3.8: Refinement Diagram for AI Text Detector</text>
 
 </svg>
