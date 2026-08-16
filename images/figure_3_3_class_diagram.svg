@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 540" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+
+  <!-- Outer Diagram Canvas Border -->
+  <rect x="15" y="15" width="970" height="475" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+
+  <!-- ==================== CONNECTOR LINE ==================== -->
+  <line x1="360" y1="210" x2="610" y2="210" stroke="#334155" stroke-width="1.8" />
+  <text x="372" y="200" font-size="13" font-family="Consolas, Monaco, monospace" font-weight="bold" fill="#334155">1</text>
+  <text x="595" y="200" font-size="14" font-family="Consolas, Monaco, monospace" font-weight="bold" fill="#334155">*</text>
+
+  <!-- ==================== CARD 1: users (Blue Theme) ==================== -->
+  <g transform="translate(80, 50)">
+    <!-- Box Container -->
+    <rect width="280" height="340" rx="8" fill="#f4f8fe" stroke="#1d68d8" stroke-width="2" />
+    
+    <!-- Header -->
+    <text x="16" y="32" font-size="17" font-weight="600" fill="#1e293b">users</text>
+
+    <!-- Header Divider Line -->
+    <line x1="0" y1="48" x2="280" y2="48" stroke="#dbe6f7" stroke-width="1.5" />
+
+    <!-- Attribute Row 1 -->
+    <line x1="0" y1="94" x2="280" y2="94" stroke="#e8f0fc" stroke-width="1" />
+    <text x="16" y="80" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">id</text>
+    <text x="264" y="80" font-size="14" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">string pk</text>
+
+    <!-- Attribute Row 2 -->
+    <line x1="0" y1="140" x2="280" y2="140" stroke="#e8f0fc" stroke-width="1" />
+    <text x="16" y="126" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">fullName</text>
+    <text x="264" y="126" font-size="14" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">string</text>
+
+    <!-- Attribute Row 3 -->
+    <line x1="0" y1="186" x2="280" y2="186" stroke="#e8f0fc" stroke-width="1" />
+    <text x="16" y="172" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">email</text>
+    <text x="264" y="172" font-size="14" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">string</text>
+
+    <!-- Attribute Row 4 -->
+    <line x1="0" y1="232" x2="280" y2="232" stroke="#e8f0fc" stroke-width="1" />
+    <text x="16" y="218" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">password</text>
+    <text x="264" y="218" font-size="14" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">string</text>
+
+    <!-- Attribute Row 5 -->
+    <line x1="0" y1="278" x2="280" y2="278" stroke="#e8f0fc" stroke-width="1" />
+    <text x="16" y="264" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">role</text>
+    <text x="264" y="264" font-size="14" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">string</text>
+
+    <!-- Attribute Row 6 -->
+    <text x="16" y="310" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">createdAt</text>
+    <text x="264" y="310" font-size="14" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">timestamp</text>
+  </g>
+
+  <!-- ==================== CARD 2: detections (Red Theme) ==================== -->
+  <g transform="translate(610, 30)">
+    <!-- Box Container -->
+    <rect width="310" height="420" rx="8" fill="#fdf4f4" stroke="#a82d2d" stroke-width="2" />
+    
+    <!-- Header -->
+    <text x="16" y="32" font-size="17" font-weight="600" fill="#1e293b">detections</text>
+
+    <!-- Header Divider Line -->
+    <line x1="0" y1="48" x2="310" y2="48" stroke="#f8d7d7" stroke-width="1.5" />
+
+    <!-- Attribute Row 1 -->
+    <line x1="0" y1="94" x2="310" y2="94" stroke="#fce8e8" stroke-width="1" />
+    <text x="16" y="80" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">id</text>
+    <text x="294" y="80" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">string pk</text>
+
+    <!-- Attribute Row 2 -->
+    <line x1="0" y1="140" x2="310" y2="140" stroke="#fce8e8" stroke-width="1" />
+    <text x="16" y="126" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">userId</text>
+    <text x="294" y="126" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">string fk</text>
+
+    <!-- Attribute Row 3 -->
+    <line x1="0" y1="186" x2="310" y2="186" stroke="#fce8e8" stroke-width="1" />
+    <text x="16" y="172" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">documentText</text>
+    <text x="294" y="172" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">string</text>
+
+    <!-- Attribute Row 4 -->
+    <line x1="0" y1="232" x2="310" y2="232" stroke="#fce8e8" stroke-width="1" />
+    <text x="16" y="218" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">timestamp</text>
+    <text x="294" y="218" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">timestamp</text>
+
+    <!-- Attribute Row 5 -->
+    <line x1="0" y1="278" x2="310" y2="278" stroke="#fce8e8" stroke-width="1" />
+    <text x="16" y="264" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">perplexityMetrics</text>
+    <text x="294" y="264" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">object</text>
+
+    <!-- Attribute Row 6 -->
+    <line x1="0" y1="324" x2="310" y2="324" stroke="#fce8e8" stroke-width="1" />
+    <text x="16" y="310" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">vectorScores</text>
+    <text x="294" y="310" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">array</text>
+
+    <!-- Attribute Row 7 -->
+    <line x1="0" y1="370" x2="310" y2="370" stroke="#fce8e8" stroke-width="1" />
+    <text x="16" y="356" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">aiProbability</text>
+    <text x="294" y="356" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">number</text>
+
+    <!-- Attribute Row 8 -->
+    <text x="16" y="398" font-size="14" font-family="Consolas, Monaco, monospace" fill="#1e293b">verdictSummary</text>
+    <text x="294" y="398" font-size="14" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">object</text>
+  </g>
+
+  <!-- ==================== CAPTION ==================== -->
+  <text x="500" y="515" font-family="Times New Roman, Georgia, serif" font-weight="bold" font-size="17" fill="#000000" text-anchor="middle">Figure 3.3: Class Diagram for AI Text Detector</text>
+
+</svg>
