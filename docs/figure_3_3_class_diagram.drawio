@@ -1,0 +1,83 @@
+<mxfile host="app.diagrams.net" modified="2026-08-16T08:00:00.000Z" agent="Antigravity" version="21.6.8" type="device">
+  <diagram id="fig33" name="Figure 3.3 Class Diagram">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="600" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Canvas Frame -->
+        <mxCell id="frame" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#E2E8F0;strokeWidth=1;fillColor=#FFFFFF;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="1040" height="500" as="geometry" />
+        </mxCell>
+
+        <!-- CARD 1: users -->
+        <mxCell id="users_card" value="&lt;b style=&quot;font-size:16px;&quot;&gt;users&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#F4F8FE;fontColor=#1E293B;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="60" width="300" height="340" as="geometry" />
+        </mxCell>
+        <mxCell id="u_row1" value="id &#9; string pk" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="users_card">
+          <mxGeometry y="40" width="300" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="u_row2" value="fullName &#9; string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="users_card">
+          <mxGeometry y="85" width="300" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="u_row3" value="email &#9; string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="users_card">
+          <mxGeometry y="130" width="300" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="u_row4" value="password &#9; string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="users_card">
+          <mxGeometry y="175" width="300" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="u_row5" value="role &#9; string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="users_card">
+          <mxGeometry y="220" width="300" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="u_row6" value="createdAt &#9; timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="users_card">
+          <mxGeometry y="265" width="300" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- CARD 2: detections -->
+        <mxCell id="detections_card" value="&lt;b style=&quot;font-size:16px;&quot;&gt;detections&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#A82D2D;strokeWidth=2;fillColor=#FDF4F4;fontColor=#1E293B;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="660" y="40" width="320" height="410" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row1" value="id &#9; string pk" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="40" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row2" value="userId &#9; string fk" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="85" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row3" value="documentText &#9; string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="130" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row4" value="timestamp &#9; timestamp" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="175" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row5" value="perplexityMetrics &#9; object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="220" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row6" value="vectorScores &#9; array" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="265" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row7" value="aiProbability &#9; number" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="310" width="320" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="d_row8" value="verdictSummary &#9; object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=13;" vertex="1" parent="detections_card">
+          <mxGeometry y="355" width="320" height="45" as="geometry" />
+        </mxCell>
+
+        <!-- Connector Line -->
+        <mxCell id="link1" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=2;strokeColor=#334155;entryX=0;entryY=0.45;entryDx=0;entryDy=0;exitX=1;exitY=0.45;exitDx=0;exitDy=0;" edge="1" parent="1" source="users_card" target="detections_card">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_1" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontSize=13;" vertex="1" connectable="0" parent="link1">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint x="10" y="-12" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="label_star" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontSize=15;" vertex="1" connectable="0" parent="link1">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint x="-10" y="-12" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Caption -->
+        <mxCell id="caption" value="&lt;b style=&quot;font-family:Times New Roman, serif; font-size:16px;&quot;&gt;Figure 3.3: Class Diagram for AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="340" y="475" width="400" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

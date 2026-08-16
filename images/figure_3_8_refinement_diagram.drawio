@@ -1,0 +1,108 @@
+<mxfile host="app.diagrams.net" modified="2026-08-16T08:00:00.000Z" agent="Antigravity" version="21.6.8" type="device">
+  <diagram id="fig38" name="Figure 3.8 Refinement Diagram">
+    <mxGraphModel dx="1600" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Header -->
+        <mxCell id="ref_title" value="&lt;b style=&quot;font-size:18px;&quot;&gt;Refined Class Diagram - AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="30" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS: User -->
+        <mxCell id="c_user" value="&lt;b&gt;User&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#DBE6F7;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="210" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="u_att" value="- id: String {PK}&#10;- fullName: String&#10;- email: String {unique}&#10;- passwordHash: String&#10;- role: Role&#10;- createdAt: DateTime&#10;- updatedAt: DateTime&#10;- isActive: Boolean" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_user">
+          <mxGeometry y="30" width="210" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="u_met" value="+ register(name, email): User&#10;+ login(email, pwd): User&#10;+ logout(): void&#10;+ updateProfile(data): void&#10;+ changePassword(): void&#10;+ deactivate(): void" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_user">
+          <mxGeometry y="150" width="210" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS: DetectionTask -->
+        <mxCell id="c_task" value="&lt;b&gt;DetectionTask&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#A82D2D;fillColor=#F8D7D7;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="420" y="80" width="240" height="280" as="geometry" />
+        </mxCell>
+        <mxCell id="t_att" value="- id: String {PK}&#10;- userId: String {FK}&#10;- targetText: String&#10;- taskType: TaskType&#10;- status: TaskStatus&#10;- startedAt: DateTime&#10;- completedAt: DateTime&#10;- duration: Long&#10;- aiScore: Double&#10;- verdictSummary: Summary" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_task">
+          <mxGeometry y="30" width="240" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="t_met" value="+ start(): void&#10;+ stop(): void&#10;+ addResult(res): void&#10;+ calculateAiScore(): void&#10;+ getSummary(): Summary&#10;+ generateReport(): Report" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_task">
+          <mxGeometry y="170" width="240" height="110" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS: StylometricFeature -->
+        <mxCell id="c_feat" value="&lt;b&gt;StylometricFeature&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#B45309;fillColor=#FEF3C7;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="850" y="80" width="230" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="f_att" value="- id: String {PK}&#10;- taskId: String {FK}&#10;- featureType: Type&#10;- title: String&#10;- description: String&#10;- evidence: String&#10;- severity: VerdictLevel&#10;- recommendation: String&#10;- discoveredAt: DateTime" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_feat">
+          <mxGeometry y="30" width="230" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="f_met" value="+ setEvidence(e): void&#10;+ setSeverity(s): void" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_feat">
+          <mxGeometry y="180" width="230" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS: VerdictLevel -->
+        <mxCell id="c_verdict" value="&lt;b&gt;VerdictLevel&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#6D28D9;fillColor=#EDE9FE;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="80" width="220" height="150" as="geometry" />
+        </mxCell>
+        <mxCell id="v_att" value="- id: int {PK}&#10;- name: String&#10;- weight: int&#10;- description: String" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_verdict">
+          <mxGeometry y="30" width="220" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="v_met" value="+ getWeight(): int" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_verdict">
+          <mxGeometry y="100" width="220" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ENUM: VerdictLevel Enum Values -->
+        <mxCell id="e_verdict" value="&lt;i style=&quot;font-size:10px;&quot;&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;CRITICAL_AI (60)&lt;br&gt;HIGH_AI (40)&lt;br&gt;MEDIUM_MIXED (20)&lt;br&gt;LOW_HUMAN (5)&lt;br&gt;INFORMATIONAL (0)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6D28D9;fillColor=#FCFAFF;align=left;spacingLeft=15;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1330" y="245" width="220" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- CLASS: DetectorEngine (Center) -->
+        <mxCell id="c_engine" value="&lt;b&gt;DetectorEngine&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#DBE6F7;fontColor=#0F172A;" vertex="1" parent="1">
+          <mxGeometry x="520" y="420" width="440" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="e_att" value="- id: String {PK}&#10;- name: String&#10;- version: String&#10;- minWordCount: int&#10;- timeout: int" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_engine">
+          <mxGeometry y="30" width="440" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="e_met" value="+ checkPerplexity(text: String): List&lt;Feature&gt;&#10;+ checkBurstiness(sentences: List): List&lt;Feature&gt;&#10;+ checkCosineSimilarity(vector: List): List&lt;Feature&gt;&#10;+ checkKNNClassify(features: List): List&lt;Feature&gt;&#10;+ checkTrigramDensity(text: String): List&lt;Feature&gt;&#10;+ checkPOSSyntax(text: String): List&lt;Feature&gt;&#10;+ checkGrammarStyle(text: String): List&lt;Feature&gt;&#10;+ runAllDetectors(task: DetectionTask): void" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" vertex="1" parent="c_engine">
+          <mxGeometry y="110" width="440" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- 7 CHECKER ENGINES AT BOTTOM -->
+        <mxCell id="chk1" value="&lt;b&gt;PerplexityChecker&lt;/b&gt;&lt;hr&gt;+ check(text): List" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="920" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chk2" value="&lt;b&gt;BurstinessChecker&lt;/b&gt;&lt;hr&gt;+ check(text): List" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="260" y="920" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chk3" value="&lt;b&gt;KNNClassifierChecker&lt;/b&gt;&lt;hr&gt;+ check(vector): List" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="920" width="190" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chk4" value="&lt;b&gt;LogisticRegressionChecker&lt;/b&gt;&lt;hr&gt;+ check(vector): List" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="700" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chk5" value="&lt;b&gt;TrigramChecker&lt;/b&gt;&lt;hr&gt;+ check(text): List" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="930" y="920" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chk6" value="&lt;b&gt;POSSyntaxChecker&lt;/b&gt;&lt;hr&gt;+ check(text): List" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1140" y="920" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="chk7" value="&lt;b&gt;GrammarStyleChecker&lt;/b&gt;&lt;hr&gt;+ check(text): List" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;fillColor=#FFFFFF;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1350" y="920" width="200" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Connections for Checkers -->
+        <mxCell id="c_line" value="" style="endArrow=block;endFill=0;dashed=1;html=1;rounded=0;strokeColor=#64748B;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="chk4" target="c_engine">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Caption -->
+        <mxCell id="ref_cap" value="&lt;b style=&quot;font-family:Times New Roman, serif; font-size:16px;&quot;&gt;Figure 3.8: Refinement Diagram for AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="600" y="1120" width="400" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

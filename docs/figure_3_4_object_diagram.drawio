@@ -1,0 +1,91 @@
+<mxfile host="app.diagrams.net" modified="2026-08-16T08:00:00.000Z" agent="Antigravity" version="21.6.8" type="device">
+  <diagram id="fig34" name="Figure 3.4 Object Diagram">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Header -->
+        <mxCell id="title" value="&lt;b style=&quot;font-size:16px;&quot;&gt;Object Diagram - AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="30" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <!-- LEFT INSTANCE: user1: User -->
+        <mxCell id="user_obj" value="&lt;u&gt;&lt;b style=&quot;font-size:15px;&quot;&gt;user1: User&lt;/b&gt;&lt;/u&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=40;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#F4F8FE;fontColor=#1E293B;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="80" width="300" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="uo_row1" value="id &#9; &quot;u1001&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=12;" vertex="1" parent="user_obj">
+          <mxGeometry y="40" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uo_row2" value="fullName &#9; &quot;Shashank Singh&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=12;" vertex="1" parent="user_obj">
+          <mxGeometry y="80" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uo_row3" value="email &#9; &quot;shashank@example.com&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=12;" vertex="1" parent="user_obj">
+          <mxGeometry y="120" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uo_row4" value="password &#9; &quot;$2b$10$abc123hashed&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=12;" vertex="1" parent="user_obj">
+          <mxGeometry y="160" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uo_row5" value="role &#9; &quot;admin&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=12;" vertex="1" parent="user_obj">
+          <mxGeometry y="200" width="300" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="uo_row6" value="createdAt &#9; &quot;2026-08-15T18:30:00Z&quot;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=10;spacingRight=10;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontColor=#1E293B;fontFamily=Courier New;fontSize=12;" vertex="1" parent="user_obj">
+          <mxGeometry y="240" width="300" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- RIGHT STACKED CONTAINER: detection instances -->
+        <mxCell id="det_container" value="" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#A82D2D;strokeWidth=2;fillColor=#FDF4F4;" vertex="1" parent="1">
+          <mxGeometry x="570" y="80" width="470" height="730" as="geometry" />
+        </mxCell>
+
+        <!-- Instance 1: detection1 -->
+        <mxCell id="det1_title" value="&lt;u&gt;&lt;b style=&quot;font-size:14px;&quot;&gt;detection1: AIAnalysis&lt;/b&gt;&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="det_container">
+          <mxGeometry y="10" width="470" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="d1_details" value="id &#9; &quot;det_001&quot;&#10;userId &#9; &quot;u1001&quot;&#10;documentName &#9; &quot;academic_essay.docx&quot;&#10;timestamp &#9; &quot;2026-08-15T19:00:00Z&quot;&#10;features &#9; [&quot;High Perplexity&quot;, &quot;Low Burstiness&quot;]&#10;aiProbability &#9; 91.5&#10;verdictSummary &#9; {perplexity: 88.5, similarity: 85.0, knn: 91.5}" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontFamily=Courier New;fontSize=11.5;spacingLeft=15;spacingRight=15;" vertex="1" parent="det_container">
+          <mxGeometry y="45" width="470" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sep1" value=". . ." style="text;html=1;strokeColor=#A82D2D;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontStyle=1;fontSize=14;fontColor=#A82D2D;" vertex="1" parent="det_container">
+          <mxGeometry y="235" width="470" height="25" as="geometry" />
+        </mxCell>
+
+        <!-- Instance 2: detection2 -->
+        <mxCell id="det2_title" value="&lt;u&gt;&lt;b style=&quot;font-size:14px;&quot;&gt;detection2: AIAnalysis&lt;/b&gt;&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="det_container">
+          <mxGeometry y="270" width="470" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="d2_details" value="id &#9; &quot;det_002&quot;&#10;userId &#9; &quot;u1001&quot;&#10;documentName &#9; &quot;research_paper.pdf&quot;&#10;timestamp &#9; &quot;2026-08-15T21:15:00Z&quot;&#10;features &#9; [&quot;Human Rhythm&quot;, &quot;High Burstiness&quot;]&#10;aiProbability &#9; 22.4&#10;verdictSummary &#9; {perplexity: 24.1, similarity: 20.8, knn: 22.4}" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontFamily=Courier New;fontSize=11.5;spacingLeft=15;spacingRight=15;" vertex="1" parent="det_container">
+          <mxGeometry y="305" width="470" height="180" as="geometry" />
+        </mxCell>
+
+        <mxCell id="sep2" value="" style="line;strokeWidth=1.5;html=1;strokeColor=#A82D2D;" vertex="1" parent="det_container">
+          <mxGeometry y="495" width="470" height="10" as="geometry" />
+        </mxCell>
+
+        <!-- Instance 3: detection3 -->
+        <mxCell id="det3_title" value="&lt;u&gt;&lt;b style=&quot;font-size:14px;&quot;&gt;detection3: AIAnalysis&lt;/b&gt;&lt;/u&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="det_container">
+          <mxGeometry y="510" width="470" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="d3_details" value="id &#9; &quot;det_003&quot;&#10;userId &#9; &quot;u1001&quot;&#10;documentName &#9; &quot;news_article.txt&quot;&#10;timestamp &#9; &quot;2026-08-16T08:45:00Z&quot;&#10;features &#9; [&quot;Mixed Vocabulary&quot;, &quot;Moderate TTR&quot;]&#10;aiProbability &#9; 54.8&#10;verdictSummary &#9; {perplexity: 52.0, similarity: 56.5, knn: 54.8}" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontFamily=Courier New;fontSize=11.5;spacingLeft=15;spacingRight=15;" vertex="1" parent="det_container">
+          <mxGeometry y="545" width="470" height="175" as="geometry" />
+        </mxCell>
+
+        <!-- Connection -->
+        <mxCell id="link2" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=2;strokeColor=#334155;entryX=0;entryY=0.2;entryDx=0;entryDy=0;exitX=1;exitY=0.45;exitDx=0;exitDy=0;" edge="1" parent="1" source="user_obj" target="det_container">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="label_12" value="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontSize=13;" vertex="1" connectable="0" parent="link2">
+          <mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint x="10" y="-12" as="offset" /></mxGeometry>
+        </mxCell>
+        <mxCell id="label_star2" value="*" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontStyle=1;fontSize=15;" vertex="1" connectable="0" parent="link2">
+          <mxGeometry x="0.8" relative="1" as="geometry"><mxPoint x="-10" y="-12" as="offset" /></mxGeometry>
+        </mxCell>
+
+        <!-- Caption -->
+        <mxCell id="caption34" value="&lt;b style=&quot;font-family:Times New Roman, serif; font-size:16px;&quot;&gt;Figure 3.4: Object Diagram for AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="830" width="400" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
