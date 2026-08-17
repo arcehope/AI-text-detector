@@ -1,107 +1,121 @@
-<mxfile host="app.diagrams.net" modified="2026-08-16T08:30:00.000Z" agent="Antigravity" version="21.6.8" type="device">
-  <diagram id="fig38_large" name="Figure 3.8 Refinement Diagram (20px)">
-    <mxGraphModel dx="2400" dy="1750" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2400" pageHeight="1750" math="0" shadow="0">
+<mxfile host="app.diagrams.net" modified="2026-08-17T22:16:00.000Z" agent="Antigravity" version="21.6.8" type="device">
+  <diagram id="sentinel-refined-object-bw" name="Figure 3.8 Refinement of Object Diagram (B&amp;W)">
+    <mxGraphModel dx="1200" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
 
         <!-- Title Header -->
-        <mxCell id="ref_title" value="&lt;b style=&quot;font-size:24px;&quot;&gt;Refined Class Diagram - AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="30" width="400" height="40" as="geometry" />
+        <mxCell id="ref_title" value="&lt;b style=&quot;font-family: Georgia, 'Times New Roman', serif; font-size: 19px; color: #000000;&quot;&gt;Figure 3.8: Refinement of Object Diagram for Sentinel AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="500" height="35" as="geometry" />
         </mxCell>
 
-        <!-- CLASS: User -->
-        <mxCell id="c_user" value="&lt;b style=&quot;font-size:20px;&quot;&gt;User&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#DBE6F7;fontColor=#0F172A;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="60" y="100" width="330" height="410" as="geometry" />
-        </mxCell>
-        <mxCell id="u_att" value="- id: String {PK}&#10;- fullName: String&#10;- email: String {unique}&#10;- passwordHash: String&#10;- role: Role&#10;- createdAt: DateTime&#10;- updatedAt: DateTime&#10;- isActive: Boolean" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_user">
-          <mxGeometry y="42" width="330" height="218" as="geometry" />
-        </mxCell>
-        <mxCell id="u_met" value="+ register(name, email)&#10;+ login(email, pwd)&#10;+ logout(): void&#10;+ updateProfile(data)&#10;+ changePassword()" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_user">
-          <mxGeometry y="260" width="330" height="150" as="geometry" />
+        <!-- OBJECT 1: currentUser : User -->
+        <mxCell id="obj_user" value="&lt;u style=&quot;font-size:15px; font-weight:bold;&quot;&gt;currentUser : User&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:12.5px; padding-left:5px;&quot;&gt;username = &quot;john_doe&quot;&lt;br&gt;email = &quot;john@example.com&quot;&lt;br&gt;authStatus = &quot;Authenticated&quot;&lt;br&gt;dailyQuota = &quot;Unlimited&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="50" y="80" width="280" height="135" as="geometry" />
         </mxCell>
 
-        <!-- CLASS: DetectionTask -->
-        <mxCell id="c_task" value="&lt;b style=&quot;font-size:20px;&quot;&gt;DetectionTask&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#A82D2D;strokeWidth=2;fillColor=#F8D7D7;fontColor=#0F172A;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="620" y="100" width="380" height="450" as="geometry" />
-        </mxCell>
-        <mxCell id="t_att" value="- id: String {PK}&#10;- userId: String {FK}&#10;- targetText: String&#10;- taskType: TaskType&#10;- status: TaskStatus&#10;- startedAt: DateTime&#10;- completedAt: DateTime&#10;- duration: Long&#10;- aiScore: Double&#10;- verdictSummary: Summary" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_task">
-          <mxGeometry y="42" width="380" height="270" as="geometry" />
-        </mxCell>
-        <mxCell id="t_met" value="+ start(): void&#10;+ stop(): void&#10;+ calculateAiScore()&#10;+ generateReport(): Report" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_task">
-          <mxGeometry y="312" width="380" height="138" as="geometry" />
+        <!-- OBJECT 2: currentTask : DetectionTask -->
+        <mxCell id="obj_task" value="&lt;u style=&quot;font-size:15px; font-weight:bold;&quot;&gt;currentTask : DetectionTask&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:12.5px; padding-left:5px;&quot;&gt;id = &quot;REC-98214&quot;&lt;br&gt;document = &quot;sample_essay.docx&quot;&lt;br&gt;wordCount = 450 words&lt;br&gt;sentenceCount = 22&lt;br&gt;aiScore = 91.5%&lt;br&gt;verdict = &quot;AI-Generated Text&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="440" y="80" width="320" height="160" as="geometry" />
         </mxCell>
 
-        <!-- CLASS: StylometricFeature -->
-        <mxCell id="c_feat" value="&lt;b style=&quot;font-size:20px;&quot;&gt;StylometricFeature&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#B45309;strokeWidth=2;fillColor=#FEF3C7;fontColor=#0F172A;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1260" y="100" width="380" height="400" as="geometry" />
-        </mxCell>
-        <mxCell id="f_att" value="- id: String {PK}&#10;- taskId: String {FK}&#10;- featureType: FeatureType&#10;- title: String&#10;- description: String&#10;- evidence: String&#10;- severity: VerdictLevel&#10;- recommendation: String&#10;- discoveredAt: DateTime" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_feat">
-          <mxGeometry y="42" width="380" height="244" as="geometry" />
-        </mxCell>
-        <mxCell id="f_met" value="+ setEvidence(e: String)&#10;+ setSeverity(s: Level)" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_feat">
-          <mxGeometry y="286" width="380" height="114" as="geometry" />
+        <!-- OBJECT 3: dbSync : SentinelDB -->
+        <mxCell id="obj_db" value="&lt;u style=&quot;font-size:15px; font-weight:bold;&quot;&gt;dbSync : SentinelDB&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:12.5px; padding-left:5px;&quot;&gt;dbFile = &quot;sentinel.db&quot;&lt;br&gt;table = &quot;analysis_history&quot;&lt;br&gt;metricsJson = &quot;{lr:92,knn:90,...}&quot;&lt;br&gt;persistence = &quot;SQLite Persistent&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="870" y="80" width="280" height="135" as="geometry" />
         </mxCell>
 
-        <!-- CLASS: VerdictLevel -->
-        <mxCell id="c_verdict" value="&lt;b style=&quot;font-size:20px;&quot;&gt;VerdictLevel&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#6D28D9;strokeWidth=2;fillColor=#EDE9FE;fontColor=#0F172A;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="1960" y="100" width="380" height="220" as="geometry" />
-        </mxCell>
-        <mxCell id="v_att" value="- id: int {PK}&#10;- name: String&#10;- weight: int&#10;- description: String" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_verdict">
-          <mxGeometry y="42" width="380" height="114" as="geometry" />
-        </mxCell>
-        <mxCell id="v_met" value="+ getWeight(): int" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_verdict">
-          <mxGeometry y="156" width="380" height="64" as="geometry" />
+        <!-- OBJECT 4: detectorEngine : DetectorEngine (Center Orchestrator) -->
+        <mxCell id="obj_engine" value="&lt;u style=&quot;font-size:15px; font-weight:bold;&quot;&gt;detectorEngine : DetectorEngine&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:12.5px; padding-left:5px;&quot;&gt;minWordCount = 10&lt;br&gt;ensembleWeights = &quot;LR:25%, Tri:25%, KNN:20%, POS:15%, Cos:10%, Ppl:5%&quot;&lt;br&gt;grammarCalibration = &quot;+15% Perfect Boost Applied&quot;&lt;br&gt;calculatedFinalScore = 91.5%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="360" y="290" width="480" height="145" as="geometry" />
         </mxCell>
 
-        <!-- ENUM: VerdictLevel Enum Values -->
-        <mxCell id="e_verdict" value="&lt;i style=&quot;font-size:17px;&quot;&gt;&amp;lt;&amp;lt;enumeration&amp;gt;&amp;gt;&lt;/i&gt;&lt;br&gt;&lt;b style=&quot;font-size:18px;&quot;&gt;CRITICAL_AI (60)&lt;br&gt;HIGH_AI (40)&lt;br&gt;MEDIUM_MIXED (20)&lt;br&gt;LOW_HUMAN (5)&lt;br&gt;INFORMATIONAL (0)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6D28D9;strokeWidth=2;fillColor=#FCFAFF;align=left;spacingLeft=20;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="1960" y="350" width="380" height="180" as="geometry" />
+        <!-- THE 7 ENSEMBLE EVALUATION ENGINE INSTANCES (Middle & Lower Grid) -->
+
+        <!-- 1. pplEngine : PerplexityAnalyzer -->
+        <mxCell id="obj_ppl" value="&lt;u style=&quot;font-size:13.5px; font-weight:bold;&quot;&gt;pplEngine : PerplexityAnalyzer&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:11.5px;&quot;&gt;perplexity = 24.8&lt;br&gt;burstiness = 0.18&lt;br&gt;ttr = 0.42&lt;br&gt;score = 88%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="40" y="490" width="240" height="120" as="geometry" />
         </mxCell>
 
-        <!-- CLASS: DetectorEngine (Center) -->
-        <mxCell id="c_engine" value="&lt;b style=&quot;font-size:20px;&quot;&gt;DetectorEngine&lt;/b&gt;" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=42;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#DBE6F7;fontColor=#0F172A;fontSize=20;" vertex="1" parent="1">
-          <mxGeometry x="760" y="610" width="680" height="360" as="geometry" />
-        </mxCell>
-        <mxCell id="e_att" value="- id: String {PK}&#10;- name: String&#10;- version: String&#10;- minWordCount: int&#10;- timeout: int" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_engine">
-          <mxGeometry y="42" width="680" height="140" as="geometry" />
-        </mxCell>
-        <mxCell id="e_met" value="+ checkPerplexity(text: String): List&lt;Feature&gt;&#10;+ checkBurstiness(sentences: List): List&lt;Feature&gt;&#10;+ checkCosineSimilarity(vector: List): List&lt;Feature&gt;&#10;+ checkKNNClassify(features: List): List&lt;Feature&gt;&#10;+ checkTrigramDensity(text: String): List&lt;Feature&gt;&#10;+ runAllDetectors(task: DetectionTask): void" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=12;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=18;" vertex="1" parent="c_engine">
-          <mxGeometry y="182" width="680" height="178" as="geometry" />
+        <!-- 2. knnEngine : KNNClassifier -->
+        <mxCell id="obj_knn" value="&lt;u style=&quot;font-size:13.5px; font-weight:bold;&quot;&gt;knnEngine : KNNClassifier&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:11.5px;&quot;&gt;k = 5&lt;br&gt;neighborVotes = &quot;4 AI, 1 Human&quot;&lt;br&gt;euclideanDistance = 0.142&lt;br&gt;score = 90%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="310" y="490" width="260" height="120" as="geometry" />
         </mxCell>
 
-        <!-- 7 CHECKER ENGINES AT BOTTOM -->
-        <mxCell id="chk1" value="&lt;b style=&quot;font-size:18px;&quot;&gt;PerplexityChecker&lt;/b&gt;&lt;hr&gt;&lt;span style=&quot;font-size:18px; font-family:Courier New;&quot;&gt;+ check(text): List&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#FFFFFF;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="60" y="1350" width="300" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="chk2" value="&lt;b style=&quot;font-size:18px;&quot;&gt;BurstinessChecker&lt;/b&gt;&lt;hr&gt;&lt;span style=&quot;font-size:18px; font-family:Courier New;&quot;&gt;+ check(text): List&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#FFFFFF;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="390" y="1350" width="300" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="chk3" value="&lt;b style=&quot;font-size:18px;&quot;&gt;KNNClassifierChecker&lt;/b&gt;&lt;hr&gt;&lt;span style=&quot;font-size:18px; font-family:Courier New;&quot;&gt;+ check(vector): List&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#FFFFFF;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="720" y="1350" width="310" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="chk4" value="&lt;b style=&quot;font-size:18px;&quot;&gt;LogisticRegressionChecker&lt;/b&gt;&lt;hr&gt;&lt;span style=&quot;font-size:18px; font-family:Courier New;&quot;&gt;+ check(vector): List&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#FFFFFF;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="1060" y="1350" width="330" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="chk5" value="&lt;b style=&quot;font-size:18px;&quot;&gt;TrigramChecker&lt;/b&gt;&lt;hr&gt;&lt;span style=&quot;font-size:18px; font-family:Courier New;&quot;&gt;+ check(text): List&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#FFFFFF;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="1420" y="1350" width="280" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="chk6" value="&lt;b style=&quot;font-size:18px;&quot;&gt;POSSyntaxChecker&lt;/b&gt;&lt;hr&gt;&lt;span style=&quot;font-size:18px; font-family:Courier New;&quot;&gt;+ check(text): List&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#FFFFFF;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="1730" y="1350" width="280" height="90" as="geometry" />
-        </mxCell>
-        <mxCell id="chk7" value="&lt;b style=&quot;font-size:18px;&quot;&gt;GrammarStyleChecker&lt;/b&gt;&lt;hr&gt;&lt;span style=&quot;font-size:18px; font-family:Courier New;&quot;&gt;+ check(text): List&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#1D68D8;strokeWidth=2;fillColor=#FFFFFF;fontSize=18;" vertex="1" parent="1">
-          <mxGeometry x="2040" y="1350" width="300" height="90" as="geometry" />
+        <!-- 3. lrEngine : LogisticRegressionClassifier -->
+        <mxCell id="obj_lr" value="&lt;u style=&quot;font-size:13.5px; font-weight:bold;&quot;&gt;lrEngine : LogisticRegression&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:11.5px;&quot;&gt;features = 6&lt;br&gt;sigmoidOutput = 0.92&lt;br&gt;score = 92%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="600" y="490" width="260" height="120" as="geometry" />
         </mxCell>
 
-        <!-- Connections for Checkers -->
-        <mxCell id="c_line" value="" style="endArrow=block;endFill=0;dashed=1;html=1;rounded=0;strokeWidth=2;strokeColor=#64748B;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="chk4" target="c_engine">
+        <!-- 4. trigramEngine : TrigramAnalyzer -->
+        <mxCell id="obj_tri" value="&lt;u style=&quot;font-size:13.5px; font-weight:bold;&quot;&gt;trigramEngine : TrigramAnalyzer&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:11.5px;&quot;&gt;ngramMatch = 0.84&lt;br&gt;score = 94%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="890" y="490" width="260" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- 5. posEngine : PosClassifier -->
+        <mxCell id="obj_pos" value="&lt;u style=&quot;font-size:13.5px; font-weight:bold;&quot;&gt;posEngine : PosClassifier&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:11.5px;&quot;&gt;nounRatio = 0.38&lt;br&gt;verbRatio = 0.12&lt;br&gt;score = 88%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="170" y="660" width="250" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- 6. simEngine : CosineSimilarityAnalyzer -->
+        <mxCell id="obj_sim" value="&lt;u style=&quot;font-size:13.5px; font-weight:bold;&quot;&gt;simEngine : CosineSimilarity&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:11.5px;&quot;&gt;cosineDistance = 0.152&lt;br&gt;prototypeMatch = &quot;AI Pattern&quot;&lt;br&gt;score = 85%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="460" y="660" width="260" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- 7. grammarEngine : GrammarStyleAnalyzer -->
+        <mxCell id="obj_gram" value="&lt;u style=&quot;font-size:13.5px; font-weight:bold;&quot;&gt;grammarEngine : GrammarStyle&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:11.5px;&quot;&gt;perfectionScore = 100%&lt;br&gt;grammarFactor = 1.0&lt;br&gt;perfectBoost = +15.0%&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;verticalAlign=top;spacingTop=4;" vertex="1" parent="1">
+          <mxGeometry x="760" y="660" width="260" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- OBJECT 5: visualizer : ChartRenderer -->
+        <mxCell id="obj_vis" value="&lt;u style=&quot;font-size:15px; font-weight:bold;&quot;&gt;visualizer : ChartRenderer&lt;/u&gt;&lt;hr style=&quot;border:1px solid #000;&quot;&gt;&lt;div style=&quot;text-align:left; font-family:Courier New; font-size:12.5px; padding-left:5px;&quot;&gt;gaugeScore = 91.5%&lt;br&gt;verdictBanner = &quot;Most probably written by AI&quot;&lt;br&gt;scatterPlot = &quot;KNN 5-Neighbors Projected&quot;&lt;br&gt;sentenceHeatmap = &quot;Rendered Highlights&quot;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;verticalAlign=top;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="380" y="830" width="440" height="135" as="geometry" />
+        </mxCell>
+
+        <!-- LINKS AND ASSOCIATIONS -->
+        <!-- User -> DetectionTask -->
+        <mxCell id="link1" value="1 initiates 1..*" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=12;fontStyle=1;" edge="1" parent="1" source="obj_user" target="obj_task">
           <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
 
-        <!-- Caption -->
-        <mxCell id="ref_cap" value="&lt;b style=&quot;font-family:Times New Roman, serif; font-size:24px;&quot;&gt;Figure 3.8: Refinement Diagram for AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="1000" y="1670" width="400" height="40" as="geometry" />
+        <!-- DetectionTask -> SentinelDB -->
+        <mxCell id="link2" value="1 persists to 1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=12;fontStyle=1;" edge="1" parent="1" source="obj_task" target="obj_db">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
         </mxCell>
+
+        <!-- DetectionTask -> DetectorEngine -->
+        <mxCell id="link3" value="1 triggers 1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=12;fontStyle=1;" edge="1" parent="1" source="obj_task" target="obj_engine">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DetectorEngine -> Sub Engines -->
+        <mxCell id="l_ppl" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="obj_engine" target="obj_ppl">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_knn" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="obj_engine" target="obj_knn">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_lr" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="obj_engine" target="obj_lr">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_tri" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="obj_engine" target="obj_tri">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_pos" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="obj_engine" target="obj_pos">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_sim" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="obj_engine" target="obj_sim">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_gram" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="obj_engine" target="obj_gram">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DetectorEngine -> Visualizer -->
+        <mxCell id="link_vis" value="1 passes scores to 1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=12;fontStyle=1;" edge="1" parent="1" source="obj_engine" target="obj_vis">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
       </root>
     </mxGraphModel>
   </diagram>

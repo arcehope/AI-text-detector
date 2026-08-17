@@ -1,430 +1,174 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1750" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1020" width="100%" height="100%" style="background-color: #ffffff;">
+  <style>
+    .title { font-family: 'Times New Roman', Georgia, serif; font-size: 19px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .obj-header { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14.5px; font-weight: bold; fill: #000000; text-anchor: middle; text-decoration: underline; }
+    .obj-subhead { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13.5px; font-weight: bold; fill: #000000; text-anchor: middle; text-decoration: underline; }
+    .slot-text { font-family: 'Consolas', 'Courier New', monospace; font-size: 12.5px; fill: #000000; }
+    .slot-subtext { font-family: 'Consolas', 'Courier New', monospace; font-size: 11.5px; fill: #000000; }
+    .obj-box { fill: #ffffff; stroke: #000000; stroke-width: 2; rx: 6px; }
+    .sub-obj-box { fill: #ffffff; stroke: #000000; stroke-width: 1.5; rx: 5px; }
+    .line-divider { stroke: #000000; stroke-width: 1.2; }
+    .link-line { stroke: #000000; stroke-width: 1.8; fill: none; }
+    .link-dash { stroke: #000000; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+    .link-label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #000000; text-anchor: middle; }
+  </style>
 
-  <!-- Outer Diagram Canvas Border -->
-  <rect x="20" y="20" width="2360" height="1710" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+  <!-- Title -->
+  <text x="600" y="38" class="title">Figure 3.8: Refinement of Object Diagram for Sentinel AI Text Detector</text>
 
-  <!-- Diagram Title Header -->
-  <text x="1200" y="60" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="24" fill="#1e293b" text-anchor="middle">Refined Class Diagram - AI Text Detector</text>
-
-  <!-- ==================== DEFINITIONS / STYLES ==================== -->
-  <defs>
-    <style type="text/css">
-      .cls-box { fill: #ffffff; stroke-width: 2; }
-      .cls-title { font-family: Helvetica, Arial, sans-serif; font-size: 20px; font-weight: bold; text-anchor: middle; fill: #0f172a; }
-      .cls-text { font-family: Consolas, Monaco, monospace; font-size: 18px; fill: #1e293b; }
-      .cls-enum-title { font-family: Helvetica, Arial, sans-serif; font-size: 17px; font-style: italic; text-anchor: middle; fill: #475569; }
-      .cls-enum-text { font-family: Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 600; fill: #334155; }
-      .rel-line { stroke: #334155; stroke-width: 2; fill: none; }
-      .rel-dashed { stroke: #64748b; stroke-width: 2; stroke-dasharray: 6,5; fill: none; }
-      .card-text { font-family: Helvetica, Arial, sans-serif; font-size: 19px; font-weight: bold; fill: #1e293b; }
-    </style>
-
-    <!-- Diamond Marker for Composition -->
-    <marker id="diamond" viewBox="0 0 12 12" refX="0" refY="6" markerWidth="10" markerHeight="10" orient="auto">
-      <path d="M 0 6 L 6 0 L 12 6 L 6 12 z" fill="#334155" stroke="#334155" />
-    </marker>
-    <!-- Arrow Marker for Inheritance -->
-    <marker id="arrow" viewBox="0 0 12 12" refX="12" refY="6" markerWidth="10" markerHeight="10" orient="auto">
-      <path d="M 0 0 L 12 6 L 0 12 z" fill="none" stroke="#64748b" stroke-width="2" />
-    </marker>
-  </defs>
-
-  <!-- ==================== TOP ROW CORE CLASSES ==================== -->
-
-  <!-- CLASS 1: User (Blue) -->
-  <g transform="translate(60, 100)">
-    <rect width="330" height="410" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="330" height="42" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="165" y="28" class="cls-title">User</text>
-    <line x1="0" y1="42" x2="330" y2="42" stroke="#1d68d8" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
-    <text x="16" y="94" class="cls-text">- fullName: String</text>
-    <text x="16" y="120" class="cls-text">- email: String {unique}</text>
-    <text x="16" y="146" class="cls-text">- passwordHash: String</text>
-    <text x="16" y="172" class="cls-text">- role: Role</text>
-    <text x="16" y="198" class="cls-text">- createdAt: DateTime</text>
-    <text x="16" y="224" class="cls-text">- updatedAt: DateTime</text>
-    <text x="16" y="250" class="cls-text">- isActive: Boolean</text>
-    <line x1="0" y1="260" x2="330" y2="260" stroke="#cbd5e1" stroke-width="1.5" />
-
-    <text x="16" y="284" class="cls-text">+ register(name, email)</text>
-    <text x="16" y="310" class="cls-text">+ login(email, pwd)</text>
-    <text x="16" y="336" class="cls-text">+ logout(): void</text>
-    <text x="16" y="362" class="cls-text">+ updateProfile(data)</text>
-    <text x="16" y="388" class="cls-text">+ changePassword()</text>
+  <!-- OBJECT 1: currentUser : User -->
+  <g transform="translate(50, 75)">
+    <rect class="obj-box" x="0" y="0" width="280" height="135" />
+    <text x="140" y="24" class="obj-header">currentUser : User</text>
+    <line x1="0" y1="34" x2="280" y2="34" class="line-divider" />
+    <text x="12" y="54" class="slot-text">username = "john_doe"</text>
+    <text x="12" y="74" class="slot-text">email = "john@example.com"</text>
+    <text x="12" y="94" class="slot-text">authStatus = "Authenticated"</text>
+    <text x="12" y="114" class="slot-text">dailyQuota = "Unlimited"</text>
   </g>
 
-  <!-- CLASS 2: DetectionTask (Red) -->
-  <g transform="translate(620, 100)">
-    <rect width="380" height="450" rx="6" class="cls-box" stroke="#a82d2d" fill="#ffffff" />
-    <rect width="380" height="42" rx="6" fill="#f8d7d7" stroke="#a82d2d" stroke-width="2" />
-    <text x="190" y="28" class="cls-title">DetectionTask</text>
-    <line x1="0" y1="42" x2="380" y2="42" stroke="#a82d2d" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
-    <text x="16" y="94" class="cls-text">- userId: String {FK}</text>
-    <text x="16" y="120" class="cls-text">- targetText: String</text>
-    <text x="16" y="146" class="cls-text">- taskType: TaskType</text>
-    <text x="16" y="172" class="cls-text">- status: TaskStatus</text>
-    <text x="16" y="198" class="cls-text">- startedAt: DateTime</text>
-    <text x="16" y="224" class="cls-text">- completedAt: DateTime</text>
-    <text x="16" y="250" class="cls-text">- duration: Long</text>
-    <text x="16" y="276" class="cls-text">- aiScore: Double</text>
-    <text x="16" y="302" class="cls-text">- verdictSummary: Summary</text>
-    <line x1="0" y1="312" x2="380" y2="312" stroke="#cbd5e1" stroke-width="1.5" />
-
-    <text x="16" y="336" class="cls-text">+ start(): void</text>
-    <text x="16" y="362" class="cls-text">+ stop(): void</text>
-    <text x="16" y="388" class="cls-text">+ calculateAiScore()</text>
-    <text x="16" y="414" class="cls-text">+ generateReport(): Report</text>
+  <!-- OBJECT 2: currentTask : DetectionTask -->
+  <g transform="translate(440, 75)">
+    <rect class="obj-box" x="0" y="0" width="320" height="160" />
+    <text x="160" y="24" class="obj-header">currentTask : DetectionTask</text>
+    <line x1="0" y1="34" x2="320" y2="34" class="line-divider" />
+    <text x="12" y="54" class="slot-text">id = "REC-98214"</text>
+    <text x="12" y="74" class="slot-text">document = "sample_essay.docx"</text>
+    <text x="12" y="94" class="slot-text">wordCount = 450 words</text>
+    <text x="12" y="114" class="slot-text">sentenceCount = 22</text>
+    <text x="12" y="134" class="slot-text">aiScore = 91.5%</text>
+    <text x="12" y="150" class="slot-text">verdict = "AI-Generated Text"</text>
   </g>
 
-  <!-- CLASS 3: StylometricFeature (Yellow/Gold) -->
-  <g transform="translate(1260, 100)">
-    <rect width="380" height="400" rx="6" class="cls-box" stroke="#b45309" fill="#ffffff" />
-    <rect width="380" height="42" rx="6" fill="#fef3c7" stroke="#b45309" stroke-width="2" />
-    <text x="190" y="28" class="cls-title">StylometricFeature</text>
-    <line x1="0" y1="42" x2="380" y2="42" stroke="#b45309" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
-    <text x="16" y="94" class="cls-text">- taskId: String {FK}</text>
-    <text x="16" y="120" class="cls-text">- featureType: FeatureType</text>
-    <text x="16" y="146" class="cls-text">- title: String</text>
-    <text x="16" y="172" class="cls-text">- description: String</text>
-    <text x="16" y="198" class="cls-text">- evidence: String</text>
-    <text x="16" y="224" class="cls-text">- severity: VerdictLevel</text>
-    <text x="16" y="250" class="cls-text">- recommendation: String</text>
-    <text x="16" y="276" class="cls-text">- discoveredAt: DateTime</text>
-    <line x1="0" y1="286" x2="380" y2="286" stroke="#cbd5e1" stroke-width="1.5" />
-
-    <text x="16" y="312" class="cls-text">+ setEvidence(e: String)</text>
-    <text x="16" y="338" class="cls-text">+ setSeverity(s: Level)</text>
+  <!-- OBJECT 3: dbSync : SentinelDB -->
+  <g transform="translate(870, 75)">
+    <rect class="obj-box" x="0" y="0" width="280" height="135" />
+    <text x="140" y="24" class="obj-header">dbSync : SentinelDB</text>
+    <line x1="0" y1="34" x2="280" y2="34" class="line-divider" />
+    <text x="12" y="54" class="slot-text">dbFile = "sentinel.db"</text>
+    <text x="12" y="74" class="slot-text">table = "analysis_history"</text>
+    <text x="12" y="94" class="slot-text">metricsJson = "{lr:92,knn:90,...}"</text>
+    <text x="12" y="114" class="slot-text">persistence = "SQLite Persistent"</text>
   </g>
 
-  <!-- CLASS 4: VerdictLevel (Purple) -->
-  <g transform="translate(1960, 100)">
-    <rect width="380" height="220" rx="6" class="cls-box" stroke="#6d28d9" fill="#ffffff" />
-    <rect width="380" height="42" rx="6" fill="#ede9fe" stroke="#6d28d9" stroke-width="2" />
-    <text x="190" y="28" class="cls-title">VerdictLevel</text>
-    <line x1="0" y1="42" x2="380" y2="42" stroke="#6d28d9" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: int {PK}</text>
-    <text x="16" y="94" class="cls-text">- name: String</text>
-    <text x="16" y="120" class="cls-text">- weight: int</text>
-    <text x="16" y="146" class="cls-text">- description: String</text>
-    <line x1="0" y1="156" x2="380" y2="156" stroke="#cbd5e1" stroke-width="1.5" />
-
-    <text x="16" y="184" class="cls-text">+ getWeight(): int</text>
+  <!-- OBJECT 4: detectorEngine : DetectorEngine -->
+  <g transform="translate(360, 285)">
+    <rect class="obj-box" x="0" y="0" width="480" height="145" />
+    <text x="240" y="24" class="obj-header">detectorEngine : DetectorEngine</text>
+    <line x1="0" y1="34" x2="480" y2="34" class="line-divider" />
+    <text x="12" y="54" class="slot-text">minWordCount = 10</text>
+    <text x="12" y="74" class="slot-text">ensembleWeights = "LR:25%, Tri:25%, KNN:20%, POS:15%, Cos:10%, Ppl:5%"</text>
+    <text x="12" y="94" class="slot-text">grammarCalibration = "+15% Perfect Boost Applied"</text>
+    <text x="12" y="114" class="slot-text">calculatedFinalScore = 91.5%</text>
   </g>
 
-  <!-- ENUM 4B: VerdictLevel Enum values -->
-  <g transform="translate(1960, 350)">
-    <rect width="380" height="180" rx="6" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
-    <text x="190" y="26" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
-    <text x="16" y="54" class="cls-enum-text">CRITICAL_AI (60)</text>
-    <text x="16" y="80" class="cls-enum-text">HIGH_AI (40)</text>
-    <text x="16" y="106" class="cls-enum-text">MEDIUM_MIXED (20)</text>
-    <text x="16" y="132" class="cls-enum-text">LOW_HUMAN (5)</text>
-    <text x="16" y="158" class="cls-enum-text">INFORMATIONAL (0)</text>
+  <!-- THE 7 ENSEMBLE EVALUATION ENGINES -->
+  <!-- 1. pplEngine -->
+  <g transform="translate(40, 485)">
+    <rect class="sub-obj-box" x="0" y="0" width="240" height="120" />
+    <text x="120" y="22" class="obj-subhead">pplEngine : PerplexityAnalyzer</text>
+    <line x1="0" y1="30" x2="240" y2="30" class="line-divider" />
+    <text x="10" y="48" class="slot-subtext">perplexity = 24.8</text>
+    <text x="10" y="66" class="slot-subtext">burstiness = 0.18</text>
+    <text x="10" y="84" class="slot-subtext">ttr = 0.42</text>
+    <text x="10" y="102" class="slot-subtext">score = 88%</text>
   </g>
 
-
-  <!-- ==================== MIDDLE ROW CLASSES & ENGINES ==================== -->
-
-  <!-- CLASS 5: Report (Green) -->
-  <g transform="translate(60, 620)">
-    <rect width="280" height="250" rx="6" class="cls-box" stroke="#047857" fill="#ffffff" />
-    <rect width="280" height="42" rx="6" fill="#d1fae5" stroke="#047857" stroke-width="2" />
-    <text x="140" y="28" class="cls-title">Report</text>
-    <line x1="0" y1="42" x2="280" y2="42" stroke="#047857" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
-    <text x="16" y="94" class="cls-text">- taskId: String {FK}</text>
-    <text x="16" y="120" class="cls-text">- generatedAt: DateTime</text>
-    <text x="16" y="146" class="cls-text">- format: ReportFormat</text>
-    <text x="16" y="172" class="cls-text">- totalAiScore: Double</text>
-    <line x1="0" y1="182" x2="280" y2="182" stroke="#cbd5e1" stroke-width="1.5" />
-
-    <text x="16" y="206" class="cls-text">+ generate(): void</text>
-    <text x="16" y="232" class="cls-text">+ download(): File</text>
+  <!-- 2. knnEngine -->
+  <g transform="translate(310, 485)">
+    <rect class="sub-obj-box" x="0" y="0" width="260" height="120" />
+    <text x="130" y="22" class="obj-subhead">knnEngine : KNNClassifier</text>
+    <line x1="0" y1="30" x2="260" y2="30" class="line-divider" />
+    <text x="10" y="48" class="slot-subtext">k = 5</text>
+    <text x="10" y="66" class="slot-subtext">neighborVotes = "4 AI, 1 Human"</text>
+    <text x="10" y="84" class="slot-subtext">euclideanDistance = 0.142</text>
+    <text x="10" y="102" class="slot-subtext">score = 90%</text>
   </g>
 
-  <!-- CLASS 6: AlgorithmScore (Green) -->
-  <g transform="translate(380, 620)">
-    <rect width="320" height="250" rx="6" class="cls-box" stroke="#047857" fill="#ffffff" />
-    <rect width="320" height="42" rx="6" fill="#d1fae5" stroke="#047857" stroke-width="2" />
-    <text x="160" y="28" class="cls-title">AlgorithmScore</text>
-    <line x1="0" y1="42" x2="320" y2="42" stroke="#047857" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
-    <text x="16" y="94" class="cls-text">- reportId: String {FK}</text>
-    <text x="16" y="120" class="cls-text">- featureType: Type</text>
-    <text x="16" y="146" class="cls-text">- title: String</text>
-    <text x="16" y="172" class="cls-text">- summary: String</text>
-    <text x="16" y="198" class="cls-text">- riskScore: Double</text>
+  <!-- 3. lrEngine -->
+  <g transform="translate(600, 485)">
+    <rect class="sub-obj-box" x="0" y="0" width="260" height="120" />
+    <text x="130" y="22" class="obj-subhead">lrEngine : LogisticRegression</text>
+    <line x1="0" y1="30" x2="260" y2="30" class="line-divider" />
+    <text x="10" y="48" class="slot-subtext">features = 6</text>
+    <text x="10" y="66" class="slot-subtext">sigmoidOutput = 0.92</text>
+    <text x="10" y="84" class="slot-subtext">score = 92%</text>
   </g>
 
-  <!-- CLASS 7: DetectorEngine (Center Blue) -->
-  <g transform="translate(760, 610)">
-    <rect width="680" height="360" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="680" height="42" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="340" y="28" class="cls-title">DetectorEngine</text>
-    <line x1="0" y1="42" x2="680" y2="42" stroke="#1d68d8" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
-    <text x="16" y="94" class="cls-text">- name: String</text>
-    <text x="16" y="120" class="cls-text">- version: String</text>
-    <text x="16" y="146" class="cls-text">- minWordCount: int</text>
-    <text x="16" y="172" class="cls-text">- timeout: int</text>
-    <line x1="0" y1="182" x2="680" y2="182" stroke="#cbd5e1" stroke-width="1.5" />
-
-    <text x="16" y="206" class="cls-text">+ checkPerplexity(text: String): List&lt;Feature&gt;</text>
-    <text x="16" y="232" class="cls-text">+ checkBurstiness(sentences: List): List&lt;Feature&gt;</text>
-    <text x="16" y="258" class="cls-text">+ checkCosineSimilarity(vector: List): List&lt;Feature&gt;</text>
-    <text x="16" y="284" class="cls-text">+ checkKNNClassify(features: List): List&lt;Feature&gt;</text>
-    <text x="16" y="310" class="cls-text">+ checkTrigramDensity(text: String): List&lt;Feature&gt;</text>
-    <text x="16" y="336" class="cls-text">+ runAllDetectors(task: DetectionTask): void</text>
+  <!-- 4. trigramEngine -->
+  <g transform="translate(890, 485)">
+    <rect class="sub-obj-box" x="0" y="0" width="260" height="120" />
+    <text x="130" y="22" class="obj-subhead">trigramEngine : TrigramAnalyzer</text>
+    <line x1="0" y1="30" x2="260" y2="30" class="line-divider" />
+    <text x="10" y="48" class="slot-subtext">ngramMatch = 0.84</text>
+    <text x="10" y="66" class="slot-subtext">score = 94%</text>
   </g>
 
-  <!-- CLASS 8: FeaturePayload (Teal) -->
-  <g transform="translate(1580, 620)">
-    <rect width="320" height="260" rx="6" class="cls-box" stroke="#0e7490" fill="#ffffff" />
-    <rect width="320" height="42" rx="6" fill="#cffaff" stroke="#0e7490" stroke-width="2" />
-    <text x="160" y="28" class="cls-title">FeaturePayload</text>
-    <line x1="0" y1="42" x2="320" y2="42" stroke="#0e7490" stroke-width="2" />
-
-    <text x="16" y="68" class="cls-text">- id: String {PK}</text>
-    <text x="16" y="94" class="cls-text">- type: PayloadType</text>
-    <text x="16" y="120" class="cls-text">- value: String</text>
-    <text x="16" y="146" class="cls-text">- description: String</text>
-    <text x="16" y="172" class="cls-text">- isActive: Boolean</text>
-    <line x1="0" y1="182" x2="320" y2="182" stroke="#cbd5e1" stroke-width="1.5" />
-
-    <text x="16" y="206" class="cls-text">+ getValue(): String</text>
-    <text x="16" y="232" class="cls-text">+ getCategory(): String</text>
+  <!-- 5. posEngine -->
+  <g transform="translate(170, 655)">
+    <rect class="sub-obj-box" x="0" y="0" width="250" height="115" />
+    <text x="125" y="22" class="obj-subhead">posEngine : PosClassifier</text>
+    <line x1="0" y1="30" x2="250" y2="30" class="line-divider" />
+    <text x="10" y="48" class="slot-subtext">nounRatio = 0.38</text>
+    <text x="10" y="66" class="slot-subtext">verbRatio = 0.12</text>
+    <text x="10" y="84" class="slot-subtext">score = 88%</text>
   </g>
 
-  <!-- ENUMS 8B: FeatureType & PayloadType -->
-  <g transform="translate(1960, 600)">
-    <rect width="380" height="200" rx="6" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
-    <text x="190" y="24" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
-    <text x="190" y="46" font-family="Helvetica" font-size="19" font-weight="bold" text-anchor="middle" fill="#0f172a">FeatureType</text>
-    <text x="16" y="74" class="cls-enum-text">PERPLEXITY</text>
-    <text x="16" y="98" class="cls-enum-text">BURSTINESS</text>
-    <text x="16" y="122" class="cls-enum-text">TTR_DENSITY</text>
-    <text x="16" y="146" class="cls-enum-text">COSINE_SIMILARITY</text>
-    <text x="16" y="170" class="cls-enum-text">KNN_STYLOMETRICS</text>
+  <!-- 6. simEngine -->
+  <g transform="translate(460, 655)">
+    <rect class="sub-obj-box" x="0" y="0" width="260" height="115" />
+    <text x="130" y="22" class="obj-subhead">simEngine : CosineSimilarity</text>
+    <line x1="0" y1="30" x2="260" y2="30" class="line-divider" />
+    <text x="10" y="48" class="slot-subtext">cosineDistance = 0.152</text>
+    <text x="10" y="66" class="slot-subtext">prototypeMatch = "AI Pattern"</text>
+    <text x="10" y="84" class="slot-subtext">score = 85%</text>
   </g>
 
-  <g transform="translate(1960, 820)">
-    <rect width="380" height="170" rx="6" class="cls-box" stroke="#6d28d9" fill="#fcfaff" />
-    <text x="190" y="24" class="cls-enum-title">&lt;&lt;enumeration&gt;&gt;</text>
-    <text x="190" y="46" font-family="Helvetica" font-size="19" font-weight="bold" text-anchor="middle" fill="#0f172a">PayloadType</text>
-    <text x="16" y="74" class="cls-enum-text">WORD_FREQ</text>
-    <text x="16" y="98" class="cls-enum-text">SENTENCE_VAR</text>
-    <text x="16" y="122" class="cls-enum-text">NGRAM_DIST</text>
-    <text x="16" y="146" class="cls-enum-text">VOCAB_RICH</text>
+  <!-- 7. grammarEngine -->
+  <g transform="translate(760, 655)">
+    <rect class="sub-obj-box" x="0" y="0" width="260" height="115" />
+    <text x="130" y="22" class="obj-subhead">grammarEngine : GrammarStyle</text>
+    <line x1="0" y1="30" x2="260" y2="30" class="line-divider" />
+    <text x="10" y="48" class="slot-subtext">perfectionScore = 100%</text>
+    <text x="10" y="66" class="slot-subtext">grammarFactor = 1.0</text>
+    <text x="10" y="84" class="slot-subtext">perfectBoost = +15.0%</text>
   </g>
 
-
-  <!-- ==================== CONNECTIONS TOP & MIDDLE ==================== -->
-  
-  <!-- User (1) -- (*) DetectionTask -->
-  <line x1="390" y1="260" x2="620" y2="260" class="rel-line" />
-  <text x="410" y="250" class="card-text">1</text>
-  <text x="590" y="250" class="card-text">1..*</text>
-
-  <!-- DetectionTask (1) <>-- (1..*) StylometricFeature -->
-  <line x1="1000" y1="260" x2="1260" y2="260" class="rel-line" marker-start="url(#diamond)" />
-  <text x="1020" y="250" class="card-text">1</text>
-  <text x="1230" y="250" class="card-text">1..*</text>
-
-  <!-- StylometricFeature (*) -- (1) VerdictLevel -->
-  <line x1="1640" y1="210" x2="1960" y2="210" class="rel-line" />
-  <text x="1660" y="200" class="card-text">*</text>
-  <text x="1930" y="200" class="card-text">1</text>
-
-  <!-- User (1) -- (*) Report -->
-  <line x1="200" y1="510" x2="200" y2="620" class="rel-line" />
-  <text x="210" y="530" class="card-text">1</text>
-  <text x="210" y="600" class="card-text">1..*</text>
-
-  <!-- Report (1) <>-- (*) AlgorithmScore -->
-  <line x1="340" y1="745" x2="380" y2="745" class="rel-line" marker-start="url(#diamond)" />
-
-  <!-- DetectorEngine uses DetectionTask -->
-  <line x1="980" y1="550" x2="980" y2="610" class="rel-line" />
-  <text x="995" y="585" class="card-text">uses</text>
-
-
-  <!-- ==================== BOTTOM ENUMS ROW A ==================== -->
-
-  <!-- Target -->
-  <g transform="translate(60, 1050)">
-    <rect width="210" height="170" rx="6" fill="#fffbebe6" stroke="#b45309" stroke-width="2" />
-    <text x="105" y="28" class="cls-title">Target</text>
-    <line x1="0" y1="38" x2="210" y2="38" stroke="#cbd5e1" />
-    <text x="12" y="64" class="cls-text">- id: String</text>
-    <text x="12" y="90" class="cls-text">- textUrl: String</text>
-    <text x="12" y="116" class="cls-text">- name: String</text>
-    <text x="12" y="142" class="cls-text">- desc: String</text>
+  <!-- OBJECT 5: visualizer : ChartRenderer -->
+  <g transform="translate(380, 825)">
+    <rect class="obj-box" x="0" y="0" width="440" height="135" />
+    <text x="220" y="24" class="obj-header">visualizer : ChartRenderer</text>
+    <line x1="0" y1="34" x2="440" y2="34" class="line-divider" />
+    <text x="12" y="54" class="slot-text">gaugeScore = 91.5%</text>
+    <text x="12" y="74" class="slot-text">verdictBanner = "Most probably written by AI"</text>
+    <text x="12" y="94" class="slot-text">scatterPlot = "KNN 5-Neighbors Projected"</text>
+    <text x="12" y="114" class="slot-text">sentenceHeatmap = "Rendered Highlights"</text>
   </g>
 
-  <!-- TaskType -->
-  <g transform="translate(310, 1050)">
-    <rect width="170" height="170" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
-    <text x="85" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="85" y="48" class="cls-title">TaskType</text>
-    <line x1="0" y1="58" x2="170" y2="58" stroke="#cbd5e1" />
-    <text x="12" y="86" class="cls-enum-text">QUICK</text>
-    <text x="12" y="112" class="cls-enum-text">FULL</text>
-    <text x="12" y="138" class="cls-enum-text">CUSTOM</text>
-  </g>
+  <!-- CONNECTIONS -->
+  <!-- User to Task -->
+  <line x1="330" y1="145" x2="440" y2="145" class="link-line" />
+  <text x="385" y="137" class="link-label">1 initiates 1..*</text>
 
-  <!-- TaskStatus -->
-  <g transform="translate(520, 1050)">
-    <rect width="190" height="180" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
-    <text x="95" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="95" y="48" class="cls-title">TaskStatus</text>
-    <line x1="0" y1="58" x2="190" y2="58" stroke="#cbd5e1" />
-    <text x="12" y="84" class="cls-enum-text">PENDING</text>
-    <text x="12" y="108" class="cls-enum-text">RUNNING</text>
-    <text x="12" y="132" class="cls-enum-text">COMPLETED</text>
-    <text x="12" y="156" class="cls-enum-text">FAILED</text>
-  </g>
+  <!-- Task to DB -->
+  <line x1="760" y1="145" x2="870" y2="145" class="link-line" />
+  <text x="815" y="137" class="link-label">persists to</text>
 
-  <!-- VerdictSummary -->
-  <g transform="translate(750, 1050)">
-    <rect width="270" height="180" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
-    <text x="135" y="28" class="cls-title">VerdictSummary</text>
-    <line x1="0" y1="38" x2="270" y2="38" stroke="#cbd5e1" />
-    <text x="12" y="64" class="cls-text">- low: int</text>
-    <text x="12" y="90" class="cls-text">- medium: int</text>
-    <text x="12" y="116" class="cls-text">- high: int</text>
-    <text x="12" y="142" class="cls-text">- critical: int</text>
-    <text x="12" y="166" class="cls-text">+ calculateTotal(): int</text>
-  </g>
+  <!-- Task to DetectorEngine -->
+  <line x1="600" y1="235" x2="600" y2="285" class="link-line" />
+  <text x="635" y="260" class="link-label">triggers</text>
 
-  <!-- ReportFormat -->
-  <g transform="translate(1060, 1050)">
-    <rect width="170" height="170" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
-    <text x="85" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="85" y="48" class="cls-title">ReportFormat</text>
-    <line x1="0" y1="58" x2="170" y2="58" stroke="#cbd5e1" />
-    <text x="12" y="86" class="cls-enum-text">HTML</text>
-    <text x="12" y="112" class="cls-enum-text">PDF</text>
-    <text x="12" y="138" class="cls-enum-text">JSON</text>
-  </g>
+  <!-- DetectorEngine to sub engines (Dashed lines) -->
+  <path d="M 600 430 L 600 460 L 160 460 L 160 485" class="link-dash" />
+  <path d="M 600 430 L 600 460 L 440 460 L 440 485" class="link-dash" />
+  <path d="M 600 430 L 600 485" class="link-dash" />
+  <path d="M 600 430 L 600 460 L 1020 460 L 1020 485" class="link-dash" />
+  <path d="M 600 430 L 600 630 L 295 630 L 295 655" class="link-dash" />
+  <path d="M 600 430 L 600 630 L 590 630 L 590 655" class="link-dash" />
+  <path d="M 600 430 L 600 630 L 890 630 L 890 655" class="link-dash" />
 
-  <!-- Role -->
-  <g transform="translate(1270, 1050)">
-    <rect width="150" height="170" rx="6" fill="#fefce8" stroke="#b45309" stroke-width="2" />
-    <text x="75" y="24" class="cls-enum-title">&lt;&lt;enum&gt;&gt;</text>
-    <text x="75" y="48" class="cls-title">Role</text>
-    <line x1="0" y1="58" x2="150" y2="58" stroke="#cbd5e1" />
-    <text x="12" y="86" class="cls-enum-text">ADMIN</text>
-    <text x="12" y="112" class="cls-enum-text">USER</text>
-    <text x="12" y="138" class="cls-enum-text">GUEST</text>
-  </g>
-
-  <!-- Alert -->
-  <g transform="translate(1460, 1050)">
-    <rect width="240" height="180" rx="6" fill="#fffbebe6" stroke="#b45309" stroke-width="2" />
-    <text x="120" y="28" class="cls-title">Alert</text>
-    <line x1="0" y1="38" x2="240" y2="38" stroke="#cbd5e1" />
-    <text x="12" y="64" class="cls-text">- id: String {PK}</text>
-    <text x="12" y="90" class="cls-text">- userId: String {FK}</text>
-    <text x="12" y="116" class="cls-text">- taskId: String {FK}</text>
-    <text x="12" y="142" class="cls-text">- message: String</text>
-    <text x="12" y="166" class="cls-text">+ markAsRead(): void</text>
-  </g>
-
-
-  <!-- ==================== 7 PARALLEL CHECKER SUB-COMPONENTS (FONT SIZE 19) ==================== -->
-  
-  <!-- Horizontal Bus Line Connecting DetectorEngine to 7 Checkers -->
-  <line x1="1100" y1="970" x2="1100" y2="1300" class="rel-dashed" />
-  <line x1="210" y1="1300" x2="2190" y2="1300" class="rel-dashed" />
-
-  <!-- Checker 1: PerplexityChecker -->
-  <g transform="translate(60, 1350)">
-    <rect width="300" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="300" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="150" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">PerplexityChecker</text>
-    <line x1="0" y1="34" x2="300" y2="34" stroke="#1d68d8" stroke-width="2" />
-    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
-    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="210" y1="0" x2="210" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
-  </g>
-
-  <!-- Checker 2: BurstinessChecker -->
-  <g transform="translate(390, 1350)">
-    <rect width="300" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="300" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="150" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">BurstinessChecker</text>
-    <line x1="0" y1="34" x2="300" y2="34" stroke="#1d68d8" stroke-width="2" />
-    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
-    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="540" y1="0" x2="540" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
-  </g>
-
-  <!-- Checker 3: KNNClassifierChecker -->
-  <g transform="translate(720, 1350)">
-    <rect width="310" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="310" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="155" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">KNNClassifierChecker</text>
-    <line x1="0" y1="34" x2="310" y2="34" stroke="#1d68d8" stroke-width="2" />
-    <text x="12" y="60" class="cls-text">+ check(vector: List):</text>
-    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="875" y1="0" x2="875" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
-  </g>
-
-  <!-- Checker 4: LogisticRegressionChecker -->
-  <g transform="translate(1060, 1350)">
-    <rect width="330" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="330" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="165" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">LogisticRegressionChecker</text>
-    <line x1="0" y1="34" x2="330" y2="34" stroke="#1d68d8" stroke-width="2" />
-    <text x="12" y="60" class="cls-text">+ check(vector: List):</text>
-    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="1225" y1="0" x2="1225" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
-  </g>
-
-  <!-- Checker 5: TrigramChecker -->
-  <g transform="translate(1420, 1350)">
-    <rect width="280" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="280" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="140" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">TrigramChecker</text>
-    <line x1="0" y1="34" x2="280" y2="34" stroke="#1d68d8" stroke-width="2" />
-    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
-    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="1560" y1="0" x2="1560" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
-  </g>
-
-  <!-- Checker 6: POSSyntaxChecker -->
-  <g transform="translate(1730, 1350)">
-    <rect width="280" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="280" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="140" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">POSSyntaxChecker</text>
-    <line x1="0" y1="34" x2="280" y2="34" stroke="#1d68d8" stroke-width="2" />
-    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
-    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="1870" y1="0" x2="1870" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
-  </g>
-
-  <!-- Checker 7: GrammarStyleChecker -->
-  <g transform="translate(2040, 1350)">
-    <rect width="300" height="90" rx="6" class="cls-box" stroke="#1d68d8" fill="#ffffff" />
-    <rect width="300" height="34" rx="6" fill="#dbe6f7" stroke="#1d68d8" stroke-width="2" />
-    <text x="150" y="24" font-family="Helvetica" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">GrammarStyleChecker</text>
-    <line x1="0" y1="34" x2="300" y2="34" stroke="#1d68d8" stroke-width="2" />
-    <text x="12" y="60" class="cls-text">+ check(text: String):</text>
-    <text x="12" y="80" class="cls-text">  List&lt;Feature&gt;</text>
-    <line x1="2190" y1="0" x2="2190" y2="-50" class="rel-dashed" marker-end="url(#arrow)" />
-  </g>
-
-  <!-- ==================== CAPTION ==================== -->
-  <text x="1200" y="1690" font-family="Times New Roman, Georgia, serif" font-weight="bold" font-size="24" fill="#000000" text-anchor="middle">Figure 3.8: Refinement Diagram for AI Text Detector</text>
+  <!-- DetectorEngine to Visualizer -->
+  <line x1="600" y1="430" x2="600" y2="825" class="link-line" />
+  <text x="660" y="805" class="link-label">passes scores to</text>
 
 </svg>

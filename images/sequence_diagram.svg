@@ -1,252 +1,113 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1900 1720" width="100%" height="100%" style="background-color: #ffffff; font-family: Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 880" width="100%" height="100%" style="background-color: #ffffff;">
   <defs>
-    <style type="text/css">
-      .seq-header-box { fill: #ffffff; stroke: #000000; stroke-width: 1.8; }
-      .seq-header-title { font-family: Helvetica, Arial, sans-serif; font-weight: bold; font-size: 14.5px; fill: #000000; text-anchor: middle; }
-      .seq-lifeline { stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 6,5; }
-      .seq-activation { fill: #ffffff; stroke: #000000; stroke-width: 1.5; }
-      
-      .seq-call-line { stroke: #000000; stroke-width: 1.8; fill: none; }
-      .seq-return-line { stroke: #000000; stroke-width: 1.8; stroke-dasharray: 6,4; fill: none; }
-      
-      .seq-msg-text { font-family: Helvetica, Arial, sans-serif; font-size: 14px; fill: #000000; font-weight: bold; }
-      .seq-ret-text { font-family: Helvetica, Arial, sans-serif; font-size: 13px; fill: #1e293b; font-style: italic; font-weight: 500; }
-      
-      .frag-box { fill: none; stroke: #000000; stroke-width: 1.5; stroke-dasharray: none; }
-      .frag-box-dashed { fill: none; stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 6,4; }
-      .frag-badge { fill: #ffffff; stroke: #000000; stroke-width: 1.5; }
-      .frag-text { font-family: Helvetica, Arial, sans-serif; font-size: 13.5px; font-weight: bold; fill: #000000; }
-      .frag-cond { font-family: Helvetica, Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #475569; }
-    </style>
-
-    <!-- Solid Arrowhead for Synchronous Calls -->
-    <marker id="arrow-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M 0 1 L 10 5 L 0 9 z" fill="#000000" />
+    <marker id="arrow-open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
     </marker>
-
-    <!-- Open Arrowhead for Return Messages -->
-    <marker id="arrow-open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
-      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#000000" stroke-width="1.8" />
+    <marker id="arrow-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 z" fill="#000000" stroke="#000000" stroke-width="1" />
     </marker>
   </defs>
 
-  <!-- Canvas Background -->
-  <rect width="1900" height="1720" fill="#ffffff" />
-  <rect x="15" y="15" width="1870" height="1690" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,4" />
+  <style>
+    .diagram-title { font-family: 'Times New Roman', Georgia, serif; font-size: 19px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .header-box-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14.5px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .msg-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13.5px; font-weight: 500; fill: #000000; text-anchor: middle; }
+    .msg-line { stroke: #000000; stroke-width: 1.8; stroke-dasharray: 6,4; fill: none; }
+    .msg-line-solid { stroke: #000000; stroke-width: 1.8; fill: none; }
+    .num-circle { fill: #ffffff; stroke: #000000; stroke-width: 1.5; }
+    .num-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #000000; text-anchor: middle; dominant-baseline: central; }
+    .loop-box { fill: none; stroke: #000000; stroke-width: 1.8; rx: 6px; }
+    .loop-badge { fill: #ffffff; stroke: #000000; stroke-width: 1.5; rx: 4px; }
+    .loop-badge-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #000000; text-anchor: middle; dominant-baseline: central; }
+    .loop-header-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #000000; dominant-baseline: central; }
+  </style>
 
-  <!-- Diagram Title Header -->
-  <g transform="translate(40, 25)">
-    <rect width="1820" height="42" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" />
-    <text x="910" y="27" font-family="Helvetica, Arial, sans-serif" font-size="17" font-weight="bold" fill="#ffffff" text-anchor="middle">Sentinel AI Text Detector — Full System Sequence Diagram</text>
+  <!-- Title -->
+  <text x="480" y="38" class="diagram-title">Figure 3.6: Sequence Diagram for Sentinel AI Text Detector</text>
+
+  <!-- Lifeline Extension Lines -->
+  <line x1="150" y1="125" x2="150" y2="840" stroke="#000000" stroke-width="1.8" />
+  <line x1="380" y1="125" x2="380" y2="840" stroke="#000000" stroke-width="1.8" />
+  <line x1="620" y1="125" x2="620" y2="840" stroke="#000000" stroke-width="1.8" />
+  <line x1="850" y1="125" x2="850" y2="840" stroke="#000000" stroke-width="1.8" />
+
+  <!-- Activation Bars -->
+  <rect x="371" y="160" width="18" height="630" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
+  <rect x="611" y="220" width="18" height="500" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
+
+  <!-- Participant Headers -->
+  <rect x="75" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="150" y="103" class="header-box-text">Client (UI)</text>
+
+  <rect x="305" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="380" y="103" class="header-box-text">Server (Controller)</text>
+
+  <rect x="545" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="620" y="103" class="header-box-text">Scanner Engine</text>
+
+  <rect x="775" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="850" y="103" class="header-box-text">Database (sentinel.db)</text>
+
+  <!-- Step 1: Client -> Server -->
+  <path d="M 150 170 L 369 170" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="260" y="162" class="msg-text">Scan request</text>
+  <circle cx="150" cy="170" r="11" class="num-circle" />
+  <text x="150" y="170" class="num-text">1</text>
+
+  <!-- Step 2: Server -> Scanner Engine -->
+  <path d="M 389 230 L 609 230" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="222" class="msg-text">Initiate scan</text>
+  <circle cx="389" cy="230" r="11" class="num-circle" />
+  <text x="389" y="230" class="num-text">2</text>
+
+  <!-- Step 3: Scanner Engine -> Database -->
+  <path d="M 629 290 L 848 290" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="740" y="282" class="msg-text">payloads / models</text>
+  <circle cx="629" cy="290" r="11" class="num-circle" />
+  <text x="629" y="290" class="num-text">3</text>
+
+  <!-- Loop Container Box -->
+  <g>
+    <rect x="335" y="340" width="470" height="195" class="loop-box" />
+    <rect x="335" y="340" width="55" height="24" class="loop-badge" />
+    <text x="362.5" y="352" class="loop-badge-text">loop</text>
+    <text x="400" y="352" class="loop-header-text">Scan all endpoints / AI evaluation engines</text>
   </g>
 
-  <!-- ==================== LIFELINES (VERTICAL DASHED LINES) ==================== -->
-  <line x1="100" y1="135" x2="100" y2="1670" class="seq-lifeline" />
-  <line x1="320" y1="135" x2="320" y2="1670" class="seq-lifeline" />
-  <line x1="560" y1="135" x2="560" y2="1670" class="seq-lifeline" />
-  <line x1="800" y1="135" x2="800" y2="1670" class="seq-lifeline" />
-  <line x1="1040" y1="135" x2="1040" y2="1670" class="seq-lifeline" />
-  <line x1="1280" y1="135" x2="1280" y2="1670" class="seq-lifeline" />
-  <line x1="1520" y1="135" x2="1520" y2="1670" class="seq-lifeline" />
-  <line x1="1740" y1="135" x2="1740" y2="1670" class="seq-lifeline" />
+  <!-- Step 4: Self Call (Scanner Engine) -->
+  <path d="M 629 395 L 685 395 L 685 430 L 631 430" class="msg-line-solid" marker-end="url(#arrow-solid)" />
+  <text x="695" y="407" class="msg-text" text-anchor="start">Test Perplexity, KNN,</text>
+  <text x="695" y="423" class="msg-text" text-anchor="start">Cosine, POS, Trigram, etc.</text>
+  <circle cx="629" cy="395" r="11" class="num-circle" />
+  <text x="629" y="395" class="num-text">4</text>
 
+  <!-- Step 5: Scanner Engine -> Server -->
+  <path d="M 611 490 L 391 490" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="482" class="msg-text">Return</text>
+  <circle cx="611" cy="490" r="11" class="num-circle" />
+  <text x="611" y="490" class="num-text">5</text>
 
-  <!-- ==================== LIFELINE HEADERS & ACTOR ==================== -->
-  
-  <!-- Lifeline 1: User Actor -->
-  <g transform="translate(100, 85)">
-    <circle cx="0" cy="-12" r="10" fill="#ffffff" stroke="#000000" stroke-width="1.8" />
-    <line x1="0" y1="-2" x2="0" y2="14" stroke="#000000" stroke-width="1.8" />
-    <line x1="-12" y1="4" x2="12" y2="4" stroke="#000000" stroke-width="1.8" />
-    <line x1="0" y1="14" x2="-8" y2="26" stroke="#000000" stroke-width="1.8" />
-    <line x1="0" y1="14" x2="8" y2="26" stroke="#000000" stroke-width="1.8" />
-    <text x="0" y="42" class="seq-header-title">User</text>
-  </g>
+  <!-- Step 6: Scanner Engine -> Database -->
+  <path d="M 629 570 L 848 570" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="740" y="562" class="msg-text">Store results</text>
+  <circle cx="629" cy="570" r="11" class="num-circle" />
+  <text x="629" y="570" class="num-text">6</text>
 
-  <!-- Lifeline 2: UI (index.html) -->
-  <g transform="translate(230, 85)">
-    <rect width="180" height="48" rx="4" class="seq-header-box" />
-    <text x="90" y="29" class="seq-header-title">UI (index.html)</text>
-  </g>
+  <!-- Step 7: Server -> Scanner Engine -->
+  <path d="M 389 640 L 609 640" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="632" class="msg-text">Request report</text>
+  <circle cx="389" cy="640" r="11" class="num-circle" />
+  <text x="389" y="640" class="num-text">7</text>
 
-  <!-- Lifeline 3: App Controller (app.js) -->
-  <g transform="translate(460, 85)">
-    <rect width="200" height="48" rx="4" class="seq-header-box" />
-    <text x="100" y="29" class="seq-header-title">App Controller (app.js)</text>
-  </g>
+  <!-- Step 8: Scanner Engine -> Server -->
+  <path d="M 611 710 L 391 710" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="702" class="msg-text">Send report</text>
+  <circle cx="611" cy="710" r="11" class="num-circle" />
+  <text x="611" y="710" class="num-text">8</text>
 
-  <!-- Lifeline 4: FileParser -->
-  <g transform="translate(710, 85)">
-    <rect width="180" height="48" rx="4" class="seq-header-box" />
-    <text x="90" y="29" class="seq-header-title">FileParser</text>
-  </g>
-
-  <!-- Lifeline 5: PerplexityAnalyzer -->
-  <g transform="translate(930, 85)">
-    <rect width="220" height="48" rx="4" class="seq-header-box" />
-    <text x="110" y="29" class="seq-header-title">PerplexityAnalyzer</text>
-  </g>
-
-  <!-- Lifeline 6: Ensemble Classifiers -->
-  <g transform="translate(1170, 85)">
-    <rect width="220" height="48" rx="4" class="seq-header-box" />
-    <text x="110" y="29" class="seq-header-title">Ensemble Classifiers</text>
-  </g>
-
-  <!-- Lifeline 7: ChartRenderer -->
-  <g transform="translate(1430, 85)">
-    <rect width="180" height="48" rx="4" class="seq-header-box" />
-    <text x="90" y="29" class="seq-header-title">ChartRenderer</text>
-  </g>
-
-  <!-- Lifeline 8: SQLite Server (py) -->
-  <g transform="translate(1640, 85)">
-    <rect width="200" height="48" rx="4" class="seq-header-box" />
-    <text x="100" y="29" class="seq-header-title">SQLite Server (py)</text>
-  </g>
-
-
-  <!-- ==================== ACTIVATION BARS ==================== -->
-  <rect x="93" y="150" width="14" height="1500" class="seq-activation" />
-  <rect x="313" y="190" width="14" height="1200" class="seq-activation" />
-  <rect x="553" y="230" width="14" height="1380" class="seq-activation" />
-  <rect x="793" y="440" width="14" height="50" class="seq-activation" />
-  <rect x="1033" y="675" width="14" height="45" class="seq-activation" />
-  <rect x="1273" y="960" width="14" height="190" class="seq-activation" />
-  <rect x="1513" y="1255" width="14" height="60" class="seq-activation" />
-  <rect x="1733" y="275" width="14" height="40" class="seq-activation" />
-  <rect x="1733" y="1505" width="14" height="80" class="seq-activation" />
-
-
-  <!-- ==================== SECTION 1: alt [User Auth / Login Flow] ==================== -->
-  <g id="sec-login">
-    <rect x="40" y="155" width="1740" height="175" class="frag-box" />
-    <path d="M 40 155 H 240 L 255 178 H 40 Z" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-    <text x="52" y="172" class="frag-text">alt [User Auth / Login Flow]</text>
-
-    <!-- 1: Enter Credentials -->
-    <line x1="107" y1="200" x2="313" y2="200" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="210" y="191" class="seq-msg-text" text-anchor="middle">1: Enter Credentials / Submit Login</text>
-
-    <!-- 2: handleAuth -->
-    <line x1="327" y1="240" x2="553" y2="240" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="440" y="231" class="seq-msg-text" text-anchor="middle">handleAuth(data)</text>
-
-    <!-- 3: POST /api/auth/login -->
-    <line x1="567" y1="280" x2="1733" y2="280" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="1150" y="271" class="seq-msg-text" text-anchor="middle">POST /api/auth/login</text>
-  </g>
-
-
-  <!-- ==================== SECTION 2: alt [File Upload vs Manual Input Flow] ==================== -->
-  <g id="sec-input">
-    <rect x="40" y="355" width="1740" height="375" class="frag-box" />
-    <path d="M 40 355 H 330 L 345 378 H 40 Z" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-    <text x="52" y="372" class="frag-text">alt [File Upload vs Manual Input Flow]</text>
-
-    <!-- File Upload Branch -->
-    <line x1="107" y1="405" x2="313" y2="405" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="210" y="396" class="seq-msg-text" text-anchor="middle">Drag &amp; Drop / Select (.txt, .docx, .pdf)</text>
-
-    <line x1="327" y1="445" x2="793" y2="445" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="560" y="436" class="seq-msg-text" text-anchor="middle">extractText(file)</text>
-
-    <line x1="793" y1="485" x2="327" y2="485" class="seq-return-line" marker-end="url(#arrow-open)" />
-    <text x="560" y="475" class="seq-ret-text" text-anchor="middle">Return extracted text &amp; Update Text Area</text>
-
-    <!-- Divider inside alt -->
-    <line x1="40" y1="515" x2="1780" y2="515" class="frag-box-dashed" />
-    <text x="52" y="533" class="frag-cond">[Manual Input Mode]</text>
-
-    <!-- Manual Input Branch -->
-    <line x1="107" y1="560" x2="313" y2="560" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="210" y="551" class="seq-msg-text" text-anchor="middle">Type text directly / Click "Try Sample"</text>
-
-    <line x1="107" y1="600" x2="313" y2="600" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="210" y="591" class="seq-msg-text" text-anchor="middle">Click "Run Analysis"</text>
-
-    <line x1="327" y1="640" x2="553" y2="640" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="440" y="631" class="seq-msg-text" text-anchor="middle">executeAnalysisCore(text)</text>
-
-    <line x1="567" y1="680" x2="1033" y2="680" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="800" y="671" class="seq-msg-text" text-anchor="middle">analyze(text)</text>
-
-    <line x1="1033" y1="715" x2="567" y2="715" class="seq-return-line" marker-end="url(#arrow-open)" />
-    <text x="800" y="705" class="seq-ret-text" text-anchor="middle">Return { wordCount, sentenceCount, burstiness, ttr, score }</text>
-  </g>
-
-
-  <!-- ==================== SECTION 3: alt [Validation: Word Count < 10 vs >= 10] ==================== -->
-  <g id="sec-validation">
-    <rect x="40" y="755" width="1740" height="665" class="frag-box" />
-    <path d="M 40 755 H 370 L 385 778 H 40 Z" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-    <text x="52" y="772" class="frag-text">alt [Validation: Word Count &lt; 10 vs &gt;= 10]</text>
-
-    <!-- Branch A: Word Count < 10 -->
-    <line x1="553" y1="800" x2="327" y2="800" class="seq-return-line" marker-end="url(#arrow-open)" />
-    <text x="440" y="790" class="seq-ret-text" fill="#dc2626" font-weight="bold" text-anchor="middle">Abort Analysis: Display "Need 10+ words for stylometric analysis"</text>
-
-    <!-- Divider inside alt -->
-    <line x1="40" y1="825" x2="1780" y2="825" class="frag-box-dashed" />
-    <text x="52" y="843" class="frag-cond" fill="#16a34a">[Word Count &gt;= 10: Proceed to Ensemble]</text>
-
-    <!-- Feature Extraction Loop on App Controller -->
-    <path d="M 567 865 H 615 V 895 H 567" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="625" y="884" class="seq-msg-text">extractFeatures(text, perplexityResult) &#10142; Return Feature Vector</text>
-
-    <!-- Parallel Ensemble Sub-fragment -->
-    <g id="par-ensemble">
-      <rect x="440" y="920" width="900" height="250" class="frag-box" />
-      <path d="M 440 920 H 710 L 725 943 H 440 Z" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-      <text x="452" y="937" class="frag-text">par [Parallel Ensemble Classification]</text>
-
-      <!-- Dispatch Call -->
-      <line x1="567" y1="965" x2="1273" y2="965" class="seq-call-line" marker-end="url(#arrow-solid)" />
-      <text x="920" y="955" class="seq-msg-text" text-anchor="middle">Dispatch Parallel Algorithms:</text>
-
-      <!-- Bulleted Ensemble Algorithms Box -->
-      <g transform="translate(620, 985)">
-        <rect width="610" height="120" rx="6" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5" />
-        <text x="20" y="32" font-family="Helvetica, Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0f172a">• KNNClassifier.classify(vector)  • LogisticRegression.predict(vector)</text>
-        <text x="20" y="62" font-family="Helvetica, Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0f172a">• TrigramAnalyzer.analyze(text)   • PosClassifier.analyze(text)</text>
-        <text x="20" y="92" font-family="Helvetica, Arial, sans-serif" font-size="14px" font-weight="bold" fill="#0f172a">• CosineSimilarity.analyze(text)  • GrammarStyleAnalyzer.analyze(text)</text>
-      </g>
-
-      <!-- Return individual scores -->
-      <line x1="1273" y1="1145" x2="567" y2="1145" class="seq-return-line" marker-end="url(#arrow-open)" />
-      <text x="920" y="1135" class="seq-ret-text" text-anchor="middle">Return individual classifier scores</text>
-    </g>
-
-    <!-- Compute Weighted Score Loop -->
-    <path d="M 567 1195 H 615 V 1225 H 567" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="625" y="1214" class="seq-msg-text">Compute Weighted Score &amp; Apply Grammar Calibration Factor (0-100%)</text>
-
-    <!-- renderGauge -->
-    <line x1="567" y1="1260" x2="1513" y2="1260" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="1040" y="1250" class="seq-msg-text" text-anchor="middle">renderGauge(finalPercentage) &amp; renderDashboard(metrics)</text>
-
-    <!-- Update Stats Cards -->
-    <line x1="1513" y1="1310" x2="327" y2="1310" class="seq-return-line" marker-end="url(#arrow-open)" />
-    <text x="920" y="1300" class="seq-ret-text" text-anchor="middle">Update Stats Cards, Verdict Banner (&gt;60% AI / &gt;35% Mixed / &lt;=35% Human)</text>
-
-    <!-- Display Dashboard to User -->
-    <line x1="313" y1="1370" x2="107" y2="1370" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="210" y="1360" class="seq-msg-text" text-anchor="middle">Display Dashboard, Sentence Heatmap &amp; Math Panel</text>
-  </g>
-
-
-  <!-- ==================== SECTION 4: opt [SQLite History Persistence] ==================== -->
-  <g id="sec-sqlite">
-    <rect x="40" y="1445" width="1740" height="195" class="frag-box" />
-    <path d="M 40 1445 H 300 L 315 1468 H 40 Z" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
-    <text x="52" y="1462" class="frag-text">opt [SQLite History Persistence]</text>
-
-    <!-- POST history save -->
-    <line x1="567" y1="1510" x2="1733" y2="1510" class="seq-call-line" marker-end="url(#arrow-solid)" />
-    <text x="1150" y="1500" class="seq-msg-text" text-anchor="middle">POST /api/history/save (username, text, aiScore, verdict, metrics_json)</text>
-
-    <!-- HTTP 200 OK -->
-    <line x1="1733" y1="1580" x2="567" y2="1580" class="seq-return-line" marker-end="url(#arrow-open)" />
-    <text x="1150" y="1570" class="seq-ret-text" fill="#16a34a" font-weight="bold" text-anchor="middle">HTTP 200 OK (Record Persisted to sentinel.db)</text>
-  </g>
+  <!-- Step 9: Server -> Client -->
+  <path d="M 371 780 L 152 780" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="260" y="772" class="msg-text">Return report</text>
+  <circle cx="371" cy="780" r="11" class="num-circle" />
+  <text x="371" y="780" class="num-text">9</text>
 </svg>

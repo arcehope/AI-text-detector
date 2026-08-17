@@ -1,172 +1,132 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 880" width="100%" height="100%" style="background-color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 980" width="1400" height="980" style="background-color: #ffffff;">
+  <style>
+    .cls-box { fill: #ffffff; stroke: #000000; stroke-width: 2; }
+    .cls-header { font-family: 'Consolas', 'Courier New', monospace; font-size: 17px; font-weight: bold; text-anchor: middle; fill: #000000; text-decoration: underline; }
+    .cls-text { font-family: 'Consolas', 'Courier New', monospace; font-size: 13.5px; fill: #000000; }
+    .line { stroke: #000000; stroke-width: 2; fill: none; }
+    .caption { font-family: 'Times New Roman', Times, serif; font-size: 20px; font-weight: bold; text-anchor: middle; fill: #000000; }
+    .mult { font-family: 'Helvetica', Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #003399; }
+    .role { font-family: 'Helvetica', Arial, sans-serif; font-size: 13px; font-style: italic; fill: #555555; text-anchor: middle; }
+  </style>
 
-  <!-- Outer Diagram Canvas Border -->
-  <rect x="15" y="15" width="1070" height="815" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5" />
+  <!-- Title/Caption at Top -->
+  <text x="700" y="30" class="caption">Figure 3.4: Object Diagram for AI Text Detector</text>
 
-  <!-- Diagram Title Header -->
-  <text x="550" y="45" font-family="Helvetica, Arial, sans-serif" font-weight="bold" font-size="16" fill="#1e293b" text-anchor="middle">Object Diagram - AI Text Detector</text>
-
-  <!-- ==================== CONNECTOR LINE ==================== -->
-  <line x1="360" y1="210" x2="570" y2="210" stroke="#334155" stroke-width="1.8" />
-  <text x="372" y="200" font-size="13" font-family="Consolas, Monaco, monospace" font-weight="bold" fill="#334155">1</text>
-  <text x="555" y="200" font-size="14" font-family="Consolas, Monaco, monospace" font-weight="bold" fill="#334155">*</text>
-
-  <!-- ==================== LEFT CARD: user1: User (Blue Theme) ==================== -->
-  <g transform="translate(60, 75)">
-    <!-- Container -->
-    <rect width="300" height="300" rx="8" fill="#f4f8fe" stroke="#1d68d8" stroke-width="2" />
-    
-    <!-- Title Header -->
-    <text x="150" y="30" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle" text-decoration="underline">user1: User</text>
-    <line x1="0" y1="44" x2="300" y2="44" stroke="#dbe6f7" stroke-width="1.5" />
-
-    <!-- Attribute 1 -->
-    <line x1="0" y1="84" x2="300" y2="84" stroke="#e8f0fc" stroke-width="1" />
-    <text x="14" y="70" font-size="13" font-family="Consolas, Monaco, monospace" fill="#1e293b">id</text>
-    <text x="286" y="70" font-size="13" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">"u1001"</text>
-
-    <!-- Attribute 2 -->
-    <line x1="0" y1="124" x2="300" y2="124" stroke="#e8f0fc" stroke-width="1" />
-    <text x="14" y="110" font-size="13" font-family="Consolas, Monaco, monospace" fill="#1e293b">fullName</text>
-    <text x="286" y="110" font-size="13" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">"Shashank Singh"</text>
-
-    <!-- Attribute 3 -->
-    <line x1="0" y1="164" x2="300" y2="164" stroke="#e8f0fc" stroke-width="1" />
-    <text x="14" y="150" font-size="13" font-family="Consolas, Monaco, monospace" fill="#1e293b">email</text>
-    <text x="286" y="150" font-size="13" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">"shashank@example.com"</text>
-
-    <!-- Attribute 4 -->
-    <line x1="0" y1="204" x2="300" y2="204" stroke="#e8f0fc" stroke-width="1" />
-    <text x="14" y="190" font-size="13" font-family="Consolas, Monaco, monospace" fill="#1e293b">password</text>
-    <text x="286" y="190" font-size="13" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">"$2b$10$abc123hashed"</text>
-
-    <!-- Attribute 5 -->
-    <line x1="0" y1="244" x2="300" y2="244" stroke="#e8f0fc" stroke-width="1" />
-    <text x="14" y="230" font-size="13" font-family="Consolas, Monaco, monospace" fill="#1e293b">role</text>
-    <text x="286" y="230" font-size="13" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">"admin"</text>
-
-    <!-- Attribute 6 -->
-    <text x="14" y="274" font-size="13" font-family="Consolas, Monaco, monospace" fill="#1e293b">createdAt</text>
-    <text x="286" y="274" font-size="12" font-family="Consolas, Monaco, monospace" fill="#2563eb" text-anchor="end">"2026-08-15T18:30:00Z"</text>
+  <!-- 1. Top Box: docParser : Parses -->
+  <g transform="translate(460, 50)">
+    <rect class="cls-box" x="0" y="0" width="480" height="190" />
+    <text x="240" y="28" class="cls-header">docParser : Parses</text>
+    <line x1="0" y1="38" x2="480" y2="38" class="line" />
+    <text x="15" y="58" class="cls-text">document = "sample_essay.docx"</text>
+    <text x="15" y="78" class="cls-text">status = "Text Extracted Successfully"</text>
+    <text x="15" y="98" class="cls-text">wordCount = 450 words</text>
+    <text x="15" y="118" class="cls-text">format = "Plain Text Buffer"</text>
+    <line x1="0" y1="128" x2="480" y2="128" class="line" />
+    <text x="15" y="148" class="cls-text">+ extractText(file): string</text>
+    <text x="15" y="168" class="cls-text">+ readAsDocx(file): string</text>
+    <text x="15" y="184" class="cls-text">+ getWordCount(): int</text>
   </g>
 
-  <!-- ==================== RIGHT STACKED CARDS: detection1, detection2, detection3 (Red Theme) ==================== -->
-  <g transform="translate(570, 75)">
-    <!-- Main Red Container Box -->
-    <rect width="470" height="730" rx="8" fill="#fdf4f4" stroke="#a82d2d" stroke-width="2" />
-
-    <!-- INSTANCE 1: detection1: AIAnalysis -->
-    <g transform="translate(0, 0)">
-      <text x="235" y="28" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle" text-decoration="underline">detection1: AIAnalysis</text>
-      <line x1="0" y1="38" x2="470" y2="38" stroke="#f8d7d7" stroke-width="1.5" />
-
-      <!-- Rows -->
-      <line x1="0" y1="66" x2="470" y2="66" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="56" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">id</text>
-      <text x="456" y="56" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"det_001"</text>
-
-      <line x1="0" y1="94" x2="470" y2="94" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="84" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">userId</text>
-      <text x="456" y="84" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"u1001"</text>
-
-      <line x1="0" y1="122" x2="470" y2="122" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="112" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">documentName</text>
-      <text x="456" y="112" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"academic_essay.docx"</text>
-
-      <line x1="0" y1="150" x2="470" y2="150" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="140" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">timestamp</text>
-      <text x="456" y="140" font-size="12" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"2026-08-15T19:00:00Z"</text>
-
-      <line x1="0" y1="178" x2="470" y2="178" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="168" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">features</text>
-      <text x="456" y="168" font-size="11.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">["High Perplexity", "Low Burstiness"]</text>
-
-      <line x1="0" y1="206" x2="470" y2="206" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="196" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">aiProbability</text>
-      <text x="456" y="196" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">91.5</text>
-
-      <text x="14" y="224" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">verdictSummary</text>
-      <text x="456" y="224" font-size="11.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">{perplexity: 88.5, similarity: 85.0, knn: 91.5}</text>
-    </g>
-
-    <!-- SEPARATOR / DOTS -->
-    <line x1="0" y1="238" x2="470" y2="238" stroke="#a82d2d" stroke-width="1.5" />
-    <text x="235" y="254" font-size="14" font-family="Consolas, Monaco, monospace" font-weight="bold" fill="#a82d2d" text-anchor="middle">. . .</text>
-    <line x1="0" y1="262" x2="470" y2="262" stroke="#a82d2d" stroke-width="1.5" />
-
-    <!-- INSTANCE 2: detection2: AIAnalysis -->
-    <g transform="translate(0, 262)">
-      <text x="235" y="26" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle" text-decoration="underline">detection2: AIAnalysis</text>
-      <line x1="0" y1="36" x2="470" y2="36" stroke="#f8d7d7" stroke-width="1.5" />
-
-      <!-- Rows -->
-      <line x1="0" y1="64" x2="470" y2="64" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="54" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">id</text>
-      <text x="456" y="54" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"det_002"</text>
-
-      <line x1="0" y1="92" x2="470" y2="92" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="82" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">userId</text>
-      <text x="456" y="82" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"u1001"</text>
-
-      <line x1="0" y1="120" x2="470" y2="120" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="110" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">documentName</text>
-      <text x="456" y="110" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"research_paper.pdf"</text>
-
-      <line x1="0" y1="148" x2="470" y2="148" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="138" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">timestamp</text>
-      <text x="456" y="138" font-size="12" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"2026-08-15T21:15:00Z"</text>
-
-      <line x1="0" y1="176" x2="470" y2="176" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="166" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">features</text>
-      <text x="456" y="166" font-size="11.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">["Human Rhythm", "High Burstiness"]</text>
-
-      <line x1="0" y1="204" x2="470" y2="204" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="194" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">aiProbability</text>
-      <text x="456" y="194" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">22.4</text>
-
-      <text x="14" y="222" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">verdictSummary</text>
-      <text x="456" y="222" font-size="11.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">{perplexity: 24.1, similarity: 20.8, knn: 22.4}</text>
-    </g>
-
-    <!-- SEPARATOR LINE -->
-    <line x1="0" y1="494" x2="470" y2="494" stroke="#a82d2d" stroke-width="1.5" />
-
-    <!-- INSTANCE 3: detection3: AIAnalysis -->
-    <g transform="translate(0, 494)">
-      <text x="235" y="26" font-size="15" font-weight="bold" fill="#1e293b" text-anchor="middle" text-decoration="underline">detection3: AIAnalysis</text>
-      <line x1="0" y1="36" x2="470" y2="36" stroke="#f8d7d7" stroke-width="1.5" />
-
-      <!-- Rows -->
-      <line x1="0" y1="64" x2="470" y2="64" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="54" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">id</text>
-      <text x="456" y="54" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"det_003"</text>
-
-      <line x1="0" y1="92" x2="470" y2="92" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="82" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">userId</text>
-      <text x="456" y="82" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"u1001"</text>
-
-      <line x1="0" y1="120" x2="470" y2="120" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="110" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">documentName</text>
-      <text x="456" y="110" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"news_article.txt"</text>
-
-      <line x1="0" y1="148" x2="470" y2="148" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="138" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">timestamp</text>
-      <text x="456" y="138" font-size="12" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">"2026-08-16T08:45:00Z"</text>
-
-      <line x1="0" y1="176" x2="470" y2="176" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="166" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">features</text>
-      <text x="456" y="166" font-size="11.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">["Mixed Vocabulary", "Moderate TTR"]</text>
-
-      <line x1="0" y1="204" x2="470" y2="204" stroke="#fce8e8" stroke-width="1" />
-      <text x="14" y="194" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">aiProbability</text>
-      <text x="456" y="194" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">54.8</text>
-
-      <text x="14" y="222" font-size="12.5" font-family="Consolas, Monaco, monospace" fill="#1e293b">verdictSummary</text>
-      <text x="456" y="222" font-size="11.5" font-family="Consolas, Monaco, monospace" fill="#a82d2d" text-anchor="end">{perplexity: 52.0, similarity: 56.5, knn: 54.8}</text>
-    </g>
+  <!-- 2. Middle Left Box: sentencePerplexity : Sentence Perplexity -->
+  <g transform="translate(30, 310)">
+    <rect class="cls-box" x="0" y="0" width="420" height="310" />
+    <text x="210" y="28" class="cls-header">sentencePerplexity : Sentence Perplexity</text>
+    <line x1="0" y1="38" x2="420" y2="38" class="line" />
+    <text x="15" y="58" class="cls-text">perplexityLevel = "High (Uniform Pattern)"</text>
+    <text x="15" y="78" class="cls-text">burstinessValue = "Low Sentence Variation"</text>
+    <text x="15" y="98" class="cls-text">avgSentenceLength = 20.4 words</text>
+    <text x="15" y="118" class="cls-text">aiLikelihood = "88% AI-like rhythm"</text>
+    <line x1="0" y1="128" x2="420" y2="128" class="line" />
+    <text x="15" y="148" class="cls-text">+ calculatePerplexity(text): float</text>
+    <text x="15" y="170" class="cls-text">+ calculateBurstiness(sentences): float</text>
+    <text x="15" y="192" class="cls-text">+ computeTTR(tokens): float</text>
+    <text x="15" y="214" class="cls-text">+ getAiWordDensity(text): float</text>
+    <text x="15" y="236" class="cls-text">+ getSentenceLengthVariance(): float</text>
+    <text x="15" y="258" class="cls-text">+ getPerplexityVerdict(): string</text>
   </g>
 
-  <!-- ==================== CAPTION ==================== -->
-  <text x="550" y="855" font-family="Times New Roman, Georgia, serif" font-weight="bold" font-size="17" fill="#000000" text-anchor="middle">Figure 3.4: Object Diagram for AI Text Detector</text>
+  <!-- 3. Middle Center Box: classifier : Instance Based Classification -->
+  <g transform="translate(490, 310)">
+    <rect class="cls-box" x="0" y="0" width="420" height="310" />
+    <text x="210" y="28" class="cls-header">classifier : Instance Based Classification</text>
+    <line x1="0" y1="38" x2="420" y2="38" class="line" />
+    <text x="15" y="58" class="cls-text">algorithm = "K-Nearest Neighbors (K=5)"</text>
+    <text x="15" y="78" class="cls-text">neighborVotes = "4 AI Matches, 1 Human"</text>
+    <text x="15" y="98" class="cls-text">predictedClass = "AI Generated Text"</text>
+    <text x="15" y="118" class="cls-text">confidenceScore = 91.5%</text>
+    <line x1="0" y1="128" x2="420" y2="128" class="line" />
+    <text x="15" y="148" class="cls-text">+ classify(featureVector): object</text>
+    <text x="15" y="170" class="cls-text">+ computeEuclideanDistance(v1, v2): float</text>
+    <text x="15" y="192" class="cls-text">+ getNearestNeighbors(vector, k): list</text>
+    <text x="15" y="214" class="cls-text">+ getVerdictSummary(): object</text>
+    <text x="15" y="236" class="cls-text">+ updateTrainingSet(sample): void</text>
+  </g>
+
+  <!-- 4. Middle Right Box: vectorSimilarity : Vector Similarities -->
+  <g transform="translate(950, 310)">
+    <rect class="cls-box" x="0" y="0" width="420" height="310" />
+    <text x="210" y="28" class="cls-header">vectorSimilarity : Vector Similarities</text>
+    <line x1="0" y1="38" x2="420" y2="38" class="line" />
+    <text x="15" y="58" class="cls-text">aiModelMatch = "85% Similarity"</text>
+    <text x="15" y="78" class="cls-text">humanModelMatch = "25% Similarity"</text>
+    <text x="15" y="98" class="cls-text">vectorCluster = "AI Language Patterns"</text>
+    <text x="15" y="118" class="cls-text">cosineDistance = 0.152</text>
+    <line x1="0" y1="128" x2="420" y2="128" class="line" />
+    <text x="15" y="148" class="cls-text">+ computeCosineSimilarity(v1, v2): float</text>
+    <text x="15" y="170" class="cls-text">+ extractNgramFrequency(text): list</text>
+    <text x="15" y="192" class="cls-text">+ comparePrototypes(vector): object</text>
+    <text x="15" y="214" class="cls-text">+ getFeatureVector(): list</text>
+    <text x="15" y="236" class="cls-text">+ normalizeVector(vector): list</text>
+    <text x="15" y="258" class="cls-text">+ getSimilarityIndex(): float</text>
+  </g>
+
+  <!-- 5. Bottom Center Box: visualizer : Render SVG visualization -->
+  <g transform="translate(490, 670)">
+    <rect class="cls-box" x="0" y="0" width="420" height="260" />
+    <text x="210" y="28" class="cls-header">visualizer : Render SVG visualization</text>
+    <line x1="0" y1="38" x2="420" y2="38" class="line" />
+    <text x="15" y="58" class="cls-text">chartType = "Radial Speedometer Gauge"</text>
+    <text x="15" y="78" class="cls-text">verdictBanner = "AI-GENERATED (91.5%)"</text>
+    <text x="15" y="98" class="cls-text">colorIndicator = "Red / Warning Accent"</text>
+    <text x="15" y="118" class="cls-text">renderMode = "Vector Graphic Display"</text>
+    <line x1="0" y1="128" x2="420" y2="128" class="line" />
+    <text x="15" y="148" class="cls-text">+ renderGaugeChart(score): Element</text>
+    <text x="15" y="170" class="cls-text">+ renderScatterPlot(neighbors): Element</text>
+    <text x="15" y="192" class="cls-text">+ renderRadarChart(features): Element</text>
+    <text x="15" y="214" class="cls-text">+ animateGaugePointer(angle): void</text>
+    <text x="15" y="236" class="cls-text">+ updateVerdictDisplay(text): void</text>
+  </g>
+
+  <!-- INSTANTIATED LINKS WITH MULTIPLICITIES (OBJECT INSTANCE LINK MULTIPLICITIES) -->
+
+  <!-- Top tree connection from docParser down to middle row -->
+  <path d="M 700 240 L 700 275 L 240 275 L 240 310" class="line" />
+  <path d="M 700 275 L 700 310" class="line" />
+  <path d="M 700 275 L 1160 275 L 1160 310" class="line" />
+
+  <!-- Object Link Multiplicities -->
+  <text x="715" y="258" class="mult">1</text>
+  <text x="700" y="270" class="role">«active parsing link»</text>
+
+  <text x="220" y="300" class="mult">1</text>
+  <text x="680" y="300" class="mult">1</text>
+  <text x="1140" y="300" class="mult">1</text>
+
+  <!-- Horizontal connections across middle row -->
+  <line x1="450" y1="465" x2="490" y2="465" class="line" />
+  <text x="453" y="457" class="mult">1</text>
+  <text x="470" y="482" class="role">feeds metrics</text>
+  <text x="477" y="457" class="mult">1</text>
+
+  <line x1="910" y1="465" x2="950" y2="465" class="line" />
+  <text x="915" y="457" class="mult">1</text>
+  <text x="930" y="482" class="role">compares</text>
+  <text x="935" y="457" class="mult">1</text>
+
+  <!-- Vertical connection from classifier down to visualizer -->
+  <line x1="700" y1="620" x2="700" y2="670" class="line" />
+  <text x="710" y="635" class="mult">1</text>
+  <text x="750" y="648" class="role">renders scores</text>
+  <text x="710" y="662" class="mult">1</text>
 
 </svg>

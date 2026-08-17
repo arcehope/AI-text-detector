@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 1000" width="100%" height="100%" style="background-color: #ffffff;">
+  <defs>
+    <marker id="arrow-open" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#000000" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <marker id="arrow-solid" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 z" fill="#000000" stroke="#000000" stroke-width="1" />
+    </marker>
+  </defs>
+
+  <style>
+    .diagram-title { font-family: 'Times New Roman', Georgia, serif; font-size: 19px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .header-box-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 14.5px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .msg-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13.5px; font-weight: 500; fill: #000000; text-anchor: middle; }
+    .msg-line { stroke: #000000; stroke-width: 1.8; stroke-dasharray: 6,4; fill: none; }
+    .msg-line-solid { stroke: #000000; stroke-width: 1.8; fill: none; }
+    .num-circle { fill: #ffffff; stroke: #000000; stroke-width: 1.5; }
+    .num-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #000000; text-anchor: middle; dominant-baseline: central; }
+    .opt-box { fill: none; stroke: #000000; stroke-width: 1.8; rx: 6px; }
+    .opt-badge { fill: #ffffff; stroke: #000000; stroke-width: 1.5; rx: 4px; }
+    .opt-badge-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #000000; text-anchor: middle; dominant-baseline: central; }
+    .opt-header-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12.5px; font-weight: bold; fill: #000000; dominant-baseline: central; }
+    .loop-box { fill: none; stroke: #000000; stroke-width: 1.8; rx: 6px; }
+    .loop-badge { fill: #ffffff; stroke: #000000; stroke-width: 1.5; rx: 4px; }
+    .loop-badge-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #000000; text-anchor: middle; dominant-baseline: central; }
+    .loop-header-text { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #000000; dominant-baseline: central; }
+  </style>
+
+  <!-- Title -->
+  <text x="480" y="38" class="diagram-title">Figure 3.6: Sequence Diagram for Sentinel AI Text Detector (With Auth &amp; Scan)</text>
+
+  <!-- Lifeline Extension Lines -->
+  <line x1="150" y1="125" x2="150" y2="960" stroke="#000000" stroke-width="1.8" />
+  <line x1="380" y1="125" x2="380" y2="960" stroke="#000000" stroke-width="1.8" />
+  <line x1="620" y1="125" x2="620" y2="960" stroke="#000000" stroke-width="1.8" />
+  <line x1="850" y1="125" x2="850" y2="960" stroke="#000000" stroke-width="1.8" />
+
+  <!-- Participant Headers -->
+  <rect x="75" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="150" y="103" class="header-box-text">Client (UI)</text>
+
+  <rect x="305" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="380" y="103" class="header-box-text">Server (Controller)</text>
+
+  <rect x="545" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="620" y="103" class="header-box-text">Scanner Engine</text>
+
+  <rect x="775" y="70" width="150" height="55" rx="10" ry="10" fill="#ffffff" stroke="#000000" stroke-width="2" />
+  <text x="850" y="103" class="header-box-text">Database (sentinel.db)</text>
+
+  <!-- OPTIONAL AUTHENTICATION FRAGMENT -->
+  <g>
+    <rect x="110" y="145" width="775" height="115" class="opt-box" />
+    <rect x="110" y="145" width="50" height="24" class="opt-badge" />
+    <text x="135" y="157" class="opt-badge-text">opt</text>
+    <text x="175" y="157" class="opt-header-text">User Login / Authentication (/api/auth/login)</text>
+  </g>
+
+  <!-- Auth Step 1: Login Request -->
+  <path d="M 150 185 L 369 185" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="260" y="177" class="msg-text">Login request (username, password)</text>
+
+  <!-- Auth Step 2: Verify DB -->
+  <path d="M 389 210 L 848 210" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="620" y="202" class="msg-text">Verify credentials (users table)</text>
+
+  <!-- Auth Step 3: Auth Response -->
+  <path d="M 371 235 L 152 235" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="260" y="227" class="msg-text">Auth response (Success / Token)</text>
+
+  <!-- Activation Bars -->
+  <rect x="371" y="280" width="18" height="640" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
+  <rect x="611" y="340" width="18" height="510" rx="3" fill="#ffffff" stroke="#000000" stroke-width="1.5" />
+
+  <!-- Step 1: Client -> Server -->
+  <path d="M 150 290 L 369 290" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="260" y="282" class="msg-text">Scan request</text>
+  <circle cx="150" cy="290" r="11" class="num-circle" />
+  <text x="150" y="290" class="num-text">1</text>
+
+  <!-- Step 2: Server -> Scanner Engine -->
+  <path d="M 389 350 L 609 350" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="342" class="msg-text">Initiate scan</text>
+  <circle cx="389" cy="350" r="11" class="num-circle" />
+  <text x="389" y="350" class="num-text">2</text>
+
+  <!-- Step 3: Scanner Engine -> Database -->
+  <path d="M 629 410 L 848 410" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="740" y="402" class="msg-text">payloads / models</text>
+  <circle cx="629" cy="410" r="11" class="num-circle" />
+  <text x="629" y="410" class="num-text">3</text>
+
+  <!-- Loop Container Box -->
+  <g>
+    <rect x="335" y="460" width="470" height="195" class="loop-box" />
+    <rect x="335" y="460" width="55" height="24" class="loop-badge" />
+    <text x="362.5" y="472" class="loop-badge-text">loop</text>
+    <text x="400" y="472" class="loop-header-text">Scan all endpoints / AI evaluation engines</text>
+  </g>
+
+  <!-- Step 4: Self Call (Scanner Engine) -->
+  <path d="M 629 515 L 685 515 L 685 550 L 631 550" class="msg-line-solid" marker-end="url(#arrow-solid)" />
+  <text x="695" y="527" class="msg-text" text-anchor="start">Test Perplexity, KNN,</text>
+  <text x="695" y="543" class="msg-text" text-anchor="start">Cosine, POS, Trigram, etc.</text>
+  <circle cx="629" cy="515" r="11" class="num-circle" />
+  <text x="629" y="515" class="num-text">4</text>
+
+  <!-- Step 5: Scanner Engine -> Server -->
+  <path d="M 611 610 L 391 610" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="602" class="msg-text">Return</text>
+  <circle cx="611" cy="610" r="11" class="num-circle" />
+  <text x="611" y="610" class="num-text">5</text>
+
+  <!-- Step 6: Scanner Engine -> Database -->
+  <path d="M 629 690 L 848 690" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="740" y="682" class="msg-text">Store results</text>
+  <circle cx="629" cy="690" r="11" class="num-circle" />
+  <text x="629" y="690" class="num-text">6</text>
+
+  <!-- Step 7: Server -> Scanner Engine -->
+  <path d="M 389 760 L 609 760" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="752" class="msg-text">Request report</text>
+  <circle cx="389" cy="760" r="11" class="num-circle" />
+  <text x="389" y="760" class="num-text">7</text>
+
+  <!-- Step 8: Scanner Engine -> Server -->
+  <path d="M 611 830 L 391 830" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="500" y="822" class="msg-text">Send report</text>
+  <circle cx="611" cy="830" r="11" class="num-circle" />
+  <text x="611" y="830" class="num-text">8</text>
+
+  <!-- Step 9: Server -> Client -->
+  <path d="M 371 900 L 152 900" class="msg-line" marker-end="url(#arrow-open)" />
+  <text x="260" y="892" class="msg-text">Return report</text>
+  <circle cx="371" cy="900" r="11" class="num-circle" />
+  <text x="371" y="900" class="num-text">9</text>
+</svg>
