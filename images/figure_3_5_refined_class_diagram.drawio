@@ -1,0 +1,236 @@
+<mxfile host="app.diagrams.net" modified="2026-08-17T22:56:00.000Z" agent="Antigravity" version="21.6.8" type="device">
+  <diagram id="sentinel-refined-class-bw" name="Figure 3.5 Refinement of Class Diagram (B&amp;W)">
+    <mxGraphModel dx="1400" dy="1200" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1350" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Title Header -->
+        <mxCell id="ref_title" value="&lt;b style=&quot;font-family: Georgia, 'Times New Roman', serif; font-size: 19px; color: #000000;&quot;&gt;Figure 3.5: Refinement of Class Diagram for Sentinel AI Text Detector&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="425" y="20" width="500" height="35" as="geometry" />
+        </mxCell>
+
+        <!-- LAYER 1: ENTITIES & AUTH (TOP ROW) -->
+
+        <!-- 1. CLASS: User -->
+        <mxCell id="c_user" value="User" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#FFFFFF;fontColor=#000000;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="75" width="270" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="u_att" value="- id: string&#10;- username: string&#10;- email: string&#10;- passwordHash: string&#10;- createdAt: string" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_user">
+          <mxGeometry y="30" width="270" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="u_met" value="+ register(name, email, pwd): bool&#10;+ login(username, pwd): bool&#10;+ validateQuota(): bool" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_user">
+          <mxGeometry y="115" width="270" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 2. CLASS: DetectionTask -->
+        <mxCell id="c_task" value="DetectionTask" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#FFFFFF;fontColor=#000000;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="360" y="75" width="310" height="195" as="geometry" />
+        </mxCell>
+        <mxCell id="t_att" value="- taskId: string&#10;- documentName: string&#10;- rawText: string&#10;- wordCount: int&#10;- sentenceCount: int&#10;- aiScore: float&#10;- verdict: string" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_task">
+          <mxGeometry y="30" width="310" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="t_met" value="+ processText(text: string): void&#10;+ getWordCount(): int&#10;+ generateVerdictSummary(): object" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_task">
+          <mxGeometry y="140" width="310" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- 3. CLASS: AnalysisRecord -->
+        <mxCell id="c_rec" value="AnalysisRecord" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#FFFFFF;fontColor=#000000;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="720" y="75" width="290" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="r_att" value="- recordId: string&#10;- timestamp: string&#10;- title: string&#10;- metricsJson: string&#10;- grammarScore: float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_rec">
+          <mxGeometry y="30" width="290" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="r_met" value="+ toJSON(): string&#10;+ saveToDb(): bool&#10;+ fetchMetrics(): object" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_rec">
+          <mxGeometry y="115" width="290" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- 4. CLASS: SentinelDB -->
+        <mxCell id="c_db" value="SentinelDB" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#FFFFFF;fontColor=#000000;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="1050" y="75" width="260" height="185" as="geometry" />
+        </mxCell>
+        <mxCell id="db_att" value="- dbFile: string = &quot;sentinel.db&quot;&#10;- connection: SQLiteConnection&#10;- status: string" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_db">
+          <mxGeometry y="30" width="260" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="db_met" value="+ initDb(): void&#10;+ saveAnalysis(rec): bool&#10;+ getHistory(user): list&#10;+ deleteRecord(id): bool" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_db">
+          <mxGeometry y="90" width="260" height="95" as="geometry" />
+        </mxCell>
+
+        <!-- LAYER 2: CORE CONTROLLER & INGESTION (MIDDLE ROW) -->
+
+        <!-- 5. CLASS: Parses -->
+        <mxCell id="c_parses" value="Parses" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#FFFFFF;fontColor=#000000;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="40" y="315" width="310" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="p_att" value="- document: string&#10;- status: string&#10;- wordCount: int&#10;- format: string" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_parses">
+          <mxGeometry y="30" width="310" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="p_met" value="+ extractText(file: File): string&#10;+ readAsDocx(file: File): string&#10;+ getWordCount(): int" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_parses">
+          <mxGeometry y="105" width="310" height="75" as="geometry" />
+        </mxCell>
+
+        <!-- 6. CLASS: DetectorEngine (Central Controller) -->
+        <mxCell id="c_engine" value="DetectorEngine" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#FFFFFF;fontColor=#000000;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="400" y="315" width="550" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="e_att" value="- minWordCount: int = 10&#10;- ensembleWeights: dict = {LR:0.25, Tri:0.25, KNN:0.20, POS:0.15, Cos:0.10, Ppl:0.05}&#10;- perfectBoost: float = 15.0" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_engine">
+          <mxGeometry y="30" width="550" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="e_met" value="+ executeAnalysisCore(text: string, isSilent: bool): object&#10;+ computeWeightedScore(scores: object): float&#10;+ calibrateGrammarFactor(weightedScore: float, perfectionScore: float): float&#10;+ runAnalysis(text: string): bool" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_engine">
+          <mxGeometry y="90" width="550" height="90" as="geometry" />
+        </mxCell>
+
+        <!-- LAYER 3: THE 7 REFINED EVALUATION ENGINES -->
+
+        <!-- 7. PerplexityAnalyzer -->
+        <mxCell id="c_ppl" value="PerplexityAnalyzer" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1.5;fillColor=#FFFFFF;fontColor=#000000;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="30" y="550" width="300" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ppl_att" value="- perplexityLevel: string&#10;- burstinessValue: float&#10;- avgSentenceLength: float&#10;- aiLikelihood: string" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_ppl">
+          <mxGeometry y="26" width="300" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="ppl_met" value="+ calculatePerplexity(text: string): float&#10;+ calculateBurstiness(sents: list): float&#10;+ computeTTR(tokens: list): float&#10;+ getPerplexityVerdict(): string" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_ppl">
+          <mxGeometry y="91" width="300" height="79" as="geometry" />
+        </mxCell>
+
+        <!-- 8. KNNClassifier -->
+        <mxCell id="c_knn" value="KNNClassifier" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1.5;fillColor=#FFFFFF;fontColor=#000000;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="360" y="550" width="300" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="knn_att" value="- k: int = 5&#10;- neighborVotes: string&#10;- predictedClass: string&#10;- confidenceScore: float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_knn">
+          <mxGeometry y="26" width="300" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="knn_met" value="+ extractFeatures(text, ppl): object&#10;+ classify(featureVector: list): object&#10;+ computeEuclideanDistance(v1, v2): float&#10;+ getNearestNeighbors(vec, k): list" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_knn">
+          <mxGeometry y="91" width="300" height="79" as="geometry" />
+        </mxCell>
+
+        <!-- 9. LogisticRegressionClassifier -->
+        <mxCell id="c_lr" value="LogisticRegression" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1.5;fillColor=#FFFFFF;fontColor=#000000;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="690" y="550" width="300" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="lr_att" value="- weights: list&#10;- bias: float&#10;- numFeatures: int = 6" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_lr">
+          <mxGeometry y="26" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="lr_met" value="+ predict(featureVector: list): float&#10;+ sigmoid(z: float): float&#10;+ computeDotProduct(v1, v2): float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_lr">
+          <mxGeometry y="76" width="300" height="94" as="geometry" />
+        </mxCell>
+
+        <!-- 10. TrigramAnalyzer -->
+        <mxCell id="c_tri" value="TrigramAnalyzer" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1.5;fillColor=#FFFFFF;fontColor=#000000;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="550" width="300" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="tri_att" value="- ngramMatchScore: float&#10;- templateMatrix: list&#10;- vocabSize: int" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_tri">
+          <mxGeometry y="26" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="tri_met" value="+ analyze(text: string): object&#10;+ extractNgramFrequency(text): list&#10;+ compareNgramProfiles(text): float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_tri">
+          <mxGeometry y="76" width="300" height="94" as="geometry" />
+        </mxCell>
+
+        <!-- 11. PosClassifier -->
+        <mxCell id="c_pos" value="PosClassifier" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1.5;fillColor=#FFFFFF;fontColor=#000000;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="200" y="750" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="pos_att" value="- nounRatio: float&#10;- verbRatio: float&#10;- adjRatio: float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_pos">
+          <mxGeometry y="26" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pos_met" value="+ analyze(text: string): object&#10;+ computePosRatios(tokens: list): object&#10;+ getSyntaxStructureScore(): float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_pos">
+          <mxGeometry y="76" width="300" height="84" as="geometry" />
+        </mxCell>
+
+        <!-- 12. CosineSimilarityAnalyzer -->
+        <mxCell id="c_sim" value="CosineSimilarity" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1.5;fillColor=#FFFFFF;fontColor=#000000;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="530" y="750" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="sim_att" value="- aiModelMatch: float&#10;- humanModelMatch: float&#10;- cosineDistance: float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_sim">
+          <mxGeometry y="26" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="sim_met" value="+ computeCosineSimilarity(v1, v2): float&#10;+ comparePrototypes(vector: list): object&#10;+ getSimilarityIndex(): float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_sim">
+          <mxGeometry y="76" width="300" height="84" as="geometry" />
+        </mxCell>
+
+        <!-- 13. GrammarStyleAnalyzer -->
+        <mxCell id="c_gram" value="GrammarStyle" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=1.5;fillColor=#FFFFFF;fontColor=#000000;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="860" y="750" width="300" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="gram_att" value="- perfectionScore: float&#10;- grammarFactor: float&#10;- typoExceptions: list" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_gram">
+          <mxGeometry y="26" width="300" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="gram_met" value="+ analyze(text: string): object&#10;+ calculatePerfectionScore(text): float&#10;+ applyGrammarCalibration(score): float" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=6;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11.5;" vertex="1" parent="c_gram">
+          <mxGeometry y="76" width="300" height="84" as="geometry" />
+        </mxCell>
+
+        <!-- LAYER 4: PRESENTATION LAYER (BOTTOM ROW) -->
+
+        <!-- 14. CLASS: Render SVG visualization / ChartRenderer -->
+        <mxCell id="c_vis" value="ChartRenderer (Render SVG visualization)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginBottom=0;whiteSpace=wrap;html=1;strokeColor=#000000;strokeWidth=2;fillColor=#FFFFFF;fontColor=#000000;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="400" y="960" width="550" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="vis_att" value="- chartType: string = &quot;Radial Speedometer Gauge&quot;&#10;- verdictBanner: string&#10;- colorIndicator: string&#10;- renderMode: string = &quot;Vector Graphic Display&quot;" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_vis">
+          <mxGeometry y="30" width="550" height="75" as="geometry" />
+        </mxCell>
+        <mxCell id="vis_met" value="+ renderGaugeChart(containerId, score): Element&#10;+ renderScatterPlot(containerId, knnResult, vector): Element&#10;+ renderRadarChart(containerId, vector): Element&#10;+ renderHighlighting(sentenceDetails, score): void&#10;+ renderMathFormulaBreakdown(...): void" style="text;strokeColor=none;fillColor=#FFFFFF;align=left;verticalAlign=top;spacingLeft=8;rotatable=0;points=[];portConstraint=eastwest;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=12;" vertex="1" parent="c_vis">
+          <mxGeometry y="105" width="550" height="115" as="geometry" />
+        </mxCell>
+
+        <!-- CONNECTIONS & RELATIONSHIPS -->
+
+        <!-- User to Task (1 to 1..*) -->
+        <mxCell id="r1" value="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=13;fontStyle=1;" edge="1" parent="1" source="c_user" target="c_task">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r1_lbl" value="1..*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="145" width="30" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- Task to Record (1 to 1) -->
+        <mxCell id="r2" value="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=13;fontStyle=1;" edge="1" parent="1" source="c_task" target="c_rec">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Record to SentinelDB (1 to 1) -->
+        <mxCell id="r3" value="1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=13;fontStyle=1;" edge="1" parent="1" source="c_rec" target="c_db">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Parses to Task (1 to 1) -->
+        <mxCell id="r4" value="1 feeds text to 1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=12;fontStyle=1;" edge="1" parent="1" source="c_parses" target="c_task">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Task to DetectorEngine (1 triggers 1) -->
+        <mxCell id="r5" value="1 triggers 1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=12;fontStyle=1;" edge="1" parent="1" source="c_task" target="c_engine">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DetectorEngine down to 7 Ensemble Engines (Dashed Composition Line) -->
+        <mxCell id="r_ppl" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engine" target="c_ppl">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_knn" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engine" target="c_knn">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_lr" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engine" target="c_lr">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_tri" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engine" target="c_tri">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_pos" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engine" target="c_pos">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_sim" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engine" target="c_sim">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_gram" value="" style="endArrow=none;dashed=1;html=1;strokeColor=#000000;strokeWidth=1.5;" edge="1" parent="1" source="c_engine" target="c_gram">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- DetectorEngine to ChartRenderer (1 passes scores to 1) -->
+        <mxCell id="r_vis" value="1 passes scores to 1" style="endArrow=none;html=1;strokeColor=#000000;strokeWidth=1.8;fontSize=12;fontStyle=1;" edge="1" parent="1" source="c_engine" target="c_vis">
+          <mxGeometry width="50" height="50" relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

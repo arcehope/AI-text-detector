@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1350 1220" width="100%" height="100%" style="background-color: #ffffff;">
+  <style>
+    .title { font-family: 'Times New Roman', Georgia, serif; font-size: 19px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .cls-title { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 15px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .cls-subtitle { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; font-weight: bold; fill: #000000; text-anchor: middle; }
+    .code-text { font-family: 'Consolas', 'Courier New', monospace; font-size: 12px; fill: #000000; }
+    .code-subtext { font-family: 'Consolas', 'Courier New', monospace; font-size: 11.5px; fill: #000000; }
+    .cls-box { fill: #ffffff; stroke: #000000; stroke-width: 2; rx: 4px; }
+    .sub-box { fill: #ffffff; stroke: #000000; stroke-width: 1.5; rx: 4px; }
+    .divider { stroke: #000000; stroke-width: 1.2; }
+    .link-solid { stroke: #000000; stroke-width: 1.8; fill: none; }
+    .link-dashed { stroke: #000000; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+    .label { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; font-weight: bold; fill: #000000; text-anchor: middle; }
+  </style>
+
+  <!-- Title -->
+  <text x="675" y="38" class="title">Figure 3.5: Refinement of Class Diagram for Sentinel AI Text Detector</text>
+
+  <!-- LAYER 1: TOP ROW (ENTITIES & AUTH) -->
+
+  <!-- 1. User -->
+  <g transform="translate(40, 70)">
+    <rect class="cls-box" x="0" y="0" width="270" height="185" />
+    <text x="135" y="22" class="cls-title">User</text>
+    <line x1="0" y1="30" x2="270" y2="30" class="divider" />
+    <text x="10" y="48" class="code-text">- id: string</text>
+    <text x="10" y="65" class="code-text">- username: string</text>
+    <text x="10" y="82" class="code-text">- email: string</text>
+    <text x="10" y="99" class="code-text">- passwordHash: string</text>
+    <text x="10" y="116" class="code-text">- createdAt: string</text>
+    <line x1="0" y1="124" x2="270" y2="124" class="divider" />
+    <text x="10" y="142" class="code-text">+ register(name, email, pwd): bool</text>
+    <text x="10" y="159" class="code-text">+ login(username, pwd): bool</text>
+    <text x="10" y="176" class="code-text">+ validateQuota(): bool</text>
+  </g>
+
+  <!-- 2. DetectionTask -->
+  <g transform="translate(360, 70)">
+    <rect class="cls-box" x="0" y="0" width="310" height="195" />
+    <text x="155" y="22" class="cls-title">DetectionTask</text>
+    <line x1="0" y1="30" x2="310" y2="30" class="divider" />
+    <text x="10" y="48" class="code-text">- taskId: string</text>
+    <text x="10" y="65" class="code-text">- documentName: string</text>
+    <text x="10" y="82" class="code-text">- rawText: string</text>
+    <text x="10" y="99" class="code-text">- wordCount: int</text>
+    <text x="10" y="116" class="code-text">- sentenceCount: int</text>
+    <text x="10" y="133" class="code-text">- aiScore: float</text>
+    <text x="10" y="150" class="code-text">- verdict: string</text>
+    <line x1="0" y1="158" x2="310" y2="158" class="divider" />
+    <text x="10" y="174" class="code-text">+ processText(text: string): void</text>
+    <text x="10" y="188" class="code-text">+ generateVerdictSummary(): object</text>
+  </g>
+
+  <!-- 3. AnalysisRecord -->
+  <g transform="translate(720, 70)">
+    <rect class="cls-box" x="0" y="0" width="290" height="185" />
+    <text x="145" y="22" class="cls-title">AnalysisRecord</text>
+    <line x1="0" y1="30" x2="290" y2="30" class="divider" />
+    <text x="10" y="48" class="code-text">- recordId: string</text>
+    <text x="10" y="65" class="code-text">- timestamp: string</text>
+    <text x="10" y="82" class="code-text">- title: string</text>
+    <text x="10" y="99" class="code-text">- metricsJson: string</text>
+    <text x="10" y="116" class="code-text">- grammarScore: float</text>
+    <line x1="0" y1="124" x2="290" y2="124" class="divider" />
+    <text x="10" y="142" class="code-text">+ toJSON(): string</text>
+    <text x="10" y="159" class="code-text">+ saveToDb(): bool</text>
+    <text x="10" y="176" class="code-text">+ fetchMetrics(): object</text>
+  </g>
+
+  <!-- 4. SentinelDB -->
+  <g transform="translate(1050, 70)">
+    <rect class="cls-box" x="0" y="0" width="260" height="185" />
+    <text x="130" y="22" class="cls-title">SentinelDB</text>
+    <line x1="0" y1="30" x2="260" y2="30" class="divider" />
+    <text x="10" y="48" class="code-text">- dbFile = "sentinel.db"</text>
+    <text x="10" y="65" class="code-text">- connection: SQLiteConn</text>
+    <text x="10" y="82" class="code-text">- status: string</text>
+    <line x1="0" y1="90" x2="260" y2="90" class="divider" />
+    <text x="10" y="108" class="code-text">+ initDb(): void</text>
+    <text x="10" y="125" class="code-text">+ saveAnalysis(rec): bool</text>
+    <text x="10" y="142" class="code-text">+ getHistory(user): list</text>
+    <text x="10" y="159" class="code-text">+ deleteRecord(id): bool</text>
+  </g>
+
+  <!-- LAYER 2: MIDDLE ROW (CORE INGESTION & CONTROLLER) -->
+
+  <!-- 5. Parses -->
+  <g transform="translate(40, 310)">
+    <rect class="cls-box" x="0" y="0" width="310" height="180" />
+    <text x="155" y="22" class="cls-title">Parses</text>
+    <line x1="0" y1="30" x2="310" y2="30" class="divider" />
+    <text x="10" y="48" class="code-text">- document: string</text>
+    <text x="10" y="65" class="code-text">- status: string</text>
+    <text x="10" y="82" class="code-text">- wordCount: int</text>
+    <text x="10" y="99" class="code-text">- format: string</text>
+    <line x1="0" y1="107" x2="310" y2="107" class="divider" />
+    <text x="10" y="125" class="code-text">+ extractText(file: File): string</text>
+    <text x="10" y="142" class="code-text">+ readAsDocx(file: File): string</text>
+    <text x="10" y="159" class="code-text">+ getWordCount(): int</text>
+  </g>
+
+  <!-- 6. DetectorEngine -->
+  <g transform="translate(400, 310)">
+    <rect class="cls-box" x="0" y="0" width="550" height="180" />
+    <text x="275" y="22" class="cls-title">DetectorEngine</text>
+    <line x1="0" y1="30" x2="550" y2="30" class="divider" />
+    <text x="10" y="48" class="code-text">- minWordCount: int = 10</text>
+    <text x="10" y="65" class="code-text">- ensembleWeights: dict = {LR:0.25, Tri:0.25, KNN:0.20, POS:0.15, Cos:0.10, Ppl:0.05}</text>
+    <text x="10" y="82" class="code-text">- perfectBoost: float = 15.0</text>
+    <line x1="0" y1="90" x2="550" y2="90" class="divider" />
+    <text x="10" y="108" class="code-text">+ executeAnalysisCore(text: string, isSilent: bool): object</text>
+    <text x="10" y="125" class="code-text">+ computeWeightedScore(scores: object): float</text>
+    <text x="10" y="142" class="code-text">+ calibrateGrammarFactor(weightedScore: float, perfectionScore: float): float</text>
+    <text x="10" y="159" class="code-text">+ runAnalysis(text: string): bool</text>
+  </g>
+
+  <!-- LAYER 3: THE 7 REFINED ENSEMBLE ENGINES -->
+
+  <!-- 7. PerplexityAnalyzer -->
+  <g transform="translate(30, 540)">
+    <rect class="sub-box" x="0" y="0" width="300" height="170" />
+    <text x="150" y="20" class="cls-subtitle">PerplexityAnalyzer</text>
+    <line x1="0" y1="28" x2="300" y2="28" class="divider" />
+    <text x="8" y="45" class="code-subtext">- perplexityLevel: string</text>
+    <text x="8" y="62" class="code-subtext">- burstinessValue: float</text>
+    <text x="8" y="79" class="code-subtext">- avgSentenceLength: float</text>
+    <text x="8" y="96" class="code-subtext">- aiLikelihood: string</text>
+    <line x1="0" y1="104" x2="300" y2="104" class="divider" />
+    <text x="8" y="121" class="code-subtext">+ calculatePerplexity(text: string): float</text>
+    <text x="8" y="138" class="code-subtext">+ calculateBurstiness(sents: list): float</text>
+    <text x="8" y="155" class="code-subtext">+ computeTTR(tokens: list): float</text>
+  </g>
+
+  <!-- 8. KNNClassifier -->
+  <g transform="translate(360, 540)">
+    <rect class="sub-box" x="0" y="0" width="300" height="170" />
+    <text x="150" y="20" class="cls-subtitle">KNNClassifier</text>
+    <line x1="0" y1="28" x2="300" y2="28" class="divider" />
+    <text x="8" y="45" class="code-subtext">- k: int = 5</text>
+    <text x="8" y="62" class="code-subtext">- neighborVotes: string</text>
+    <text x="8" y="79" class="code-subtext">- predictedClass: string</text>
+    <text x="8" y="96" class="code-subtext">- confidenceScore: float</text>
+    <line x1="0" y1="104" x2="300" y2="104" class="divider" />
+    <text x="8" y="121" class="code-subtext">+ extractFeatures(text, ppl): object</text>
+    <text x="8" y="138" class="code-subtext">+ classify(featureVector: list): object</text>
+    <text x="8" y="155" class="code-subtext">+ computeEuclideanDistance(v1, v2): float</text>
+  </g>
+
+  <!-- 9. LogisticRegression -->
+  <g transform="translate(690, 540)">
+    <rect class="sub-box" x="0" y="0" width="300" height="170" />
+    <text x="150" y="20" class="cls-subtitle">LogisticRegression</text>
+    <line x1="0" y1="28" x2="300" y2="28" class="divider" />
+    <text x="8" y="45" class="code-subtext">- weights: list</text>
+    <text x="8" y="62" class="code-subtext">- bias: float</text>
+    <text x="8" y="79" class="code-subtext">- numFeatures: int = 6</text>
+    <line x1="0" y1="87" x2="300" y2="87" class="divider" />
+    <text x="8" y="105" class="code-subtext">+ predict(featureVector: list): float</text>
+    <text x="8" y="122" class="code-subtext">+ sigmoid(z: float): float</text>
+    <text x="8" y="139" class="code-subtext">+ computeDotProduct(v1, v2): float</text>
+  </g>
+
+  <!-- 10. TrigramAnalyzer -->
+  <g transform="translate(1020, 540)">
+    <rect class="sub-box" x="0" y="0" width="300" height="170" />
+    <text x="150" y="20" class="cls-subtitle">TrigramAnalyzer</text>
+    <line x1="0" y1="28" x2="300" y2="28" class="divider" />
+    <text x="8" y="45" class="code-subtext">- ngramMatchScore: float</text>
+    <text x="8" y="62" class="code-subtext">- templateMatrix: list</text>
+    <text x="8" y="79" class="code-subtext">- vocabSize: int</text>
+    <line x1="0" y1="87" x2="300" y2="87" class="divider" />
+    <text x="8" y="105" class="code-subtext">+ analyze(text: string): object</text>
+    <text x="8" y="122" class="code-subtext">+ extractNgramFrequency(text): list</text>
+    <text x="8" y="139" class="code-subtext">+ compareNgramProfiles(text): float</text>
+  </g>
+
+  <!-- 11. PosClassifier -->
+  <g transform="translate(200, 740)">
+    <rect class="sub-box" x="0" y="0" width="300" height="160" />
+    <text x="150" y="20" class="cls-subtitle">PosClassifier</text>
+    <line x1="0" y1="28" x2="300" y2="28" class="divider" />
+    <text x="8" y="45" class="code-subtext">- nounRatio: float</text>
+    <text x="8" y="62" class="code-subtext">- verbRatio: float</text>
+    <text x="8" y="79" class="code-subtext">- adjRatio: float</text>
+    <line x1="0" y1="87" x2="300" y2="87" class="divider" />
+    <text x="8" y="105" class="code-subtext">+ analyze(text: string): object</text>
+    <text x="8" y="122" class="code-subtext">+ computePosRatios(tokens: list): object</text>
+    <text x="8" y="139" class="code-subtext">+ getSyntaxStructureScore(): float</text>
+  </g>
+
+  <!-- 12. CosineSimilarity -->
+  <g transform="translate(530, 740)">
+    <rect class="sub-box" x="0" y="0" width="300" height="160" />
+    <text x="150" y="20" class="cls-subtitle">CosineSimilarity</text>
+    <line x1="0" y1="28" x2="300" y2="28" class="divider" />
+    <text x="8" y="45" class="code-subtext">- aiModelMatch: float</text>
+    <text x="8" y="62" class="code-subtext">- humanModelMatch: float</text>
+    <text x="8" y="79" class="code-subtext">- cosineDistance: float</text>
+    <line x1="0" y1="87" x2="300" y2="87" class="divider" />
+    <text x="8" y="105" class="code-subtext">+ computeCosineSimilarity(v1, v2): float</text>
+    <text x="8" y="122" class="code-subtext">+ comparePrototypes(vector: list): object</text>
+    <text x="8" y="139" class="code-subtext">+ getSimilarityIndex(): float</text>
+  </g>
+
+  <!-- 13. GrammarStyle -->
+  <g transform="translate(860, 740)">
+    <rect class="sub-box" x="0" y="0" width="300" height="160" />
+    <text x="150" y="20" class="cls-subtitle">GrammarStyle</text>
+    <line x1="0" y1="28" x2="300" y2="28" class="divider" />
+    <text x="8" y="45" class="code-subtext">- perfectionScore: float</text>
+    <text x="8" y="62" class="code-subtext">- grammarFactor: float</text>
+    <text x="8" y="79" class="code-subtext">- typoExceptions: list</text>
+    <line x1="0" y1="87" x2="300" y2="87" class="divider" />
+    <text x="8" y="105" class="code-subtext">+ analyze(text: string): object</text>
+    <text x="8" y="122" class="code-subtext">+ calculatePerfectionScore(text): float</text>
+    <text x="8" y="139" class="code-subtext">+ applyGrammarCalibration(score): float</text>
+  </g>
+
+  <!-- LAYER 4: PRESENTATION LAYER -->
+
+  <!-- 14. ChartRenderer -->
+  <g transform="translate(400, 950)">
+    <rect class="cls-box" x="0" y="0" width="550" height="210" />
+    <text x="275" y="22" class="cls-title">ChartRenderer (Render SVG visualization)</text>
+    <line x1="0" y1="30" x2="550" y2="30" class="divider" />
+    <text x="10" y="48" class="code-text">- chartType: string = "Radial Speedometer Gauge"</text>
+    <text x="10" y="65" class="code-text">- verdictBanner: string</text>
+    <text x="10" y="82" class="code-text">- colorIndicator: string</text>
+    <text x="10" y="99" class="code-text">- renderMode: string = "Vector Graphic Display"</text>
+    <line x1="0" y1="107" x2="550" y2="107" class="divider" />
+    <text x="10" y="125" class="code-text">+ renderGaugeChart(containerId, score): Element</text>
+    <text x="10" y="142" class="code-text">+ renderScatterPlot(containerId, knnResult, vector): Element</text>
+    <text x="10" y="159" class="code-text">+ renderRadarChart(containerId, vector): Element</text>
+    <text x="10" y="176" class="code-text">+ renderHighlighting(sentenceDetails, score): void</text>
+    <text x="10" y="193" class="code-text">+ renderMathFormulaBreakdown(...): void</text>
+  </g>
+
+  <!-- CONNECTIONS -->
+  <line x1="310" y1="140" x2="360" y2="140" class="link-solid" />
+  <line x1="670" y1="140" x2="720" y2="140" class="link-solid" />
+  <line x1="1010" y1="140" x2="1050" y2="140" class="link-solid" />
+
+  <line x1="195" y1="255" x2="195" y2="310" class="link-solid" />
+  <line x1="515" y1="265" x2="515" y2="310" class="link-solid" />
+
+  <!-- Controller to Sub Engines -->
+  <path d="M 675 490 L 675 515 L 180 515 L 180 540" class="link-dashed" />
+  <path d="M 675 490 L 675 515 L 510 515 L 510 540" class="link-dashed" />
+  <path d="M 675 490 L 675 540" class="link-dashed" />
+  <path d="M 675 490 L 675 515 L 1170 515 L 1170 540" class="link-dashed" />
+  <path d="M 675 490 L 675 715 L 350 715 L 350 740" class="link-dashed" />
+  <path d="M 675 490 L 675 715 L 680 715 L 680 740" class="link-dashed" />
+  <path d="M 675 490 L 675 715 L 1010 715 L 1010 740" class="link-dashed" />
+
+  <!-- Controller to ChartRenderer -->
+  <line x1="675" y1="490" x2="675" y2="950" class="link-solid" />
+  <text x="735" y="930" class="label">1 passes scores to 1</text>
+
+</svg>
